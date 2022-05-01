@@ -89,8 +89,8 @@ namespace Notes2022.Client.Pages.Authentication
                 return;
             }
 
-            Globals.LoginDisplay.Reload();
-            Globals.NavMenu.Reload();
+            Globals.LoginDisplay?.Reload();
+            Globals.NavMenu?.Reload();
 
             Navigation.NavigateTo("");
         }
