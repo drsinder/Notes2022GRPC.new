@@ -21,7 +21,7 @@ namespace Notes2022.Client.Pages
         private GNotefile item;
 
 
-        private GNotefileList fileList { get; set; }
+        private List<GNotefile> fileList { get; set; }
 
         /// <summary>
         /// List of files ordered by title
@@ -134,7 +134,7 @@ namespace Notes2022.Client.Pages
 
         protected override async Task OnParametersSetAsync()
         {
-            fileList = new GNotefileList();
+            fileList = new List<GNotefile>();
             nameList = new GNotefileList();
             histfileList = new GNotefileList();
             impfileList = new GNotefileList();
@@ -165,7 +165,7 @@ namespace Notes2022.Client.Pages
 
                 GNotefileList fileList1 = hpModel.NoteFiles;
                 GNotefileList nameList1 = hpModel.NoteFiles;
-                fileList = fileList1;
+                fileList = fileList1.Notefiles.ToList().OrderBy(p => p.NoteFileName).ToList();
                 nameList = nameList1;
 
                 for (int i = 0; i < fileList1.Notefiles.Count; i++)
@@ -215,9 +215,9 @@ namespace Notes2022.Client.Pages
 
             try
             {
-                for (int i = 0; i < fileList.Notefiles.Count; i++)
+                for (int i = 0; i < fileList.Count; i++)
                 {
-                    item = fileList.Notefiles[i];
+                    item = fileList[i];
                     if (value == item.NoteFileName)
                     {
                         Navigation.NavigateTo("noteindex/" + item.Id); // goto the file

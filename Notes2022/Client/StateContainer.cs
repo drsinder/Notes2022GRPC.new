@@ -7,7 +7,6 @@ namespace Notes2022.Client
     public class StateContainer
     {
         private LoginReply? savedLogin;
-        
 
         public LoginReply? LoginReply
         {
@@ -25,7 +24,6 @@ namespace Notes2022.Client
         public event Action? OnChange;
 
         private void NotifyStateChanged() => OnChange?.Invoke();
-
 
         public bool IsAuthenticated
         {
@@ -79,8 +77,5 @@ namespace Notes2022.Client
                 return null;
             }
         }
-
-
     }
-
 }

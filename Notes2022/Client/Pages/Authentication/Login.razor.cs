@@ -26,6 +26,8 @@ namespace Notes2022.Client.Pages.Authentication
             [Required]
             [DataType(DataType.Password)]
             public string Password { get; set; }
+
+            public int RememberHours { get; set; }
         }
 
 
@@ -65,7 +67,7 @@ namespace Notes2022.Client.Pages.Authentication
             try
             {
                 string xx = Base64Encode(HttpUtility.HtmlEncode(JsonSerializer.Serialize(ar)));
-                await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, 6);
+                await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, Input.RememberHours);
             }
             catch (Exception ex)
             {

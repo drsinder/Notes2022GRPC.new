@@ -81,9 +81,9 @@
                                              Value="@dummyFile.NoteFileName"
                                              ValueExpression="@( () => dummyFile.NoteFileName )">
                                     <option value="none" selected="selected">-- Select from list --</option>
-                                    @for (int i = 0; i < fileList.Notefiles.Count; i++)
+                                    @for (int i = 0; i < fileList.Count; i++)
                                     {
-                                        item = fileList.Notefiles[i];
+                                        item = fileList[i];
                                         <option value=@item.NoteFileName>@item.NoteFileName</option>
                                     }
                                 </InputSelect>
