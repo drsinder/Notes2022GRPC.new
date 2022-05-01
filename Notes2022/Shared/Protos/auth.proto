@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "Notes2022.Proto";
+
+package auth;
+
+message RegisterRequest {
+	string username = 1;
+	string email = 2;
+	string password = 3;
+}
+
+message LoginRequest {
+	string email = 1;
+	string password = 2;
+}
+
+message LogoutRequest {
+}
+
+message UserInfo {
+	string subject = 1;
+	string email = 2;
+	string displayname = 3;
+	repeated string roles = 4;
+}
+
+message AuthReply {
+	int32 status = 1;
+	string message = 2;
+}
+
+message LoginReply {
+	int32 status = 1;
+	string message = 2;
+	UserInfo info = 3;
+	string jwt = 4;
+}
+
+service Auth {
+	rpc Register(RegisterRequest) returns (AuthReply);
+	rpc Login(LoginRequest) returns (LoginReply);
+	rpc Logout(LogoutRequest) returns (AuthReply);
+}

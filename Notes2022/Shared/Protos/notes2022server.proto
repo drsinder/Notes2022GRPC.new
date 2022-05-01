@@ -1,0 +1,359 @@
+syntax = "proto3";
+
+option csharp_namespace = "Notes2022.Proto";
+
+package notes2022server;
+
+import "google/protobuf/timestamp.proto";
+
+
+message NoRequest {
+}
+
+///////////////////////////////////////////////
+// Login, Logout, and Register stuff
+
+message RegisterRequest {
+	string username = 1;
+	string email = 2;
+	string password = 3;
+}
+
+message LoginRequest {
+	string email = 1;
+	string password = 2;
+}
+
+message LogoutRequest {
+}
+
+message UserInfo {
+	string subject = 1;
+	string email = 2;
+	string displayname = 3;
+	//repeated string roles = 4;
+	bool isAdmin = 5;
+	bool IsUser = 6;
+}
+
+message AuthReply {
+	int32 status = 1;
+	string message = 2;
+}
+
+message LoginReply {
+	int32 status = 1;
+	string message = 2;
+	UserInfo info = 3;
+	string jwt = 4;
+}
+
+///////////////////////////////////////////////
+
+// Database entity related stuff
+
+
+message AppUserRequest {
+	string subject = 1;
+}
+
+message GAppUser {
+	string id = 1;
+	string displayName = 2;
+	int32 timeZoneID = 3;
+	int32 ipref0 = 4;
+	int32 ipref1 = 5;
+	int32 ipref2 = 6;
+	int32 ipref3 = 7;
+	int32 ipref4 = 8;
+	int32 ipref5 = 9;
+	int32 ipref6 = 10;
+	int32 ipref7 = 11;
+	int32 ipref8 = 12;
+	int32 ipref9 = 13;
+	bool pref0 = 14;
+	bool pref1 = 15;
+	bool pref2 = 16;
+	bool pref3 = 17;
+	bool pref4 = 18;
+	bool pref5 = 19;
+	bool pref6 = 20;
+	bool pref7 = 21;
+	bool pref8 = 22;
+	bool pref9 = 23;
+}
+
+message GAppUserList {
+	repeated GAppUser list = 1;
+}
+
+message GNotefile {
+	int32 id = 1;
+	int32 numberArchives = 2;
+	string ownerId = 3;
+	string noteFileName = 4;
+	string noteFileTitle = 5;
+	google.protobuf.Timestamp lastEdited = 6;
+}
+
+message GNotefileList {
+	repeated GNotefile notefiles = 1;
+}
+
+message GNoteHeader {
+	int64 id = 1;
+	int32 noteFileId = 2;
+	int32 archiveId = 3;
+	int64 baseNoteId = 4;
+	int32 noteOrdinal = 5;
+	int32 responseOrdinal = 6;
+	string noteSubject = 7;
+	google.protobuf.Timestamp lastEdited = 8;
+	google.protobuf.Timestamp threadLastEdited = 9;
+	google.protobuf.Timestamp createDate = 10;
+	int32 responseCount = 11;
+	string authorID = 12;
+	string authorName = 13;
+	string linkGuid = 14;
+	int64 refId = 15;
+	bool isDeleted = 16;
+	int32 version = 17;
+	string directorMessage = 18;
+}
+
+message GNoteHeaderList {
+	repeated GNoteHeader list = 1;
+}
+
+message GNoteContent {
+	int64 noteHeaderId = 1;
+	string noteBody = 2;
+}
+
+message GNoteContentList {
+	repeated GNoteContent list = 1;
+}
+
+message GNoteAccess {
+	string userID = 1;
+	int32 noteFileId = 2;
+	int32 archiveId = 3;
+	bool readAccess = 4;
+	bool respond = 5;
+	bool write = 6;
+	bool setTag = 7;
+	bool deleteEdit = 8;
+	bool viewAccess = 9;
+	bool editAccess = 10;
+}
+
+message GNoteAccessList {
+	repeated GNoteAccess list = 1;
+}
+
+message GTags {
+	int32 noteFileId = 1;
+	int32 archiveId = 2;
+	int64 noteHeaderId = 3;
+	string Tag = 4;
+}
+
+message GTagsList {
+	repeated GTags list = 1;
+}
+
+
+message GSequencer {
+	string userId = 1;
+	int32 noteFileId = 2;
+	int32 ordinal = 3;
+	google.protobuf.Timestamp lastTime = 4;
+	google.protobuf.Timestamp startTime = 5;
+	bool active = 6;
+}
+
+message GSequencerList {
+	repeated GSequencer list = 1;
+}
+
+message GLinkedFile {
+	int32 id = 1;
+	int32 homeFileId = 2;
+	string homeFileName = 3;
+	string remoteFileName = 4;
+	string remoteBaseUri = 5;
+	bool acceptFrom = 6;
+	bool sendTo = 7;
+	string secret = 8;
+}
+
+message GLinkedFileList {
+	repeated GLinkedFile list = 1;
+}
+
+message GLinkLog {
+	int64 id = 1;
+	string eventType = 2;
+	google.protobuf.Timestamp eventTime = 3;
+	string event = 4;
+}
+
+message GLinkLogList {
+	repeated GLinkLog list = 1;
+}
+
+message GLinkQueue {
+	int64 id = 1;
+	int32 linkedFileId = 2;
+	string linkGuid = 3;
+	int32 activity = 4;
+	string baseUri = 5;
+	bool enqueued = 6;
+	string secret = 7;
+}
+
+message GLinkQueueList {
+	repeated GLinkQueue list = 1;
+}
+
+///////////////////////////////////////////////
+
+// Not Entites directly - Models for transfer of info to pages
+
+message HomePageModel {
+	GNotefileList noteFiles = 1;
+	GNoteAccessList noteAccesses = 2;
+	string message = 3;
+	GAppUser userData = 4;
+	GAppUserList userDataList = 5;
+}
+
+message ImportRequest {
+	string noteFile = 1;
+	string uploadFile = 2;
+}
+
+message NoteDisplayIndexModel
+{
+	GNotefile noteFile = 1;
+	int32 arcId = 2;
+	GNoteAccess myAccess = 3;
+	bool isMarked = 4;
+	string rPath = 5;
+	string scroller = 6;
+	int32 expandOrdinal = 7;
+	GNoteHeaderList notes = 8;
+	GNoteHeaderList allNotes = 9;
+	string linkedText = 10;
+	string message = 11;
+	GAppUser userData = 12;
+	GTagsList tags = 13;
+}
+
+message NoteIndexRequest {
+	int32 noteFileId = 1;
+}
+
+message DisplayModel {
+	GNotefile noteFile = 1;
+	GNoteHeader header = 2;
+	GNoteContent content = 3;
+	GTagsList tags = 4;
+	GNoteAccess access = 5;
+	bool canEdit = 6;
+	bool isAdmin = 7;
+}
+
+message DisplayModelRequest {
+	int32 vers = 1;
+	int64 noteId = 2;
+}
+
+message AccessAndUserListRequest {
+	int32 fileId = 1;
+	int32 arcId = 2;
+	string userId = 3;
+}
+
+message AccessAndUserList
+{
+	GNoteAccessList accessList = 1;
+	GAppUserList appUsers = 2;
+	GNoteAccess userAccess = 3;
+}
+
+message GetVersionsRequest {
+	int32 fileId = 1;
+	int32 noteOrdinal = 2;
+	int32 responseOrdinal = 3;
+	int32 arcId = 4;
+}
+
+message SCheckModel {
+	bool isChecked = 1;
+	int32 fileId = 2;
+}
+
+message TextViewModel {
+	string myNote = 1;
+	string mySubject = 2;
+	int32 noteFileID = 3;
+	int64 baseNoteHeaderID = 4;
+	int64 noteID = 5;
+	string tagLine = 6;
+	string directorMessage = 7;
+	int64 refId = 8;
+}
+
+message NoteId {
+	int64 id = 1;
+}
+
+message AboutModel {
+	string PrimeAdminName = 1;
+	string PrimeAdminEmail = 2;
+}
+
+service Notes2022Server {
+
+// Account Services
+
+	rpc Register(RegisterRequest) returns (AuthReply);
+	rpc Login(LoginRequest) returns (LoginReply);
+	rpc Logout(LogoutRequest) returns (AuthReply);
+
+// Notes Services proper
+
+	rpc GetAppUser(AppUserRequest) returns (GAppUser);
+	rpc GetAllNotefiles(NoRequest) returns (GNotefileList);
+	rpc CreateNoteFile(GNotefile) returns (GNotefile);
+	rpc GetHomePageModel(NoRequest) returns (HomePageModel);
+	rpc GetAdminPageModel(NoRequest) returns (HomePageModel);
+	rpc UpdateNoteFile(GNotefile) returns (GNotefile);
+	rpc DeleteNoteFile(GNotefile) returns (NoRequest);
+	rpc Import(ImportRequest) returns (NoRequest);
+	rpc GetNoteFileIndexData(NoteIndexRequest) returns (NoteDisplayIndexModel);
+	rpc GetNoteContent(DisplayModelRequest) returns (DisplayModel);
+	rpc GetAccessAndUserList(AccessAndUserListRequest) returns (AccessAndUserList);
+	rpc GetAccessList(AccessAndUserListRequest) returns (GNoteAccessList);
+	rpc UpdateAccessItem(GNoteAccess) returns (GNoteAccess);
+	rpc DeleteAccessItem(GNoteAccess) returns (NoRequest);
+	rpc AddAccessItem(GNoteAccess) returns (GNoteAccess);
+	rpc GetUserData(NoRequest) returns (GAppUser);
+	rpc UpdateUserData(GAppUser) returns (GAppUser);
+	rpc GetVersions(GetVersionsRequest) returns (GNoteHeaderList);
+	rpc GetSequencer(NoRequest) returns (GSequencerList);
+	rpc CreateSequencer(SCheckModel) returns (NoRequest);
+	rpc DeleteSequencer(SCheckModel) returns (NoRequest);
+	rpc UpdateSequencer(GSequencer) returns (NoRequest);
+	rpc UpdateSequencerOrdinal(GSequencer) returns (NoRequest);
+	rpc GetNoteFile(NoteIndexRequest) returns (GNotefile);
+	rpc CreateNewNote(TextViewModel) returns (GNoteHeader);
+	rpc UpdateNote(TextViewModel) returns (GNoteHeader);
+	rpc GetHeaderForNoteId(NoteId) returns (GNoteHeader);
+	rpc GetAbout(NoRequest) returns (AboutModel);
+
+	//	rpc GetNewestNote(NoRequest) returns (GNoteHeader);
+
+}
+

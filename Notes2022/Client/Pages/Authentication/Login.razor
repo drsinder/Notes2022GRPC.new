@@ -1,0 +1,63 @@
+﻿@page "/authentication/login"
+
+@using Microsoft.AspNetCore.Components
+@using Grpc.Core
+@using Grpc.Net.Client.Web
+@using Notes2022.Client
+@using Notes2022.Proto
+@using Grpc.Net.Client
+@using Google.Protobuf.WellKnownTypes
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Inputs
+
+@implements IAsyncDisposable
+
+@inject Notes2022Server.Notes2022ServerClient AuthClient
+@inject NavigationManager Navigation
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject IJSRuntime JS;
+
+<h1>Login</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+
+                <h2>Use a local account to log in.</h2>
+                <hr />
+                <EditForm id="loginform" Model="@Input">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+    
+                    <div class="form-floating">
+                        <strong>Email</strong>
+                        <InputText id="name" @bind-Value="Input.Email" class="form-control medium-input-minus" /> 
+                    </div>
+                    <div class="form-floating">
+                        <strong>Password</strong>
+                        <InputText type="password" placeholder="Password" id="password" @bind-Value="Input.Password" class="form-control medium-input-minus" /> 
+                    </div>
+                    <div class="error">
+                        <strong>@Message</strong>
+                    </div>
+                    <div>
+                        <br/>
+                        <SfButton @onclick="GotoLogin" class="logbutton">Login</SfButton>
+                    </div>
+
+                </EditForm>
+
+@*                <div>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>
+                </div>
+*@
+        </section>
+    </div>
+</div>
+

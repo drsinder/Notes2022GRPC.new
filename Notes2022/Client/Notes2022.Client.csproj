@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Counter.razor" />
+    <Content Remove="Pages\FetchData.razor" />
+    <Content Remove="Shared\NavMenuold.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\NavMenuold.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.Modal" Version="6.0.1" />
+    <PackageReference Include="Blazored.SessionStorage" Version="2.2.0" />
+    <PackageReference Include="Grpc.Net.Client.Web" Version="2.45.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.4" PrivateAssets="all" />
+    <PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Blazor.Core" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Blazor.Inputs" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Blazor.RichTextEditor" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.1.0.50" />
+    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.50" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Notes2022.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dialogs\" />
+    <Folder Include="Panels\" />
+    <Folder Include="Pages\Admin\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Tracker.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+</Project>

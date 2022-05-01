@@ -1,0 +1,75 @@
+﻿@page "/authentication/logout"
+
+@using Microsoft.AspNetCore.Components
+@using Grpc.Core
+@using Grpc.Net.Client.Web
+@using Notes2022.Client
+@using Notes2022.Proto
+@using Grpc.Net.Client
+@using Google.Protobuf.WellKnownTypes
+@using System.Web
+
+@implements IAsyncDisposable
+@inject Notes2022Server.Notes2022ServerClient AuthClient
+@inject NavigationManager Navigation
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject IJSRuntime JS;
+
+@*@inject StateContainer myState
+*@
+<h3>Logout</h3>
+
+@code {
+
+    private IJSObjectReference? module;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await AuthClient.LogoutAsync(new LogoutRequest(), myState.AuthHeader);
+        //Globals.LoginReply = null;
+        myState.LoginReply = null;
+        await WriteCookies(new LoginReply());
+
+        //await sessionStorage.RemoveItemAsync("LoginReply");
+        Globals.LoginDisplay.Reload();
+        Globals.NavMenu.Reload();
+        Navigation.NavigateTo("");
+    }
+
+        async ValueTask IAsyncDisposable.DisposeAsync()
+        {
+            if (module is not null)
+            {
+                await module.DisposeAsync();
+            }
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                module = await JS.InvokeAsync<IJSObjectReference>("import",
+                    "./cookies.js");
+            }
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+        protected async Task WriteCookies(LoginReply ar)
+        {
+            try
+            {
+                string xx = Base64Encode(HttpUtility.HtmlEncode(ar));
+                await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, 1);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+}

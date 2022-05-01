@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option csharp_namespace = "Notes2022.Proto";
+
+package appuser;
+
+import "google/protobuf/timestamp.proto";
+
+message GAppUser {
+	string id = 1;
+	string displayName = 2;
+	int32 timeZoneID = 3;
+
+	int32 ipref0 = 4;
+	int32 ipref1 = 5;
+	int32 ipref2 = 6;
+	int32 ipref3 = 7;
+	int32 ipref4 = 8;
+	int32 ipref5 = 9;
+	int32 ipref6 = 10;
+	int32 ipref7 = 11;
+	int32 ipref8 = 12;
+	int32 ipref9 = 13;
+
+	bool pref0 = 14;
+	bool pref1 = 15;
+	bool pref2 = 16;
+	bool pref3 = 17;
+	bool pref4 = 18;
+	bool pref5 = 19;
+	bool pref6 = 20;
+	bool pref7 = 21;
+	bool pref8 = 22;
+	bool pref9 = 23;
+
+	string myGuid = 24;
+}
+
+message GAppUserList {
+	repeated GAppUser appuser = 1;
+}
