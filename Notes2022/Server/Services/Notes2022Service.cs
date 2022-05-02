@@ -39,6 +39,11 @@ namespace Notes2022.Server.Services
             _configuration = configuration;
         }
 
+        public override async Task<NoRequest> SpinUp(NoRequest request, ServerCallContext context)
+        {
+            return new NoRequest();
+        }
+
         public override async Task<AuthReply> Register(RegisterRequest request, ServerCallContext context)
         {
             var userExists = await _userManager.FindByEmailAsync(request.Email);

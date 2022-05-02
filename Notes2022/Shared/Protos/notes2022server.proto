@@ -314,6 +314,8 @@ message AboutModel {
 
 service Notes2022Server {
 
+	rpc SpinUp(NoRequest) returns (NoRequest);
+
 // Account Services
 
 	rpc Register(RegisterRequest) returns (AuthReply);

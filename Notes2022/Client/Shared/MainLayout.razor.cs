@@ -14,6 +14,8 @@ namespace Notes2022.Client.Shared
 
         private IJSObjectReference? module;
 
+        private static bool Preloaded { get; set; } = false;
+
         async ValueTask IAsyncDisposable.DisposeAsync()
         {
             if (module is not null)
@@ -28,6 +30,17 @@ namespace Notes2022.Client.Shared
             // JS injected in .razor file - make sure the cookie.js is loaded
             if (module is null)
                 module = await JS.InvokeAsync<IJSObjectReference>("import", "./cookies.js");
+
+            if (!Preloaded)
+            {
+                Preloaded = true;
+                try
+                {
+                    await Client.SpinUpAsync(new NoRequest());
+                }
+                catch (Exception ex)
+                { }
+            }
 
             if (myState.IsAuthenticated)    // nothing more to do here!
                 return;
