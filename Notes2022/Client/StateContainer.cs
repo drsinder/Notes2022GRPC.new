@@ -1,18 +1,22 @@
 ﻿using Grpc.Core;
 using Notes2022.Proto;
-using Google.Protobuf;
 
 namespace Notes2022.Client
 {
+
+    /// <summary>
+    /// Holds the current LoginReply and provides logon info
+    /// </summary>
     public class StateContainer
     {
         private LoginReply? savedLogin;
 
+
         public LoginReply? LoginReply
         {
-            get 
+            get
             {
-                return savedLogin;  
+                return savedLogin;
             }
             set
             {
@@ -37,7 +41,7 @@ namespace Notes2022.Client
         {
             get
             {
-                if (LoginReply == null || LoginReply.Status !=200)
+                if (LoginReply == null || LoginReply.Status != 200)
                     return false;
                 return UserInfo.IsAdmin;
             }
@@ -70,7 +74,7 @@ namespace Notes2022.Client
             {
                 if (LoginReply != null && LoginReply.Status == 200)
                 {
-  
+
                     return LoginReply.Info;
                 }
 
@@ -79,3 +83,4 @@ namespace Notes2022.Client
         }
     }
 }
+

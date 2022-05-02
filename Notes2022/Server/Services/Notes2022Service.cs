@@ -229,25 +229,7 @@ namespace Notes2022.Server.Services
 
         private async Task<HomePageModel> GetBaseHomePageModelAsync(NoRequest request, ServerCallContext context)
         {
-            ClaimsPrincipal user;
-            ApplicationUser appUser;
             HomePageModel homepageModel = new HomePageModel();
-
-            if (context.GetHttpContext().User != null)
-            {
-                user = context.GetHttpContext().User;
-                try
-                {
-                    if (user.FindFirst(ClaimTypes.NameIdentifier) != null && user.FindFirst(ClaimTypes.NameIdentifier).Value != null)
-                    {
-                        appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
-                        homepageModel.UserData = appUser.GetGAppUser();
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
-            }
 
             NoteFile hpmf = _db.NoteFile.Where(p => p.NoteFileName == "homepagemessages").FirstOrDefault();
             if (hpmf is not null)
@@ -259,11 +241,21 @@ namespace Notes2022.Server.Services
                 }
             }
 
-            if (homepageModel.UserData != null)
+            if (context.GetHttpContext().User != null)
             {
-                var x = _db.NoteFile.ToList();
-                homepageModel.NoteFiles = NoteFile.GetGNotefileList(_db.NoteFile.ToList().OrderBy(p => p.NoteFileTitle).ToList());
-                //homepageModel.NoteAccesses = NoteAccess.GetGNoteAccessList(_db.NoteAccess.ToList());
+                try
+                {
+                    ClaimsPrincipal user = context.GetHttpContext().User;
+                    if (user.FindFirst(ClaimTypes.NameIdentifier) != null && user.FindFirst(ClaimTypes.NameIdentifier).Value != null)
+                    {
+                        ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+                        homepageModel.UserData = appUser.GetGAppUser();
+                        homepageModel.NoteFiles = NoteFile.GetGNotefileList(_db.NoteFile.ToList().OrderBy(p => p.NoteFileTitle).ToList());
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
             }
 
             return homepageModel;

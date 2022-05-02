@@ -6,6 +6,7 @@ using System.Text;
 using Notes2022.Server.Data;
 using Notes2022.Server.Services;
 using Notes2022.Server.Entities;
+using Notes2022.Server;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -75,6 +76,11 @@ builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
 
 //builder.Services.AddControllers();
 //builder.Services.AddRazorPages();
+
+
+Globals.SendGridApiKey = builder.Configuration["SendGridApiKey"];
+Globals.SendGridEmail = builder.Configuration["SendGridEmail"];
+Globals.SendGridName = builder.Configuration["SendGridName"];
 
 var app = builder.Build();
 

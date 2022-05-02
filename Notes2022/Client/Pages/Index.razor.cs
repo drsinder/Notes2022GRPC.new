@@ -1,17 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Notes2022.Proto;
+using Syncfusion.Blazor.DropDowns;
 using System.Timers;
-using System.Web;
-using System.Text;
-using System.Text.Json;
+
 
 namespace Notes2022.Client.Pages
 {
     public partial class Index
     {
-        private IJSObjectReference? module;
-
         private HomePageModel? hpModel { get; set; }
 
         private DateTime mytime { get; set; }
@@ -51,86 +48,23 @@ namespace Notes2022.Client.Pages
         {
         }
 
-        async ValueTask IAsyncDisposable.DisposeAsync()
-        {
-            if (module is not null)
-            {
-                await module.DisposeAsync();
-            }
-        }
-
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
+                timer2 = new System.Timers.Timer(1000);
+                timer2.Elapsed += TimerTick2;
+                timer2.Enabled = true;
 
-                // if logged in nothing to do
-                if (myState.LoginReply != null && myState.LoginReply.Status == 200)
-                    return;
-
-                // check for a cookie with our creds
-                module = await JS.InvokeAsync<IJSObjectReference>("import",
-                    "./cookies.js");
-
-                string cookie = await ReadCookies();
-
-                if (!string.IsNullOrEmpty(cookie))
-                {
-                    // found a cookie
-                    string json = HttpUtility.HtmlDecode(Base64Decode(cookie));
-                    LoginReply? ar = JsonSerializer.Deserialize<LoginReply>(json);
-
-                    if (ar != null && ar.Status == 200 )
-                    {
-
-                        //string expires = await ReadCookieExpire();
-
-                        // we have an auth cookie cred - set login and reload
-                        myState.LoginReply = ar;
-
-                        Globals.LoginDisplay?.Reload();
-
-                        Navigation.NavigateTo("reload");
-                    }
-                }
-             }
-        }
-
-        private static string Base64Decode(string encodedString)
-        {
-            byte[] data = Convert.FromBase64String(encodedString);
-            string decodedString = Encoding.UTF8.GetString(data);
-            return decodedString;
-        }
-
-        //protected async Task<string> ReadCookieExpire()
-        //{
-        //    try
-        //    {
-        //        string cookie = await module.InvokeAsync<string>("ReadCookie", "expires");
-        //        return cookie;
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //    return null;
-        //}
-
-        protected async Task<string> ReadCookies()
-        {
-            try
-            {
-                string cookie = await module.InvokeAsync<string>("ReadCookie", Globals.Cookie);
-                return cookie;
+                myState.OnChange += OnParametersSet; // get notified of login status changes
             }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
         }
 
+        protected override void OnParametersSet()
+        {
+            OnParametersSetAsync().GetAwaiter();    // notified of login status change
+            StateHasChanged();
+        }
 
         protected override async Task OnParametersSetAsync()
         {
@@ -140,7 +74,6 @@ namespace Notes2022.Client.Pages
             impfileList = new GNotefileList();
 
             mytime = DateTime.Now;
-
 
             if (myState.IsAuthenticated)
             {
@@ -163,6 +96,9 @@ namespace Notes2022.Client.Pages
 
                 hpModel = await Client.GetHomePageModelAsync(new NoRequest(), myState.AuthHeader);
 
+                //if (hpModel.NoteFiles == null)
+                //    return;
+
                 GNotefileList fileList1 = hpModel.NoteFiles;
                 GNotefileList nameList1 = hpModel.NoteFiles;
                 fileList = fileList1.Notefiles.ToList().OrderBy(p => p.NoteFileName).ToList();
@@ -180,20 +116,6 @@ namespace Notes2022.Client.Pages
                     if (fname == "announce" || fname == "pbnotes" || fname == "noteshelp")
                         impfileList.Notefiles.Add(work);
                 }
-            }
-        }
-
-        /// <summary>
-        /// Update the clock once per second
-        /// </summary>
-        /// <param name="firstRender"></param>
-        protected override void OnAfterRender(bool firstRender)
-        {
-            if (firstRender)
-            {
-                timer2 = new System.Timers.Timer(1000);
-                timer2.Elapsed += TimerTick2;
-                timer2.Enabled = true;
             }
         }
 
@@ -226,6 +148,12 @@ namespace Notes2022.Client.Pages
                 }
             }
             catch { }
+        }
+
+        private void ValueChangeHandler(ChangeEventArgs<int, GNotefile> args)
+        {
+            Navigation.NavigateTo("noteindex/" + args.Value); // goto the file
+            
         }
 
     }

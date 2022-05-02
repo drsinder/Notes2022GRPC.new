@@ -12,6 +12,13 @@
 
         public static string ImportRoot { get; set; } = "E:\\Projects\\2022gRPC\\Notes2022GRPC\\Notes2022\\Server\\wwwroot\\Import\\";
 
+        public static string SendGridEmail { get; set; } = "";
+
+        public static string SendGridName { get; set; } = "";
+
+        public static string SendGridApiKey { get; set; } = "";
+
+
 
         public static DateTime UTimeBlazor(DateTime dt)
         {

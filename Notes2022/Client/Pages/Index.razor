@@ -27,38 +27,33 @@
 
 @using Notes2022.Proto
 @using Notes2022.Client.Comp
-
-@implements IAsyncDisposable
+@using Syncfusion.Blazor.DropDowns
 
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
-@inject IJSRuntime JS;
 
 <PageTitle>Notes 2022 Index</PageTitle>
 
 <h2 class="center">Welcome to Notes 2022 @myState.UserInfo?.Displayname <img src="favicon.ico" width="32" /></h2>
 
 <div>
-    @if (false && hpModel == null)
+    <h5 class="center">
+        <span id="homepagetime">
+            @mytime
+        </span>
+    </h5>
+    @if (!myState.IsAuthenticated)
     {
-        <p class=""><em>Loading...</em></p>
+        <p class="center"><strong>You are not logged in.  Please log in.  Register first if you need to.</strong></p>
     }
-    else
+    @if (hpModel != null && !string.IsNullOrEmpty(hpModel.Message))
     {
-        <h5 class="center">
-            <span id="homepagetime">
-                @mytime
-            </span>
-        </h5>
-        @if (hpModel != null && !string.IsNullOrEmpty(hpModel.Message))
-        {
-            <div>@((MarkupString)@hpModel.Message)</div>
-        }
-
-        if (!myState.IsAuthenticated)
-        {
-            <p class="center"><strong>You are not logged in.  Please log in.  Register first if you need to.</strong></p>
-        }
-        else if (hpModel != null)
+        <div>@((MarkupString)@hpModel.Message)</div>
+    }
+    @if (myState.IsAdmin && hpModel == null)
+    {
+        <p class="center"><em>Loading...</em></p>
+    }
+    else if (hpModel != null)
         {
              <div class="row">
                 <div class="col-md-4"></div>
@@ -76,33 +71,22 @@
                             </p>
                             <p class="center">
                                 Or select a file<br />
-                                <InputSelect id="select1" class="btn btn-file dropdown-toggle form-control short-input"
-                                             ValueChanged="@( (string val) => TextHasChanged(val) )"
-                                             Value="@dummyFile.NoteFileName"
-                                             ValueExpression="@( () => dummyFile.NoteFileName )">
-                                    <option value="none" selected="selected">-- Select from list --</option>
-                                    @for (int i = 0; i < fileList.Count; i++)
-                                    {
-                                        item = fileList[i];
-                                        <option value=@item.NoteFileName>@item.NoteFileName</option>
-                                    }
-                                </InputSelect>
+                                <div class="btn btn-file form-control short-input">
+                                <SfDropDownList TValue="int" TItem="GNotefile" Placeholder="Select a File" DataSource="@fileList" >
+                                    <DropDownListEvents TItem="GNotefile" TValue="int" ValueChange="@ValueChangeHandler" ></DropDownListEvents>
+                                    <DropDownListFieldSettings Value="Id" Text="NoteFileName"></DropDownListFieldSettings>
+                                </SfDropDownList>
+                                </div>
                             </p>
 
                             <p class="center">
                                 Or select a title<br />
-                                <InputSelect id="select2" class="btn btn-title dropdown-toggle form-control short-input"
-                                             ValueChanged="@( (string val) => TextHasChanged(val) )"
-                                             Value="@dummyFile.NoteFileName"
-                                             ValueExpression="@( () => dummyFile.NoteFileName )">
-                                    <option value="none" selected="selected">-- Select from list --</option>
-                                    @for (int i = 0; i < nameList.Notefiles.Count; i++)
-                                    {
-                                        item = nameList.Notefiles[i];
-                                        <option value=@item.NoteFileName>@item.NoteFileTitle</option>
-                                    }
-                                </InputSelect>
-
+                                <div class="btn btn-title form-control short-input">
+                                <SfDropDownList TValue="int" TItem="GNotefile" Placeholder="Select a Title" DataSource="@nameList.Notefiles" >
+                                    <DropDownListEvents TItem="GNotefile" TValue="int" ValueChange="@ValueChangeHandler" ></DropDownListEvents>
+                                    <DropDownListFieldSettings Value="Id" Text="NoteFileTitle"></DropDownListFieldSettings>
+                                </SfDropDownList>
+                                </div>
                             </p>
                         </ChildContent>
                     </EditForm>
@@ -142,7 +126,7 @@
             </div>
 
            
-        }
+        
         
     } 
 </div>

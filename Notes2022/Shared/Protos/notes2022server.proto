@@ -46,6 +46,7 @@ message LoginReply {
 	string message = 2;
 	UserInfo info = 3;
 	string jwt = 4;
+	int32 hours = 5;
 }
 
 ///////////////////////////////////////////////

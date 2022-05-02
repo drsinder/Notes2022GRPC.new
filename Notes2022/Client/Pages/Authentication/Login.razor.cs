@@ -56,18 +56,12 @@ namespace Notes2022.Client.Pages.Authentication
             }
         }
 
-        public static string Base64Encode(string plainText)
-        {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
-
         protected async Task WriteCookies(LoginReply ar)
         {
             try
             {
-                string xx = Base64Encode(HttpUtility.HtmlEncode(JsonSerializer.Serialize(ar)));
-                await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, Input.RememberHours);
+                string xx = Globals.Base64Encode(HttpUtility.HtmlEncode(JsonSerializer.Serialize(ar)));
+                await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, ar.Hours);
             }
             catch (Exception ex)
             {
@@ -76,12 +70,12 @@ namespace Notes2022.Client.Pages.Authentication
 
         private async Task GotoLogin()
         {
-
             LoginRequest req = new LoginRequest()
             { Email = Input.Email, Password = Input.Password };
             LoginReply ar = await AuthClient.LoginAsync(req);
             if (ar.Status == 200)
             {
+                ar.Hours = Input.RememberHours;
                 myState.LoginReply = ar;
                 await WriteCookies(ar);
             }
