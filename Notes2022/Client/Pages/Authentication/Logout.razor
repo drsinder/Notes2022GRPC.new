@@ -25,14 +25,13 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await AuthClient.LogoutAsync(new LogoutRequest(), myState.AuthHeader);
-        //Globals.LoginReply = null;
+        await AuthClient.LogoutAsync(new NoRequest(), myState.AuthHeader);
         myState.LoginReply = null;
         await WriteCookies(new LoginReply());
 
         //await sessionStorage.RemoveItemAsync("LoginReply");
-        Globals.LoginDisplay.Reload();
-        Globals.NavMenu.Reload();
+        Globals.LoginDisplay?.Reload();
+        Globals.NavMenu?.Reload();
         Navigation.NavigateTo("");
     }
 

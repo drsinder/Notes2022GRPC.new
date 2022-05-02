@@ -148,7 +148,7 @@ namespace Notes2022.Server.Services
             return new LoginReply() { Status = StatusCodes.Status500InternalServerError, Message = "User Login failed! Please check user details and try again." };
         }
 
-        public override async Task<AuthReply> Logout(LogoutRequest request, ServerCallContext context)
+        public override async Task<AuthReply> Logout(NoRequest request, ServerCallContext context)
         {
             await _signInManager.SignOutAsync();
             return new AuthReply() { Status = StatusCodes.Status200OK, Message = "User logged out!" };

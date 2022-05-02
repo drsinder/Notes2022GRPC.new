@@ -6,7 +6,7 @@ package notes2022server;
 
 import "google/protobuf/timestamp.proto";
 
-
+// used generically
 message NoRequest {
 }
 
@@ -22,9 +22,6 @@ message RegisterRequest {
 message LoginRequest {
 	string email = 1;
 	string password = 2;
-}
-
-message LogoutRequest {
 }
 
 message UserInfo {
@@ -321,7 +318,7 @@ service Notes2022Server {
 
 	rpc Register(RegisterRequest) returns (AuthReply);
 	rpc Login(LoginRequest) returns (LoginReply);
-	rpc Logout(LogoutRequest) returns (AuthReply);
+	rpc Logout(NoRequest) returns (AuthReply);
 
 // Notes Services proper
 
