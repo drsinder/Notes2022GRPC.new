@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Comp\CookieStateAgent.razor.cs" />
+    <Compile Remove="StateContainer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Comp\CookieStateAgent.razor" />
     <Content Remove="Pages\Counter.razor" />
     <Content Remove="Pages\FetchData.razor" />
     <Content Remove="Shared\NavMenuold.razor" />

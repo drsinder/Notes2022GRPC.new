@@ -9,6 +9,7 @@ using Blazored.Modal;
 using Blazored.SessionStorage;
 using Notes2022.Client;
 using Notes2022.Proto;
+using Notes2022.Client.Shared;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -22,7 +23,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddBlazoredModal();
 builder.Services.AddBlazoredSessionStorage();
-builder.Services.AddSingleton<StateContainer>();
+builder.Services.AddSingleton<MainLayout>();
 
 builder.Services.AddSyncfusionBlazor(options => { options.IgnoreScriptIsolation = true; });
 

@@ -104,6 +104,9 @@ namespace Notes2022.Client.Pages
                 fileList = fileList1.Notefiles.ToList().OrderBy(p => p.NoteFileName).ToList();
                 nameList = nameList1;
 
+                impfileList.Notefiles.Clear();
+                histfileList.Notefiles.Clear();
+
                 for (int i = 0; i < fileList1.Notefiles.Count; i++)
                 {
                     GNotefile work = new GNotefile { Id = fileList1.Notefiles[i].Id, NoteFileName = fileList1.Notefiles[i].NoteFileName, NoteFileTitle = fileList1.Notefiles[i].NoteFileTitle };

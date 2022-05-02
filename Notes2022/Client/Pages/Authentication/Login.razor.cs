@@ -37,36 +37,36 @@ namespace Notes2022.Client.Pages.Authentication
 
         protected string Message = string.Empty;
 
-        private IJSObjectReference? module;
+        //private IJSObjectReference? module;
 
-        async ValueTask IAsyncDisposable.DisposeAsync()
-        {
-            if (module is not null)
-            {
-                await module.DisposeAsync();
-            }
-        }
+        //async ValueTask IAsyncDisposable.DisposeAsync()
+        //{
+        //    //if (module is not null)
+        //    //{
+        //    //    await module.DisposeAsync();
+        //    //}
+        //}
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                module = await JS.InvokeAsync<IJSObjectReference>("import",
-                    "./cookies.js");
-            }
-        }
+        //protected override async Task OnAfterRenderAsync(bool firstRender)
+        //{
+        //    if (firstRender)
+        //    {
+        //        module = await JS.InvokeAsync<IJSObjectReference>("import",
+        //            "./cookies.js");
+        //    }
+        //}
 
-        protected async Task WriteCookies(LoginReply ar)
-        {
-            try
-            {
-                string xx = Globals.Base64Encode(HttpUtility.HtmlEncode(JsonSerializer.Serialize(ar)));
-                await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, ar.Hours);
-            }
-            catch (Exception ex)
-            {
-            }
-        }
+        //protected async Task WriteCookies(LoginReply ar)
+        //{
+        //    try
+        //    {
+        //        string xx = Globals.Base64Encode(HttpUtility.HtmlEncode(JsonSerializer.Serialize(ar)));
+        //        await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, ar.Hours);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //}
 
         private async Task GotoLogin()
         {
@@ -77,7 +77,7 @@ namespace Notes2022.Client.Pages.Authentication
             {
                 ar.Hours = Input.RememberHours;
                 myState.LoginReply = ar;
-                await WriteCookies(ar);
+                //await WriteCookies(ar);
             }
             else
             {

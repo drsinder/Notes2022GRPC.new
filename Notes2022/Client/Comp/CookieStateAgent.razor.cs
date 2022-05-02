@@ -15,14 +15,14 @@ namespace Notes2022.Client.Comp
     /// </summary>
     public partial class CookieStateAgent
     {
-        private LoginReply? savedLogin;
+        private LoginReply? savedLoginValue;
 
         protected override async Task OnParametersSetAsync()
         {
             if (myState.IsAuthenticated)    // nothing to do here!
                 return;
 
-            savedLogin = myState.LoginReply;
+            savedLoginValue = myState.LoginReply;
 
             try
             {
@@ -51,9 +51,9 @@ namespace Notes2022.Client.Comp
                     {
                         // found a cookie
                         string json = HttpUtility.HtmlDecode(Globals.Base64Decode(cookie));
-                        savedLogin = JsonSerializer.Deserialize<LoginReply>(json);
+                        savedLoginValue = JsonSerializer.Deserialize<LoginReply>(json);
 
-                        myState.LoginReply = savedLogin;
+                        myState.LoginReply = savedLoginValue;
                     }
 
                     await module.DisposeAsync();
