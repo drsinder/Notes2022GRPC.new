@@ -1,9 +1,5 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using Notes2022.Proto;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
-using System.Web;
 
 namespace Notes2022.Client.Pages.Authentication
 {
@@ -37,37 +33,6 @@ namespace Notes2022.Client.Pages.Authentication
 
         protected string Message = string.Empty;
 
-        //private IJSObjectReference? module;
-
-        //async ValueTask IAsyncDisposable.DisposeAsync()
-        //{
-        //    //if (module is not null)
-        //    //{
-        //    //    await module.DisposeAsync();
-        //    //}
-        //}
-
-        //protected override async Task OnAfterRenderAsync(bool firstRender)
-        //{
-        //    if (firstRender)
-        //    {
-        //        module = await JS.InvokeAsync<IJSObjectReference>("import",
-        //            "./cookies.js");
-        //    }
-        //}
-
-        //protected async Task WriteCookies(LoginReply ar)
-        //{
-        //    try
-        //    {
-        //        string xx = Globals.Base64Encode(HttpUtility.HtmlEncode(JsonSerializer.Serialize(ar)));
-        //        await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, ar.Hours);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //    }
-        //}
-
         private async Task GotoLogin()
         {
             LoginRequest req = new LoginRequest()
@@ -77,13 +42,14 @@ namespace Notes2022.Client.Pages.Authentication
             {
                 ar.Hours = Input.RememberHours;
                 myState.LoginReply = ar;
-                //await WriteCookies(ar);
             }
             else
             {
                 Message = ar.Message;
                 return;
             }
+
+            //await AuthClient.SendEmailAsync(new Email() { Address = Input.Email, Subject = "Login", Body = "Notes 2022 Login" });
 
             Globals.LoginDisplay?.Reload();
             Globals.NavMenu?.Reload();

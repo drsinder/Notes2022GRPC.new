@@ -10,6 +10,10 @@ using Notes2022.Server.Data;
 using Notes2022.Server.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 
 namespace Notes2022.Server.Services
 {
@@ -22,12 +26,14 @@ namespace Notes2022.Server.Services
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IEmailSender _emailSender;
 
         public Notes2022Service(ILogger<Notes2022Service> logger,
             NotesDbContext db,
             IConfiguration configuration,
             RoleManager<IdentityRole> roleManager,
             SignInManager<ApplicationUser> signInManager,
+            IEmailSender emailSender,
             UserManager<ApplicationUser> userManager
           )
         {
@@ -37,10 +43,14 @@ namespace Notes2022.Server.Services
             _roleManager = roleManager;
             _signInManager = signInManager;
             _configuration = configuration;
+            _emailSender = emailSender;
         }
 
         public override async Task<NoRequest> SpinUp(NoRequest request, ServerCallContext context)
         {
+
+            //await _emailSender.SendEmailAsync(Globals.SendGridEmail, "Spinup", "Notes2022 spinup");
+
             return new NoRequest();
         }
 
@@ -56,6 +66,7 @@ namespace Notes2022.Server.Services
 
             ApplicationUser user = new()
             {
+                // EmailConfirmed = true,      // TEMP TODO
                 Email = request.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = request.Username.Replace(" ", "_"),
@@ -93,7 +104,60 @@ namespace Notes2022.Server.Services
                 }
             }
 
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            ConfirmEmailContainer mess = new ConfirmEmailContainer() { UserId = user.Id, Code = code };
+            string payload = Globals.Base64Encode(JsonSerializer.Serialize(mess));
+
+            string target = _configuration["AppUrl"] + "/authentication/confirmemail/" + payload;
+            await _emailSender.SendEmailAsync(request.Email, "Confirm your email",
+                $"Please confirm your Notes 2022 account by <a href='{target}'>clicking here</a>.");
+
+
+            //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            //var userIdCode = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(user.Id));
+
+            //var callbackUrl = Url.Page(
+            //    "/Account/ConfirmEmail",
+            //    pageHandler: null,
+            //    values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+            //    protocol: Request.Scheme);
+
+            //await _emailSender.SendEmailAsync(request.Email, "Confirm your email",
+            //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+
             return new AuthReply() { Status = StatusCodes.Status200OK, Message = "User created!" };
+        }
+
+        public override async Task<AuthReply> ConfirmEmail(ConfirmEmailContainer request, ServerCallContext context)
+        {
+            AuthReply ret = new AuthReply();
+            ret.Status = StatusCodes.Status500InternalServerError;
+
+            if (request.Code is null || request.UserId is null)
+            {
+                ret.Message = "Improper request! (null elements)";
+                return ret;
+            }
+
+            var user = await _userManager.FindByIdAsync(request.UserId);
+            if (user is null)
+            {
+                ret.Message = "Failed to find user!";
+                return ret;
+            }
+
+            var result = await _userManager.ConfirmEmailAsync(user, request.Code);
+            if ( result.Succeeded)
+            {
+                ret.Status = StatusCodes.Status200OK;
+                ret.Message = "Thank you for confirming your email.  You may now log in!";
+                return ret;
+            }
+
+            ret.Message = "Failed to confirm email address.";
+
+            return ret;
         }
 
         public override async Task<LoginReply> Login(LoginRequest request, ServerCallContext context)
@@ -687,5 +751,55 @@ namespace Notes2022.Server.Services
                 PrimeAdminName = _configuration["PrimeAdminName"]
             };
         }
+
+        private static int throttle = 0;
+        private static DateTime? TimeOfThrottle = null;
+
+        public override async Task<NoRequest> SendEmail(Email request, ServerCallContext context)
+        {
+            try
+            {
+                ClaimsPrincipal user = context.GetHttpContext().User;
+                ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            }
+            catch (Exception ex)
+            {
+                // was not authenticated - slow them up
+
+                if (throttle++ >= 100)
+                { 
+                    // some real potential abuse??
+                    Thread.Sleep(1000 * throttle);
+
+                    if (TimeOfThrottle is null)
+                    {
+                        TimeOfThrottle = DateTime.UtcNow;
+                    }
+                    else
+                    {
+                        TimeSpan? diff = DateTime.UtcNow - TimeOfThrottle;
+                        if (diff > new TimeSpan(0, 30, 0)) // backoff in 30 minutes
+                        {
+                            throttle = 0;
+                            TimeOfThrottle = null;
+                        }
+                    }
+
+                }
+
+                Thread.Sleep(1000);
+            }
+
+            await _emailSender.SendEmailAsync(request.Address, request.Subject, request.Body);
+            return new NoRequest();
+        }
+
+        [Authorize]
+        public override async Task<NoRequest> SendEmailAuth(Email request, ServerCallContext context)
+        {
+            await _emailSender.SendEmailAsync(request.Address, request.Subject, request.Body);
+            return new NoRequest();
+        }
+
     }
 }

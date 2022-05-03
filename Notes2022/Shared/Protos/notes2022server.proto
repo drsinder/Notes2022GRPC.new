@@ -312,6 +312,17 @@ message AboutModel {
 	string PrimeAdminEmail = 2;
 }
 
+message Email {
+	string address = 1;
+	string subject = 2;
+	string body = 3;
+}
+
+message ConfirmEmailContainer{
+	string userId = 1;
+	string code = 2;
+}
+
 service Notes2022Server {
 
 	rpc SpinUp(NoRequest) returns (NoRequest);
@@ -321,6 +332,7 @@ service Notes2022Server {
 	rpc Register(RegisterRequest) returns (AuthReply);
 	rpc Login(LoginRequest) returns (LoginReply);
 	rpc Logout(NoRequest) returns (AuthReply);
+	rpc ConfirmEmail(ConfirmEmailContainer) returns (AuthReply);
 
 // Notes Services proper
 
@@ -352,6 +364,10 @@ service Notes2022Server {
 	rpc UpdateNote(TextViewModel) returns (GNoteHeader);
 	rpc GetHeaderForNoteId(NoteId) returns (GNoteHeader);
 	rpc GetAbout(NoRequest) returns (AboutModel);
+	rpc SendEmail(Email) returns (NoRequest);		// unauthenticated - slower - use it too much and it really hurts you!
+	rpc SendEmailAuth(Email) returns (NoRequest);	// authenticated
+
+
 
 	//	rpc GetNewestNote(NoRequest) returns (GNoteHeader);
 

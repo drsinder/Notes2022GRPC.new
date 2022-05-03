@@ -7,6 +7,7 @@ using Notes2022.Server.Data;
 using Notes2022.Server.Services;
 using Notes2022.Server.Entities;
 using Notes2022.Server;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -64,6 +65,8 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = true;
 });
 
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+
 builder.Services.AddGrpc();
 
 builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
@@ -81,6 +84,7 @@ builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
 Globals.SendGridApiKey = builder.Configuration["SendGridApiKey"];
 Globals.SendGridEmail = builder.Configuration["SendGridEmail"];
 Globals.SendGridName = builder.Configuration["SendGridName"];
+Globals.ImportRoot = builder.Configuration["ImportRoot"];
 
 var app = builder.Build();
 
