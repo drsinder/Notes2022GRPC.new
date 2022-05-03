@@ -118,8 +118,8 @@ message GNoteHeader {
 	bool isDeleted = 16;
 	int32 version = 17;
 	string directorMessage = 18;
-	GNoteContent content = 19;
-	GTagsList tags = 20;
+	GNoteContent content = 19;	// for JsonExport
+	GTagsList tags = 20;		// for JsonExport
 }
 
 message GNoteHeaderList {
