@@ -22,6 +22,8 @@
 
 @using Syncfusion.Blazor.Popups
 
+@inject Notes2022Server.Notes2022ServerClient Client
+
 <div class="top-row navbar-full-dark" >
     <SfMenu Items="@menuItems" @ref="@topMenu" HamburgerMode="@HamburgerMode" CssClass="e-std-menu" >
         <MenuEvents TValue="MenuItem" ItemSelected="@OnSelect" >

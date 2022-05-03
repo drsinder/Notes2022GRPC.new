@@ -976,5 +976,41 @@ namespace Notes2022.Server.Services
             sb.AppendLine("</div>");
             return sb.ToString();
         }
+
+        [Authorize]
+        public override async Task<NoRequest> DeleteNote(NoteId request, ServerCallContext context)
+        {
+            NoteHeader note = await NoteDataManager.GetNoteByIdWithFile(_db, request.Id);
+
+            await NoteDataManager.DeleteNote(_db, note);
+
+            return new NoRequest();
+        }
+
+        [Authorize]
+        public override async Task<JsonExport> GetExportJson(ExportRequest request, ServerCallContext context)
+        {
+            JsonExport stuff = new JsonExport();
+
+            stuff.NoteFile = _db.NoteFile.Single(p => p.Id == request.FileId).GetGNotefile();
+
+            stuff.NoteHeaders = NoteHeader.GetGNoteHeaderList(
+                await _db.NoteHeader
+                    .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && !p.IsDeleted)
+                    .OrderBy(p => p.NoteOrdinal)
+                    .ThenBy(p => p.ResponseOrdinal)
+                    .ToListAsync());
+
+            foreach (GNoteHeader item in stuff.NoteHeaders.List)
+            {
+                item.Content = (await _db.NoteContent
+                    .SingleAsync(p => p.NoteHeaderId == item.Id)).GetGNoteContent();
+
+                var x = await _db.Tags.Where(p => p.NoteHeaderId == item.Id).ToListAsync();
+                item.Tags = Tags.GetGTagsList(x);
+            }
+
+            return stuff;
+        }
     }
 }

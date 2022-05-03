@@ -281,7 +281,7 @@ namespace Notes2022.Client.Menus
             sb.Append((Globals.LocalTimeBlazor(currentHeader.LastEdited.ToDateTime()).ToLongDateString()) + " " 
                 + (Globals.LocalTimeBlazor(currentHeader.LastEdited.ToDateTime()).ToShortTimeString()));
 
-            GNoteContent currentContent = null; // = await DAL.GetExport2(Http, currentHeader.Id);
+            GNoteContent currentContent = await Client.GetExport2Async(new NoteId() { Id = currentHeader.Id }, myState.AuthHeader);
 
             if (!string.IsNullOrEmpty(currentHeader.DirectorMessage))
             {
@@ -327,7 +327,7 @@ namespace Notes2022.Client.Menus
 
             var parameters = new ModalParameters();
             parameters.Add("PrintStuff", stuff);    // pass string to print dialog
-            //Modal.Show<PrintDlg>("", parameters);   // invoke print dialog with our output
+            Modal.Show<PrintDlg>("", parameters);   // invoke print dialog with our output
 
         }
 
@@ -342,19 +342,19 @@ namespace Notes2022.Client.Menus
         {
             var parameters = new ModalParameters();
 
-            //ExportViewModel vm = new();
-            //vm.ArchiveNumber = Model.ArcId;
-            //vm.isCollapsible = isCollapsible;
-            //vm.isDirectOutput = !isEmail;
-            //vm.isHtml = isHtml;
-            //vm.NoteFile = Model.noteFile;
-            //vm.NoteOrdinal = 0;
-            //vm.Email = emailaddr;
+            ExportViewModel vm = new();
+            vm.ArchiveNumber = Model.ArcId;
+            vm.isCollapsible = isCollapsible;
+            vm.isDirectOutput = !isEmail;
+            vm.isHtml = isHtml;
+            vm.NoteFile = Model.NoteFile;
+            vm.NoteOrdinal = 0;
+            vm.Email = emailaddr;
 
-            //parameters.Add("Model", vm);
-            //parameters.Add("FileName", Model.noteFile.NoteFileName + (isHtml ? ".html" : ".txt"));
+            parameters.Add("Model", vm);
+            parameters.Add("FileName", Model.NoteFile.NoteFileName + (isHtml ? ".html" : ".txt"));
 
-            //Modal.Show<ExportUtil1>("", parameters);
+            Modal.Show<ExportUtil1>("", parameters);
         }
 
         /// <summary>
@@ -364,36 +364,36 @@ namespace Notes2022.Client.Menus
         {
             var parameters = new ModalParameters();
 
-            //ExportViewModel vm = new();
-            //vm.ArchiveNumber = Model.ArcId;
-            //vm.NoteFile = Model.noteFile;
-            //vm.NoteOrdinal = 0;
+            ExportViewModel vm = new();
+            vm.ArchiveNumber = Model.ArcId;
+            vm.NoteFile = Model.NoteFile;
+            vm.NoteOrdinal = 0;
 
-            //parameters.Add("model", vm);
+            parameters.Add("model", vm);
 
-            //Modal.Show<ExportJson>("", parameters);
+            Modal.Show<ExportJson>("", parameters);
         }
 
         private async Task DoEmail()
         {
-            //string emailaddr;
-            //var parameters = new ModalParameters();
-            //var formModal = Modal.Show<Email>("", parameters);
-            //var result = await formModal.Result;
-            //if (result.Cancelled)
-            //    return;
-            //emailaddr = (string)result.Data;
-            //if (string.IsNullOrEmpty(emailaddr))
-            //    return;
+            string emailaddr;
+            var parameters = new ModalParameters();
+            var formModal = Modal.Show<Email>("", parameters);
+            var result = await formModal.Result;
+            if (result.Cancelled)
+                return;
+            emailaddr = (string)result.Data;
+            if (string.IsNullOrEmpty(emailaddr))
+                return;
 
-            //DoExport(true, true, true, emailaddr);
+            DoExport(true, true, true, emailaddr);
         }
 
-        //private void ShowMessage(string message)
-        //{
-        //    var parameters = new ModalParameters();
-        //    parameters.Add("MessageInput", message);
-        //    Modal.Show<MessageBox>("", parameters);
-        //}
+        private void ShowMessage(string message)
+        {
+            var parameters = new ModalParameters();
+            parameters.Add("MessageInput", message);
+            Modal.Show<MessageBox>("", parameters);
+        }
     }
 }

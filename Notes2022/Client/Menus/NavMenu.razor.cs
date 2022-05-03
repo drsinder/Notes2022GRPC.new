@@ -141,9 +141,9 @@ namespace Notes2022.Client.Menus
                     Navigation.NavigateTo("license");
                     break;
 
-                case "Subscriptions":
-                    Navigation.NavigateTo("subscribe");
-                    break;
+                //case "Subscriptions":
+                //    Navigation.NavigateTo("subscribe");
+                //    break;
 
                 case "MRecent":
                     Navigation.NavigateTo("tracker");
@@ -165,13 +165,13 @@ namespace Notes2022.Client.Menus
                 //    Navigation.NavigateTo(Globals.EditUserVModel.HangfireLoc, true);
                 //    break;
 
-                case "Roles":
-                    Navigation.NavigateTo("admin/editroles");
-                    break;
+                //case "Roles":
+                //    Navigation.NavigateTo("admin/editroles");
+                //    break;
 
-                case "Linked":
-                    Navigation.NavigateTo("admin/linkindex");
-                    break;
+                //case "Linked":
+                //    Navigation.NavigateTo("admin/linkindex");
+                //    break;
             }
         }
 
@@ -214,7 +214,7 @@ namespace Notes2022.Client.Menus
             item3.Items = new List<MenuItem>
             {
                 new () { Id = "MRecent", Text = "Recent" },
-                new () { Id = "Subscriptions", Text = "Subscriptions" },
+                //new () { Id = "Subscriptions", Text = "Subscriptions" },
                 new () { Id = "Preferences", Text = "Preferences" }
             };
             menuItemsTop.Add(item3);
@@ -232,8 +232,8 @@ namespace Notes2022.Client.Menus
             item.Items = new List<MenuItem>
             {
                 new () { Id = "NoteFiles", Text = "NoteFiles" },
-                new () { Id = "Roles", Text = "Roles" },
-                new () { Id = "Linked", Text = "Linked" }
+                //new () { Id = "Roles", Text = "Roles" },
+                //new () { Id = "Linked", Text = "Linked" }
                 //new () { Id = "Hangfire", Text = "Hangfire" }
             };
 

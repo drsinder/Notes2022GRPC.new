@@ -2,10 +2,10 @@
     **
     **  Copyright © 2022, Dale Sinder
     **
-    **  Name: NoteMenu.razor
+    **  Name: PrintDlg.razor
     **
     **  Description:
-    **      Menu bar for Note display
+    **      Shows prepared print output and lets user print it
     **
     **  This program is free software: you can redistribute it and/or modify
     **  it under the terms of the GNU General Public License version 3 as
@@ -22,15 +22,22 @@
     **
     **--------------------------------------------------------------------------*@
 
- @using Syncfusion.Blazor.Popups
+@using System.Timers
+@using Syncfusion.Blazor.RichTextEditor
+@inject IModalService Modal
 
- @inject Notes2022Server.Notes2022ServerClient Client
-
-<div>
-    <div class="navbar-full-dark">
-        <SfMenu Items="@menuItems" @ref="@topMenu" HamburgerMode="@HamburgerMode" CssClass="e-std-menu" >
-            <MenuEvents TValue="MenuItem" ItemSelected="@OnSelect" >
-            </MenuEvents>
-        </SfMenu>
+    <div class="dialogs">
+        <h2>Click the print button below.</h2>
+        <button @onclick="onPrint" class="btn btn-success btn-sm">Print</button>
+        <div class="control-section">
+            <div class="control-wrapper">
+                <div class="control-section long-input">
+                    <SfRichTextEditor @ref="@RteObj" ShowCharCount="false" EditorMode="EditorMode.HTML" Readonly="@readonlyPrint" Height="300" MaxLength="2000000">
+                    </SfRichTextEditor>
+                </div>
+            </div>
+        </div>
+        <button @onclick="ClosePrint" class="btn btn-info btn-sm">Close Printer</button>
     </div>
-</div>
+
+

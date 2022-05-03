@@ -124,7 +124,7 @@ namespace Notes2022.Client.Menus
                     }
                 }
 
-                menuItems.Add(new() { Id = "SearchFromNote", Text = "Search" });
+                //menuItems.Add(new() { Id = "SearchFromNote", Text = "Search" });
                 menuItems.Add(new() { Id = "NoteHelp", Text = "Z for HELP" });
             }
 
@@ -213,8 +213,8 @@ namespace Notes2022.Client.Menus
                     {
                         if (!await YesNo("Are you sure you want to delete this note?"))
                             return;
-                        //await DAL.DeleteNote(Http, Model.header.Id);
-                        Navigation.NavigateTo("notedisplay/" + Model.Header.Id, true);
+                        await Client.DeleteNoteAsync(new NoteId() { Id = Model.Header.Id }, myState.AuthHeader); 
+                        Navigation.NavigateTo("notedisplay/" + Model.Header.Id);   //, true);
                     }
                     else
                     {
@@ -323,13 +323,11 @@ namespace Notes2022.Client.Menus
         /// <returns></returns>
         private async Task<bool> YesNo(string message)
         {
-            //var parameters = new ModalParameters();
-            //parameters.Add("MessageInput", message);
-            //var formModal = Modal.Show<YesNo>("", parameters);
-            //var result = await formModal.Result;
-            //return !result.Cancelled;
-
-            return false;
+            var parameters = new ModalParameters();
+            parameters.Add("MessageInput", message);
+            var formModal = Modal.Show<YesNo>("", parameters);
+            var result = await formModal.Result;
+            return !result.Cancelled;
         }
 
         private void ShowMessage(string message)

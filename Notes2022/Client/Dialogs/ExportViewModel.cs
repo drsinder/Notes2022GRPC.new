@@ -1,7 +1,4 @@
-﻿
-
-using Notes2022.Proto;
-using System.ComponentModel.DataAnnotations;
+﻿using Notes2022.Proto;
 
 namespace Notes2022.Client.Dialogs
 {
@@ -52,70 +49,6 @@ namespace Notes2022.Client.Dialogs
 
     }
 
-
-    //public class ForwardViewModel
-    //{
-    //    /// <summary>
-    //    /// File involved
-    //    /// </summary>
-    //    public GNotefile NoteFile { get; set; }
-
-    //    /// <summary>
-    //    /// Id of note user wants
-    //    /// </summary>
-    //    public long NoteID { get; set; }
-
-    //    /// <summary>
-    //    /// File Id of file
-    //    /// </summary>
-    //    public int FileID { get; set; }
-
-    //    /// <summary>
-    //    /// Archive I of file
-    //    /// </summary>
-    //    public int ArcID { get; set; }
-
-    //    /// <summary>
-    //    /// Ordianal / note # involved
-    //    /// </summary>
-    //    public int NoteOrdinal { get; set; }
-
-    //    /// <summary>
-    //    /// Subject of note
-    //    /// </summary>
-    //    [Display(Name = "Subject")]
-    //    public string NoteSubject { get; set; }
-
-    //    /// <summary>
-    //    /// FLag to send the whole string or just one note?
-    //    /// </summary>
-    //    [Display(Name = "Forward whole note string")]
-    //    public bool wholestring { get; set; }
-
-    //    /// <summary>
-    //    /// Does this note have a string?
-    //    /// </summary>
-    //    public bool hasstring { get; set; }
-
-    //    /// <summary>
-    //    /// Is this user an Admin
-    //    /// </summary>
-    //    public bool IsAdmin { get; set; }
-
-    //    /// <summary>
-    //    /// Is the Admin sending the Everyone?
-    //    /// </summary>
-    //    public bool toAllUsers { get; set; }
-
-    //    /// <summary>
-    //    /// Target email address
-    //    /// </summary>
-    //    [Required]
-    //    [EmailAddress]
-    //    [Display(Name = "Forward to Email Address")]
-    //    public string? ToEmail { get; set; }
-    //}
-
     public class Mark
     {
         public string? UserId { get; set; }
@@ -131,9 +64,6 @@ namespace Notes2022.Client.Dialogs
         public long NoteHeaderId { get; set; }
 
         public int ResponseOrdinal { get; set; }  // -1 == whole string, 0 base note only, > 0 Response
-
-        //[ForeignKey("NoteFileId")]
-        //public NoteFile? NoteFile { get; set; }
     }
 
 }

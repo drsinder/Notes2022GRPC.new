@@ -118,6 +118,8 @@ message GNoteHeader {
 	bool isDeleted = 16;
 	int32 version = 17;
 	string directorMessage = 18;
+	GNoteContent content = 19;
+	GTagsList tags = 20;
 }
 
 message GNoteHeaderList {
@@ -351,6 +353,12 @@ message CopyModel {
 	bool WholeString = 3;
 }
 
+message JsonExport {
+	GNotefile NoteFile = 1;
+	GNoteHeaderList NoteHeaders = 2;
+}
+
+
 service Notes2022Server {
 
 	rpc SpinUp(NoRequest) returns (NoRequest);
@@ -399,6 +407,9 @@ service Notes2022Server {
 	rpc DoForward(ForwardViewModel) returns (NoRequest);
 	rpc GetNoteFilesOrderedByName(NoRequest) returns (GNotefileList);
 	rpc CopyNote(CopyModel) returns (NoRequest);
+	rpc DeleteNote(NoteId) returns (NoRequest);
+	rpc GetExportJson(ExportRequest) returns (JsonExport);
+
 
 	//	rpc GetNewestNote(NoRequest) returns (GNoteHeader);
 
