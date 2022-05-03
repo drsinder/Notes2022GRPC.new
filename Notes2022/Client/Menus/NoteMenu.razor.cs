@@ -230,7 +230,7 @@ namespace Notes2022.Client.Menus
                 case "Copy":
                     var parameters = new ModalParameters();
                     parameters.Add("Note", Model.Header);
-                    //Modal.Show<Copy>("", parameters);
+                    Modal.Show<Copy>("", parameters);
                     break;
 
                 case "mail":
@@ -254,20 +254,20 @@ namespace Notes2022.Client.Menus
         protected void Forward()
         {
             var parameters = new ModalParameters();
-            //ForwardViewModel fv = new();
-            //fv.NoteID = Model.Header.Id;
-            //fv.FileID = Model.Header.NoteFileId;
-            //fv.ArcID = Model.Header.ArchiveId;
-            //fv.NoteOrdinal = Model.Header.NoteOrdinal;
-            //fv.NoteSubject = Model.Header.NoteSubject;
-            //fv.NoteFile = Model.NoteFile;
+            ForwardViewModel fv = new();
+            fv.NoteID = Model.Header.Id;
+            fv.FileID = Model.Header.NoteFileId;
+            fv.ArcID = Model.Header.ArchiveId;
+            fv.NoteOrdinal = Model.Header.NoteOrdinal;
+            fv.NoteSubject = Model.Header.NoteSubject;
+            fv.NoteFile = Model.NoteFile;
 
-            //if (Model.Header.ResponseCount > 0 || Model.Header.BaseNoteId > 0)
-            //    fv.hasstring = true;
+            if (Model.Header.ResponseCount > 0 || Model.Header.BaseNoteId > 0)
+                fv.Hasstring = true;
 
-            //parameters.Add("ForwardView", fv);
+            parameters.Add("ForwardView", fv);
 
-            //Modal.Show<Forward>("", parameters);
+            Modal.Show<Forward>("", parameters);
         }
 
         /// <summary>
@@ -281,19 +281,19 @@ namespace Notes2022.Client.Menus
         {
             var parameters = new ModalParameters();
 
-            //ExportViewModel vm = new();
-            //vm.ArchiveNumber = Model.Header.ArchiveId;
-            //vm.isCollapsible = isCollapsible;
-            //vm.isDirectOutput = !isEmail;
-            //vm.isHtml = isHtml;
-            //vm.NoteFile = Model.NoteFile;
-            //vm.NoteOrdinal = Model.Header.NoteOrdinal;
-            //vm.Email = emailaddr;
+            ExportViewModel vm = new();
+            vm.ArchiveNumber = Model.Header.ArchiveId;
+            vm.isCollapsible = isCollapsible;
+            vm.isDirectOutput = !isEmail;
+            vm.isHtml = isHtml;
+            vm.NoteFile = Model.NoteFile;
+            vm.NoteOrdinal = Model.Header.NoteOrdinal;
+            vm.Email = emailaddr;
 
-            //parameters.Add("Model", vm);
-            //parameters.Add("FileName", Model.NoteFile.NoteFileName + (isHtml ? ".html" : ".txt"));
+            parameters.Add("Model", vm);
+            parameters.Add("FileName", Model.NoteFile.NoteFileName + (isHtml ? ".html" : ".txt"));
 
-            //Modal.Show<ExportUtil1>("", parameters);
+            Modal.Show<ExportUtil1>("", parameters);
         }
 
         /// <summary>
@@ -302,17 +302,17 @@ namespace Notes2022.Client.Menus
         /// <returns></returns>
         private async Task DoEmail()
         {
-            //string emailaddr;
-            //var parameters = new ModalParameters();
-            //var formModal = Modal.Show<Email>("", parameters);
-            //var result = await formModal.Result;
-            //if (result.Cancelled)
-            //    return;
-            //emailaddr = (string)result.Data;
-            //if (string.IsNullOrEmpty(emailaddr))
-            //    return;
+            string emailaddr;
+            var parameters = new ModalParameters();
+            var formModal = Modal.Show<Dialogs.Email>("", parameters);
+            var result = await formModal.Result;
+            if (result.Cancelled)
+                return;
+            emailaddr = (string)result.Data;
+            if (string.IsNullOrEmpty(emailaddr))
+                return;
 
-            //DoExport(true, true, true, emailaddr);
+            DoExport(true, true, true, emailaddr);
 
         }
 

@@ -45,7 +45,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dialogs\" />
     <Folder Include="Panels\" />
     <Folder Include="Pages\Admin\" />
   </ItemGroup>

@@ -22,6 +22,7 @@ message RegisterRequest {
 message LoginRequest {
 	string email = 1;
 	string password = 2;
+	int32 hours = 3;
 }
 
 message UserInfo {
@@ -312,15 +313,42 @@ message AboutModel {
 	string PrimeAdminEmail = 2;
 }
 
-message Email {
+message GEmail {
 	string address = 1;
 	string subject = 2;
 	string body = 3;
 }
 
-message ConfirmEmailContainer{
+message ConfirmEmailRequest {
 	string userId = 1;
 	string code = 2;
+}
+
+message ExportRequest {
+	int32 fileId = 1;
+	int32 arcId = 2;
+	int32 noteOrdinal = 3;
+	int32 responseOrdinal = 4;
+}
+
+message ForwardViewModel {
+    GNotefile NoteFile = 1;
+    int64 NoteID = 2;
+	int32 FileID = 3;
+    int32 ArcID = 4;
+    int32 NoteOrdinal = 5;
+    string NoteSubject = 6;
+    bool wholestring = 7;
+    bool hasstring = 8;
+    bool IsAdmin = 9;
+    bool toAllUsers = 10;
+    string ToEmail = 11;
+}
+
+message CopyModel {
+	GNoteHeader Note = 1;
+	int32 FileId = 2;
+	bool WholeString = 3;
 }
 
 service Notes2022Server {
@@ -332,7 +360,7 @@ service Notes2022Server {
 	rpc Register(RegisterRequest) returns (AuthReply);
 	rpc Login(LoginRequest) returns (LoginReply);
 	rpc Logout(NoRequest) returns (AuthReply);
-	rpc ConfirmEmail(ConfirmEmailContainer) returns (AuthReply);
+	rpc ConfirmEmail(ConfirmEmailRequest) returns (AuthReply);
 
 // Notes Services proper
 
@@ -364,10 +392,13 @@ service Notes2022Server {
 	rpc UpdateNote(TextViewModel) returns (GNoteHeader);
 	rpc GetHeaderForNoteId(NoteId) returns (GNoteHeader);
 	rpc GetAbout(NoRequest) returns (AboutModel);
-	rpc SendEmail(Email) returns (NoRequest);		// unauthenticated - slower - use it too much and it really hurts you!
-	rpc SendEmailAuth(Email) returns (NoRequest);	// authenticated
-
-
+	rpc SendEmail(GEmail) returns (NoRequest);		// unauthenticated - slower - use it too much and it really hurts you!
+	rpc SendEmailAuth(GEmail) returns (NoRequest);	// authenticated
+	rpc GetExport(ExportRequest) returns (GNoteHeaderList);
+	rpc GetExport2(NoteId) returns (GNoteContent);
+	rpc DoForward(ForwardViewModel) returns (NoRequest);
+	rpc GetNoteFilesOrderedByName(NoRequest) returns (GNotefileList);
+	rpc CopyNote(CopyModel) returns (NoRequest);
 
 	//	rpc GetNewestNote(NoRequest) returns (GNoteHeader);
 

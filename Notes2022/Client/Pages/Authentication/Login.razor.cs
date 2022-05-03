@@ -36,7 +36,7 @@ namespace Notes2022.Client.Pages.Authentication
         private async Task GotoLogin()
         {
             LoginRequest req = new LoginRequest()
-            { Email = Input.Email, Password = Input.Password };
+            { Email = Input.Email, Password = Input.Password, Hours = Input.RememberHours };
             LoginReply ar = await AuthClient.LoginAsync(req);
             if (ar.Status == 200)
             {

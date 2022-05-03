@@ -81,7 +81,6 @@ namespace Notes2022.Server.Services
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
                 return new AuthReply() { Status = StatusCodes.Status500InternalServerError, Message = "User creation failed! Please check user details and try again.  " + ex.InnerException?.Message };
 
             }
@@ -105,31 +104,17 @@ namespace Notes2022.Server.Services
             }
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            ConfirmEmailContainer mess = new ConfirmEmailContainer() { UserId = user.Id, Code = code };
+            ConfirmEmailRequest mess = new ConfirmEmailRequest() { UserId = user.Id, Code = code };
             string payload = Globals.Base64Encode(JsonSerializer.Serialize(mess));
 
             string target = _configuration["AppUrl"] + "/authentication/confirmemail/" + payload;
             await _emailSender.SendEmailAsync(request.Email, "Confirm your email",
-                $"Please confirm your Notes 2022 account by <a href='{target}'>clicking here</a>.");
-
-
-            //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-            //var userIdCode = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(user.Id));
-
-            //var callbackUrl = Url.Page(
-            //    "/Account/ConfirmEmail",
-            //    pageHandler: null,
-            //    values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-            //    protocol: Request.Scheme);
-
-            //await _emailSender.SendEmailAsync(request.Email, "Confirm your email",
-            //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
+                $"Please confirm your Notes 2022 account email by <a href='{target}'>clicking here</a>.");
 
             return new AuthReply() { Status = StatusCodes.Status200OK, Message = "User created!" };
         }
 
-        public override async Task<AuthReply> ConfirmEmail(ConfirmEmailContainer request, ServerCallContext context)
+        public override async Task<AuthReply> ConfirmEmail(ConfirmEmailRequest request, ServerCallContext context)
         {
             AuthReply ret = new AuthReply();
             ret.Status = StatusCodes.Status500InternalServerError;
@@ -151,7 +136,7 @@ namespace Notes2022.Server.Services
             if ( result.Succeeded)
             {
                 ret.Status = StatusCodes.Status200OK;
-                ret.Message = "Thank you for confirming your email.  You may now log in!";
+                ret.Message = "Thank you for confirming your email " + user.DisplayName + ".  You may now log in!";
                 return ret;
             }
 
@@ -203,7 +188,7 @@ namespace Notes2022.Server.Services
                     roles.Add(userRole);
                 }
 
-                var token = GetToken(authClaims);
+                var token = GetToken(authClaims, request.Hours);
 
                 JwtSecurityTokenHandler hand = new JwtSecurityTokenHandler();
                 string stoken = hand.WriteToken(token);
@@ -223,14 +208,14 @@ namespace Notes2022.Server.Services
             return new AuthReply() { Status = StatusCodes.Status200OK, Message = "User logged out!" };
         }
 
-        private JwtSecurityToken GetToken(List<Claim> authClaims)
+        private JwtSecurityToken GetToken(List<Claim> authClaims, int hours)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWTAuth:SecretKey"]));
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWTAuth:ValidIssuerURL"],
                 audience: _configuration["JWTAuth:ValidAudienceURL"],
-                expires: DateTime.Now.AddHours(3),
+                expires: DateTime.Now.AddHours(hours),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
@@ -755,7 +740,7 @@ namespace Notes2022.Server.Services
         private static int throttle = 0;
         private static DateTime? TimeOfThrottle = null;
 
-        public override async Task<NoRequest> SendEmail(Email request, ServerCallContext context)
+        public override async Task<NoRequest> SendEmail(GEmail request, ServerCallContext context)
         {
             try
             {
@@ -795,11 +780,201 @@ namespace Notes2022.Server.Services
         }
 
         [Authorize]
-        public override async Task<NoRequest> SendEmailAuth(Email request, ServerCallContext context)
+        public override async Task<NoRequest> SendEmailAuth(GEmail request, ServerCallContext context)
         {
             await _emailSender.SendEmailAsync(request.Address, request.Subject, request.Body);
             return new NoRequest();
         }
 
+        [Authorize]
+        public override async Task<GNoteHeaderList> GetExport(ExportRequest request, ServerCallContext context)
+        {
+            List<NoteHeader> nhl;
+
+            if (request.NoteOrdinal == 0)   // All base notes
+            {
+                nhl = await _db.NoteHeader
+                    .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && p.ResponseOrdinal == 0)
+                    .OrderBy(p => p.NoteOrdinal)
+                    .ToListAsync();
+            }
+            else                // Just one base note/response
+            {
+                nhl = await _db.NoteHeader
+                    .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && p.NoteOrdinal == request.NoteOrdinal && p.ResponseOrdinal == request.ResponseOrdinal)
+                    .ToListAsync();
+            }
+
+            return NoteHeader.GetGNoteHeaderList(nhl);
+        }
+
+        [Authorize]
+        public override async Task<GNoteContent> GetExport2(NoteId request, ServerCallContext context)
+        {
+            NoteContent? nc = await _db.NoteContent
+                .Where(p => p.NoteHeaderId == request.Id)
+                .FirstOrDefaultAsync();
+
+            return nc.GetGNoteContent();
+        }
+
+        [Authorize]
+        public override async Task<NoRequest> DoForward(ForwardViewModel fv, ServerCallContext context)
+        {
+            ClaimsPrincipal user = context.GetHttpContext().User;
+            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            string myEmail = await LocalService.MakeNoteForEmail(fv, fv.NoteFile, _db, appUser.Email, appUser.DisplayName);
+
+            await _emailSender.SendEmailAsync(appUser.Email, fv.NoteSubject, myEmail);
+            return new NoRequest();
+        }
+
+        [Authorize]
+        public override async Task<GNotefileList> GetNoteFilesOrderedByName(NoRequest request, ServerCallContext context)
+        {
+            List<NoteFile> noteFiles = _db.NoteFile.OrderBy(p => p.NoteFileName).ToList();
+            return NoteFile.GetGNotefileList(noteFiles);
+        }
+
+        [Authorize]
+        public override async Task<NoRequest> CopyNote(CopyModel Model, ServerCallContext context)
+        {
+            ClaimsPrincipal user = context.GetHttpContext().User;
+            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            int fileId = Model.FileId;
+
+            // Can I write to the target file?
+            string uid = appUser.Id;
+            NoteAccess myAccess = await AccessManager.GetAccess(_db, uid, fileId, 0);
+            if (!myAccess.Write)
+                return new NoRequest();         // can not write to file
+
+            // Prepare to copy
+            NoteHeader Header = NoteHeader.GetNoteHeader(Model.Note);
+            bool whole = Model.WholeString;
+            NoteFile noteFile = await _db.NoteFile.SingleAsync(p => p.Id == fileId);
+
+            // Just the note
+            if (!whole)
+            {
+                NoteContent cont = await _db.NoteContent.SingleAsync(p => p.NoteHeaderId == Header.Id);
+                //cont.NoteHeader = null;
+                List<Tags> tags = await _db.Tags.Where(p => p.NoteHeaderId == Header.Id).ToListAsync();
+
+                string Body = string.Empty;
+                Body = MakeHeader(Header, noteFile);
+                Body += cont.NoteBody;
+
+                Header = Header.CloneForLink();
+
+                Header.Id = 0;
+                Header.ArchiveId = 0;
+                Header.LinkGuid = string.Empty;
+                Header.NoteOrdinal = 0;
+                Header.ResponseCount = 0;
+                Header.NoteFileId = fileId;
+                Header.BaseNoteId = 0;
+                //Header.NoteFile = null;
+                Header.AuthorID = appUser.Id;
+                Header.AuthorName = appUser.DisplayName;
+
+                Header.CreateDate = Header.ThreadLastEdited = Header.LastEdited = DateTime.Now.ToUniversalTime();
+
+                await NoteDataManager.CreateNote(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
+
+                new NoRequest();
+            }
+            else    // whole note string
+            {
+                // get base note first
+                NoteHeader BaseHeader;
+                BaseHeader = await _db.NoteHeader.SingleAsync(p => p.NoteFileId == Header.NoteFileId
+                    && p.ArchiveId == Header.ArchiveId
+                    && p.NoteOrdinal == Header.NoteOrdinal
+                    && p.ResponseOrdinal == 0);
+
+                Header = BaseHeader.CloneForLink();
+
+                NoteContent cont = await _db.NoteContent.SingleAsync(p => p.NoteHeaderId == Header.Id);
+                //cont.NoteHeader = null;
+                List<Tags> tags = await _db.Tags.Where(p => p.NoteHeaderId == Header.Id).ToListAsync();
+
+                string Body = string.Empty;
+                Body = MakeHeader(Header, noteFile);
+                Body += cont.NoteBody;
+
+                Header.Id = 0;
+                Header.ArchiveId = 0;
+                Header.LinkGuid = string.Empty;
+                Header.NoteOrdinal = 0;
+                Header.ResponseCount = 0;
+                Header.NoteFileId = fileId;
+                Header.BaseNoteId = 0;
+                //Header.NoteFile = null;
+                Header.AuthorID = appUser.Id;
+                Header.AuthorName = appUser.DisplayName;
+
+                Header.CreateDate = Header.ThreadLastEdited = Header.LastEdited = DateTime.Now.ToUniversalTime();
+
+                Header.NoteContent = null;
+
+                NoteHeader NewHeader = await NoteDataManager.CreateNote(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
+
+                // now deal with any responses
+                for (int i = 1; i <= BaseHeader.ResponseCount; i++)
+                {
+                    NoteHeader RHeader = await _db.NoteHeader.SingleAsync(p => p.NoteFileId == BaseHeader.NoteFileId
+                        && p.ArchiveId == BaseHeader.ArchiveId
+                        && p.NoteOrdinal == BaseHeader.NoteOrdinal
+                        && p.ResponseOrdinal == i);
+
+                    Header = RHeader.CloneForLinkR();
+
+                    cont = await _db.NoteContent.SingleAsync(p => p.NoteHeaderId == Header.Id);
+                    tags = await _db.Tags.Where(p => p.NoteHeaderId == Header.Id).ToListAsync();
+
+                    Body = string.Empty;
+                    Body = MakeHeader(Header, noteFile);
+                    Body += cont.NoteBody;
+
+                    Header.Id = 0;
+                    Header.ArchiveId = 0;
+                    Header.LinkGuid = string.Empty;
+                    Header.NoteOrdinal = NewHeader.NoteOrdinal;
+                    Header.ResponseCount = 0;
+                    Header.NoteFileId = fileId;
+                    Header.BaseNoteId = NewHeader.Id;
+                    //Header.NoteFile = null;
+                    Header.ResponseOrdinal = 0;
+                    Header.AuthorID = appUser.Id;
+                    Header.AuthorName = appUser.DisplayName;
+
+                    Header.CreateDate = Header.ThreadLastEdited = Header.LastEdited = DateTime.Now.ToUniversalTime();
+
+                    await NoteDataManager.CreateResponse(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
+                }
+
+            }
+                return new NoRequest();
+        }
+
+        // Utility method - makes a viewable header for the copied note
+        private string MakeHeader(NoteHeader header, NoteFile noteFile)
+        {
+            StringBuilder sb = new();
+
+            sb.Append("<div class=\"copiednote\">From: ");
+            sb.Append(noteFile.NoteFileName);
+            sb.Append(" - ");
+            sb.Append(header.NoteSubject);
+            sb.Append(" - ");
+            sb.Append(header.AuthorName);
+            sb.Append(" - ");
+            sb.Append(header.CreateDate.ToShortDateString());
+            sb.AppendLine("</div>");
+            return sb.ToString();
+        }
     }
 }
