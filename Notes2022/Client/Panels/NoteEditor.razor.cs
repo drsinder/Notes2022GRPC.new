@@ -199,12 +199,12 @@ namespace Notes2022.Client.Panels
             var parameters = new ModalParameters();
             parameters.Add("stuff", xx);
             parameters.Add("EditObj", EditObj);
-            //var formModal = Modal.Show<CodeFormat>("", parameters);
-            //var result = await formModal.Result;
-            //if (!result.Cancelled)
-            //{
-            //    PreparedCode = (string)result.Data;
-            //}
+            var formModal = Modal.Show<CodeFormat>("", parameters);
+            var result = await formModal.Result;
+            if (!result.Cancelled)
+            {
+                PreparedCode = (string)result.Data;
+            }
         }
 
         /// <summary>
