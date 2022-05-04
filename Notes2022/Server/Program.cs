@@ -100,7 +100,7 @@ else
     app.UseHsts();
 }
 
-//app.UseHttpsRedirection();  // ?? maybe needed?
+app.UseHttpsRedirection();  // ?? maybe needed?
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
