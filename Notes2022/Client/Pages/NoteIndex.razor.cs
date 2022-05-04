@@ -173,6 +173,7 @@ namespace Notes2022.Client.Pages
         /// <param name="args"></param>
         protected void DisplayIt(RowSelectEventArgs<GNoteHeader> args)
         {
+            sessionStorage.SetItemAsync("IndexPage", sfGrid1.PageSettings.CurrentPage).GetAwaiter();
             CurrentNoteId = args.Data.Id;
             StateHasChanged();
         }
@@ -602,6 +603,7 @@ namespace Notes2022.Client.Pages
         public async void ActionCompleteHandler(ActionEventArgs<GNoteHeader> args)
         {
             await sessionStorage.SetItemAsync("IndexPage", sfGrid1.PageSettings.CurrentPage);
+            CurPage = await sessionStorage.GetItemAsync<int>("IndexPage");
         }
 
         /// <summary>
