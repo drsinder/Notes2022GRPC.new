@@ -38,7 +38,7 @@
     {
         if (firstRender)
         {
-            await Client.ImportAsync(new ImportRequest() { NoteFile = NoteFile, UploadFile = UploadFile }, myState.AuthHeader);
+            await Client.ImportAsync(new ImportRequest() { NoteFile = NoteFile, UploadFile = UploadFile }, myState.AuthHeader, deadline: DateTime.UtcNow.AddMinutes(10));
 
             await ModalInstance.CancelAsync();
         }
