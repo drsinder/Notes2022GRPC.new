@@ -158,6 +158,8 @@ namespace Notes2022.Client.Pages
             // Set preferences for user
             PageSize = Model.UserData.Ipref2;
             ShowContent = Model.UserData.Pref7;
+            ShowContentR = Model.UserData.Pref5;
+
             ExpandAll = false; // Model.UserData.Pref3;
 
             // restore page

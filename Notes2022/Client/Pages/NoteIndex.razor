@@ -57,8 +57,8 @@ else                    @*    Index mode        *@
                 <div class="content-wrapper">
                     <div class="row">
                         Show Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContent"></SfSwitch>&nbsp;
-                        Show All Response Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContentR"></SfSwitch>&nbsp;
-                        Expand All&nbsp; <SfSwitch @bind-Checked="@ExpandAll" ValueChange="ExpandAllChange" TChecked="bool"></SfSwitch>
+                        Show Response Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContentR"></SfSwitch>&nbsp;
+@*                        Expand All&nbsp; <SfSwitch @bind-Checked="@ExpandAll" ValueChange="ExpandAllChange" TChecked="bool"></SfSwitch>*@
                         <SfGrid @ref="@sfGrid1" DataSource="@Model.Notes.List" AllowPaging="true" AllowSelection="true" EnableHover="true" AllowSorting="true" AllowFiltering="true">
 
                             <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu">

@@ -30,13 +30,13 @@
 }
 else
 {
-    <div>
+@*    <div>
         @if (Headers.Count > 0)
         {
             <span>Show Response Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContent"></SfSwitch>&nbsp; Expand All&nbsp; 
                 <SfSwitch @bind-Checked="@ExpandAll" ValueChange="ExpandAllChange" TChecked="bool"></SfSwitch></span>
         }
-    </div>
+    </div>*@
     @if (Headers.Count > 0)
     {
         <SfGrid @ref="@sfGrid2" DataSource="Headers" AllowPaging="false" AllowSelection="true" EnableHover="true" AllowFiltering="true">
