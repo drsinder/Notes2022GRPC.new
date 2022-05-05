@@ -234,6 +234,62 @@ namespace Notes2022.Server.Services
         }
 
         [Authorize]
+        public override async Task<GAppUserList> GetUserList(NoRequest request, ServerCallContext context)
+        {
+            List<ApplicationUser> list = _userManager.Users.ToList();
+            return Notes2022.Server.Entities.ApplicationUser.GetGAppUserList(list);
+        }
+
+        [Authorize]
+        public override async Task<EditUserViewModel> GetUserRoles(AppUserRequest request, ServerCallContext context)
+        {
+            EditUserViewModel model = new EditUserViewModel();
+            model.RolesList = new CheckedUserList();
+            string Id = request.Subject;
+            ApplicationUser user = await _userManager.FindByIdAsync(Id);
+
+            model.UserData = user.GetGAppUser();
+
+            var allRoles = _roleManager.Roles.ToList();
+
+            //var myRoles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in allRoles)
+            {
+                CheckedUser cu = new CheckedUser();
+                cu.TheRole = new UserRole();
+                cu.TheRole.RoleId = role.Id;
+                cu.TheRole.RoleName = role.Name;
+                cu.IsMember = await _userManager.IsInRoleAsync(user, role.Name);
+                model.RolesList.List.Add(cu);
+            }
+
+
+            return model;
+        }
+
+        [Authorize]
+        public override async Task<NoRequest> UpdateUserRoles(EditUserViewModel model, ServerCallContext context)
+        {
+            ApplicationUser user = await _userManager.FindByIdAsync(model.UserData.Id);
+            var myRoles = await _userManager.GetRolesAsync(user);
+            foreach (CheckedUser item in model.RolesList.List)
+            {
+                if (item.IsMember && !myRoles.Contains(item.TheRole.RoleName)) // need to add role
+                {
+                    await _userManager.AddToRoleAsync(user, item.TheRole.RoleName);
+                }
+                else if (!item.IsMember && myRoles.Contains(item.TheRole.RoleName)) // need to remove role
+                {
+                    await _userManager.RemoveFromRoleAsync(user, item.TheRole.RoleName);
+                }
+            }
+
+
+            return new NoRequest();
+        }
+
+        [Authorize]
         public override async Task<GNotefileList> GetAllNotefiles(NoRequest request, ServerCallContext context)
         {
             var x = _db.NoteFile.ToList();

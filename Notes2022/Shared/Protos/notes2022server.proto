@@ -1,3 +1,27 @@
+/*--------------------------------------------------------------------------
+    **
+    ** Copyright © 2022, Dale Sinder
+    **
+    ** Name: EditUserViewModel.cs
+    **
+    ** Description:
+    **      UserData + Roles list and membership
+    **
+    ** This program is free software: you can redistribute it and/or modify
+    ** it under the terms of the GNU General Public License version 3 as
+    ** published by the Free Software Foundation.   
+    **
+    ** This program is distributed in the hope that it will be useful,
+    ** but WITHOUT ANY WARRANTY; without even the implied warranty of
+    ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+    ** GNU General Public License version 3 for more details.
+    **
+    **  You should have received a copy of the GNU General Public License
+    **  version 3 along with this program in file "license-gpl-3.0.txt".
+    **  If not, see<http://www.gnu.org/licenses/gpl-3.0.txt>.
+    **
+    **--------------------------------------------------------------------------*/
+
 syntax = "proto3";
 
 option csharp_namespace = "Notes2022.Proto";
@@ -46,6 +70,26 @@ message LoginReply {
 	string jwt = 4;
 	int32 hours = 5;
 }
+
+message UserRole {
+	string roleName = 1;
+	string roleId = 2;	
+}
+
+message CheckedUser {
+	UserRole theRole = 1;
+	bool isMember = 2;
+}
+
+message CheckedUserList {
+	repeated CheckedUser List = 1;
+}
+
+message EditUserViewModel {
+	GAppUser userData = 1;
+	CheckedUserList rolesList = 2;
+}
+
 
 ///////////////////////////////////////////////
 
@@ -373,6 +417,9 @@ service Notes2022Server {
 // Notes Services proper
 
 	rpc GetAppUser(AppUserRequest) returns (GAppUser);
+	rpc GetUserList(NoRequest) returns (GAppUserList);
+	rpc GetUserRoles(AppUserRequest) returns (EditUserViewModel);
+	rpc UpdateUserRoles(EditUserViewModel) returns (NoRequest);
 	rpc GetAllNotefiles(NoRequest) returns (GNotefileList);
 	rpc CreateNoteFile(GNotefile) returns (GNotefile);
 	rpc GetHomePageModel(NoRequest) returns (HomePageModel);
