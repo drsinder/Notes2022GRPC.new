@@ -158,7 +158,7 @@ namespace Notes2022.Client.Pages
             // Set preferences for user
             PageSize = Model.UserData.Ipref2;
             ShowContent = Model.UserData.Pref7;
-            ExpandAll = Model.UserData.Pref3;
+            ExpandAll = false; // Model.UserData.Pref3;
 
             // restore page
             CurPage = await sessionStorage.GetItemAsync<int>("IndexPage");

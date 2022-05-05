@@ -179,6 +179,13 @@ namespace Notes2022.Client.Panels
         {
             await GetData();
 
+            RespShown = (IsRootNote && MyNoteIndex.Model.UserData.Pref3 && model.Header.ResponseOrdinal == 0 && model.Header.ResponseCount > 0 && !AltStyle && !model.Header.IsDeleted);
+            if (RespShown)
+            {
+                // Get response headers from the index
+                respHeaders = MyNoteIndex.GetResponseHeaders(model.Header.Id);
+            }
+
             IsSeq = await sessionStorage.GetItemAsync<bool>("IsSeq");
         }
 
@@ -188,7 +195,7 @@ namespace Notes2022.Client.Panels
         /// <returns></returns>
         protected async Task GetData()
         {
-            RespShown = false;
+            //RespShown = false;
 
             //Set style for note and header
             HeaderStyle = "noteheader";
@@ -215,6 +222,7 @@ namespace Notes2022.Client.Panels
                 respX = " Response " + model.Header.ResponseOrdinal;
                 respY = "." + model.Header.ResponseOrdinal;
             }
+
         }
 
         //private void OnClickResp(MouseEventArgs args)
