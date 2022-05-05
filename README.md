@@ -1,7 +1,7 @@
 # Notes2022
 Next iteration of Notes for the web. Based on PLATO Notes.
 
-Notes2022 Blazor Edition
+Notes2022 Blazor/gRPC Edition
 
 Notes 2022 is a set of forums inspired by the PLATO (later known as NovaNET) communications system. 
 The purpose of PLATO was to provide Computer Based Education facilities. The origin of PLATO goes back to 1960 
@@ -34,7 +34,7 @@ This version is built on dotNET Core 6. Notes 2022 also adds the ability to arch
 Notes 2022 also goes beyond the capabilities of NovaNET notes to utilize the scrolling browser environment to advantage. 
 For example, responses to notes have references related to what the author of the response was viewing when they made the response.  
 These references can be displayed while viewing a note (response) and when composing a new response.
-This version of Noets uses gRPC for client/server communications.
+This version of Notes uses gRPC for client/server communications.
 
 Client/Server (Hosted) app. WASM (HTML/C#/Blazor).
 
@@ -55,13 +55,18 @@ Example you will need to fill in the values for your case:
 
   "ConnectionStrings:DefaultConnection": "Server=localhost;Database=Notes2022;Trusted_Connection=True;MultipleActiveResultSets=true",
   
+ "JWTAuth": {
+    "ValidAudienceURL": "https://localhost:7130",
+    "ValidIssuerURL": "https://localhost:7130",
+    "SecretKey": "Use a very long string here for your key"
+  },
+  "AppUrl": "https://localhost:7130",
+
   "ImportRoot": "E:\\Projects\\2022\\Notes2022\\Notes2022\\Server\\wwwroot\\Import\\",
   
   "PrimeAdminEmail": "youremail@wherever.com",
   
   "PrimeAdminName": "Your_Name",
-  
-  "ProductionUrl": "https://localhost:7148",
   
   "SendGridApiKey": "SG.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
   
@@ -88,4 +93,4 @@ Write some notes!
 The Solution has 3 projects
 - Notes2022.Shared : Contains common elements used by other projects.  Defines gRPC protocol for the system.
 - Notes2022.Client : All of the client side function resides here as components and @page s..
-- Notes2022.Server : Direct access to Db and provides data and operations to RCL through the DAL.
+- Notes2022.Server : Direct access to Db and provides data and operations to Client through the gRPC.
