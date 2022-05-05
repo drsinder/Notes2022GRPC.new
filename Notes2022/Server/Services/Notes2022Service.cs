@@ -268,7 +268,7 @@ namespace Notes2022.Server.Services
             return model;
         }
 
-        [Authorize]
+        [Authorize (Roles="Admin")]
         public override async Task<NoRequest> UpdateUserRoles(EditUserViewModel model, ServerCallContext context)
         {
             ApplicationUser user = await _userManager.FindByIdAsync(model.UserData.Id);
