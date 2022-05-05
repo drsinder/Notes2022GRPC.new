@@ -70,7 +70,8 @@ namespace Notes2022.Server.Services
                 Email = request.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = request.Username.Replace(" ", "_"),
-                DisplayName = request.Username
+                DisplayName = request.Username,
+                Ipref2 = 12     // starting note index page size pref.              
             };
 
             try
