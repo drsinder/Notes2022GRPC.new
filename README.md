@@ -34,6 +34,7 @@ This version is built on dotNET Core 6. Notes 2022 also adds the ability to arch
 Notes 2022 also goes beyond the capabilities of NovaNET notes to utilize the scrolling browser environment to advantage. 
 For example, responses to notes have references related to what the author of the response was viewing when they made the response.  
 These references can be displayed while viewing a note (response) and when composing a new response.
+This version of Noets uses gRPC for client/server communications.
 
 Client/Server (Hosted) app. WASM (HTML/C#/Blazor).
 
@@ -84,11 +85,7 @@ Write some notes!
 
 
 ### Solution organization
-The Solution has 4 projects (and a Preview that should remain unloaded for now).
-
-- Notes2022.Shared : Contains common elements used by other projects.  Defines Db Tables and a DAL for access to the data.
-- Notes2022.RCL    : A Razor Component Library.  Almost all of the client side function resides here as components.  No @page s.
-- Notes2022.Client : Very small.  Mostly just pages that contain components from the RCL.
+The Solution has 3 projects
+- Notes2022.Shared : Contains common elements used by other projects.  Defines gRPC protocol for the system.
+- Notes2022.Client : All of the client side function resides here as components and @page s..
 - Notes2022.Server : Direct access to Db and provides data and operations to RCL through the DAL.
-- (Notes2022Preview) : An experimental MAUI client.  Currently broken.  Authentication needed.
-
