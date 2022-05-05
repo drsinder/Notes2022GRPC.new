@@ -186,6 +186,12 @@ namespace Notes2022.Client.Panels
                 respHeaders = MyNoteIndex.GetResponseHeaders(model.Header.Id);
             }
 
+            RespFlipped = (MyNoteIndex is not null) && MyNoteIndex.Model.UserData.Pref4;
+            if (IsRootNote && RespFlipped && RespShown)
+                respHeaders = respHeaders.OrderByDescending(x => x.ResponseOrdinal).ToList();
+            else if (IsRootNote && RespShown)
+                respHeaders = respHeaders.OrderBy(x => x.ResponseOrdinal).ToList();
+
             IsSeq = await sessionStorage.GetItemAsync<bool>("IsSeq");
         }
 
@@ -247,6 +253,11 @@ namespace Notes2022.Client.Panels
             {
                 // Get response headers from the index
                 respHeaders = MyNoteIndex.GetResponseHeaders(model.Header.Id);
+                if (IsRootNote && RespFlipped && RespShown)
+                    respHeaders = respHeaders.OrderByDescending(x => x.ResponseOrdinal).ToList();
+                else if (IsRootNote && RespShown)
+                    respHeaders = respHeaders.OrderBy(x => x.ResponseOrdinal).ToList();
+
             }
         }
 
