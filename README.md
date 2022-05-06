@@ -45,6 +45,7 @@ This is a Visual Studio 2022 project.
 - Visual Studio 2022 with dotNET 6 installed.
 - SQL Server - Express, Developer Edition, or better.
 - A SendGrid Account and an API Key.
+- A Syncfusion community license key for Blazor. (https://www.syncfusion.com/)
 
 ### Things you will need to do to get started:
 The Notes2022.Server project "secrets.json" file with appropriate values:
@@ -72,7 +73,10 @@ Example you will need to fill in the values for your case:
   
   "SendGridEmail": "youremail@wherever.com",
   
-  "SendGridName": "Your Name on behalf of Notes 2022"
+  "SendGridName": "Your Name on behalf of Notes 2022",
+
+  "SyncfusionKey": "xxx"
+
   
 }
 
