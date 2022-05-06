@@ -154,6 +154,11 @@ namespace Notes2022.Client.Pages
                 if (!x)
                 {
                     await myState.GetLoginReplyAsync();
+                    if (!myState.IsAuthenticated)
+                    {
+                        Globals.returnUrl = Navigation.Uri;
+                        Navigation.NavigateTo("authentication/login");
+                    }
                 }
                 await sessionStorage.SetItemAsync<bool>("InSearch", false);
                 await sessionStorage.RemoveItemAsync("SearchIndex");

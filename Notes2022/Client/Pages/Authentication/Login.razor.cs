@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Components;
 using Notes2022.Proto;
 using System.ComponentModel.DataAnnotations;
 
@@ -26,6 +27,9 @@ namespace Notes2022.Client.Pages.Authentication
             public int RememberHours { get; set; }
         }
 
+        [Parameter]
+        public string returnURL { get; set; }
+
 
         public string myCookieValue { get; set; } = "";
 
@@ -35,6 +39,8 @@ namespace Notes2022.Client.Pages.Authentication
 
         private async Task GotoLogin()
         {
+            string retUrl = Globals.returnUrl;
+            Globals.returnUrl = string.Empty;
             LoginRequest req = new LoginRequest()
             { Email = Input.Email, Password = Input.Password, Hours = Input.RememberHours };
             LoginReply ar = await AuthClient.LoginAsync(req);
@@ -54,7 +60,7 @@ namespace Notes2022.Client.Pages.Authentication
             Globals.LoginDisplay?.Reload();
             Globals.NavMenu?.Reload();
 
-            Navigation.NavigateTo("");
+            Navigation.NavigateTo(retUrl);
         }
     }
 }

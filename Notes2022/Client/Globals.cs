@@ -17,6 +17,9 @@ namespace Notes2022.Client
 
         public static string Cookie { get; } = "notes2022login";
 
+        public static string returnUrl { get; set; } = string.Empty;
+
+
         public static DateTime LocalTimeBlazor(DateTime dt)
         {
             int OHours = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).Hours;
