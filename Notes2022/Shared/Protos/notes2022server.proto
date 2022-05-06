@@ -30,6 +30,66 @@ package notes2022server;
 
 import "google/protobuf/timestamp.proto";
 
+
+service Notes2022Server {
+// Account Services
+
+	rpc Register(RegisterRequest) returns (AuthReply);
+	rpc Login(LoginRequest) returns (LoginReply);
+	rpc Logout(NoRequest) returns (AuthReply);
+	rpc ConfirmEmail(ConfirmEmailRequest) returns (AuthReply);
+
+// Notes Services proper
+
+	rpc GetUserList(NoRequest) returns (GAppUserList);
+	rpc GetUserRoles(AppUserRequest) returns (EditUserViewModel);
+	rpc UpdateUserRoles(EditUserViewModel) returns (NoRequest);
+	rpc CreateNoteFile(GNotefile) returns (GNotefile);
+	rpc GetHomePageModel(NoRequest) returns (HomePageModel);
+	rpc GetAdminPageModel(NoRequest) returns (HomePageModel);
+	rpc UpdateNoteFile(GNotefile) returns (GNotefile);
+	rpc DeleteNoteFile(GNotefile) returns (NoRequest);
+	rpc Import(ImportRequest) returns (NoRequest);
+	rpc GetNoteFileIndexData(NoteIndexRequest) returns (NoteDisplayIndexModel);
+	rpc GetNoteContent(DisplayModelRequest) returns (DisplayModel);
+	rpc GetAccessAndUserList(AccessAndUserListRequest) returns (AccessAndUserList);
+	rpc GetAccessList(AccessAndUserListRequest) returns (GNoteAccessList);
+	rpc UpdateAccessItem(GNoteAccess) returns (GNoteAccess);
+	rpc DeleteAccessItem(GNoteAccess) returns (NoRequest);
+	rpc AddAccessItem(GNoteAccess) returns (GNoteAccess);
+	rpc GetUserData(NoRequest) returns (GAppUser);
+	rpc UpdateUserData(GAppUser) returns (GAppUser);
+	rpc GetVersions(GetVersionsRequest) returns (GNoteHeaderList);
+	rpc GetSequencer(NoRequest) returns (GSequencerList);
+	rpc CreateSequencer(SCheckModel) returns (NoRequest);
+	rpc DeleteSequencer(SCheckModel) returns (NoRequest);
+	rpc UpdateSequencer(GSequencer) returns (NoRequest);
+	rpc UpdateSequencerOrdinal(GSequencer) returns (NoRequest);
+	rpc GetNoteFile(NoteIndexRequest) returns (GNotefile);
+	rpc CreateNewNote(TextViewModel) returns (GNoteHeader);
+	rpc UpdateNote(TextViewModel) returns (GNoteHeader);
+	rpc GetHeaderForNoteId(NoteId) returns (GNoteHeader);
+	rpc GetAbout(NoRequest) returns (AboutModel);
+	rpc SendEmail(GEmail) returns (NoRequest);		// unauthenticated - slower - use it too much and it really hurts you!
+	rpc SendEmailAuth(GEmail) returns (NoRequest);	// authenticated
+	rpc GetExport(ExportRequest) returns (GNoteHeaderList);
+	rpc GetExport2(NoteId) returns (GNoteContent);
+	rpc DoForward(ForwardViewModel) returns (NoRequest);
+	rpc GetNoteFilesOrderedByName(NoRequest) returns (GNotefileList);
+	rpc CopyNote(CopyModel) returns (NoRequest);
+	rpc DeleteNote(NoteId) returns (NoRequest);
+	rpc GetExportJson(ExportRequest) returns (JsonExport);
+	rpc GetTextFile(AString) returns (AString);
+
+	//	rpc GetAppUser(AppUserRequest) returns (GAppUser);
+	//	rpc SpinUp(NoRequest) returns (NoRequest);
+	//  rpc GetAllNotefiles(NoRequest) returns (GNotefileList);
+	//	rpc GetNewestNote(NoRequest) returns (GNoteHeader);
+
+}
+
+
+
 // used generically -  used when no data needed for request or response
 message NoRequest {
 }
@@ -100,20 +160,20 @@ message EditUserViewModel {
 //
 // Database entity related stuff
 //
-// gRPC representation of database tables/row prefixed with "G"
+// gRPC representation of database tables/rows prefixed with "G"
 //
 message AppUserRequest {
 	string subject = 1;
 }
 
-// Includes user defined elements
+// Includes user defined elements and Id
 message GAppUser {
-	string id = 1;
+	string id = 1;			// = Subject in Jwt
 	string displayName = 2;
-	int32 timeZoneID = 3;
+	int32 timeZoneID = 3;	// obsolete
 	int32 ipref0 = 4;
 	int32 ipref1 = 5;
-	int32 ipref2 = 6;
+	int32 ipref2 = 6;		// page size
 	int32 ipref3 = 7;
 	int32 ipref4 = 8;
 	int32 ipref5 = 9;
@@ -124,11 +184,11 @@ message GAppUser {
 	bool pref0 = 14;
 	bool pref1 = 15;
 	bool pref2 = 16;
-	bool pref3 = 17;
-	bool pref4 = 18;
-	bool pref5 = 19;
+	bool pref3 = 17;		// Show Responses by default
+	bool pref4 = 18;		// Flip Response order by default
+	bool pref5 = 19;		// Show Response Content on index by default when expanded
 	bool pref6 = 20;
-	bool pref7 = 21;
+	bool pref7 = 21;		// Show Content on index by default when expanded
 	bool pref8 = 22;
 	bool pref9 = 23;
 }
@@ -409,62 +469,7 @@ message JsonExport {
 	GNoteHeaderList NoteHeaders = 2;
 }
 
-
-service Notes2022Server {
-
-	rpc SpinUp(NoRequest) returns (NoRequest);
-
-// Account Services
-
-	rpc Register(RegisterRequest) returns (AuthReply);
-	rpc Login(LoginRequest) returns (LoginReply);
-	rpc Logout(NoRequest) returns (AuthReply);
-	rpc ConfirmEmail(ConfirmEmailRequest) returns (AuthReply);
-
-// Notes Services proper
-
-//	rpc GetAppUser(AppUserRequest) returns (GAppUser);
-	rpc GetUserList(NoRequest) returns (GAppUserList);
-	rpc GetUserRoles(AppUserRequest) returns (EditUserViewModel);
-	rpc UpdateUserRoles(EditUserViewModel) returns (NoRequest);
-	rpc CreateNoteFile(GNotefile) returns (GNotefile);
-	rpc GetHomePageModel(NoRequest) returns (HomePageModel);
-	rpc GetAdminPageModel(NoRequest) returns (HomePageModel);
-	rpc UpdateNoteFile(GNotefile) returns (GNotefile);
-	rpc DeleteNoteFile(GNotefile) returns (NoRequest);
-	rpc Import(ImportRequest) returns (NoRequest);
-	rpc GetNoteFileIndexData(NoteIndexRequest) returns (NoteDisplayIndexModel);
-	rpc GetNoteContent(DisplayModelRequest) returns (DisplayModel);
-	rpc GetAccessAndUserList(AccessAndUserListRequest) returns (AccessAndUserList);
-	rpc GetAccessList(AccessAndUserListRequest) returns (GNoteAccessList);
-	rpc UpdateAccessItem(GNoteAccess) returns (GNoteAccess);
-	rpc DeleteAccessItem(GNoteAccess) returns (NoRequest);
-	rpc AddAccessItem(GNoteAccess) returns (GNoteAccess);
-	rpc GetUserData(NoRequest) returns (GAppUser);
-	rpc UpdateUserData(GAppUser) returns (GAppUser);
-	rpc GetVersions(GetVersionsRequest) returns (GNoteHeaderList);
-	rpc GetSequencer(NoRequest) returns (GSequencerList);
-	rpc CreateSequencer(SCheckModel) returns (NoRequest);
-	rpc DeleteSequencer(SCheckModel) returns (NoRequest);
-	rpc UpdateSequencer(GSequencer) returns (NoRequest);
-	rpc UpdateSequencerOrdinal(GSequencer) returns (NoRequest);
-	rpc GetNoteFile(NoteIndexRequest) returns (GNotefile);
-	rpc CreateNewNote(TextViewModel) returns (GNoteHeader);
-	rpc UpdateNote(TextViewModel) returns (GNoteHeader);
-	rpc GetHeaderForNoteId(NoteId) returns (GNoteHeader);
-	rpc GetAbout(NoRequest) returns (AboutModel);
-	rpc SendEmail(GEmail) returns (NoRequest);		// unauthenticated - slower - use it too much and it really hurts you!
-	rpc SendEmailAuth(GEmail) returns (NoRequest);	// authenticated
-	rpc GetExport(ExportRequest) returns (GNoteHeaderList);
-	rpc GetExport2(NoteId) returns (GNoteContent);
-	rpc DoForward(ForwardViewModel) returns (NoRequest);
-	rpc GetNoteFilesOrderedByName(NoRequest) returns (GNotefileList);
-	rpc CopyNote(CopyModel) returns (NoRequest);
-	rpc DeleteNote(NoteId) returns (NoRequest);
-	rpc GetExportJson(ExportRequest) returns (JsonExport);
-
-	//  rpc GetAllNotefiles(NoRequest) returns (GNotefileList);
-	//	rpc GetNewestNote(NoRequest) returns (GNoteHeader);
-
+message AString {
+	string val = 1;
 }
 

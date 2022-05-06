@@ -31,16 +31,16 @@ namespace Notes2022.Client.Shared
             if (module is null)
                 module = await JS.InvokeAsync<IJSObjectReference>("import", "./cookies.js");
 
-            if (!Preloaded)
-            {
-                Preloaded = true;
-                try
-                {
-                    await Client.SpinUpAsync(new NoRequest());
-                }
-                catch (Exception ex)
-                { }
-            }
+            //if (!Preloaded)
+            //{
+            //    Preloaded = true;
+            //    try
+            //    {
+            //        await Client.SpinUpAsync(new NoRequest());
+            //    }
+            //    catch (Exception ex)
+            //    { }
+            //}
 
             if (myState.IsAuthenticated)    // nothing more to do here!
                 return;

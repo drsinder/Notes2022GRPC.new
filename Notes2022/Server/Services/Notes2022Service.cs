@@ -69,10 +69,10 @@ namespace Notes2022.Server.Services
             _emailSender = emailSender;
         }
 
-        public override async Task<NoRequest> SpinUp(NoRequest request, ServerCallContext context)
-        {
-            return new NoRequest();
-        }
+        //public override async Task<NoRequest> SpinUp(NoRequest request, ServerCallContext context)
+        //{
+        //    return new NoRequest();
+        //}
 
         public override async Task<AuthReply> Register(RegisterRequest request, ServerCallContext context)
         {
@@ -368,7 +368,7 @@ namespace Notes2022.Server.Services
             NoteFile hpmf = _db.NoteFile.Where(p => p.NoteFileName == "homepagemessages").FirstOrDefault();
             if (hpmf is not null)
             {
-                NoteHeader hpmh = _db.NoteHeader.Where(p => p.NoteFileId == hpmf.Id).OrderByDescending(p => p.CreateDate).FirstOrDefault();
+                NoteHeader hpmh = _db.NoteHeader.Where(p => p.NoteFileId == hpmf.Id && !p.IsDeleted).OrderByDescending(p => p.CreateDate).FirstOrDefault();
                 if (hpmh is not null)
                 {
                     homepageModel.Message = _db.NoteContent.Where(p => p.NoteHeaderId == hpmh.Id).FirstOrDefault().NoteBody;
@@ -1243,6 +1243,35 @@ namespace Notes2022.Server.Services
                 var x = await _db.Tags.Where(p => p.NoteHeaderId == item.Id).ToListAsync();
                 item.Tags = Tags.GetGTagsList(x);
             }
+
+            return stuff;
+        }
+
+        public override async Task<AString> GetTextFile(AString request, ServerCallContext context)
+        {
+            AString stuff = new AString();
+            stuff.Val = String.Empty;
+
+            string myFileInput = Globals.ImportRoot + "Text\\" + request.Val;
+            // Get the input file
+            StreamReader file;
+            try
+            {
+                file = new StreamReader(myFileInput);
+            }
+            catch
+            {
+                return stuff;
+            }
+            
+            StringBuilder sb = new StringBuilder();
+            string line;
+            while ((line = await file.ReadLineAsync()) is not null)
+            {
+                sb.AppendLine(line);
+            }
+
+            stuff.Val = sb.ToString();
 
             return stuff;
         }
