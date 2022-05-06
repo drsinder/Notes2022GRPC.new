@@ -30,6 +30,9 @@ namespace Notes2022.Client.Pages
             }
             // find the file id for this note - get note header
             FileId = (await Client.GetHeaderForNoteIdAsync(new NoteId() { Id = NoteId }, myState.AuthHeader)).NoteFileId;
+
+            Globals.GotoNote = NoteId;
+            Navigation.NavigateTo("noteindex/" + FileId);
         }
 
     }

@@ -19,6 +19,7 @@ namespace Notes2022.Client
 
         public static string returnUrl { get; set; } = string.Empty;
 
+        public static long GotoNote { get; set; } = 0;
 
         public static DateTime LocalTimeBlazor(DateTime dt)
         {

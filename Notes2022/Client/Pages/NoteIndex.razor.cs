@@ -188,6 +188,9 @@ namespace Notes2022.Client.Pages
 
                 if (IsSeq)
                     await StartSeq();
+
+                CurrentNoteId = Globals.GotoNote;
+                Globals.GotoNote = 0;
             }
             catch (Exception ex)
             {
