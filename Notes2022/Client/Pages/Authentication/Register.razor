@@ -3,23 +3,17 @@
 @using Microsoft.AspNetCore.Components
 @using Grpc.Core
 @using Grpc.Net.Client.Web
-@using Notes2022.Client
-@using Notes2022.Proto
 @using Grpc.Net.Client
 @using Google.Protobuf.WellKnownTypes
-
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.Inputs
 
 @inject Notes2022Server.Notes2022ServerClient AuthClient
 @inject NavigationManager Navigation
 
-<h1>Register</h1>
-
 <div class="row">
+    <div class="col-md-4"></div>
     <div class="col-md-4">
         <section>
-
+                <h1>Register</h1>
                 <h2>Use a local account to log in.</h2>
                 <hr />
                 <EditForm id="registerform" Model="@Input">
@@ -53,5 +47,9 @@
                 </EditForm>
 
         </section>
+        <br/>
+        <hr/>
+        <br/>
+        Copyright &copy; 2022 Dale Sinder
     </div>
 </div>

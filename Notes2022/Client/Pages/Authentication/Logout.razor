@@ -9,60 +9,18 @@
 @using Google.Protobuf.WellKnownTypes
 @using System.Web
 
-@implements IAsyncDisposable
 @inject Notes2022Server.Notes2022ServerClient AuthClient
 @inject NavigationManager Navigation
-@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
-@inject IJSRuntime JS;
 
-@*@inject StateContainer myState
-*@
 <h3>Logout</h3>
 
 @code {
 
-    //private IJSObjectReference? module;
 
     protected override async Task OnInitializedAsync()
     {
         await AuthClient.LogoutAsync(new NoRequest(), myState.AuthHeader);
         myState.LoginReply = null;
-        //await WriteCookies(new LoginReply());
-
-        //await sessionStorage.RemoveItemAsync("LoginReply");
-        //Globals.LoginDisplay?.Reload();
-        //Globals.NavMenu?.Reload();
         Navigation.NavigateTo("");
     }
-
-        async ValueTask IAsyncDisposable.DisposeAsync()
-        {
-            //if (module is not null)
-            //{
-            //    await module.DisposeAsync();
-            //}
-        }
-
-        //protected override async Task OnAfterRenderAsync(bool firstRender)
-        //{
-        //    if (firstRender)
-        //    {
-        //        module = await JS.InvokeAsync<IJSObjectReference>("import",
-        //            "./cookies.js");
-        //    }
-        //}
-
-        //protected async Task WriteCookies(LoginReply ar)
-        //{
-        //    try
-        //    {
-        //        string xx = Globals.Base64Encode(HttpUtility.HtmlEncode(ar));
-        //        await module.InvokeAsync<string>("CreateCookie", Globals.Cookie, xx, 1);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
-
 }

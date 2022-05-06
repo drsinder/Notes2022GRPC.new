@@ -11,19 +11,14 @@
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.Inputs
 
-@*@implements IAsyncDisposable
-*@
 @inject Notes2022Server.Notes2022ServerClient AuthClient
 @inject NavigationManager Navigation
-@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
-@*@inject IJSRuntime JS;
-*@
-<h1>Login</h1>
 
 <div class="row">
+    <div class="col-md-4"></div>
     <div class="col-md-4">
         <section>
-
+                <h1>Login</h1>
                 <h2>Use a local account to log in.</h2>
                 <hr />
                 <EditForm id="loginform" Model="@Input">

@@ -115,7 +115,7 @@ namespace Notes2022.Server.Services
                 await _userManager.AddToRoleAsync(user, UserRoles.User);
             }
 
-            if (_userManager.Users.Count() == 1)
+            if (_userManager.Users.Count() == 1)        // first user is Admin
             {
                 if (await _roleManager.RoleExistsAsync(UserRoles.Admin))
                 {
@@ -129,7 +129,7 @@ namespace Notes2022.Server.Services
 
             string target = _configuration["AppUrl"] + "/authentication/confirmemail/" + payload;
             await _emailSender.SendEmailAsync(request.Email, "Confirm your email",
-                $"Please confirm your Notes 2022 account email by <a href='{target}'>clicking here</a>.");
+                $"Please confirm your Notes 2022 account email by <a href='{target}'>clicking here</a>.  You cannot login until you do this.");
 
             return new AuthReply() { Status = StatusCodes.Status200OK, Message = "User created!" };
         }
