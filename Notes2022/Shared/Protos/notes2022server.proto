@@ -2,10 +2,10 @@
     **
     ** Copyright © 2022, Dale Sinder
     **
-    ** Name: EditUserViewModel.cs
+    ** Name: notes2022server.proto
     **
     ** Description:
-    **      UserData + Roles list and membership
+    **      defines gRPC protocol for app
     **
     ** This program is free software: you can redistribute it and/or modify
     ** it under the terms of the GNU General Public License version 3 as
@@ -30,13 +30,14 @@ package notes2022server;
 
 import "google/protobuf/timestamp.proto";
 
-// used generically
+// used generically -  used when no data needed for request or response
 message NoRequest {
 }
 
 ///////////////////////////////////////////////
+//
 // Login, Logout, and Register stuff
-
+//
 message RegisterRequest {
 	string username = 1;
 	string email = 2;
@@ -44,13 +45,13 @@ message RegisterRequest {
 }
 
 message LoginRequest {
-	string email = 1;
+	string email = 1;		// email or name supported
 	string password = 2;
 	int32 hours = 3;
 }
 
 message UserInfo {
-	string subject = 1;
+	string subject = 1;		// userId
 	string email = 2;
 	string displayname = 3;
 	//repeated string roles = 4;  // obsolete/not working with cookies
@@ -71,6 +72,10 @@ message LoginReply {
 	int32 hours = 5;
 }
 
+/////////////////////////////////////////////////
+//
+// For Role editing
+//
 message UserRole {
 	string roleName = 1;
 	string roleId = 2;	
@@ -92,14 +97,16 @@ message EditUserViewModel {
 
 
 ///////////////////////////////////////////////
-
+//
 // Database entity related stuff
-
-
+//
+// gRPC representation of database tables/row prefixed with "G"
+//
 message AppUserRequest {
 	string subject = 1;
 }
 
+// Includes user defined elements
 message GAppUser {
 	string id = 1;
 	string displayName = 2;
@@ -162,8 +169,8 @@ message GNoteHeader {
 	bool isDeleted = 16;
 	int32 version = 17;
 	string directorMessage = 18;
-	GNoteContent content = 19;	// for JsonExport
-	GTagsList tags = 20;		// for JsonExport
+	GNoteContent content = 19;	// for JsonExport only
+	GTagsList tags = 20;		// for JsonExport only
 }
 
 message GNoteHeaderList {
@@ -262,9 +269,9 @@ message GLinkQueueList {
 }
 
 ///////////////////////////////////////////////
-
+//
 // Not Entites directly - Models for transfer of info to pages
-
+//
 message HomePageModel {
 	GNotefileList noteFiles = 1;
 	GNoteAccessList noteAccesses = 2;
@@ -416,11 +423,10 @@ service Notes2022Server {
 
 // Notes Services proper
 
-	rpc GetAppUser(AppUserRequest) returns (GAppUser);
+//	rpc GetAppUser(AppUserRequest) returns (GAppUser);
 	rpc GetUserList(NoRequest) returns (GAppUserList);
 	rpc GetUserRoles(AppUserRequest) returns (EditUserViewModel);
 	rpc UpdateUserRoles(EditUserViewModel) returns (NoRequest);
-	rpc GetAllNotefiles(NoRequest) returns (GNotefileList);
 	rpc CreateNoteFile(GNotefile) returns (GNotefile);
 	rpc GetHomePageModel(NoRequest) returns (HomePageModel);
 	rpc GetAdminPageModel(NoRequest) returns (HomePageModel);
@@ -457,7 +463,7 @@ service Notes2022Server {
 	rpc DeleteNote(NoteId) returns (NoRequest);
 	rpc GetExportJson(ExportRequest) returns (JsonExport);
 
-
+	//  rpc GetAllNotefiles(NoRequest) returns (GNotefileList);
 	//	rpc GetNewestNote(NoRequest) returns (GNoteHeader);
 
 }

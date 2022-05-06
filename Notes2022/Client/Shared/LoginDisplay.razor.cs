@@ -11,7 +11,7 @@ namespace Notes2022.Client.Shared
 
         private void GotoProfile()
         {
-            Navigation.NavigateTo("authentication/profile");
+            //Navigation.NavigateTo("authentication/profile");
         }
 
         private void GotoRegister()
