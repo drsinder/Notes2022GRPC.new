@@ -14,7 +14,7 @@ namespace Notes2022.Client.Shared
 
         private IJSObjectReference? module;
 
-        private static bool Preloaded { get; set; } = false;
+        //private static bool Preloaded { get; set; } = false;
 
         async ValueTask IAsyncDisposable.DisposeAsync()
         {

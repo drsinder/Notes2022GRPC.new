@@ -13,14 +13,12 @@ using Notes2022.Client.Shared;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-string licenseKey = builder.Configuration["SyncfusionKey"];
-
-SyncfusionLicenseProvider.RegisterLicense(licenseKey);
+SyncfusionLicenseProvider.RegisterLicense(builder.Configuration["SyncfusionKey"]);
 
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddBlazoredModal();
 builder.Services.AddBlazoredSessionStorage();
@@ -28,46 +26,44 @@ builder.Services.AddSingleton<MainLayout>();
 
 builder.Services.AddSyncfusionBlazor(options => { options.IgnoreScriptIsolation = true; });
 
-HttpClient? httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
-
 //var handler = new SubdirectoryHandler(new HttpClientHandler(), "/Notes2022GRCP");
 
 builder.Services.AddSingleton(services =>
 {
+	HttpClient? httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
 	var baseUri = services.GetRequiredService<NavigationManager>().BaseUri;
 	var channel = GrpcChannel.ForAddress(baseUri, new GrpcChannelOptions { HttpClient = httpClient });
 	return new Notes2022Server.Notes2022ServerClient(channel);
 });
 
-
 await builder.Build().RunAsync();
 
 
 
-/// <summary>
-/// A delegating handler that adds a subdirectory to the URI of gRPC requests.
-/// </summary>
-public class SubdirectoryHandler : DelegatingHandler
-{
-    private readonly string _subdirectory;
+///// <summary>
+///// A delegating handler that adds a subdirectory to the URI of gRPC requests.
+///// </summary>
+//public class SubdirectoryHandler : DelegatingHandler
+//{
+//    private readonly string _subdirectory;
 
-    public SubdirectoryHandler(HttpMessageHandler innerHandler, string subdirectory)
-        : base(innerHandler)
-    {
-        _subdirectory = subdirectory;
-    }
+//    public SubdirectoryHandler(HttpMessageHandler innerHandler, string subdirectory)
+//        : base(innerHandler)
+//    {
+//        _subdirectory = subdirectory;
+//    }
 
-    protected override Task<HttpResponseMessage> SendAsync(
-        HttpRequestMessage request, CancellationToken cancellationToken)
-    {
-        var old = request.RequestUri;
+//    protected override Task<HttpResponseMessage> SendAsync(
+//        HttpRequestMessage request, CancellationToken cancellationToken)
+//    {
+//        var old = request.RequestUri;
 
-        var url = $"{old.Scheme}://{old.Host}:{old.Port}";
-        url += $"{_subdirectory}{request.RequestUri.AbsolutePath}";
-        request.RequestUri = new Uri(url, UriKind.Absolute);
+//        var url = $"{old.Scheme}://{old.Host}:{old.Port}";
+//        url += $"{_subdirectory}{request.RequestUri.AbsolutePath}";
+//        request.RequestUri = new Uri(url, UriKind.Absolute);
 
-        var x = base.SendAsync(request, cancellationToken);
+//        var x = base.SendAsync(request, cancellationToken);
 
-        return x;
-    }
-}
+//        return x;
+//    }
+//}
