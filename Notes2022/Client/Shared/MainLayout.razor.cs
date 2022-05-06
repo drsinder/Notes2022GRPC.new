@@ -60,10 +60,13 @@ namespace Notes2022.Client.Shared
         /// Try to get login cookie
         /// </summary>
         /// <returns></returns>
-        protected async Task GetLoginReplyAsync()
+        public async Task GetLoginReplyAsync()
         {
             try
             {
+                if (module is null)
+                    module = await JS.InvokeAsync<IJSObjectReference>("import", "./cookies.js");
+
                 string cookie = await ReadCookie(Globals.Cookie);
                 if (!string.IsNullOrEmpty(cookie))
                 {
@@ -71,6 +74,12 @@ namespace Notes2022.Client.Shared
                     savedLoginValue = JsonSerializer.Deserialize<LoginReply>(cookie);
 
                     savedLogin = savedLoginValue;   // save the value - login
+
+                    if (Globals.NavMenu != null)
+                        await Globals.NavMenu.Reload();
+                    if (Globals.LoginDisplay != null)
+                        Globals.LoginDisplay.Reload();
+
                     NotifyStateChanged();           // notify subscribers
                 }
             }

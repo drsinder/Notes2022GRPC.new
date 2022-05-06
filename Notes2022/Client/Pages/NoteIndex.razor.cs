@@ -136,37 +136,64 @@ namespace Notes2022.Client.Pages
         {
         }
 
+        //protected override void OnParametersSet()
+        //{
+        //    OnParametersSetAsync().GetAwaiter();    // notified of login status change
+        //    StateHasChanged();
+        //}
+
         /// <summary>
         /// Set up and get data
         /// </summary>
         /// <returns></returns>
         protected override async Task OnParametersSetAsync()
         {
-            await sessionStorage.SetItemAsync<bool>("InSearch", false);
-            await sessionStorage.RemoveItemAsync("SearchIndex");
-            await sessionStorage.RemoveItemAsync("SearchList");
-
-            IsSeq = await sessionStorage.GetItemAsync<bool>("IsSeq");
-            if (IsSeq && NotesfileId < 0)
+            try
             {
-                NotesfileId = -NotesfileId;
+                bool x = myState.IsAuthenticated;
+                if (!x)
+                {
+                    await myState.GetLoginReplyAsync();
+                }
+                await sessionStorage.SetItemAsync<bool>("InSearch", false);
+                await sessionStorage.RemoveItemAsync("SearchIndex");
+                await sessionStorage.RemoveItemAsync("SearchList");
+
+                IsSeq = await sessionStorage.GetItemAsync<bool>("IsSeq");
+                if (IsSeq && NotesfileId < 0)
+                {
+                    NotesfileId = -NotesfileId;
+                }
+
+                // Get the notefile data
+                Model = await Client.GetNoteFileIndexDataAsync(new NoteIndexRequest() { NoteFileId = NotesfileId }, myState.AuthHeader);
+
+                if (!string.IsNullOrEmpty(Model.Message))
+                    return;
+
+                // Set preferences for user
+                PageSize = Model.UserData.Ipref2;
+                ShowContent = Model.UserData.Pref7;
+                ShowContentR = Model.UserData.Pref5;
+
+                ExpandAll = false; // Model.UserData.Pref3;
+
+                // restore page
+                CurPage = await sessionStorage.GetItemAsync<int>("IndexPage");
+
+                if (IsSeq)
+                    await StartSeq();
             }
-
-            // Get the notefile data
-            Model = await Client.GetNoteFileIndexDataAsync(new NoteIndexRequest() { NoteFileId = NotesfileId }, myState.AuthHeader);
-
-            // Set preferences for user
-            PageSize = Model.UserData.Ipref2;
-            ShowContent = Model.UserData.Pref7;
-            ShowContentR = Model.UserData.Pref5;
-
-            ExpandAll = false; // Model.UserData.Pref3;
-
-            // restore page
-            CurPage = await sessionStorage.GetItemAsync<int>("IndexPage");
-
-            if (IsSeq)
-                await StartSeq();
+            catch (Exception ex)
+            {
+                PageSize = 12;
+                CurPage = 1;
+                CurrentNoteId = 0;
+                Model = new NoteDisplayIndexModel();
+                Model.Message = ex.Message;
+                if (ex.InnerException != null)
+                    Model.Message += ":  " + ex.InnerException.Message;
+            }
         }
 
         /// <summary>
@@ -813,6 +840,7 @@ namespace Notes2022.Client.Pages
             }
             else
             {
+                myState.OnChange += OnParametersSet; // get notified of login status changes
             }
         }
     }

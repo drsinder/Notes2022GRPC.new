@@ -43,9 +43,14 @@ else                    @*    Index mode        *@
     {
         <p class="center"><em>Loading...</em></p>
     }
-    else
+    else if (!string.IsNullOrEmpty(Model.Message))
     {
         <p>@Model.Message</p>
+    }
+    else
+    {
+@*        <p>@Model.Message</p>
+*@        
         <h3 class="center">@Model.NoteFile.NoteFileTitle - @Model.NoteFile.NoteFileName  @Model.Message</h3>
 
         <div>

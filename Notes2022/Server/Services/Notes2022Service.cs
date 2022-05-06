@@ -480,44 +480,57 @@ namespace Notes2022.Server.Services
             {
                 if (user.FindFirst(ClaimTypes.NameIdentifier) != null && user.FindFirst(ClaimTypes.NameIdentifier).Value != null)
                 {
-                    appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
-
-                    isAdmin = await _userManager.IsInRoleAsync(appUser, "Admin");
-                    isUser = await _userManager.IsInRoleAsync(appUser, "User");
-                    if (!isUser)
-                        return idxModel;    // not a User?  You get NOTHING!
-
-                    NoteAccess noteAccess = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, arcId);
-                    if (isAdmin)
+                    try
                     {
-                        noteAccess.ViewAccess = true;    // Admins can always view access list
+                        appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+                        isAdmin = await _userManager.IsInRoleAsync(appUser, "Admin");
+                        isUser = await _userManager.IsInRoleAsync(appUser, "User");
+                        if (!isUser)
+                            return idxModel;    // not a User?  You get NOTHING!
+
+                        NoteAccess noteAccess = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, arcId);
+                        if (noteAccess is null)
+                        {
+                            idxModel.Message = "File does not exist";
+                            return idxModel;
+                        }
+                        if (isAdmin)
+                        {
+                            noteAccess.ViewAccess = true;    // Admins can always view access list
+                        }
+                        idxModel.MyAccess = noteAccess.GetGNoteAccess();
+
+                        idxModel.NoteFile = (await NoteDataManager.GetFileById(_db, request.NoteFileId)).GetGNotefile();
+
+                        if (!idxModel.MyAccess.ReadAccess && !idxModel.MyAccess.Write)
+                        {
+                            idxModel.Message = "You do not have access to file " + idxModel.NoteFile.NoteFileName;
+                            return idxModel;
+                        }
+
+                        List<LinkedFile> linklist = await _db.LinkedFile.Where(p => p.HomeFileId == request.NoteFileId).ToListAsync();
+                        if (linklist is not null && linklist.Count > 0)
+                            idxModel.LinkedText = " (Linked)";
+
+                        List<NoteHeader> allhead = await NoteDataManager.GetAllHeaders(_db, request.NoteFileId, arcId);
+                        idxModel.AllNotes = NoteHeader.GetGNoteHeaderList(allhead);
+
+                        List<NoteHeader> notes = allhead.FindAll(p => p.ResponseOrdinal == 0).OrderBy(p => p.NoteOrdinal).ToList();
+                        idxModel.Notes = NoteHeader.GetGNoteHeaderList(notes);
+
+                        idxModel.UserData = appUser.GetGAppUser();
+
+                        List<Tags> tags = await _db.Tags.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == arcId).ToListAsync();
+                        idxModel.Tags = Tags.GetGTagsList(tags);
+
+                        idxModel.ArcId = arcId;
                     }
-                    idxModel.MyAccess = noteAccess.GetGNoteAccess();
-
-                    idxModel.NoteFile = (await NoteDataManager.GetFileById(_db, request.NoteFileId)).GetGNotefile();
-
-                    if (!idxModel.MyAccess.ReadAccess && !idxModel.MyAccess.Write)
+                    catch (Exception ex1)
                     {
-                        idxModel.Message = "You do not have access to file " + idxModel.NoteFile.NoteFileName;
-                        return idxModel;
+                        idxModel.Message = ex1.Message;
+
                     }
-
-                    List<LinkedFile> linklist = await _db.LinkedFile.Where(p => p.HomeFileId == request.NoteFileId).ToListAsync();
-                    if (linklist is not null && linklist.Count > 0)
-                        idxModel.LinkedText = " (Linked)";
-
-                    List<NoteHeader> allhead = await NoteDataManager.GetAllHeaders(_db, request.NoteFileId, arcId);
-                    idxModel.AllNotes = NoteHeader.GetGNoteHeaderList(allhead);
-
-                    List<NoteHeader> notes = allhead.FindAll(p => p.ResponseOrdinal == 0).OrderBy(p => p.NoteOrdinal).ToList();
-                    idxModel.Notes = NoteHeader.GetGNoteHeaderList(notes);
-
-                    idxModel.UserData = appUser.GetGAppUser();
-
-                    List<Tags> tags = await _db.Tags.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == arcId).ToListAsync();
-                    idxModel.Tags = Tags.GetGTagsList(tags);
-
-                    idxModel.ArcId = arcId;
                 }
             }
             catch (Exception ex)
