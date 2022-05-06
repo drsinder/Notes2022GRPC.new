@@ -13,9 +13,7 @@ using Notes2022.Client.Shared;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-//string AppSubDir = builder.Configuration["AppSubDir"];
-
-string licenseKey = "NjIxNzc4QDMyMzAyZTMxMmUzMEY5eUlKTXBBSFFKNzdBSCsyNE12eTBGM2dwUkRnbUJmbjEraEwraTJqN2s9";
+string licenseKey = builder.Configuration["SyncfusionKey"];
 
 SyncfusionLicenseProvider.RegisterLicense(licenseKey);
 
