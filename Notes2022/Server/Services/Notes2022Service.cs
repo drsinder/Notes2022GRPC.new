@@ -1252,6 +1252,12 @@ namespace Notes2022.Server.Services
             AString stuff = new AString();
             stuff.Val = String.Empty;
 
+            if (request.Val == "syncfusionkey.rsghjjsrsrj43632353")
+            {
+                stuff.Val = _configuration["SyncfusionKey"];
+                return stuff;
+            }
+
             string myFileInput = Globals.ImportRoot + "Text\\" + request.Val;
             // Get the input file
             StreamReader file;

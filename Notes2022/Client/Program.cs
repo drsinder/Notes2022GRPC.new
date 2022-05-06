@@ -13,16 +13,14 @@ using Notes2022.Client.Shared;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-SyncfusionLicenseProvider.RegisterLicense(builder.Configuration["SyncfusionKey"]);
-
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) }); // not needed when using grpc and no controllers.
 
 builder.Services.AddBlazoredModal();
 builder.Services.AddBlazoredSessionStorage();
-builder.Services.AddSingleton<MainLayout>();
+builder.Services.AddSingleton<MainLayout>();	// for login state mgt = "myState" injection in _imports.razor
 
 builder.Services.AddSyncfusionBlazor(options => { options.IgnoreScriptIsolation = true; });
 

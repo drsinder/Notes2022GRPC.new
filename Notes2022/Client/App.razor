@@ -1,4 +1,7 @@
-﻿<Blazored.Modal.CascadingBlazoredModal HideCloseButton="true" DisableBackgroundCancel="true" HideHeader="true" Class="blazored-custom-modal">
+﻿@using Syncfusion.Licensing
+@inject Notes2022Server.Notes2022ServerClient Client
+
+<Blazored.Modal.CascadingBlazoredModal HideCloseButton="true" DisableBackgroundCancel="true" HideHeader="true" Class="blazored-custom-modal">
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -12,3 +15,13 @@
         </NotFound>
     </Router>
 </Blazored.Modal.CascadingBlazoredModal>
+
+@code
+{
+    protected override async Task OnParametersSetAsync()
+    {
+        AString key = await Client.GetTextFileAsync(new AString() { Val = "syncfusionkey.rsghjjsrsrj43632353" });
+        SyncfusionLicenseProvider.RegisterLicense(key.Val);
+    }
+
+}
