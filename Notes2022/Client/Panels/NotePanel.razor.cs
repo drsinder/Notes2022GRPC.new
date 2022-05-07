@@ -332,7 +332,7 @@ namespace Notes2022.Client.Panels
             sb.Append(currentHeader.AuthorName + "    ");
             sb.Append(Globals.LocalTimeBlazor(currentHeader.LastEdited.ToDateTime()).ToLongDateString() + " " + Globals.LocalTimeBlazor(currentHeader.LastEdited.ToDateTime()).ToShortTimeString());
 
-            //GNoteContent currentContent = await DAL.GetExport2(Http, currentHeader.Id);
+            GNoteContent currentContent = await Client.GetExport2Async(new NoteId() {Id = currentHeader.Id}  , myState.AuthHeader);             //DAL.GetExport2(Http, currentHeader.Id);
 
             if (!string.IsNullOrEmpty(currentHeader.DirectorMessage))
             {
@@ -350,7 +350,7 @@ namespace Notes2022.Client.Panels
             //    sb.Append("</span>");
             //}
             sb.Append("</h4></div><div class=\"notebody\" >");
-            //sb.Append(currentContent.NoteBody);
+            sb.Append(currentContent.NoteBody);
             sb.Append("</div>");
 
             if (wholeString && currentHeader.ResponseOrdinal < baseHeader.ResponseCount) // more responses in string
@@ -366,7 +366,7 @@ namespace Notes2022.Client.Panels
 
             var parameters = new ModalParameters();
             parameters.Add("PrintStuff", stuff);    // pass string to print dialog
-            //Modal.Show<PrintDlg>("", parameters);   // invloke print dialog with our output
+            Modal.Show<PrintDlg>("", parameters);   // invloke print dialog with our output
         }
 
         /// <summary>
