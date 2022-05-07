@@ -187,7 +187,10 @@ namespace Notes2022.Client.Pages
                 CurPage = await sessionStorage.GetItemAsync<int>("IndexPage");
 
                 if (IsSeq)
+                {
                     await StartSeq();
+                    return;
+                }
 
                 CurrentNoteId = Globals.GotoNote;
                 Globals.GotoNote = 0;
