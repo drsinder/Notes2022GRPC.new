@@ -64,6 +64,8 @@ namespace Notes2022.Client.Menus
         /// </summary>
         private System.Timers.Timer timer2 { get; set; }
 
+        private bool DoSeq { get; set; } = false;
+
         private bool collapseNavMenu = true;
         private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
@@ -103,10 +105,15 @@ namespace Notes2022.Client.Menus
         protected void TimerTick2(Object source, ElapsedEventArgs e)
         {
             mytime = DateTime.Now.ToShortTimeString();
-            //if (mytime != mytime2) // do we need to re-render?
+            if (mytime != mytime2) // do we need to re-render?
             {
                 StateHasChanged();
                 mytime2 = mytime;
+            }
+            if (DoSeq)
+            {
+                DoSeq = false;
+                StartSeq().GetAwaiter();
             }
         }
 
@@ -129,49 +136,58 @@ namespace Notes2022.Client.Menus
         /// <returns></returns>
         private async Task ExecMenu(string id)
         {
-            switch (id)
+            try
             {
-                case "MainHelp":
-                    Navigation.NavigateTo("help");
-                    break;
-                case "About":
-                    Navigation.NavigateTo("about");
-                    break;
-                case "License":
-                    Navigation.NavigateTo("license");
-                    break;
+                switch (id)
+                {
+                    case "MainHelp":
+                        Navigation.NavigateTo("help");
+                        break;
+                    case "About":
+                        Navigation.NavigateTo("about");
+                        break;
+                    case "License":
+                        Navigation.NavigateTo("license");
+                        break;
 
-                //case "Subscriptions":
-                //    Navigation.NavigateTo("subscribe");
-                //    break;
+                    //case "Subscriptions":
+                    //    Navigation.NavigateTo("subscribe");
+                    //    break;
 
-                case "MRecent":
-                    Navigation.NavigateTo("tracker");
-                    break;
+                    case "MRecent":
+                        Navigation.NavigateTo("tracker");
+                        break;
 
-                case "Recent":
-                    await StartSeq();
-                    break;
+                    case "Recent":
+                        DoSeq = true;
+                        break;
 
-                case "NoteFiles":
-                    Navigation.NavigateTo("admin/notefilelist");
-                    break;
+                    case "NoteFiles":
+                        Navigation.NavigateTo("admin/notefilelist");
+                        break;
 
-                case "Preferences":
-                    Navigation.NavigateTo("preferences");
-                    break;
+                    case "Preferences":
+                        Navigation.NavigateTo("preferences");
+                        break;
 
-                //case "Hangfire":
-                //    Navigation.NavigateTo(Globals.EditUserVModel.HangfireLoc, true);
-                //    break;
+                    //case "Hangfire":
+                    //    Navigation.NavigateTo(Globals.EditUserVModel.HangfireLoc, true);
+                    //    break;
 
-                case "Roles":
-                    Navigation.NavigateTo("admin/editroles");
-                    break;
+                    case "Roles":
+                        Navigation.NavigateTo("admin/editroles");
+                        break;
 
                     //case "Linked":
                     //    Navigation.NavigateTo("admin/linkindex");
                     //    break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -193,64 +209,69 @@ namespace Notes2022.Client.Menus
         /// <returns></returns>
         public async Task UpdateMenu()
         {
-
-            bool isAdmin = false;
-            bool isUser = false;
-
-            if (myState.IsAuthenticated)
+            try
             {
-                isAdmin = myState.IsAdmin;
-                isUser = myState.IsUser;
-            }
+                bool isAdmin = false;
+                bool isUser = false;
 
-            // make the whole menu
-            menuItemsTop = new List<MenuItem>();
-            MenuItem item;
+                if (myState.IsAuthenticated)
+                {
+                    isAdmin = myState.IsAdmin;
+                    isUser = myState.IsUser;
+                }
 
-            item = new() { Id = "Recent", Text = "Recent Notes" };
-            menuItemsTop.Add(item);
+                // make the whole menu
+                menuItemsTop = new List<MenuItem>();
+                MenuItem item;
 
-            MenuItem item3 = new() { Id = "Manage", Text = "Manage" };
-            item3.Items = new List<MenuItem>
+                item = new() { Id = "Recent", Text = "Recent Notes" };
+                menuItemsTop.Add(item);
+
+                MenuItem item3 = new() { Id = "Manage", Text = "Manage" };
+                item3.Items = new List<MenuItem>
             {
                 new () { Id = "MRecent", Text = "Recent" },
                 //new () { Id = "Subscriptions", Text = "Subscriptions" },
                 new () { Id = "Preferences", Text = "Preferences" }
             };
-            menuItemsTop.Add(item3);
+                menuItemsTop.Add(item3);
 
-            item = new() { Id = "Help", Text = "Help" };
-            item.Items = new List<MenuItem>
+                item = new() { Id = "Help", Text = "Help" };
+                item.Items = new List<MenuItem>
             {
                 new () { Id = "MainHelp", Text = "Help" },
                 new () { Id = "About", Text = "About" },
                 new () { Id = "License", Text = "License" }
             };
-            menuItemsTop.Add(item);
+                menuItemsTop.Add(item);
 
-            item = new MenuItem() { Id = "Admin", Text = "Admin" };
-            item.Items = new List<MenuItem>
+                item = new MenuItem() { Id = "Admin", Text = "Admin" };
+                item.Items = new List<MenuItem>
             {
                 new () { Id = "NoteFiles", Text = "NoteFiles" },
-                new () { Id = "Roles", Text = "Roles" },
+                new () { Id = "Roles", Text = "Roles" }
                 //new () { Id = "Linked", Text = "Linked" }
                 //new () { Id = "Hangfire", Text = "Hangfire" }
             };
 
-            menuItemsTop.Add(item);
+                menuItemsTop.Add(item);
 
-            // remove what does not apply to this user
-            if (!isAdmin)
-            {
-                menuItemsTop.RemoveAt(3);
+                // remove what does not apply to this user
+                if (!isAdmin)
+                {
+                    menuItemsTop.RemoveAt(3);
+                }
+                if (isUser || isAdmin)
+                {
+                }
+                else
+                {
+                    menuItemsTop.RemoveAt(1);
+                    menuItemsTop.RemoveAt(0);
+                }
             }
-            if (isUser || isAdmin)
+            catch (Exception ex)
             {
-            }
-            else
-            {
-                menuItemsTop.RemoveAt(1);
-                menuItemsTop.RemoveAt(0);
             }
         }
 
@@ -276,7 +297,10 @@ namespace Notes2022.Client.Menus
             await sessionStorage.SetItemAsync<GSequencer>("SeqItem", sequencers[0]);
             await sessionStorage.SetItemAsync<bool>("IsSeq", true); // flag for noteindex
             // begin
-            Navigation.NavigateTo("noteindex/" + sequencers[0].NoteFileId);
+
+            string go = "noteindex/" + sequencers[0].NoteFileId;
+            Navigation.NavigateTo(go);
+            return;
         }
 
         /// <summary>

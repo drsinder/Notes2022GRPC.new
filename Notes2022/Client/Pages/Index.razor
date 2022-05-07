@@ -49,7 +49,7 @@
     {
         <div>@((MarkupString)@hpModel.Message)</div>
     }
-    @if (myState.IsAdmin && hpModel == null)
+    @if (myState.IsAuthenticated && hpModel == null)
     {
         <p class="center"><em>Loading...</em></p>
     }
@@ -125,9 +125,7 @@
                 </div>
             </div>
 
-           
-        
-        
+@*           <SfButton OnClick="StartSeq" >Recent</SfButton>*@
     } 
 </div>
 

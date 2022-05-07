@@ -192,8 +192,11 @@ namespace Notes2022.Client.Pages
                     return;
                 }
 
-                CurrentNoteId = Globals.GotoNote;
-                Globals.GotoNote = 0;
+                if (Globals.GotoNote > 0)
+                {
+                    CurrentNoteId = Globals.GotoNote;
+                    Globals.GotoNote = 0;
+                }
             }
             catch (Exception ex)
             {
@@ -610,7 +613,7 @@ namespace Notes2022.Client.Pages
                     await sessionStorage.RemoveItemAsync("SeqHeaderIndex");
                     await sessionStorage.RemoveItemAsync("CurrentSeqHeader");
 
-                    ShowMessage("You have seen all the new notes!");
+                    //ShowMessage("You have seen all the new notes!");
 
                     Navigation.NavigateTo("");
 

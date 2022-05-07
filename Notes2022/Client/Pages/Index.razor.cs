@@ -126,7 +126,7 @@ namespace Notes2022.Client.Pages
         {
             mytime = DateTime.Now;
             Globals.LoginDisplay?.Reload();
-            Globals.NavMenu?.Reload();
+            Globals.NavMenu?.Reload().GetAwaiter();
             StateHasChanged();
         }
 
@@ -158,6 +158,35 @@ namespace Notes2022.Client.Pages
             Navigation.NavigateTo("noteindex/" + args.Value); // goto the file
             
         }
+
+        /// <summary>
+        /// Recent menu item - start sequencing
+        /// </summary>
+        /// <returns></returns>
+        private async Task StartSeq()
+        {
+            // get users list of files
+            //List<GSequencer> sequencers = await DAL.GetSequencer(Http);
+
+            List<GSequencer> sequencers = (await Client.GetSequencerAsync(new NoRequest(), myState.AuthHeader)).List.ToList();
+            if (sequencers.Count == 0)
+                return;
+
+            // order them as prefered by user
+            sequencers = sequencers.OrderBy(p => p.Ordinal).ToList();
+
+            // set up state for sequencing
+            await sessionStorage.SetItemAsync<List<GSequencer>>("SeqList", sequencers);
+            await sessionStorage.SetItemAsync<int>("SeqIndex", 0);
+            await sessionStorage.SetItemAsync<GSequencer>("SeqItem", sequencers[0]);
+            await sessionStorage.SetItemAsync<bool>("IsSeq", true); // flag for noteindex
+            // begin
+
+            string go = "noteindex/" + sequencers[0].NoteFileId;
+            Navigation.NavigateTo(go);
+            return;
+        }
+
 
     }
 }
