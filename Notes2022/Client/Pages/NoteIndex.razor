@@ -63,7 +63,7 @@ else                    @*    Index mode        *@
                     <div class="row">
                         Show Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContent"></SfSwitch>&nbsp;
                         Show Response Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContentR"></SfSwitch>&nbsp;
-@*                        Expand All&nbsp; <SfSwitch @bind-Checked="@ExpandAll" ValueChange="ExpandAllChange" TChecked="bool"></SfSwitch>*@
+                        @*Expand All&nbsp; <SfSwitch @bind-Checked="@ExpandAll" ValueChange="@ExpandAllChange" TChecked="bool"></SfSwitch>*@
                         <SfGrid @ref="@sfGrid1" DataSource="@Model.Notes.List" AllowPaging="true" AllowSelection="true" EnableHover="true" AllowSorting="true" AllowFiltering="true">
 
                             <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu">
@@ -78,15 +78,20 @@ else                    @*    Index mode        *@
                             <GridTemplates>
                                 <DetailTemplate>
                                     @{
-                            var current = (context as GNoteHeader);
-                            List<GNoteHeader> Resp = Model.AllNotes.List.Where(p => p.NoteOrdinal == current.NoteOrdinal && p.ResponseOrdinal != 0).OrderBy(p => p.ResponseOrdinal).ToList();
+                                        var current = (context as GNoteHeader);
+                                        List<GNoteHeader>? Resp = null;
+                                        if ( current.ResponseCount > 0 ) {
+                                            Resp = Model.AllNotes.List.Where(p => p.NoteOrdinal == current.NoteOrdinal && p.ResponseOrdinal != 0).OrderBy(p => p.ResponseOrdinal).ToList();
+                                        }
                         }
                         @if (ShowContent)
                         {
                             <NotePanel NoteId="@current.Id" ShowChild="false" IsRootNote="false" IsMini="true"></NotePanel>
                         }
-
-                        <Responses Headers="Resp" ShowContentR="ShowContentR" ExpandAllR="ExpandAll"></Responses>
+                        @if (Resp is not null && Resp.Count > 0)
+                        {
+                            <Responses Headers="@Resp" ShowContentR="true" ExpandAllR="@ShowContentR"></Responses>
+                        }
 
                     </DetailTemplate>
                 </GridTemplates>

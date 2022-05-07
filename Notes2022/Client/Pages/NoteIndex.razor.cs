@@ -824,6 +824,7 @@ namespace Notes2022.Client.Pages
             {
                 await sfGrid1.CollapseAllDetailRowAsync();
             }
+            StateHasChanged();
         }
 
         /// <summary>
