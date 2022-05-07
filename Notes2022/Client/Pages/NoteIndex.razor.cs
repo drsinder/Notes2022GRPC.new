@@ -613,7 +613,7 @@ namespace Notes2022.Client.Pages
                     await sessionStorage.RemoveItemAsync("SeqHeaderIndex");
                     await sessionStorage.RemoveItemAsync("CurrentSeqHeader");
 
-                    //ShowMessage("You have seen all the new notes!");
+                    ShowMessage("You have seen all the new notes!");
 
                     Navigation.NavigateTo("");
 
@@ -834,7 +834,7 @@ namespace Notes2022.Client.Pages
         {
             var parameters = new ModalParameters();
             parameters.Add("MessageInput", message);
-            //Modal.Show<MessageBox>("", parameters);
+            Modal.Show<MessageBox>("", parameters);
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
