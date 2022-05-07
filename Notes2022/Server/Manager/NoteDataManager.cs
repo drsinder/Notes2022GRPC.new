@@ -120,105 +120,105 @@ namespace Notes2022.Server
             return false;
         }
 
-        /// <summary>
-        /// Delete a NoteFile
-        /// </summary>
-        /// <param name="db">NotesDbContext</param>
-        /// <param name="id">NoteFileID</param>
-        /// <returns></returns>
-        public static async Task<bool> DeleteNoteFile(NotesDbContext db, int id)
-        {
-            // Things to delete:
-            // 1)  X Entries in NoteContent
-            // 2)  X Entries in BaseNoteHeader
-            // 3)  X Entries in Sequencer
-            // 4)  X Entries in NoteAccesses
-            // 5)  X Entries in Marks
-            // 6)  X Entries in SearchView
-            // 7)  1 Entry in NoteFile
+        ///// <summary>
+        ///// Delete a NoteFile
+        ///// </summary>
+        ///// <param name="db">NotesDbContext</param>
+        ///// <param name="id">NoteFileID</param>
+        ///// <returns></returns>
+        //public static async Task<bool> DeleteNoteFile(NotesDbContext db, int id)
+        //{
+        //    // Things to delete:
+        //    // 1)  X Entries in NoteContent
+        //    // 2)  X Entries in BaseNoteHeader
+        //    // 3)  X Entries in Sequencer
+        //    // 4)  X Entries in NoteAccesses
+        //    // 5)  X Entries in Marks
+        //    // 6)  X Entries in SearchView
+        //    // 7)  1 Entry in NoteFile
 
-            // The above (1 - 6) now done by Cascade Delete of NoteFile
+        //    // The above (1 - 6) now done by Cascade Delete of NoteFile
 
-            //List<NoteContent> nc = await _db.NoteContent
-            //    .Where(p => p.NoteFileID == id)
-            //    .ToListAsync();
-            //List<BaseNoteHeader> bnh = await GetBaseNoteHeadersForFile(_db, id);
-            //List<Sequencer> seq = await _db.Sequencer
-            //.Where(p => p.NoteFileID == id)
-            //.ToListAsync();
-            //List<NoteAccess> na = await AccessManager.GetAccessListForFile(_db, id);
-            //List<Mark> marks = await _db.Mark
-            //    .Where(p => p.NoteFileID == id)
-            //    .ToListAsync();
-            //List<SearchView> sv = await _db.SearchView
-            //    .Where(p => p.NoteFileID == id)
-            //    .ToListAsync();
+        //    //List<NoteContent> nc = await _db.NoteContent
+        //    //    .Where(p => p.NoteFileID == id)
+        //    //    .ToListAsync();
+        //    //List<BaseNoteHeader> bnh = await GetBaseNoteHeadersForFile(_db, id);
+        //    //List<Sequencer> seq = await _db.Sequencer
+        //    //.Where(p => p.NoteFileID == id)
+        //    //.ToListAsync();
+        //    //List<NoteAccess> na = await AccessManager.GetAccessListForFile(_db, id);
+        //    //List<Mark> marks = await _db.Mark
+        //    //    .Where(p => p.NoteFileID == id)
+        //    //    .ToListAsync();
+        //    //List<SearchView> sv = await _db.SearchView
+        //    //    .Where(p => p.NoteFileID == id)
+        //    //    .ToListAsync();
 
-            //_db.NoteContent.RemoveRange(nc);
-            //_db.BaseNoteHeader.RemoveRange(bnh);
-            //_db.Sequencer.RemoveRange(seq);
-            //_db.NoteAccess.RemoveRange(na);
-            //_db.Mark.RemoveRange(marks);
-            //_db.SearchView.RemoveRange(sv);
+        //    //_db.NoteContent.RemoveRange(nc);
+        //    //_db.BaseNoteHeader.RemoveRange(bnh);
+        //    //_db.Sequencer.RemoveRange(seq);
+        //    //_db.NoteAccess.RemoveRange(na);
+        //    //_db.Mark.RemoveRange(marks);
+        //    //_db.SearchView.RemoveRange(sv);
 
-            NoteFile noteFile = await db.NoteFile
-               .Where(p => p.Id == id)
-               .FirstAsync();
+        //    NoteFile noteFile = await db.NoteFile
+        //       .Where(p => p.Id == id)
+        //       .FirstAsync();
 
-            for (int arcId = 0; arcId <= noteFile.NumberArchives; arcId++)
-            {
-                List<NoteAccess> na = await AccessManager.GetAccessListForFile(db, id, arcId);
-                db.NoteAccess.RemoveRange(na);
-            }
+        //    for (int arcId = 0; arcId <= noteFile.NumberArchives; arcId++)
+        //    {
+        //        List<NoteAccess> na = await AccessManager.GetAccessListForFile(db, id, arcId);
+        //        db.NoteAccess.RemoveRange(na);
+        //    }
 
-            List<Subscription> subs = await db.Subscription
-                .Where(p => p.NoteFileId == id)
-                .ToListAsync();
-            db.Subscription.RemoveRange(subs);
+        //    List<Subscription> subs = await db.Subscription
+        //        .Where(p => p.NoteFileId == id)
+        //        .ToListAsync();
+        //    db.Subscription.RemoveRange(subs);
 
-            db.NoteFile.Remove(noteFile);
+        //    db.NoteFile.Remove(noteFile);
 
-            await db.SaveChangesAsync();
+        //    await db.SaveChangesAsync();
 
-            return true;
-        }
+        //    return true;
+        //}
 
-        /// <summary>
-        /// Archive a notefile - Bump the files NumberArchives -
-        /// Set all current ArchiveId (=0) to NumberArchives for
-        /// NoteHeader, NoteAccess, Tags
-        /// </summary>
-        /// <param name="_db"></param>
-        /// <param name="noteFile"></param>
-        public static void ArchiveNoteFile(NotesDbContext _db, NoteFile noteFile)
-        {
-            noteFile.NumberArchives++;
-            _db.Update(noteFile);
+        ///// <summary>
+        ///// Archive a notefile - Bump the files NumberArchives -
+        ///// Set all current ArchiveId (=0) to NumberArchives for
+        ///// NoteHeader, NoteAccess, Tags
+        ///// </summary>
+        ///// <param name="_db"></param>
+        ///// <param name="noteFile"></param>
+        //public static void ArchiveNoteFile(NotesDbContext _db, NoteFile noteFile)
+        //{
+        //    noteFile.NumberArchives++;
+        //    _db.Update(noteFile);
 
-            List<NoteHeader> nhl = _db.NoteHeader.Where(p => p.NoteFileId == noteFile.Id && p.ArchiveId == 0).ToList();
+        //    List<NoteHeader> nhl = _db.NoteHeader.Where(p => p.NoteFileId == noteFile.Id && p.ArchiveId == 0).ToList();
 
-            foreach (NoteHeader nh in nhl)
-            {
-                nh.ArchiveId = noteFile.NumberArchives;
-                _db.Update(nh);
-            }
+        //    foreach (NoteHeader nh in nhl)
+        //    {
+        //        nh.ArchiveId = noteFile.NumberArchives;
+        //        _db.Update(nh);
+        //    }
 
-            List<NoteAccess> nal = _db.NoteAccess.Where(p => p.NoteFileId == noteFile.Id && p.ArchiveId == 0).ToList();
-            foreach (NoteAccess na in nal)
-            {
-                na.ArchiveId = noteFile.NumberArchives;
-            }
-            _db.NoteAccess.AddRange(nal);
+        //    List<NoteAccess> nal = _db.NoteAccess.Where(p => p.NoteFileId == noteFile.Id && p.ArchiveId == 0).ToList();
+        //    foreach (NoteAccess na in nal)
+        //    {
+        //        na.ArchiveId = noteFile.NumberArchives;
+        //    }
+        //    _db.NoteAccess.AddRange(nal);
 
-            List<Tags> ntl = _db.Tags.Where(p => p.NoteFileId == noteFile.Id && p.ArchiveId == 0).ToList();
-            foreach (Tags nt in ntl)
-            {
-                nt.ArchiveId = noteFile.NumberArchives;
-                _db.Update(nt);
-            }
+        //    List<Tags> ntl = _db.Tags.Where(p => p.NoteFileId == noteFile.Id && p.ArchiveId == 0).ToList();
+        //    foreach (Tags nt in ntl)
+        //    {
+        //        nt.ArchiveId = noteFile.NumberArchives;
+        //        _db.Update(nt);
+        //    }
 
-            _db.SaveChanges();
-        }
+        //    _db.SaveChanges();
+        //}
 
         /// <summary>
         /// Create a new note
@@ -430,39 +430,39 @@ namespace Notes2022.Server
         /// <param name="db"></param>
         /// <param name="nh"></param>
         /// <returns></returns>
-        public static async Task<string> DeleteLinked(NotesDbContext db, NoteHeader nh)
-        {
-            // Check for linked notefile(s)
+        //public static async Task<string> DeleteLinked(NotesDbContext db, NoteHeader nh)
+        //{
+        //    // Check for linked notefile(s)
 
-            List<LinkedFile> links = await db.LinkedFile.Where(p => p.HomeFileId == nh.NoteFileId).ToListAsync();
+        //    List<LinkedFile> links = await db.LinkedFile.Where(p => p.HomeFileId == nh.NoteFileId).ToListAsync();
 
-            if (links is null || links.Count < 1)
-            {
+        //    if (links is null || links.Count < 1)
+        //    {
 
-            }
-            else
-            {
-                foreach (var link in links)
-                {
-                    if (link.SendTo)
-                    {
-                        LinkQueue q = new()
-                        {
-                            Activity = LinkAction.Delete,
-                            LinkGuid = nh.LinkGuid,
-                            LinkedFileId = nh.NoteFileId,
-                            BaseUri = link.RemoteBaseUri,
-                            Secret = link.Secret
-                        };
+        //    }
+        //    else
+        //    {
+        //        foreach (var link in links)
+        //        {
+        //            if (link.SendTo)
+        //            {
+        //                LinkQueue q = new()
+        //                {
+        //                    Activity = LinkAction.Delete,
+        //                    LinkGuid = nh.LinkGuid,
+        //                    LinkedFileId = nh.NoteFileId,
+        //                    BaseUri = link.RemoteBaseUri,
+        //                    Secret = link.Secret
+        //                };
 
-                        db.LinkQueue.Add(q);
-                        await db.SaveChangesAsync();
-                    }
-                }
-            }
+        //                db.LinkQueue.Add(q);
+        //                await db.SaveChangesAsync();
+        //            }
+        //        }
+        //    }
 
-            return "Ok";
-        }
+        //    return "Ok";
+        //}
 
         /// <summary>
         /// Edit a note - does setup to keep version history then creates a new note: CreateNote
@@ -671,25 +671,25 @@ namespace Notes2022.Server
         /// <param name="httpContextAccessor"></param>
         /// <param name="db"></param>
         /// <param name="userD"></param>
-        public static void PutUserData(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, NotesDbContext db, UserData userD)
-        {
-            try
-            {
-                string userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                ApplicationUser user = userManager.FindByIdAsync(userId).GetAwaiter().GetResult();
+        //public static void PutUserData(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, NotesDbContext db, UserData userD)
+        //{
+        //    try
+        //    {
+        //        string userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        //        ApplicationUser user = userManager.FindByIdAsync(userId).GetAwaiter().GetResult();
 
 
-                user = PutUserData(user, userD);
+        //        user = PutUserData(user, userD);
 
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                string x = ex.Message;
-            }
-            return;
-        }
+        //        db.Entry(user).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string x = ex.Message;
+        //    }
+        //    return;
+        //}
 
         //public static async Task<Search> GetUserSearch(NotesDbContext db, string userid)
         //{
@@ -1156,12 +1156,12 @@ namespace Notes2022.Server
                 .FirstOrDefaultAsync();
         }
 
-        public static async Task<List<NoteFile>> GetNoteFilesOrderedByName(NotesDbContext db)
-        {
-            return await db.NoteFile
-                .OrderBy(p => p.NoteFileName)
-                .ToListAsync();
-        }
+        //public static async Task<List<NoteFile>> GetNoteFilesOrderedByName(NotesDbContext db)
+        //{
+        //    return await db.NoteFile
+        //        .OrderBy(p => p.NoteFileName)
+        //        .ToListAsync();
+        //}
 
 
     }
