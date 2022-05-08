@@ -130,7 +130,9 @@ namespace Notes2022.Client.Menus
                     //}
 
                     //new (){ Id = "JsonExport", Text = "Json Export" },
-                    new (){ Id = "JsonExport2", Text = "Json Export" }
+                    new (){ Id = "JsonExport2", Text = "Json Export" },
+                    new (){ Id = "Excel", Text = "Excel Export" },
+                    new (){ Id = "Pdf", Text = "Pdf Export" }
                 };
 
                 menuItems.Add(item2);
@@ -203,6 +205,14 @@ namespace Notes2022.Client.Menus
 
                 case "JsonExport2":
                     DoJson(true);
+                    break;
+
+                case "Excel":
+                    Caller.sfGrid1.ExportToExcelAsync().GetAwaiter();
+                    break;
+
+                case "Pdf":
+                    Caller.sfGrid1.ExportToPdfAsync().GetAwaiter();
                     break;
 
                 case "mailFromIndex":

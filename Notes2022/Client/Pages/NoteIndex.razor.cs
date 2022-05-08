@@ -82,7 +82,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Our index grid
         /// </summary>
-        protected SfGrid<GNoteHeader> sfGrid1 { get; set; }
+        public SfGrid<GNoteHeader> sfGrid1 { get; set; }
 
         /// <summary>
         /// Filter setting for the grid

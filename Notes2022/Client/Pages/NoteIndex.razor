@@ -61,7 +61,7 @@ else                    @*    Index mode        *@
                     <div class="row">
                         Show Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContent"></SfSwitch>&nbsp;
                         Show Response Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContentR"></SfSwitch>&nbsp;
-                        <SfGrid @ref="@sfGrid1" DataSource="@Model.Notes.List" AllowPaging="true" AllowSelection="true" EnableHover="true" AllowSorting="true" AllowFiltering="true">
+                        <SfGrid @ref="@sfGrid1" DataSource="@Model.Notes.List" AllowPaging="true" AllowSelection="true" EnableHover="true" AllowSorting="true" AllowFiltering="true" AllowExcelExport="true" AllowPdfExport="true">
 
                             <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu" >
                                 <GridFilterColumns>
