@@ -27,6 +27,7 @@ using Notes2022.Client.Dialogs;
 using Notes2022.Client.Pages;
 using Notes2022.Proto;
 using Notes2022.Shared;
+using Syncfusion.Blazor.LinearGauge;
 using Syncfusion.Blazor.Navigations;
 using System.Net.Http.Json;
 using System.Text;
@@ -62,6 +63,8 @@ namespace Notes2022.Client.Menus
         /// Top menu item instance
         /// </summary>
         protected SfMenu<MenuItem> topMenu { get; set; }
+
+        protected SfLinearGauge myGauge { get; set; }
 
         private bool HamburgerMode { get; set; } = false;
 
@@ -319,6 +322,7 @@ namespace Notes2022.Client.Menus
                 //await SetNote();        // set important stuff
                 sliderValueText = currentHeader.NoteOrdinal + "/" + baseNotes;  // update progress test
                 currNote = currentHeader.NoteOrdinal;                           // update progress bar
+                myGauge.SetPointerValue(0, 0, currNote);
 
                 goto reloop;    // print another string
             }

@@ -29,24 +29,29 @@
         <MenuEvents TValue="MenuItem" ItemSelected="@OnSelect" >
         </MenuEvents>
     </SfMenu>
+    
+</div>
     @if(IsPrinting)
     {
         <div class="control-section keep-center">
-            <h4>Progress: @sliderValueText</h4>
-            <SfLinearGauge Orientation="Syncfusion.Blazor.LinearGauge.Orientation.Horizontal" Height="50px">
-                <LinearGaugeContainer Width="30"
-                                        Offset="0"
-                                        BackgroundColor="#777">
+            <br /> 
+            <SfLinearGauge @ref="@myGauge" Orientation="Syncfusion.Blazor.LinearGauge.Orientation.Horizontal" Height="50px">
+                <LinearGaugeContainer Width="50"
+                                        Offset="10"
+                                        BackgroundColor="#777"
+                                        Type="ContainerType.RoundedRectangle">
                 </LinearGaugeContainer>
                 <LinearGaugeAxes>
                     <LinearGaugeAxis Maximum="@baseNotes">
-                        <LinearGaugeMajorTicks Color="white" Height="5">
+
+                        <LinearGaugeMajorTicks Color="white" Height="-15">
                         </LinearGaugeMajorTicks>
-                        <LinearGaugeMinorTicks Color="white" Height="2">
+                        <LinearGaugeMinorTicks Color="white" Height="-8">
                         </LinearGaugeMinorTicks>
                         <LinearGaugeLine Width="0"></LinearGaugeLine>
-                        <LinearGaugeAxisLabelStyle Offset="-55">
+                        <LinearGaugeAxisLabelStyle Position="Syncfusion.Blazor.LinearGauge.Position.Cross" Offset="5" >
                         </LinearGaugeAxisLabelStyle>
+
                         <LinearGaugePointers>
                             <LinearGaugePointer PointerValue="@currNote"
                                                 Height="30"
@@ -60,4 +65,3 @@
         </div>
     }
 
-</div>

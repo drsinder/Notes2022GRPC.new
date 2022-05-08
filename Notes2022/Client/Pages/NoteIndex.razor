@@ -49,8 +49,6 @@ else                    @*    Index mode        *@
     }
     else
     {
-@*        <p>@Model.Message</p>
-*@        
         <h3 class="center">@Model.NoteFile.NoteFileTitle - @Model.NoteFile.NoteFileName  @Model.Message</h3>
 
         <div>
@@ -63,7 +61,6 @@ else                    @*    Index mode        *@
                     <div class="row">
                         Show Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContent"></SfSwitch>&nbsp;
                         Show Response Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContentR"></SfSwitch>&nbsp;
-                        @*Expand All&nbsp; <SfSwitch @bind-Checked="@ExpandAll" ValueChange="@ExpandAllChange" TChecked="bool"></SfSwitch>*@
                         <SfGrid @ref="@sfGrid1" DataSource="@Model.Notes.List" AllowPaging="true" AllowSelection="true" EnableHover="true" AllowSorting="true" AllowFiltering="true">
 
                             <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu" >
