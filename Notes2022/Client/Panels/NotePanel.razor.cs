@@ -113,6 +113,8 @@ namespace Notes2022.Client.Panels
         /// </summary>
         protected bool RespShown { get; set; }
 
+        protected bool ResetShown { get; set; } = false;
+
         /// <summary>
         /// Is the order of responses flipped?
         /// </summary>
@@ -227,6 +229,22 @@ namespace Notes2022.Client.Panels
             {
                 respX = " Response " + model.Header.ResponseOrdinal;
                 respY = "." + model.Header.ResponseOrdinal;
+            }
+
+            if (IsRootNote)
+            {
+                if (RespShown)
+                {
+                    //RespShown = false;
+                    ResetShown = true;
+                    respHeaders = MyNoteIndex.GetResponseHeaders(model.Header.Id);
+                    if (IsRootNote && RespFlipped && RespShown)
+                        respHeaders = respHeaders.OrderByDescending(x => x.ResponseOrdinal).ToList();
+                    else if (IsRootNote && RespShown)
+                        respHeaders = respHeaders.OrderBy(x => x.ResponseOrdinal).ToList();
+
+                    //StateHasChanged();
+                }
             }
 
         }
@@ -766,6 +784,12 @@ namespace Notes2022.Client.Panels
             }
             else
             {
+                if (ResetShown)
+                {
+                    ResetShown = false;
+                    //RespShown = true;
+                    //StateHasChanged();
+                }
                 // have to wait a bit before putting focus in textbox
                 if (sfTextBox is not null)
                 {

@@ -127,6 +127,12 @@
 
         @if (!IsMini)
         {
+            if (ResetShown)
+            {
+                GetData().GetAwaiter();
+                ResetShown = false;
+                StateHasChanged();
+            }
             @if (IsRootNote && model.Header.RefId != 0 && !model.Header.IsDeleted)
             {
                 <span><strong>Show References</strong></span><SfSwitch @bind-Checked="ShowChild" TChecked="bool"></SfSwitch>
@@ -150,13 +156,16 @@
                 }
             }
 
-            <div class="arrow2">
-                <div>
+            @if (IsRootNote)
+            {
+                <div class="arrow2">
+                    <div>
                     Navigate: <strong>@model.Header.NoteOrdinal@respY</strong>
                     <SfTextBox @ref="@sfTextBox" ShowClearButton="true" Placeholder="b#.r# | (+/-)b# | (+/-).r#"
                        @bind-Value="@NavString" Input="@NavInputHandler" @onkeyup="@KeyUpHandler"></SfTextBox>
+                    </div>
                 </div>
-            </div>
+            }
         }
     }
 </div>
