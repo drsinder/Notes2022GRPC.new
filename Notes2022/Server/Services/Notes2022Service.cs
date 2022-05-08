@@ -1227,8 +1227,41 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        //[Authorize]
+        //public override async Task<JsonExport> GetExportJson(ExportRequest request, ServerCallContext context)
+        //{
+        //    JsonExport stuff = new JsonExport();
+
+        //    stuff.NoteFile = _db.NoteFile.Single(p => p.Id == request.FileId).GetGNotefile();
+
+        //    ClaimsPrincipal user = context.GetHttpContext().User;
+        //    ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+        //    NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, stuff.NoteFile.Id, 0);
+        //    if (!na.ReadAccess)
+        //        return new JsonExport();
+
+
+        //    stuff.NoteHeaders = NoteHeader.GetGNoteHeaderList(
+        //        await _db.NoteHeader
+        //            .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && !p.IsDeleted)
+        //            .OrderBy(p => p.NoteOrdinal)
+        //            .ThenBy(p => p.ResponseOrdinal)
+        //            .ToListAsync());
+
+        //    foreach (GNoteHeader item in stuff.NoteHeaders.List)
+        //    {
+        //        item.Content = (await _db.NoteContent
+        //            .SingleAsync(p => p.NoteHeaderId == item.Id)).GetGNoteContent();
+
+        //        var x = await _db.Tags.Where(p => p.NoteHeaderId == item.Id).ToListAsync();
+        //        item.Tags = Tags.GetGTagsList(x);
+        //    }
+
+        //    return stuff;
+        //}
+
         [Authorize]
-        public override async Task<JsonExport> GetExportJson(ExportRequest request, ServerCallContext context)
+        public override async Task<JsonExport> GetExportJson2(ExportRequest request, ServerCallContext context)
         {
             JsonExport stuff = new JsonExport();
 
@@ -1248,17 +1281,27 @@ namespace Notes2022.Server.Services
                     .ThenBy(p => p.ResponseOrdinal)
                     .ToListAsync());
 
+            long[] items  = _db.NoteHeader
+                    .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && !p.IsDeleted)
+                    .OrderBy(p => p.NoteOrdinal)
+                    .ThenBy(p => p.ResponseOrdinal).Select(p => p.Id).ToArray();
+
+            List<NoteContent> cont = await  _db.NoteContent.Where(p => items.Contains(p.NoteHeaderId)).ToListAsync();
+
+            List<Tags> tags = await (_db.Tags.Where(p => p.NoteFileId == request.FileId)).ToListAsync();
+
             foreach (GNoteHeader item in stuff.NoteHeaders.List)
             {
-                item.Content = (await _db.NoteContent
-                    .SingleAsync(p => p.NoteHeaderId == item.Id)).GetGNoteContent();
-
-                var x = await _db.Tags.Where(p => p.NoteHeaderId == item.Id).ToListAsync();
+                item.Content = cont.Single(p => p.NoteHeaderId == item.Id).GetGNoteContent();
+                List<Tags> x = tags.Where(p => p.NoteHeaderId == item.Id).ToList();
                 item.Tags = Tags.GetGTagsList(x);
             }
 
+            //stuff.Tags = Tags.GetGTagsList(tags);
+
             return stuff;
         }
+
 
         public override async Task<AString> GetTextFile(AString request, ServerCallContext context)
         {

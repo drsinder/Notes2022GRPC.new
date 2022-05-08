@@ -89,25 +89,25 @@ namespace Notes2022.Server.Entities
             return nc;
         }
 
-        //public static List<NoteContent> GetNoteContents(GNoteContentList other)
-        //{
-        //    List<NoteContent> list = new List<NoteContent>();
-        //    foreach (GNoteContent c in other.List)
-        //    {
-        //        list.Add(GetNoteContent(c));
-        //    }
-        //    return list;
-        //}
+        public static List<NoteContent> GetNoteContents(GNoteContentList other)
+        {
+            List<NoteContent> list = new List<NoteContent>();
+            foreach (GNoteContent c in other.List)
+            {
+                list.Add(GetNoteContent(c));
+            }
+            return list;
+        }
 
-        //public static GNoteContentList GetGNoteContentList(List<NoteContent> other)
-        //{
-        //    GNoteContentList list = new GNoteContentList();
-        //    foreach (NoteContent c in other)
-        //    {
-        //        list.List.Add(c.GetGNoteContent());
-        //    }
-        //    return list;
-        //}
+        public static GNoteContentList GetGNoteContentList(List<NoteContent> other)
+        {
+            GNoteContentList list = new GNoteContentList();
+            foreach (NoteContent c in other)
+            {
+                list.List.Add(c.GetGNoteContent());
+            }
+            return list;
+        }
 
     }
 }

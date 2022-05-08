@@ -129,7 +129,8 @@ namespace Notes2022.Client.Menus
                     //    item2.Items.Add(new MenuItem() { Id = "OutputMarked", Text = "Output marked notes" });
                     //}
 
-                    new (){ Id = "JsonExport", Text = "Json Export" }
+                    //new (){ Id = "JsonExport", Text = "Json Export" },
+                    new (){ Id = "JsonExport2", Text = "Json Export" }
                 };
 
                 menuItems.Add(item2);
@@ -197,7 +198,11 @@ namespace Notes2022.Client.Menus
                     break;
 
                 case "JsonExport":
-                    DoJson();
+                    DoJson(false);
+                    break;
+
+                case "JsonExport2":
+                    DoJson(true);
                     break;
 
                 case "mailFromIndex":
@@ -371,7 +376,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Prepare Json output
         /// </summary>
-        private void DoJson()
+        private void DoJson(bool ext = false)
         {
             var parameters = new ModalParameters();
 
@@ -379,6 +384,7 @@ namespace Notes2022.Client.Menus
             vm.ArchiveNumber = Model.ArcId;
             vm.NoteFile = Model.NoteFile;
             vm.NoteOrdinal = 0;
+            vm.isCollapsible = ext;
 
             parameters.Add("model", vm);
 
