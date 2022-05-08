@@ -39,14 +39,14 @@ else
     </div>*@
     @if (Headers.Count > 0)
     {
-        <SfGrid @ref="@sfGrid2" DataSource="Headers" AllowPaging="false" AllowSelection="true" EnableHover="true" AllowFiltering="true">
-            <GridFilterSettings>
+        <SfGrid @ref="@sfGrid2" DataSource="Headers" AllowPaging="false" AllowSelection="true" EnableHover="true" AllowSorting="true" AllowFiltering="true">
+            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.FilterBar">
                 <GridFilterColumns>
                     <GridFilterColumn Field="IsDeleted" MatchCase=true Operator="Operator.Equal" Predicate="and" Value="@false"></GridFilterColumn>
                     <GridFilterColumn Field = "Version" MatchCase =true Operator = "Operator.Equal" Predicate = "and" Value = "0" ></GridFilterColumn>
                 </GridFilterColumns>
             </GridFilterSettings>
-            <GridEvents DataBound="DataBoundHandler" RowSelected="DisplayIt" TValue="GNoteHeader"></GridEvents>
+            <GridEvents DataBound="DataBoundHandler" RowSelected="DisplayIt"  TValue="GNoteHeader"></GridEvents>
             <GridTemplates>
                 <DetailTemplate>
                     @if (ShowContent)

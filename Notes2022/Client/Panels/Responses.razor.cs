@@ -83,17 +83,17 @@ namespace Notes2022.Client.Panels
         /// Change of expand/collapse state
         /// </summary>
         /// <param name="args"></param>
-        private async void ExpandAllChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
-        {
-            if (ExpandAll)
-            {
-                await sfGrid2.ExpandAllDetailRowAsync();
-            }
-            else
-            {
-                await sfGrid2.CollapseAllDetailRowAsync();
-            }
-        }
+        //private async void ExpandAllChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+        //{
+        //    if (ExpandAll)
+        //    {
+        //        await sfGrid2.ExpandAllDetailRowAsync();
+        //    }
+        //    else
+        //    {
+        //        await sfGrid2.CollapseAllDetailRowAsync();
+        //    }
+        //}
 
         /// <summary>
         /// GO show the note

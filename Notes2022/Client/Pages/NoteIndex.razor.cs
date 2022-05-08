@@ -87,7 +87,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Filter setting for the grid
         /// </summary>
-        protected GridFilterSettings FilterSettings { get; set; }
+        //protected GridFilterSettings FilterSettings { get; set; }
 
         /// <summary>
         /// Page settings for the grid
@@ -814,18 +814,18 @@ namespace Notes2022.Client.Pages
         /// Handle state change for expand all switch
         /// </summary>
         /// <param name="args"></param>
-        private async void ExpandAllChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
-        {
-            if (ExpandAll)
-            {
-                await sfGrid1.ExpandAllDetailRowAsync();
-            }
-            else
-            {
-                await sfGrid1.CollapseAllDetailRowAsync();
-            }
-            StateHasChanged();
-        }
+        //private async void ExpandAllChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+        //{
+        //    if (ExpandAll)
+        //    {
+        //        await sfGrid1.ExpandAllDetailRowAsync();
+        //    }
+        //    else
+        //    {
+        //        await sfGrid1.CollapseAllDetailRowAsync();
+        //    }
+        //    StateHasChanged();
+        //}
 
         /// <summary>
         /// Shows a simple text message dialog
@@ -844,8 +844,8 @@ namespace Notes2022.Client.Pages
 
             if (!firstRender)
             {   // have to wait a bit before putting focus in textbox
-                if (ExpandAll)
-                    await sfGrid1.ExpandAllDetailRowAsync();
+                //if (ExpandAll)
+                //    await sfGrid1.ExpandAllDetailRowAsync();
 
                 if (sfTextBox is not null)
                 {
