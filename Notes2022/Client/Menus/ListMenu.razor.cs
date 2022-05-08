@@ -76,7 +76,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Text value for slider while doing background processing
         /// </summary>
-        protected string sliderValueText { get; set; }
+        //public string sliderValueText { get; set; }
 
         /// <summary>
         /// Number of base notes we have
@@ -100,7 +100,7 @@ namespace Notes2022.Client.Menus
         protected override async Task OnParametersSetAsync()
         {
             baseNotes = Model.Notes.List.Count;
-            sliderValueText = "1/" + baseNotes;
+            //sliderValueText = "1/" + baseNotes;
 
             // construct the menu based on user access
             menuItems = new List<MenuItem>();
@@ -320,7 +320,7 @@ namespace Notes2022.Client.Menus
                 currentHeader = next;   // set current note and base note
                 baseHeader = next;
                 //await SetNote();        // set important stuff
-                sliderValueText = currentHeader.NoteOrdinal + "/" + baseNotes;  // update progress test
+                //sliderValueText = currentHeader.NoteOrdinal + "/" + baseNotes;  // update progress test
                 currNote = currentHeader.NoteOrdinal;                           // update progress bar
                 myGauge.SetPointerValue(0, 0, currNote);
 
