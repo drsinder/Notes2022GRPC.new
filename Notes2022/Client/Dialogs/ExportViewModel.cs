@@ -1,4 +1,5 @@
-﻿using Notes2022.Proto;
+﻿using Notes2022.Client.Menus;
+using Notes2022.Proto;
 
 namespace Notes2022.Client.Dialogs
 {
@@ -47,6 +48,7 @@ namespace Notes2022.Client.Dialogs
         /// </summary>
         public string Email { get; set; }
 
+        public ListMenu myMenu { get; set; }
     }
 
     public class Mark

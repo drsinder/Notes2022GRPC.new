@@ -64,14 +64,14 @@ namespace Notes2022.Client.Menus
         /// </summary>
         protected SfMenu<MenuItem> topMenu { get; set; }
 
-        protected SfLinearGauge myGauge { get; set; }
+        public SfLinearGauge myGauge { get; set; }
 
         private bool HamburgerMode { get; set; } = false;
 
         /// <summary>
         /// Are we printing?
         /// </summary>
-        private bool IsPrinting { get; set; } = false;
+        public bool IsPrinting { get; set; } = false;
 
         /// <summary>
         /// Text value for slider while doing background processing
@@ -354,11 +354,18 @@ namespace Notes2022.Client.Menus
             vm.NoteFile = Model.NoteFile;
             vm.NoteOrdinal = 0;
             vm.Email = emailaddr;
+            vm.myMenu = this;
+            currNote = 1;
 
             parameters.Add("Model", vm);
             parameters.Add("FileName", Model.NoteFile.NoteFileName + (isHtml ? ".html" : ".txt"));
 
             Modal.Show<ExportUtil1>("", parameters);
+        }
+
+        public void Replot()
+        {
+            StateHasChanged();
         }
 
         /// <summary>

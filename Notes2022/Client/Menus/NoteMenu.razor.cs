@@ -289,6 +289,7 @@ namespace Notes2022.Client.Menus
             vm.NoteFile = Model.NoteFile;
             vm.NoteOrdinal = Model.Header.NoteOrdinal;
             vm.Email = emailaddr;
+            //vm.myMenu = this;
 
             parameters.Add("Model", vm);
             parameters.Add("FileName", Model.NoteFile.NoteFileName + (isHtml ? ".html" : ".txt"));

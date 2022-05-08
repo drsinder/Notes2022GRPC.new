@@ -41,7 +41,6 @@ namespace Notes2022.Client.Dialogs
         }
         protected async override Task OnInitializedAsync()
         {
-
             if (model.Marks is not null && model.Marks.Count > 0)
                 marked = true;
             else
@@ -86,6 +85,12 @@ namespace Notes2022.Client.Dialogs
         {
             bool isHtml = model.isHtml;
             bool isCollapsible = model.isCollapsible;
+
+            if (model.myMenu is not null)
+            {
+                model.myMenu.IsPrinting = true;
+                model.myMenu.Replot();
+            }
 
             GNotefile nf = model.NoteFile;
             int nfid = nf.Id;
@@ -212,6 +217,9 @@ namespace Notes2022.Client.Dialogs
                 {
                     await sw.WriteLineAsync("</div></div></div></div></div> ");
                 }
+
+                if (model.myMenu is not null)
+                    model.myMenu.myGauge.SetPointerValue(0, 0, bnh.NoteOrdinal);
             }
 
             if (isHtml)  // end the html
@@ -225,6 +233,12 @@ namespace Notes2022.Client.Dialogs
             await sw.FlushAsync();
             ms.Seek(0, SeekOrigin.Begin);
             // send stream to caller
+            if (model.myMenu is not null)
+            {
+                model.myMenu.IsPrinting = false;
+                model.myMenu.Replot();
+            }
+
             return ms;
         }
 
