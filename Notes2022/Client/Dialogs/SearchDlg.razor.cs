@@ -39,6 +39,8 @@ namespace Notes2022.Client.Dialogs
                 default: return;
             }
 
+            if (text is null)
+                text = String.Empty;
             target.Text = text;
 
             //theTime = zone.Universal(theTime);
