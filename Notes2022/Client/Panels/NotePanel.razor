@@ -145,7 +145,7 @@
                     bool alt = true;
                     foreach (GNoteHeader rh in respHeaders)
                     {
-                        <NotePanel NoteId="@rh.Id" IsRootNote="false" ShowButtons="false" AltStyle="@alt"></NotePanel>
+                        <NotePanel NoteId="@rh.Id" IsRootNote="false" ShowButtons="true" MyNoteIndex="@MyNoteIndex" AltStyle="@alt"></NotePanel>
                     }
                 }
             }
