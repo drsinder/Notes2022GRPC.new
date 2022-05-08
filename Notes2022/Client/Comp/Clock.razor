@@ -1,0 +1,38 @@
+﻿@using System.Timers
+
+<span>
+    @if (Interval < 2000)
+    {
+        @mytime
+    }
+    else
+    {
+       @mytime.ToShortDateString() <span>&nbsp;</span> @mytime.ToShortTimeString(); 
+    }
+</span>
+
+@code {
+
+    [Parameter] public int Interval { get; set; } = 1000;
+
+    private System.Timers.Timer timer2 { get; set; }
+    private DateTime mytime { get; set; } = DateTime.Now;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            mytime = DateTime.Now;
+
+            timer2 = new System.Timers.Timer(Interval);
+            timer2.Elapsed += TimerTick2;
+            timer2.Enabled = true;
+        }
+    }
+
+    protected void TimerTick2(Object source, ElapsedEventArgs e)
+    {
+        mytime = DateTime.Now;
+        StateHasChanged();
+    }
+}

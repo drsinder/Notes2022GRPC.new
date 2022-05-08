@@ -11,8 +11,6 @@ namespace Notes2022.Client.Pages
     {
         private HomePageModel? hpModel { get; set; }
 
-        private DateTime mytime { get; set; }
-
         private GNotefile dummyFile = new GNotefile { Id = 0, NoteFileName = " ", NoteFileTitle = " " };
 
         private GNotefile item;
@@ -73,8 +71,6 @@ namespace Notes2022.Client.Pages
             histfileList = new GNotefileList();
             impfileList = new GNotefileList();
 
-            mytime = DateTime.Now;
-
             if (myState.IsAuthenticated)
             {
                 // Set and reset local state vars
@@ -122,9 +118,15 @@ namespace Notes2022.Client.Pages
             }
         }
 
+        private int ticks = 0;
+
         protected void TimerTick2(Object source, ElapsedEventArgs e)
         {
-            mytime = DateTime.Now;
+            if (++ticks == 10)
+                timer2.Interval = 5000;
+            else if (++ticks == 60)
+                timer2.Interval = 15000;
+
             Globals.LoginDisplay?.Reload();
             Globals.NavMenu?.Reload().GetAwaiter();
             StateHasChanged();

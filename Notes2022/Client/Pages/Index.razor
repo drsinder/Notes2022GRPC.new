@@ -37,10 +37,13 @@
 
 <div>
     <h5 class="center">
+        <Clock Interval="1000"></Clock>
+    </h5>
+@*    <h5 class="center">
         <span id="homepagetime">
             @mytime
         </span>
-    </h5>
+    </h5>*@
     @if (!myState.IsAuthenticated)
     {
         <p class="center"><strong>You are not logged in.  Please log in.  Register first if you need to.</strong></p>

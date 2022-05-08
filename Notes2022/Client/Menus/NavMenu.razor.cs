@@ -104,12 +104,12 @@ namespace Notes2022.Client.Menus
         /// <param name="e"></param>
         protected void TimerTick2(Object source, ElapsedEventArgs e)
         {
-            mytime = DateTime.Now.ToShortTimeString();
-            if (mytime != mytime2) // do we need to re-render?
-            {
-                StateHasChanged();
-                mytime2 = mytime;
-            }
+            //mytime = DateTime.Now.ToShortTimeString();
+            //if (mytime != mytime2) // do we need to re-render?
+            //{
+            //    StateHasChanged();
+            //    mytime2 = mytime;
+            //}
             if (DoSeq)
             {
                 DoSeq = false;
