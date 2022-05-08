@@ -77,7 +77,7 @@ service Notes2022Server {
 	rpc GetNoteFilesOrderedByName(NoRequest) returns (GNotefileList);
 	rpc CopyNote(CopyModel) returns (NoRequest);
 	rpc DeleteNote(NoteId) returns (NoRequest);
-	rpc GetExportJson2(ExportRequest) returns (JsonExport);
+	rpc GetExportJson(ExportRequest) returns (JsonExport);
 	rpc GetTextFile(AString) returns (AString);	// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
 }
 	//	rpc GetExportJson(ExportRequest) returns (JsonExport);

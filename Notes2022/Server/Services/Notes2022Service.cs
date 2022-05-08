@@ -1261,7 +1261,7 @@ namespace Notes2022.Server.Services
         //}
 
         [Authorize]
-        public override async Task<JsonExport> GetExportJson2(ExportRequest request, ServerCallContext context)
+        public override async Task<JsonExport> GetExportJson(ExportRequest request, ServerCallContext context)
         {
             JsonExport stuff = new JsonExport();
 

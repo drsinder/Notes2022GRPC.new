@@ -29,41 +29,23 @@ namespace Notes2022.Client.Dialogs
 
             message = "Exporting " + FileName;
 
-            //if (!model.isCollapsible)
-            //{
-            //    MemoryStream ms = await DoExport(false);
+            MemoryStream ms2 = await DoExport();
 
-            //    await SaveAs(FileName, ms.GetBuffer());
-            //    ms.Dispose();
-            //}
-            //else
-            {
-                MemoryStream ms2 = await DoExport(true);
-
-                await SaveAs(FileName, ms2.GetBuffer());
-                ms2.Dispose();
-            }
+            await SaveAs(FileName, ms2.GetBuffer());
+            ms2.Dispose();
 
             await ModalInstance.CancelAsync();
         }
 
-        private async Task<MemoryStream> DoExport(bool ext = false)
+        private async Task<MemoryStream> DoExport()
         {
             GNotefile nf = model.NoteFile;
             int nfid = nf.Id;
             StringContent stringContent;
-            //if (ext)
-            //{
-            //    JsonExport2 stuff;
-            //    stuff = await Client.GetExportJson2Async(new ExportRequest() { FileId = nfid, ArcId = 0 }, myState.AuthHeader);
-            //    stringContent = new StringContent(JsonConvert.SerializeObject(stuff, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8, "application/json");
-            //}
-            //else
-            {
-                JsonExport stuff;
-                stuff = await Client.GetExportJson2Async(new ExportRequest() { FileId = nfid, ArcId = 0 }, myState.AuthHeader);
-                stringContent = new StringContent(JsonConvert.SerializeObject(stuff, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8, "application/json");
-            }
+
+            JsonExport stuff;
+            stuff = await Client.GetExportJsonAsync(new ExportRequest() { FileId = nfid, ArcId = 0 }, myState.AuthHeader);
+            stringContent = new StringContent(JsonConvert.SerializeObject(stuff, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8, "application/json");
 
             Stream ms0 = await stringContent.ReadAsStreamAsync();
             MemoryStream ms = new MemoryStream();
