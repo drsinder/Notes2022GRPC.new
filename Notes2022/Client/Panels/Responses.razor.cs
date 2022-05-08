@@ -23,9 +23,10 @@
     **--------------------------------------------------------------------------*/
 
 using Microsoft.AspNetCore.Components;
+using Notes2022.Client.Pages;
 using Notes2022.Proto;
-using Notes2022.Shared;
 using Syncfusion.Blazor.Grids;
+using System.Timers;
 
 namespace Notes2022.Client.Panels
 {
@@ -49,8 +50,10 @@ namespace Notes2022.Client.Panels
         /// </summary>
         [Parameter] public bool ExpandAllR { get; set; }
 
-        public bool ShowContent { get; set; }
-        public bool ExpandAll { get; set; }
+        //[Parameter] public NoteIndex Parent {get; set;}
+
+        //public bool ShowContent { get; set; }
+        //public bool ExpandAll { get; set; }
 
 
         protected SfGrid<GNoteHeader> sfGrid2 { get; set; }
@@ -64,35 +67,38 @@ namespace Notes2022.Client.Panels
         /// Copy parameter to local copy
         /// </summary>
         /// <returns></returns>
-        protected override async Task OnParametersSetAsync()
-        {
-            ShowContent = ShowContentR;
-            ExpandAll = ExpandAllR;
-        }
+        //protected override async Task OnParametersSetAsync()
+        //{
+        //}
 
         public void DataBoundHandler()
         {
             // Expand if appropriate
-            if (ExpandAll)
+            if (ExpandAllR)
             {
-                sfGrid2.ExpandAllDetailRowAsync();
+                sfGrid2.ExpandAllDetailRowAsync().GetAwaiter();
             }
         }
 
-        /// <summary>
-        /// Change of expand/collapse state
-        /// </summary>
-        /// <param name="args"></param>
-        //private async void ExpandAllChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+        //System.Timers.Timer timer2;
+
+        //protected void ActionCompleteHandler(ActionEventArgs<GNoteHeader> action)
         //{
-        //    if (ExpandAll)
+        //    if (action.RequestType == Syncfusion.Blazor.Grids.Action.Filtering)
         //    {
-        //        await sfGrid2.ExpandAllDetailRowAsync();
+        //        timer2 = new System.Timers.Timer(1000);
+        //        timer2.Elapsed += TimerTick2;
+        //        timer2.Enabled = true;
         //    }
-        //    else
-        //    {
-        //        await sfGrid2.CollapseAllDetailRowAsync();
-        //    }
+        //}
+
+        //protected void TimerTick2(Object source, ElapsedEventArgs e)
+        //{
+        //    timer2.Elapsed -= TimerTick2;
+        //    timer2.Stop();
+        //    timer2.Enabled = false;
+
+        //    this.StateHasChanged();
         //}
 
         /// <summary>

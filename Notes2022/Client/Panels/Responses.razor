@@ -30,26 +30,19 @@
 }
 else
 {
-@*    <div>
-        @if (Headers.Count > 0)
-        {
-            <span>Show Response Content on Expand&nbsp; <SfSwitch @bind-Checked="@ShowContent"></SfSwitch>&nbsp; Expand All&nbsp; 
-                <SfSwitch @bind-Checked="@ExpandAll" ValueChange="ExpandAllChange" TChecked="bool"></SfSwitch></span>
-        }
-    </div>*@
     @if (Headers.Count > 0)
     {
-        <SfGrid @ref="@sfGrid2" DataSource="Headers" AllowPaging="false" AllowSelection="true" EnableHover="true" AllowSorting="true" AllowFiltering="true">
-            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.FilterBar">
+        <SfGrid @ref="@sfGrid2" DataSource="Headers" AllowPaging="false" AllowSelection="true" EnableHover="true" AllowSorting="true" >
+ @*           <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.FilterBar" ShowFilterBarStatus="true">
                 <GridFilterColumns>
                     <GridFilterColumn Field="IsDeleted" MatchCase=true Operator="Operator.Equal" Predicate="and" Value="@false"></GridFilterColumn>
                     <GridFilterColumn Field = "Version" MatchCase =true Operator = "Operator.Equal" Predicate = "and" Value = "0" ></GridFilterColumn>
                 </GridFilterColumns>
-            </GridFilterSettings>
-            <GridEvents DataBound="DataBoundHandler" RowSelected="DisplayIt"  TValue="GNoteHeader"></GridEvents>
+            </GridFilterSettings>*@
+            <GridEvents DataBound="DataBoundHandler" RowSelected="DisplayIt" TValue="GNoteHeader"></GridEvents>
             <GridTemplates>
                 <DetailTemplate>
-                    @if (ShowContent)
+                    @if (ShowContentR)
                     {
                         var current2 = (context as GNoteHeader);
                         <NotePanel NoteId="@current2.Id" ShowChild="false" IsRootNote="false" IsMini="true"></NotePanel>
@@ -68,9 +61,9 @@ else
                         }
                     </Template>
                 </GridColumn>
-                <GridColumn Field=@nameof(GNoteHeader.IsDeleted) HeaderText="Del" TextAlign="TextAlign.Left" Width="0" Type="ColumnType.Boolean"></GridColumn>
+@*                <GridColumn Field=@nameof(GNoteHeader.IsDeleted) HeaderText="Del" TextAlign="TextAlign.Left" Width="0" Type="ColumnType.Boolean"></GridColumn>
                 <GridColumn Field=@nameof(GNoteHeader.Version) HeaderText="Version" TextAlign="TextAlign.Left" Width="0"></GridColumn>
-            </GridColumns>
+*@            </GridColumns>
         </SfGrid>
     }
 }

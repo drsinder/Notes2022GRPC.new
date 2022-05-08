@@ -81,7 +81,7 @@ else                    @*    Index mode        *@
                                         var current = (context as GNoteHeader);
                                         List<GNoteHeader>? Resp = null;
                                         if ( current.ResponseCount > 0 ) {
-                                            Resp = Model.AllNotes.List.Where(p => p.NoteOrdinal == current.NoteOrdinal && p.ResponseOrdinal != 0).OrderBy(p => p.ResponseOrdinal).ToList();
+                                            Resp = Model.AllNotes.List.Where(p => p.NoteOrdinal == current.NoteOrdinal && p.ResponseOrdinal != 0 && p.IsDeleted == false && p.Version == 0).OrderBy(p => p.ResponseOrdinal).ToList();
                                         }
                                     }
                                     @if (ShowContent)
