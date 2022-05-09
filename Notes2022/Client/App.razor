@@ -1,5 +1,7 @@
-﻿@using Syncfusion.Licensing
+﻿@implements IAsyncDisposable
+
 @inject Notes2022Server.Notes2022ServerClient Client
+@inject IJSRuntime JS;
 
 <Blazored.Modal.CascadingBlazoredModal HideCloseButton="true" DisableBackgroundCancel="true" HideHeader="true" Class="blazored-custom-modal">
     <Router AppAssembly="@typeof(App).Assembly">
@@ -16,12 +18,3 @@
     </Router>
 </Blazored.Modal.CascadingBlazoredModal>
 
-@code
-{
-    protected override async Task OnParametersSetAsync()
-    {
-        AString key = await Client.GetTextFileAsync(new AString() { Val = "syncfusionkey.rsghjjsrsrj43632353" });
-        SyncfusionLicenseProvider.RegisterLicense(key.Val);
-    }
-
-}

@@ -19,7 +19,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddBlazoredModal();
 builder.Services.AddBlazoredSessionStorage();
-builder.Services.AddSingleton<MainLayout>();	// for login state mgt = "myState" injection in _imports.razor
+builder.Services.AddSingleton<App>();	// for login state mgt = "myState" injection in _imports.razor
 
 builder.Services.AddSyncfusionBlazor(options => { options.IgnoreScriptIsolation = true; });
 
