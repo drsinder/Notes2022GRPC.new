@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 05-02-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 11-14-2021
+// ***********************************************************************
+// <copyright file="EmailSender.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -30,21 +43,44 @@ using SendGrid.Helpers.Mail;
 
 namespace Notes2022.Server.Services
 {
+    /// <summary>
+    /// Class EmailSender.
+    /// Implements the <see cref="IEmailSender" />
+    /// </summary>
+    /// <seealso cref="IEmailSender" />
     public class EmailSender : IEmailSender
     {
         //public StreamWriter StreamWriter { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmailSender"/> class.
+        /// </summary>
+        /// <param name="optionsAccessor">The options accessor.</param>
         public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
         {
             Options = optionsAccessor.Value;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmailSender"/> class.
+        /// </summary>
         public EmailSender()
         {
         }
 
+        /// <summary>
+        /// Gets the options.
+        /// </summary>
+        /// <value>The options.</value>
         public AuthMessageSenderOptions Options { get; } //set only via Secret Manager
 
+        /// <summary>
+        /// Send email as an asynchronous operation.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <param name="subject">The subject.</param>
+        /// <param name="message">The message.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task SendEmailAsync(string email, string subject, string message)
         {
             var apiKey = Globals.SendGridApiKey;
@@ -89,8 +125,15 @@ namespace Notes2022.Server.Services
 
     }
 
+    /// <summary>
+    /// Class AuthMessageSenderOptions.
+    /// </summary>
     public class AuthMessageSenderOptions
     {
+        /// <summary>
+        /// Gets or sets the send grid key.
+        /// </summary>
+        /// <value>The send grid key.</value>
         public string SendGridKey { get; set; }
     }
 }

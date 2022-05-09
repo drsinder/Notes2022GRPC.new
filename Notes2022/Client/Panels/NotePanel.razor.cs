@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-28-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-09-2022
+// ***********************************************************************
+// <copyright file="NotePanel.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -50,119 +63,168 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// For Dialogs
         /// </summary>
+        /// <value>The modal.</value>
         [CascadingParameter] public IModalService Modal { get; set; }
 
         /// <summary>
         /// Our current NoteId
         /// </summary>
+        /// <value>The note identifier.</value>
         [Parameter] public long NoteId { get; set; }
 
         /// <summary>
         /// Whether or not child windows should be shown.  These might include
         /// Responses, versions, references.
         /// </summary>
+        /// <value><c>true</c> if [show child]; otherwise, <c>false</c>.</value>
         [Parameter] public bool ShowChild { get; set; }
 
         /// <summary>
         /// Is this at the "root" of something
         /// </summary>
+        /// <value><c>true</c> if this instance is root note; otherwise, <c>false</c>.</value>
         [Parameter] public bool IsRootNote { get; set; }
 
         /// <summary>
         /// Should optional buttons be shown
         /// </summary>
+        /// <value><c>true</c> if [show buttons]; otherwise, <c>false</c>.</value>
         [Parameter] public bool ShowButtons { get; set; } = true;
 
         /// <summary>
         /// Is this panel to be shown in the alternate style?
         /// </summary>
+        /// <value><c>true</c> if [alt style]; otherwise, <c>false</c>.</value>
         [Parameter] public bool AltStyle { get; set; }
 
         /// <summary>
         /// Should certain functions be suppressed at head and tail of panel
         /// </summary>
+        /// <value><c>true</c> if this instance is mini; otherwise, <c>false</c>.</value>
         [Parameter] public bool IsMini { get; set; }
 
         /// <summary>
         /// Are we showing history versions
         /// </summary>
+        /// <value>The vers.</value>
         [Parameter] public int Vers { get; set; } = 0;
 
         /// <summary>
         /// Who is my container
         /// </summary>
+        /// <value>The index of my note.</value>
         [Parameter] public NoteIndex MyNoteIndex { get; set; }
 
         /// <summary>
         /// List of responses
         /// </summary>
+        /// <value>The resp headers.</value>
 #pragma warning disable IDE1006 // Naming Styles
         protected List<GNoteHeader> respHeaders { get; set; }
 
         /// <summary>
         /// Header style string
         /// </summary>
+        /// <value>The header style.</value>
         protected string HeaderStyle { get; set; }
 
         /// <summary>
         /// Body style string
         /// </summary>
+        /// <value>The body style.</value>
         protected string BodyStyle { get; set; }
 
         /// <summary>
         /// Are responses shown
         /// </summary>
+        /// <value><c>true</c> if [resp shown]; otherwise, <c>false</c>.</value>
         protected bool RespShown { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [reset shown].
+        /// </summary>
+        /// <value><c>true</c> if [reset shown]; otherwise, <c>false</c>.</value>
         protected bool ResetShown { get; set; } = false;
 
         /// <summary>
         /// Is the order of responses flipped?
         /// </summary>
+        /// <value><c>true</c> if [resp flipped]; otherwise, <c>false</c>.</value>
         protected bool RespFlipped { get; set; }
 
         /// <summary>
         /// Should the typing box "eat" the next enter key?
         /// </summary>
+        /// <value><c>true</c> if [eat enter]; otherwise, <c>false</c>.</value>
         protected bool EatEnter { get; set; }
 
         /// <summary>
         /// Are we showing version history?
         /// </summary>
+        /// <value><c>true</c> if [show vers]; otherwise, <c>false</c>.</value>
         protected bool ShowVers { get; set; } = false;
 
         /// <summary>
         /// Are we sequencing?
         /// </summary>
+        /// <value><c>true</c> if this instance is seq; otherwise, <c>false</c>.</value>
         protected bool IsSeq { get; set; }
 
         /// <summary>
         /// Data Model for Note display
         /// </summary>
+        /// <value>The model.</value>
         protected DisplayModel model { get; set; }
 
         /// <summary>
         /// Reference to our menu so we can talk to it
         /// </summary>
+        /// <value>My menu.</value>
         public NoteMenu MyMenu { get; set; }
 
         /// <summary>
         /// Reference to our fancy html editor
         /// </summary>
+        /// <value>The sf text box.</value>
         SfTextBox sfTextBox { get; set; }
 
         /// <summary>
         /// Accumulator for the typin nav box
         /// </summary>
+        /// <value>The nav string.</value>
         public string NavString { get; set; }
         //public string NavCurrentVal { get; set; }
 
+        /// <summary>
+        /// Gets or sets the resp x.
+        /// </summary>
+        /// <value>The resp x.</value>
         public string respX { get; set; }
+        /// <summary>
+        /// Gets or sets the resp y.
+        /// </summary>
+        /// <value>The resp y.</value>
         public string respY { get; set; }
 
+        /// <summary>
+        /// Gets or sets the client.
+        /// </summary>
+        /// <value>The client.</value>
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
+        /// <summary>
+        /// Gets or sets the navigation.
+        /// </summary>
+        /// <value>The navigation.</value>
         [Inject] NavigationManager Navigation { get; set; }
+        /// <summary>
+        /// Gets or sets the js.
+        /// </summary>
+        /// <value>The js.</value>
         [Inject] IJSRuntime JS { get; set; }    // enables calling javascript
+        /// <summary>
+        /// Gets or sets the session storage.
+        /// </summary>
+        /// <value>The session storage.</value>
         [Inject] Blazored.SessionStorage.ISessionStorageService sessionStorage { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
         /// <summary>
@@ -177,7 +239,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Get our data and set IsSeq flag from state
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnParametersSetAsync()
         {
             await GetData();
@@ -201,7 +263,6 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Get data for note
         /// </summary>
-        /// <returns></returns>
         protected async Task GetData()
         {
             //RespShown = false;
@@ -266,8 +327,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Handle change of responses shown switch
         /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
+        /// <param name="args">The arguments.</param>
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         private async Task ShowRespChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
@@ -287,7 +347,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Change the order of shown responses
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The arguments.</param>
         private void FlipRespChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
         {
             if (RespFlipped)
@@ -299,7 +359,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Return to index mode...
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void OnDone(MouseEventArgs args)
         {
             MyNoteIndex.Listing();
@@ -308,7 +368,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Print the note
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private async void OnPrint(MouseEventArgs args)
         {
             await PrintString(false);
@@ -317,7 +377,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Print the whole string
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private async void OnPrintString(MouseEventArgs args)
         {
             await PrintString(true);
@@ -326,6 +386,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Print a whole string if wholeString is true
         /// </summary>
+        /// <param name="wholeString">if set to <c>true</c> [whole string].</param>
         protected async Task PrintString(bool wholeString)
         {
             NoteDisplayIndexModel Model = MyNoteIndex.GetModel();
@@ -403,7 +464,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// collect input and clear EatEnter
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The <see cref="InputEventArgs"/> instance containing the event data.</param>
         private async void NavInputHandler(InputEventArgs args)
         {
             NavString = args.Value;
@@ -414,7 +475,6 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Clear the NavString
         /// </summary>
-        /// <returns></returns>
         private async Task ClearNav()
         {
             NavString = string.Empty;
@@ -426,8 +486,7 @@ namespace Notes2022.Client.Panels
         /// Handle single key press commands right away.  Otherwise
         /// let input accumulate.
         /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
+        /// <param name="args">The <see cref="KeyboardEventArgs"/> instance containing the event data.</param>
         private async Task KeyUpHandler(KeyboardEventArgs args)
         {
             switch (NavString)
@@ -689,7 +748,6 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// GET next matching item from search
         /// </summary>
-        /// <returns></returns>
         protected async Task NextSearch()
         {
             bool InSearch = await sessionStorage.GetItemAsync<bool>("InSearch");
@@ -721,7 +779,6 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Find next recent note
         /// </summary>
-        /// <returns></returns>
         protected async Task SeqNext()
         {
             if (!IsSeq)
@@ -776,6 +833,10 @@ namespace Notes2022.Client.Panels
             }
         }
 
+        /// <summary>
+        /// Shows the message.
+        /// </summary>
+        /// <param name="message">The message.</param>
         private void ShowMessage(string message)
         {
             var parameters = new ModalParameters();
@@ -783,8 +844,21 @@ namespace Notes2022.Client.Panels
             Modal.Show<MessageBox>("", parameters);
         }
 
+        /// <summary>
+        /// The module
+        /// </summary>
         private IJSObjectReference? module;
 
+        /// <summary>
+        /// On after render as an asynchronous operation.
+        /// </summary>
+        /// <param name="firstRender">Set to <c>true</c> if this is the first time <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)" /> has been invoked
+        /// on this component instance; otherwise <c>false</c>.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        /// <remarks>The <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)" /> and <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)" /> lifecycle methods
+        /// are useful for performing interop, or interacting with values received from <c>@ref</c>.
+        /// Use the <paramref name="firstRender" /> parameter to ensure that initialization work is only performed
+        /// once.</remarks>
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
@@ -816,6 +890,10 @@ namespace Notes2022.Client.Panels
         }
 
 #pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
+        /// </summary>
+        /// <returns>A task that represents the asynchronous dispose operation.</returns>
         async ValueTask IAsyncDisposable.DisposeAsync()
 #pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {

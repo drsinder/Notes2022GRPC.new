@@ -1,4 +1,17 @@
-﻿/*-------------------------------------------------------------------------- 
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-26-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="AccessManager.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*-------------------------------------------------------------------------- 
 **
 **  Copyright © 2022, Dale Sinder
 **
@@ -32,22 +45,25 @@ using Notes2022.Shared;
 
 namespace Notes2022.Server
 {
+    /// <summary>
+    /// Class AccessManager.
+    /// </summary>
     public static class AccessManager
     {
         /// <summary>
         /// Create an Access Token
         /// </summary>
-        /// <param name="db"></param>
-        /// <param name="userId"></param>
-        /// <param name="noteFileId"></param>
-        /// <param name="read"></param>
-        /// <param name="respond"></param>
-        /// <param name="write"></param>
-        /// <param name="setTag"></param>
-        /// <param name="deleteEdit"></param>
-        /// <param name="director"></param>
-        /// <param name="editAccess"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="noteFileId">The note file identifier.</param>
+        /// <param name="read">if set to <c>true</c> [read].</param>
+        /// <param name="respond">if set to <c>true</c> [respond].</param>
+        /// <param name="write">if set to <c>true</c> [write].</param>
+        /// <param name="setTag">if set to <c>true</c> [set tag].</param>
+        /// <param name="deleteEdit">if set to <c>true</c> [delete edit].</param>
+        /// <param name="director">if set to <c>true</c> [director].</param>
+        /// <param name="editAccess">if set to <c>true</c> [edit access].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private static async Task<bool> Create(NotesDbContext db, string userId, int noteFileId, bool read, bool respond,
             bool write, bool setTag, bool deleteEdit, bool director, bool editAccess)
         {
@@ -74,11 +90,11 @@ namespace Notes2022.Server
         /// creating user (Admin) -- Full Access
         /// readonly@example.com if it exists -- no access
         /// </summary>
-        /// <param name="db"></param>
-        /// <param name="userManager"></param>
-        /// <param name="userId"></param>
-        /// <param name="fileId"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="fileId">The file identifier.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static async Task<bool> CreateBaseEntries(NotesDbContext db, UserManager<ApplicationUser> userManager, string userId, int fileId)
         {
             if (true)
@@ -122,6 +138,7 @@ namespace Notes2022.Server
         /// <param name="db">NotesDbContext</param>
         /// <param name="userId">ID of logged in user</param>
         /// <param name="fileId">NoteFileID</param>
+        /// <param name="arcId">The arc identifier.</param>
         /// <returns>NoteAcess Object</returns>
         public static async Task<NoteAccess> GetAccess(NotesDbContext db, string userId, int fileId, int arcId)
         {
@@ -156,6 +173,7 @@ namespace Notes2022.Server
         /// <param name="db">NotesDbContext</param>
         /// <param name="userId">ID of logged in user</param>
         /// <param name="fileId">NoteFileID</param>
+        /// <param name="arcId">The arc identifier.</param>
         /// <returns>NoteAcess Object</returns>
         public static async Task<NoteAccess> GetOneAccess(NotesDbContext db, string userId, int fileId, int arcId)
         {
@@ -164,6 +182,13 @@ namespace Notes2022.Server
             return na is null ? new() : na;
         }
 
+        /// <summary>
+        /// Gets the access list for file.
+        /// </summary>
+        /// <param name="db">The database.</param>
+        /// <param name="fileId">The file identifier.</param>
+        /// <param name="arcId">The arc identifier.</param>
+        /// <returns>List&lt;NoteAccess&gt;.</returns>
         public static async Task<List<NoteAccess>> GetAccessListForFile(NotesDbContext db, int fileId, int arcId)
         {
             return await db.NoteAccess
@@ -190,6 +215,13 @@ namespace Notes2022.Server
         //    return (await db.SaveChangesAsync()) == 1;
         //}
 
+        /// <summary>
+        /// Tests the link access.
+        /// </summary>
+        /// <param name="NotesDbContext">The notes database context.</param>
+        /// <param name="noteFile">The note file.</param>
+        /// <param name="secret">The secret.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static async Task<bool> TestLinkAccess(NotesDbContext NotesDbContext,
             NoteFile noteFile, string secret)
         {

@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-14-2022
+// ***********************************************************************
+// <copyright file="SystemMessage.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -31,6 +44,10 @@ namespace Notes2022.Server.Entities
     /// </summary>
     public class SystemMessage
     {
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>The message.</value>
         public string? message { get; set; }
     }
 }

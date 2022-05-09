@@ -1,0 +1,1109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="a05c42c0-8dbd-4ee6-a3a7-2612cf0a1698" Title="Notes2022.Client Namespace" Url="html/N-Notes2022.Client.htm">
+    <HelpTOCNode Id="9a90a814-84a6-4c89-8f00-8c86be2a4404" Title="App Class" Url="html/T-Notes2022.Client.App.htm">
+      <HelpTOCNode Title="App Members" Url="html/AllMembers.T-Notes2022.Client.App.htm" />
+      <HelpTOCNode Id="bd8d75d6-6faf-41ce-98d8-93190fafe71d" Title="App Methods" Url="html/Methods.T-Notes2022.Client.App.htm">
+        <HelpTOCNode Title="GetLoginReplyAsync Method " Url="html/M-Notes2022.Client.App.GetLoginReplyAsync.htm" />
+        <HelpTOCNode Title="ReadCookie Method " Url="html/M-Notes2022.Client.App.ReadCookie.htm" />
+        <HelpTOCNode Title="WriteCookie Method " Url="html/M-Notes2022.Client.App.WriteCookie.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="87977188-8e29-4604-96c4-ea4596cb8768" Title="App Properties" Url="html/Properties.T-Notes2022.Client.App.htm">
+        <HelpTOCNode Title="AuthHeader Property " Url="html/P-Notes2022.Client.App.AuthHeader.htm" />
+        <HelpTOCNode Title="IsAdmin Property " Url="html/P-Notes2022.Client.App.IsAdmin.htm" />
+        <HelpTOCNode Title="IsAuthenticated Property " Url="html/P-Notes2022.Client.App.IsAuthenticated.htm" />
+        <HelpTOCNode Title="IsUser Property " Url="html/P-Notes2022.Client.App.IsUser.htm" />
+        <HelpTOCNode Title="LoginReply Property " Url="html/P-Notes2022.Client.App.LoginReply.htm" />
+        <HelpTOCNode Title="UserInfo Property " Url="html/P-Notes2022.Client.App.UserInfo.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="cfcf64a5-0b5f-4f28-a6ba-b83b935df7d8" Title="App Events" Url="html/Events.T-Notes2022.Client.App.htm">
+        <HelpTOCNode Title="OnChange Event" Url="html/E-Notes2022.Client.App.OnChange.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5f958e9e-01b5-454e-8043-f8c646211de8" Title="Globals Class" Url="html/T-Notes2022.Client.Globals.htm">
+      <HelpTOCNode Title="Globals Members" Url="html/AllMembers.T-Notes2022.Client.Globals.htm" />
+      <HelpTOCNode Id="bbe157b9-f606-4b2d-9d93-ca51f7349ffd" Title="Globals Fields" Url="html/Fields.T-Notes2022.Client.Globals.htm">
+        <HelpTOCNode Title="LoginDisplay Field" Url="html/F-Notes2022.Client.Globals.LoginDisplay.htm" />
+        <HelpTOCNode Title="NavMenu Field" Url="html/F-Notes2022.Client.Globals.NavMenu.htm" />
+        <HelpTOCNode Title="NotesFilesAdmin Field" Url="html/F-Notes2022.Client.Globals.NotesFilesAdmin.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="46c84ba0-6d6c-4e5f-ba93-0a45b1e6bf66" Title="Globals Methods" Url="html/Methods.T-Notes2022.Client.Globals.htm">
+        <HelpTOCNode Title="Base64Decode Method " Url="html/M-Notes2022.Client.Globals.Base64Decode.htm" />
+        <HelpTOCNode Title="Base64Encode Method " Url="html/M-Notes2022.Client.Globals.Base64Encode.htm" />
+        <HelpTOCNode Title="LocalTimeBlazor Method " Url="html/M-Notes2022.Client.Globals.LocalTimeBlazor.htm" />
+        <HelpTOCNode Title="UTimeBlazor Method " Url="html/M-Notes2022.Client.Globals.UTimeBlazor.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="99c3ac5d-c1e4-444d-b9af-ffbdc3327893" Title="Globals Properties" Url="html/Properties.T-Notes2022.Client.Globals.htm">
+        <HelpTOCNode Title="AccessOtherId Property " Url="html/P-Notes2022.Client.Globals.AccessOtherId.htm" />
+        <HelpTOCNode Title="Cookie Property " Url="html/P-Notes2022.Client.Globals.Cookie.htm" />
+        <HelpTOCNode Title="GotoNote Property " Url="html/P-Notes2022.Client.Globals.GotoNote.htm" />
+        <HelpTOCNode Title="returnUrl Property " Url="html/P-Notes2022.Client.Globals.returnUrl.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="ea353709-f57c-490a-9405-ba5883c836c2" Title="Notes2022.Client.Comp Namespace" Url="html/N-Notes2022.Client.Comp.htm">
+    <HelpTOCNode Id="a2e8aa6e-d027-46af-a6a3-de4c345c077b" Title="Clock Class" Url="html/T-Notes2022.Client.Comp.Clock.htm">
+      <HelpTOCNode Title="Clock Members" Url="html/AllMembers.T-Notes2022.Client.Comp.Clock.htm" />
+      <HelpTOCNode Id="81891def-ecf8-430b-8cef-709bff26bc61" Title="Clock Properties" Url="html/Properties.T-Notes2022.Client.Comp.Clock.htm">
+        <HelpTOCNode Title="Interval Property " Url="html/P-Notes2022.Client.Comp.Clock.Interval.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c0d7aa4a-066c-4f16-b8cb-755f60fbbb59" Title="FileButton Class" Url="html/T-Notes2022.Client.Comp.FileButton.htm">
+      <HelpTOCNode Title="FileButton Members" Url="html/AllMembers.T-Notes2022.Client.Comp.FileButton.htm" />
+      <HelpTOCNode Title="FileButton Constructor " Url="html/M-Notes2022.Client.Comp.FileButton.-ctor.htm" />
+      <HelpTOCNode Id="35dd0ed9-6853-44c1-a705-c6a7eb22cddd" Title="FileButton Properties" Url="html/Properties.T-Notes2022.Client.Comp.FileButton.htm">
+        <HelpTOCNode Title="NoteFile Property " Url="html/P-Notes2022.Client.Comp.FileButton.NoteFile.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="35ac2cb9-01b7-4b06-821e-85a18c00519b" Title="SCheckBox Class" Url="html/T-Notes2022.Client.Comp.SCheckBox.htm">
+      <HelpTOCNode Title="SCheckBox Members" Url="html/AllMembers.T-Notes2022.Client.Comp.SCheckBox.htm" />
+      <HelpTOCNode Id="1d5b96f7-a346-460f-9bb1-12c77224e34e" Title="SCheckBox Methods" Url="html/Methods.T-Notes2022.Client.Comp.SCheckBox.htm">
+        <HelpTOCNode Title="OnClick Method " Url="html/M-Notes2022.Client.Comp.SCheckBox.OnClick.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3718ccdf-110f-43bb-b70a-c665858558ba" Title="SCheckBox Properties" Url="html/Properties.T-Notes2022.Client.Comp.SCheckBox.htm">
+        <HelpTOCNode Title="fileId Property " Url="html/P-Notes2022.Client.Comp.SCheckBox.fileId.htm" />
+        <HelpTOCNode Title="isChecked Property " Url="html/P-Notes2022.Client.Comp.SCheckBox.isChecked.htm" />
+        <HelpTOCNode Title="Model Property " Url="html/P-Notes2022.Client.Comp.SCheckBox.Model.htm" />
+        <HelpTOCNode Title="Tracker Property " Url="html/P-Notes2022.Client.Comp.SCheckBox.Tracker.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="041e36f1-9066-4fa4-bd0d-cde9441d00eb" Title="TrackerMover Class" Url="html/T-Notes2022.Client.Comp.TrackerMover.htm">
+      <HelpTOCNode Title="TrackerMover Members" Url="html/AllMembers.T-Notes2022.Client.Comp.TrackerMover.htm" />
+      <HelpTOCNode Id="16a8dd88-a5b0-460a-a268-53636ef11e8d" Title="TrackerMover Properties" Url="html/Properties.T-Notes2022.Client.Comp.TrackerMover.htm">
+        <HelpTOCNode Title="CurrentTracker Property " Url="html/P-Notes2022.Client.Comp.TrackerMover.CurrentTracker.htm" />
+        <HelpTOCNode Title="Tracker Property " Url="html/P-Notes2022.Client.Comp.TrackerMover.Tracker.htm" />
+        <HelpTOCNode Title="Trackers Property " Url="html/P-Notes2022.Client.Comp.TrackerMover.Trackers.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="20d82408-3ef1-410d-be1d-400b33b6d374" Title="Notes2022.Client.Dialogs Namespace" Url="html/N-Notes2022.Client.Dialogs.htm">
+    <HelpTOCNode Id="d234340c-cc79-4439-9f07-abbd79f8d084" Title="AccessCheckBox Class" Url="html/T-Notes2022.Client.Dialogs.AccessCheckBox.htm">
+      <HelpTOCNode Title="AccessCheckBox Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.AccessCheckBox.htm" />
+      <HelpTOCNode Title="AccessCheckBox Constructor " Url="html/M-Notes2022.Client.Dialogs.AccessCheckBox.-ctor.htm" />
+      <HelpTOCNode Id="0faf291b-734f-4497-8b90-4552422c2694" Title="AccessCheckBox Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.AccessCheckBox.htm">
+        <HelpTOCNode Title="Model Property " Url="html/P-Notes2022.Client.Dialogs.AccessCheckBox.Model.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="dbc4c544-e83d-434a-a8a6-62210da8c8b7" Title="AccessDeleteButton Class" Url="html/T-Notes2022.Client.Dialogs.AccessDeleteButton.htm">
+      <HelpTOCNode Title="AccessDeleteButton Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.AccessDeleteButton.htm" />
+      <HelpTOCNode Title="AccessDeleteButton Constructor " Url="html/M-Notes2022.Client.Dialogs.AccessDeleteButton.-ctor.htm" />
+      <HelpTOCNode Id="9208945a-c29b-49d7-aaff-5d3aaee7f545" Title="AccessDeleteButton Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.AccessDeleteButton.htm">
+        <HelpTOCNode Title="noteAccess Property " Url="html/P-Notes2022.Client.Dialogs.AccessDeleteButton.noteAccess.htm" />
+        <HelpTOCNode Title="OnClick Property " Url="html/P-Notes2022.Client.Dialogs.AccessDeleteButton.OnClick.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3aa1df2a-08c5-4ddf-b28b-f318e94247a6" Title="AccessItem Class" Url="html/T-Notes2022.Client.Dialogs.AccessItem.htm">
+      <HelpTOCNode Title="AccessItem Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.AccessItem.htm" />
+      <HelpTOCNode Id="89220b88-a0c9-4fc3-9072-8c26bfd18f55" Title="AccessItem Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.AccessItem.htm">
+        <HelpTOCNode Title="canEdit Property " Url="html/P-Notes2022.Client.Dialogs.AccessItem.canEdit.htm" />
+        <HelpTOCNode Title="isChecked Property " Url="html/P-Notes2022.Client.Dialogs.AccessItem.isChecked.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/P-Notes2022.Client.Dialogs.AccessItem.Item.htm" />
+        <HelpTOCNode Title="which Property " Url="html/P-Notes2022.Client.Dialogs.AccessItem.which.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8051e7b0-6df1-4425-a7f8-fdeb70c37eb3" Title="AccessList Class" Url="html/T-Notes2022.Client.Dialogs.AccessList.htm">
+      <HelpTOCNode Title="AccessList Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.AccessList.htm" />
+      <HelpTOCNode Title="AccessList Constructor " Url="html/M-Notes2022.Client.Dialogs.AccessList.-ctor.htm" />
+      <HelpTOCNode Id="a949cebe-2855-4d9a-9fee-0c576c494233" Title="AccessList Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.AccessList.htm">
+        <HelpTOCNode Title="fileId Property " Url="html/P-Notes2022.Client.Dialogs.AccessList.fileId.htm" />
+        <HelpTOCNode Title="Modal Property " Url="html/P-Notes2022.Client.Dialogs.AccessList.Modal.htm" />
+        <HelpTOCNode Title="ModalInstance Property " Url="html/P-Notes2022.Client.Dialogs.AccessList.ModalInstance.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="AccessX Enumeration" Url="html/T-Notes2022.Client.Dialogs.AccessX.htm" />
+    <HelpTOCNode Id="aaf89df8-5fcb-4ef2-a63a-11263696461c" Title="AddAccessDlg Class" Url="html/T-Notes2022.Client.Dialogs.AddAccessDlg.htm">
+      <HelpTOCNode Title="AddAccessDlg Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.AddAccessDlg.htm" />
+      <HelpTOCNode Title="AddAccessDlg Constructor " Url="html/M-Notes2022.Client.Dialogs.AddAccessDlg.-ctor.htm" />
+      <HelpTOCNode Id="087acfcd-97bc-4456-9cd3-fdc7d2f886e0" Title="AddAccessDlg Methods" Url="html/Methods.T-Notes2022.Client.Dialogs.AddAccessDlg.htm">
+        <HelpTOCNode Title="Done Method " Url="html/M-Notes2022.Client.Dialogs.AddAccessDlg.Done.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="01b687e0-54ad-45fa-b233-fdee90ad8196" Title="AddAccessDlg Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.AddAccessDlg.htm">
+        <HelpTOCNode Title="ModalInstance Property " Url="html/P-Notes2022.Client.Dialogs.AddAccessDlg.ModalInstance.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Client.Dialogs.AddAccessDlg.NoteFileId.htm" />
+        <HelpTOCNode Title="userList Property " Url="html/P-Notes2022.Client.Dialogs.AddAccessDlg.userList.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="bb62ed16-3d16-44df-8795-45b6e60ee0df" Title="CodeFormat Class" Url="html/T-Notes2022.Client.Dialogs.CodeFormat.htm">
+      <HelpTOCNode Title="CodeFormat Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.CodeFormat.htm" />
+      <HelpTOCNode Id="1ee265de-8862-463b-92fb-8b8b68d75686" Title="CodeFormat Fields" Url="html/Fields.T-Notes2022.Client.Dialogs.CodeFormat.htm">
+        <HelpTOCNode Title="CFormats Field" Url="html/F-Notes2022.Client.Dialogs.CodeFormat.CFormats.htm" />
+        <HelpTOCNode Title="DropVal Field" Url="html/F-Notes2022.Client.Dialogs.CodeFormat.DropVal.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5aa6e08d-3e8d-4bf7-a45c-3ac7d1970070" Title="CodeFormat Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.CodeFormat.htm">
+        <HelpTOCNode Title="EditObj Property " Url="html/P-Notes2022.Client.Dialogs.CodeFormat.EditObj.htm" />
+        <HelpTOCNode Title="stuff Property " Url="html/P-Notes2022.Client.Dialogs.CodeFormat.stuff.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ee99626d-1870-45ae-9f90-a764a8cfe142" Title="CodeFormat.CFormat Class" Url="html/T-Notes2022.Client.Dialogs.CodeFormat.CFormat.htm">
+      <HelpTOCNode Title="CodeFormat.CFormat Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.CodeFormat.CFormat.htm" />
+      <HelpTOCNode Id="e7ea9692-dd6f-4475-94ba-42e3bdc87a56" Title="CodeFormat.CFormat Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.CodeFormat.CFormat.htm">
+        <HelpTOCNode Title="Code Property " Url="html/P-Notes2022.Client.Dialogs.CodeFormat.CFormat.Code.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-Notes2022.Client.Dialogs.CodeFormat.CFormat.Name.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8ce3d3d2-8251-4704-8d7e-b756ab3db9cd" Title="Copy Class" Url="html/T-Notes2022.Client.Dialogs.Copy.htm">
+      <HelpTOCNode Title="Copy Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.Copy.htm" />
+      <HelpTOCNode Id="fe7a456f-9137-401a-8b27-fd76061cdce9" Title="Copy Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.Copy.htm">
+        <HelpTOCNode Title="Note Property " Url="html/P-Notes2022.Client.Dialogs.Copy.Note.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="baa6198d-096a-46f8-bcd0-a76422b1a9f2" Title="CreateNoteFile Class" Url="html/T-Notes2022.Client.Dialogs.CreateNoteFile.htm">
+      <HelpTOCNode Title="CreateNoteFile Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.CreateNoteFile.htm" />
+      <HelpTOCNode Id="0bddd3c7-2c47-4b20-9d34-522846ffbfbb" Title="CreateNoteFile Fields" Url="html/Fields.T-Notes2022.Client.Dialogs.CreateNoteFile.htm">
+        <HelpTOCNode Title="dummyFile Field" Url="html/F-Notes2022.Client.Dialogs.CreateNoteFile.dummyFile.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d23110aa-f028-4ef1-87e5-733b8155ee7e" Title="CreateNoteFile Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.CreateNoteFile.htm">
+        <HelpTOCNode Title="FileId Property " Url="html/P-Notes2022.Client.Dialogs.CreateNoteFile.FileId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="19be21c0-b751-4353-b39a-c27b5c14c139" Title="CreateNoteFile.CreateFileModel Class" Url="html/T-Notes2022.Client.Dialogs.CreateNoteFile.CreateFileModel.htm">
+      <HelpTOCNode Title="CreateNoteFile.CreateFileModel Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.CreateNoteFile.CreateFileModel.htm" />
+      <HelpTOCNode Id="665975e3-e92b-4fb0-960c-69774fe0eed6" Title="CreateNoteFile.CreateFileModel Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.CreateNoteFile.CreateFileModel.htm">
+        <HelpTOCNode Title="NoteFileName Property " Url="html/P-Notes2022.Client.Dialogs.CreateNoteFile.CreateFileModel.NoteFileName.htm" />
+        <HelpTOCNode Title="NoteFileTitle Property " Url="html/P-Notes2022.Client.Dialogs.CreateNoteFile.CreateFileModel.NoteFileTitle.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5f9a261c-a097-4ea5-b74e-1c8d883ef287" Title="DeleteNoteFile Class" Url="html/T-Notes2022.Client.Dialogs.DeleteNoteFile.htm">
+      <HelpTOCNode Title="DeleteNoteFile Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.DeleteNoteFile.htm" />
+      <HelpTOCNode Id="2794f0ba-6f37-4e72-ad79-795b5fd45029" Title="DeleteNoteFile Fields" Url="html/Fields.T-Notes2022.Client.Dialogs.DeleteNoteFile.htm">
+        <HelpTOCNode Title="dummyFile Field" Url="html/F-Notes2022.Client.Dialogs.DeleteNoteFile.dummyFile.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="89b79083-5b43-42cf-b7d0-321d7e5bd6ac" Title="DeleteNoteFile Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.DeleteNoteFile.htm">
+        <HelpTOCNode Title="FileId Property " Url="html/P-Notes2022.Client.Dialogs.DeleteNoteFile.FileId.htm" />
+        <HelpTOCNode Title="FileName Property " Url="html/P-Notes2022.Client.Dialogs.DeleteNoteFile.FileName.htm" />
+        <HelpTOCNode Title="FileTitle Property " Url="html/P-Notes2022.Client.Dialogs.DeleteNoteFile.FileTitle.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="54e23471-15fd-4eb8-a024-b09c2ec38052" Title="DeleteNoteFile.CreateFileModel Class" Url="html/T-Notes2022.Client.Dialogs.DeleteNoteFile.CreateFileModel.htm">
+      <HelpTOCNode Title="DeleteNoteFile.CreateFileModel Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.DeleteNoteFile.CreateFileModel.htm" />
+      <HelpTOCNode Id="d6097ce0-2f4a-4178-b7ed-44435a689ab5" Title="DeleteNoteFile.CreateFileModel Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.DeleteNoteFile.CreateFileModel.htm">
+        <HelpTOCNode Title="NoteFileName Property " Url="html/P-Notes2022.Client.Dialogs.DeleteNoteFile.CreateFileModel.NoteFileName.htm" />
+        <HelpTOCNode Title="NoteFileTitle Property " Url="html/P-Notes2022.Client.Dialogs.DeleteNoteFile.CreateFileModel.NoteFileTitle.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="eb38d34a-77fc-443b-b30f-3a9222894b8c" Title="EditNoteFile Class" Url="html/T-Notes2022.Client.Dialogs.EditNoteFile.htm">
+      <HelpTOCNode Title="EditNoteFile Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.EditNoteFile.htm" />
+      <HelpTOCNode Id="6ff07d48-88e7-49d1-a28e-73c1dc2492f1" Title="EditNoteFile Fields" Url="html/Fields.T-Notes2022.Client.Dialogs.EditNoteFile.htm">
+        <HelpTOCNode Title="dummyFile Field" Url="html/F-Notes2022.Client.Dialogs.EditNoteFile.dummyFile.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="962583c7-bea0-4405-a2eb-c501383f4370" Title="EditNoteFile Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.EditNoteFile.htm">
+        <HelpTOCNode Title="FileId Property " Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.FileId.htm" />
+        <HelpTOCNode Title="FileName Property " Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.FileName.htm" />
+        <HelpTOCNode Title="FileTitle Property " Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.FileTitle.htm" />
+        <HelpTOCNode Title="LastEdited Property " Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.LastEdited.htm" />
+        <HelpTOCNode Title="NumberArchives Property " Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.NumberArchives.htm" />
+        <HelpTOCNode Title="Owner Property " Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.Owner.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4cec0130-96d4-4dbe-8dd1-9decebd5d4a4" Title="EditNoteFile.CreateFileModel Class" Url="html/T-Notes2022.Client.Dialogs.EditNoteFile.CreateFileModel.htm">
+      <HelpTOCNode Title="EditNoteFile.CreateFileModel Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.EditNoteFile.CreateFileModel.htm" />
+      <HelpTOCNode Id="8898d591-6c91-4579-a19c-7f66144b8bd9" Title="EditNoteFile.CreateFileModel Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.EditNoteFile.CreateFileModel.htm">
+        <HelpTOCNode Title="NoteFileName Property " Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.CreateFileModel.NoteFileName.htm" />
+        <HelpTOCNode Title="NoteFileTitle Property " Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.CreateFileModel.NoteFileTitle.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5314b040-1c46-47e9-a0a8-84863290791c" Title="Email Class" Url="html/T-Notes2022.Client.Dialogs.Email.htm">
+      <HelpTOCNode Title="Email Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.Email.htm" />
+      <HelpTOCNode Id="f64e3e4c-58fe-48a0-8294-f6141178a91c" Title="Email Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.Email.htm">
+        <HelpTOCNode Title="emailaddr Property " Url="html/P-Notes2022.Client.Dialogs.Email.emailaddr.htm" />
+        <HelpTOCNode Title="ModalInstance Property " Url="html/P-Notes2022.Client.Dialogs.Email.ModalInstance.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5a1440ee-332d-48de-9d59-b01fcd7e342c" Title="ExportJson Class" Url="html/T-Notes2022.Client.Dialogs.ExportJson.htm">
+      <HelpTOCNode Title="ExportJson Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.ExportJson.htm" />
+      <HelpTOCNode Id="0330a0c1-d89d-4b3c-99d5-74ca634aab61" Title="ExportJson Methods" Url="html/Methods.T-Notes2022.Client.Dialogs.ExportJson.htm">
+        <HelpTOCNode Title="SaveAs Method " Url="html/M-Notes2022.Client.Dialogs.ExportJson.SaveAs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0e7ec3bd-4cbe-463a-a0f0-ffe837eef1d5" Title="ExportJson Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.ExportJson.htm">
+        <HelpTOCNode Title="ModalInstance Property " Url="html/P-Notes2022.Client.Dialogs.ExportJson.ModalInstance.htm" />
+        <HelpTOCNode Title="model Property " Url="html/P-Notes2022.Client.Dialogs.ExportJson.model.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e9b4dd4c-1a25-4020-a3e9-d8db034f3a09" Title="ExportUtil1 Class" Url="html/T-Notes2022.Client.Dialogs.ExportUtil1.htm">
+      <HelpTOCNode Title="ExportUtil1 Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.ExportUtil1.htm" />
+      <HelpTOCNode Id="375d14de-397a-4ac9-8694-6dcd3a254b30" Title="ExportUtil1 Methods" Url="html/Methods.T-Notes2022.Client.Dialogs.ExportUtil1.htm">
+        <HelpTOCNode Title="SaveAs Method " Url="html/M-Notes2022.Client.Dialogs.ExportUtil1.SaveAs.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b7177eb3-49bb-48a5-bb00-ecdf08657ab6" Title="ExportUtil1 Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.ExportUtil1.htm">
+        <HelpTOCNode Title="FileName Property " Url="html/P-Notes2022.Client.Dialogs.ExportUtil1.FileName.htm" />
+        <HelpTOCNode Title="ModalInstance Property " Url="html/P-Notes2022.Client.Dialogs.ExportUtil1.ModalInstance.htm" />
+        <HelpTOCNode Title="model Property " Url="html/P-Notes2022.Client.Dialogs.ExportUtil1.model.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="15fa42d9-e7bf-4c1c-af2e-6b28cc927360" Title="ExportViewModel Class" Url="html/T-Notes2022.Client.Dialogs.ExportViewModel.htm">
+      <HelpTOCNode Title="ExportViewModel Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.ExportViewModel.htm" />
+      <HelpTOCNode Id="73a3adc6-8429-43ea-8ada-2eb0b8dcb477" Title="ExportViewModel Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.ExportViewModel.htm">
+        <HelpTOCNode Title="ArchiveNumber Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.ArchiveNumber.htm" />
+        <HelpTOCNode Title="Email Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.Email.htm" />
+        <HelpTOCNode Title="isCollapsible Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.isCollapsible.htm" />
+        <HelpTOCNode Title="isDirectOutput Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.isDirectOutput.htm" />
+        <HelpTOCNode Title="isHtml Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.isHtml.htm" />
+        <HelpTOCNode Title="Marks Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.Marks.htm" />
+        <HelpTOCNode Title="myMenu Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.myMenu.htm" />
+        <HelpTOCNode Title="NoteFile Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.NoteFile.htm" />
+        <HelpTOCNode Title="NoteOrdinal Property " Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.NoteOrdinal.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="308cfc27-a2f2-429f-a240-21ad68493acd" Title="Forward Class" Url="html/T-Notes2022.Client.Dialogs.Forward.htm">
+      <HelpTOCNode Title="Forward Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.Forward.htm" />
+      <HelpTOCNode Id="64270b44-0ff4-46f4-80a2-0f567fe2130a" Title="Forward Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.Forward.htm">
+        <HelpTOCNode Title="ForwardView Property " Url="html/P-Notes2022.Client.Dialogs.Forward.ForwardView.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="HelpDialog Class" Url="html/T-Notes2022.Client.Dialogs.HelpDialog.htm" />
+    <HelpTOCNode Title="HelpDialog2 Class" Url="html/T-Notes2022.Client.Dialogs.HelpDialog2.htm" />
+    <HelpTOCNode Id="b541dea3-f18b-44a3-ae2d-392b29e855cc" Title="Mark Class" Url="html/T-Notes2022.Client.Dialogs.Mark.htm">
+      <HelpTOCNode Title="Mark Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.Mark.htm" />
+      <HelpTOCNode Id="1faf6583-76d7-4993-aaee-beba0be6d6e2" Title="Mark Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.Mark.htm">
+        <HelpTOCNode Title="ArchiveId Property " Url="html/P-Notes2022.Client.Dialogs.Mark.ArchiveId.htm" />
+        <HelpTOCNode Title="MarkOrdinal Property " Url="html/P-Notes2022.Client.Dialogs.Mark.MarkOrdinal.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Client.Dialogs.Mark.NoteFileId.htm" />
+        <HelpTOCNode Title="NoteHeaderId Property " Url="html/P-Notes2022.Client.Dialogs.Mark.NoteHeaderId.htm" />
+        <HelpTOCNode Title="NoteOrdinal Property " Url="html/P-Notes2022.Client.Dialogs.Mark.NoteOrdinal.htm" />
+        <HelpTOCNode Title="ResponseOrdinal Property " Url="html/P-Notes2022.Client.Dialogs.Mark.ResponseOrdinal.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-Notes2022.Client.Dialogs.Mark.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="410e9330-bcc2-4e69-affe-2904a6c945a2" Title="MessageBox Class" Url="html/T-Notes2022.Client.Dialogs.MessageBox.htm">
+      <HelpTOCNode Title="MessageBox Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.MessageBox.htm" />
+      <HelpTOCNode Id="04e9517b-fbcd-4ae2-bbda-b4221927b353" Title="MessageBox Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.MessageBox.htm">
+        <HelpTOCNode Title="MessageInput Property " Url="html/P-Notes2022.Client.Dialogs.MessageBox.MessageInput.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="94f353a1-b52e-40f1-828c-5ef2132f07a0" Title="NoteFileDetails Class" Url="html/T-Notes2022.Client.Dialogs.NoteFileDetails.htm">
+      <HelpTOCNode Title="NoteFileDetails Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.NoteFileDetails.htm" />
+      <HelpTOCNode Id="48e722d9-cfe5-4bac-8ea6-be572b3d4c20" Title="NoteFileDetails Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.NoteFileDetails.htm">
+        <HelpTOCNode Title="FileId Property " Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.FileId.htm" />
+        <HelpTOCNode Title="FileName Property " Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.FileName.htm" />
+        <HelpTOCNode Title="FileTitle Property " Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.FileTitle.htm" />
+        <HelpTOCNode Title="LastEdited Property " Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.LastEdited.htm" />
+        <HelpTOCNode Title="NumberArchives Property " Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.NumberArchives.htm" />
+        <HelpTOCNode Title="Owner Property " Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.Owner.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ceae4d0b-0b3e-476e-9fed-917b0e8922e4" Title="PrintDlg Class" Url="html/T-Notes2022.Client.Dialogs.PrintDlg.htm">
+      <HelpTOCNode Title="PrintDlg Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.PrintDlg.htm" />
+      <HelpTOCNode Id="54abbd87-4434-4aac-a379-d9b875563c91" Title="PrintDlg Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.PrintDlg.htm">
+        <HelpTOCNode Title="PrintStuff Property " Url="html/P-Notes2022.Client.Dialogs.PrintDlg.PrintStuff.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8277a5f0-7f50-4312-87bd-98177a945c47" Title="SearchDlg Class" Url="html/T-Notes2022.Client.Dialogs.SearchDlg.htm">
+      <HelpTOCNode Title="SearchDlg Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.SearchDlg.htm" />
+      <HelpTOCNode Id="62a21979-44ce-4024-96a4-a73af7f508ff" Title="SearchDlg Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.SearchDlg.htm">
+        <HelpTOCNode Title="searchtype Property " Url="html/P-Notes2022.Client.Dialogs.SearchDlg.searchtype.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="50733e1d-3ec0-4228-bde0-a6b62dfaae41" Title="Upload1 Class" Url="html/T-Notes2022.Client.Dialogs.Upload1.htm">
+      <HelpTOCNode Title="Upload1 Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.Upload1.htm" />
+      <HelpTOCNode Id="927774e8-ae78-4b3e-ab19-b609f95e6bb8" Title="Upload1 Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.Upload1.htm">
+        <HelpTOCNode Title="filename Property " Url="html/P-Notes2022.Client.Dialogs.Upload1.filename.htm" />
+        <HelpTOCNode Title="ModalInstance Property " Url="html/P-Notes2022.Client.Dialogs.Upload1.ModalInstance.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="478d1ff9-9649-4d99-9484-73597309317c" Title="Upload2 Class" Url="html/T-Notes2022.Client.Dialogs.Upload2.htm">
+      <HelpTOCNode Title="Upload2 Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.Upload2.htm" />
+      <HelpTOCNode Id="d4cfa0cf-314c-4b30-9868-b8d20fce0412" Title="Upload2 Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.Upload2.htm">
+        <HelpTOCNode Title="ModalInstance Property " Url="html/P-Notes2022.Client.Dialogs.Upload2.ModalInstance.htm" />
+        <HelpTOCNode Title="NoteFile Property " Url="html/P-Notes2022.Client.Dialogs.Upload2.NoteFile.htm" />
+        <HelpTOCNode Title="UploadFile Property " Url="html/P-Notes2022.Client.Dialogs.Upload2.UploadFile.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1836fedd-cd6e-4ae0-bfe2-5ec93d246158" Title="UserEdit Class" Url="html/T-Notes2022.Client.Dialogs.UserEdit.htm">
+      <HelpTOCNode Title="UserEdit Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.UserEdit.htm" />
+      <HelpTOCNode Title="UserEdit Constructor " Url="html/M-Notes2022.Client.Dialogs.UserEdit.-ctor.htm" />
+      <HelpTOCNode Id="c13ffef1-e28e-4be8-836a-25a2d3e04207" Title="UserEdit Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.UserEdit.htm">
+        <HelpTOCNode Title="ModalInstance Property " Url="html/P-Notes2022.Client.Dialogs.UserEdit.ModalInstance.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-Notes2022.Client.Dialogs.UserEdit.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b997d76d-a2ac-49ab-b10a-95dd3e676a97" Title="YesNo Class" Url="html/T-Notes2022.Client.Dialogs.YesNo.htm">
+      <HelpTOCNode Title="YesNo Members" Url="html/AllMembers.T-Notes2022.Client.Dialogs.YesNo.htm" />
+      <HelpTOCNode Id="b40a0a7f-31d7-4ebb-949f-a540e893b898" Title="YesNo Properties" Url="html/Properties.T-Notes2022.Client.Dialogs.YesNo.htm">
+        <HelpTOCNode Title="MessageInput Property " Url="html/P-Notes2022.Client.Dialogs.YesNo.MessageInput.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="3af25e37-6473-4eab-88a3-08b651301fd8" Title="Notes2022.Client.Menus Namespace" Url="html/N-Notes2022.Client.Menus.htm">
+    <HelpTOCNode Id="6d388008-c7c3-40d7-b42a-04e3dc760839" Title="ListMenu Class" Url="html/T-Notes2022.Client.Menus.ListMenu.htm">
+      <HelpTOCNode Title="ListMenu Members" Url="html/AllMembers.T-Notes2022.Client.Menus.ListMenu.htm" />
+      <HelpTOCNode Title="ListMenu Constructor " Url="html/M-Notes2022.Client.Menus.ListMenu.-ctor.htm" />
+      <HelpTOCNode Id="bc862fdf-0bae-4967-9b39-562a81e06319" Title="ListMenu Methods" Url="html/Methods.T-Notes2022.Client.Menus.ListMenu.htm">
+        <HelpTOCNode Title="ExecMenu Method " Url="html/M-Notes2022.Client.Menus.ListMenu.ExecMenu.htm" />
+        <HelpTOCNode Title="Replot Method " Url="html/M-Notes2022.Client.Menus.ListMenu.Replot.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bdbb7145-0a34-44e7-9437-5e832174263d" Title="ListMenu Properties" Url="html/Properties.T-Notes2022.Client.Menus.ListMenu.htm">
+        <HelpTOCNode Title="Caller Property " Url="html/P-Notes2022.Client.Menus.ListMenu.Caller.htm" />
+        <HelpTOCNode Title="IsPrinting Property " Url="html/P-Notes2022.Client.Menus.ListMenu.IsPrinting.htm" />
+        <HelpTOCNode Title="Modal Property " Url="html/P-Notes2022.Client.Menus.ListMenu.Modal.htm" />
+        <HelpTOCNode Title="Model Property " Url="html/P-Notes2022.Client.Menus.ListMenu.Model.htm" />
+        <HelpTOCNode Title="myGauge Property " Url="html/P-Notes2022.Client.Menus.ListMenu.myGauge.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a4f86798-e678-4e35-ab87-6b650b748dba" Title="NavMenu Class" Url="html/T-Notes2022.Client.Menus.NavMenu.htm">
+      <HelpTOCNode Title="NavMenu Members" Url="html/AllMembers.T-Notes2022.Client.Menus.NavMenu.htm" />
+      <HelpTOCNode Title="NavMenu Constructor " Url="html/M-Notes2022.Client.Menus.NavMenu.-ctor.htm" />
+      <HelpTOCNode Id="1a89271c-9b0d-49cd-837e-ced75d290b45" Title="NavMenu Methods" Url="html/Methods.T-Notes2022.Client.Menus.NavMenu.htm">
+        <HelpTOCNode Title="OnSelect Method " Url="html/M-Notes2022.Client.Menus.NavMenu.OnSelect.htm" />
+        <HelpTOCNode Title="Reload Method " Url="html/M-Notes2022.Client.Menus.NavMenu.Reload.htm" />
+        <HelpTOCNode Title="UpdateMenu Method " Url="html/M-Notes2022.Client.Menus.NavMenu.UpdateMenu.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="032efc6d-e37d-42ed-b4ae-c49c76799290" Title="NavMenu Properties" Url="html/Properties.T-Notes2022.Client.Menus.NavMenu.htm">
+        <HelpTOCNode Title="Modal Property " Url="html/P-Notes2022.Client.Menus.NavMenu.Modal.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="14a115a7-5c06-4fa5-af43-329e3f2e61fc" Title="NoteMenu Class" Url="html/T-Notes2022.Client.Menus.NoteMenu.htm">
+      <HelpTOCNode Title="NoteMenu Members" Url="html/AllMembers.T-Notes2022.Client.Menus.NoteMenu.htm" />
+      <HelpTOCNode Title="NoteMenu Constructor " Url="html/M-Notes2022.Client.Menus.NoteMenu.-ctor.htm" />
+      <HelpTOCNode Id="94f718ac-5c09-4c19-a33c-5b995e11218f" Title="NoteMenu Methods" Url="html/Methods.T-Notes2022.Client.Menus.NoteMenu.htm">
+        <HelpTOCNode Title="ExecMenu Method " Url="html/M-Notes2022.Client.Menus.NoteMenu.ExecMenu.htm" />
+        <HelpTOCNode Title="OnSelect Method " Url="html/M-Notes2022.Client.Menus.NoteMenu.OnSelect.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="cc8c1dab-7663-4fb4-a5ce-b06d6363316b" Title="NoteMenu Properties" Url="html/Properties.T-Notes2022.Client.Menus.NoteMenu.htm">
+        <HelpTOCNode Title="Modal Property " Url="html/P-Notes2022.Client.Menus.NoteMenu.Modal.htm" />
+        <HelpTOCNode Title="Model Property " Url="html/P-Notes2022.Client.Menus.NoteMenu.Model.htm" />
+        <HelpTOCNode Title="MyNoteIndex Property " Url="html/P-Notes2022.Client.Menus.NoteMenu.MyNoteIndex.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="7bb02d29-c7be-4e35-bcb2-030f2f509840" Title="Notes2022.Client.Pages Namespace" Url="html/N-Notes2022.Client.Pages.htm">
+    <HelpTOCNode Title="About2 Class" Url="html/T-Notes2022.Client.Pages.About2.htm" />
+    <HelpTOCNode Id="b7fd5a1d-c7fb-4b4c-ac2b-da481328fb0c" Title="EditNote Class" Url="html/T-Notes2022.Client.Pages.EditNote.htm">
+      <HelpTOCNode Title="EditNote Members" Url="html/AllMembers.T-Notes2022.Client.Pages.EditNote.htm" />
+      <HelpTOCNode Title="EditNote Constructor " Url="html/M-Notes2022.Client.Pages.EditNote.-ctor.htm" />
+      <HelpTOCNode Id="d665671d-12e7-40c6-93ce-f7f3ee1b3db0" Title="EditNote Properties" Url="html/Properties.T-Notes2022.Client.Pages.EditNote.htm">
+        <HelpTOCNode Title="NoteId Property " Url="html/P-Notes2022.Client.Pages.EditNote.NoteId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0364868b-d594-46b7-b38d-81e3e4702a53" Title="Index Class" Url="html/T-Notes2022.Client.Pages.Index.htm">
+      <HelpTOCNode Title="Index Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Index.htm" />
+      <HelpTOCNode Title="Index Constructor " Url="html/M-Notes2022.Client.Pages.Index.-ctor.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="340386e0-262c-470c-83e5-655131a19e11" Title="NewNote Class" Url="html/T-Notes2022.Client.Pages.NewNote.htm">
+      <HelpTOCNode Title="NewNote Members" Url="html/AllMembers.T-Notes2022.Client.Pages.NewNote.htm" />
+      <HelpTOCNode Title="NewNote Constructor " Url="html/M-Notes2022.Client.Pages.NewNote.-ctor.htm" />
+      <HelpTOCNode Id="69436ffd-249b-43c4-89d7-30bbcb411134" Title="NewNote Properties" Url="html/Properties.T-Notes2022.Client.Pages.NewNote.htm">
+        <HelpTOCNode Title="BaseNoteHeaderId Property " Url="html/P-Notes2022.Client.Pages.NewNote.BaseNoteHeaderId.htm" />
+        <HelpTOCNode Title="NotesfileId Property " Url="html/P-Notes2022.Client.Pages.NewNote.NotesfileId.htm" />
+        <HelpTOCNode Title="RefId Property " Url="html/P-Notes2022.Client.Pages.NewNote.RefId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="64c0dd2b-40c3-42db-a091-cfbaa502589d" Title="NoteIndex Class" Url="html/T-Notes2022.Client.Pages.NoteIndex.htm">
+      <HelpTOCNode Title="NoteIndex Members" Url="html/AllMembers.T-Notes2022.Client.Pages.NoteIndex.htm" />
+      <HelpTOCNode Title="NoteIndex Constructor " Url="html/M-Notes2022.Client.Pages.NoteIndex.-ctor.htm" />
+      <HelpTOCNode Id="718dce1c-78ad-4487-a840-e73468d15579" Title="NoteIndex Methods" Url="html/Methods.T-Notes2022.Client.Pages.NoteIndex.htm">
+        <HelpTOCNode Title="ActionCompleteHandler Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.ActionCompleteHandler.htm" />
+        <HelpTOCNode Title="GetModel Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.GetModel.htm" />
+        <HelpTOCNode Title="GetNextBaseNote Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.GetNextBaseNote.htm" />
+        <HelpTOCNode Title="GetNextNote Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.GetNextNote.htm" />
+        <HelpTOCNode Title="GetNoteHeaderId Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.GetNoteHeaderId.htm" />
+        <HelpTOCNode Title="GetPreviousBaseNote Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.GetPreviousBaseNote.htm" />
+        <HelpTOCNode Title="GetPreviousNote Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.GetPreviousNote.htm" />
+        <HelpTOCNode Title="GetResponseHeaders Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.GetResponseHeaders.htm" />
+        <HelpTOCNode Title="GotoNote Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.GotoNote.htm" />
+        <HelpTOCNode Title="Listing Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.Listing.htm" />
+        <HelpTOCNode Title="StartSearch Method " Url="html/M-Notes2022.Client.Pages.NoteIndex.StartSearch.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d813a06d-dddc-4472-b354-9e9539a03782" Title="NoteIndex Properties" Url="html/Properties.T-Notes2022.Client.Pages.NoteIndex.htm">
+        <HelpTOCNode Title="CurrentNoteId Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.CurrentNoteId.htm" />
+        <HelpTOCNode Title="Modal Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Modal.htm" />
+        <HelpTOCNode Title="Model Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Model.htm" />
+        <HelpTOCNode Title="NavString Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.NavString.htm" />
+        <HelpTOCNode Title="NotesfileId Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.NotesfileId.htm" />
+        <HelpTOCNode Title="sfGrid1 Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.sfGrid1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9c38cb25-2d6d-4a4b-a0b7-b2770382a03d" Title="NoteIndex.Search Class" Url="html/T-Notes2022.Client.Pages.NoteIndex.Search.htm">
+      <HelpTOCNode Title="NoteIndex.Search Members" Url="html/AllMembers.T-Notes2022.Client.Pages.NoteIndex.Search.htm" />
+      <HelpTOCNode Id="5b7d1546-03c7-4a5a-9d5e-f537b174eac2" Title="NoteIndex.Search Properties" Url="html/Properties.T-Notes2022.Client.Pages.NoteIndex.Search.htm">
+        <HelpTOCNode Title="ArchiveId Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.ArchiveId.htm" />
+        <HelpTOCNode Title="BaseOrdinal Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.BaseOrdinal.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.NoteFileId.htm" />
+        <HelpTOCNode Title="NoteID Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.NoteID.htm" />
+        <HelpTOCNode Title="Option Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.Option.htm" />
+        <HelpTOCNode Title="ResponseOrdinal Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.ResponseOrdinal.htm" />
+        <HelpTOCNode Title="Text Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.Text.htm" />
+        <HelpTOCNode Title="Time Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.Time.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="NoteIndex.SearchOption Enumeration" Url="html/T-Notes2022.Client.Pages.NoteIndex.SearchOption.htm" />
+    <HelpTOCNode Title="NotesFiles Class" Url="html/T-Notes2022.Client.Pages.NotesFiles.htm" />
+    <HelpTOCNode Title="Preferences Class" Url="html/T-Notes2022.Client.Pages.Preferences.htm" />
+    <HelpTOCNode Id="906fb226-6d72-4818-a1a9-b98802744ccf" Title="Preferences.LocalModel2 Class" Url="html/T-Notes2022.Client.Pages.Preferences.LocalModel2.htm">
+      <HelpTOCNode Title="Preferences.LocalModel2 Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Preferences.LocalModel2.htm" />
+      <HelpTOCNode Id="ecb30cc7-15d4-46dc-9993-a422307a6266" Title="LocalModel2 Constructor " Url="html/Overload-Notes2022.Client.Pages.Preferences.LocalModel2.-ctor.htm">
+        <HelpTOCNode Title="LocalModel2 Constructor (String)" Url="html/M-Notes2022.Client.Pages.Preferences.LocalModel2.-ctor.htm" />
+        <HelpTOCNode Title="LocalModel2 Constructor (String, String)" Url="html/M-Notes2022.Client.Pages.Preferences.LocalModel2.-ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f6cec62d-a010-4a8e-a0cc-b69d2ee8c709" Title="Preferences.LocalModel2 Properties" Url="html/Properties.T-Notes2022.Client.Pages.Preferences.LocalModel2.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P-Notes2022.Client.Pages.Preferences.LocalModel2.Name.htm" />
+        <HelpTOCNode Title="Psize Property " Url="html/P-Notes2022.Client.Pages.Preferences.LocalModel2.Psize.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="73ebba4e-f745-46db-900a-e40886bbcecd" Title="ShowNote Class" Url="html/T-Notes2022.Client.Pages.ShowNote.htm">
+      <HelpTOCNode Title="ShowNote Members" Url="html/AllMembers.T-Notes2022.Client.Pages.ShowNote.htm" />
+      <HelpTOCNode Title="ShowNote Constructor " Url="html/M-Notes2022.Client.Pages.ShowNote.-ctor.htm" />
+      <HelpTOCNode Id="10b1c104-c944-4ae9-ae62-b0d36a76a929" Title="ShowNote Properties" Url="html/Properties.T-Notes2022.Client.Pages.ShowNote.htm">
+        <HelpTOCNode Title="FileId Property " Url="html/P-Notes2022.Client.Pages.ShowNote.FileId.htm" />
+        <HelpTOCNode Title="NoteId Property " Url="html/P-Notes2022.Client.Pages.ShowNote.NoteId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9fbd474a-ed7f-45cf-9aff-4e45ed8e359a" Title="Tracker Class" Url="html/T-Notes2022.Client.Pages.Tracker.htm">
+      <HelpTOCNode Title="Tracker Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Tracker.htm" />
+      <HelpTOCNode Id="ee6c914b-e2aa-45ec-8735-1504abd7a516" Title="Tracker Methods" Url="html/Methods.T-Notes2022.Client.Pages.Tracker.htm">
+        <HelpTOCNode Title="Shuffle Method " Url="html/M-Notes2022.Client.Pages.Tracker.Shuffle.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="63070ae9-b1aa-40d5-a104-04a6122a13c1" Title="Notes2022.Client.Pages.Admin Namespace" Url="html/N-Notes2022.Client.Pages.Admin.htm">
+    <HelpTOCNode Id="e5fffadb-a1e5-4e1e-8a1e-e702980eea7c" Title="NotesFilesAdmin Class" Url="html/T-Notes2022.Client.Pages.Admin.NotesFilesAdmin.htm">
+      <HelpTOCNode Title="NotesFilesAdmin Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Admin.NotesFilesAdmin.htm" />
+      <HelpTOCNode Title="NotesFilesAdmin Constructor " Url="html/M-Notes2022.Client.Pages.Admin.NotesFilesAdmin.-ctor.htm" />
+      <HelpTOCNode Id="4c66854c-56a0-4265-8652-9d73bfcd8ecd" Title="NotesFilesAdmin Methods" Url="html/Methods.T-Notes2022.Client.Pages.Admin.NotesFilesAdmin.htm">
+        <HelpTOCNode Title="Reload Method " Url="html/M-Notes2022.Client.Pages.Admin.NotesFilesAdmin.Reload.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="34049a30-8bab-4bab-ad31-29eef8393082" Title="UserList Class" Url="html/T-Notes2022.Client.Pages.Admin.UserList.htm">
+      <HelpTOCNode Title="UserList Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Admin.UserList.htm" />
+      <HelpTOCNode Title="UserList Constructor " Url="html/M-Notes2022.Client.Pages.Admin.UserList.-ctor.htm" />
+      <HelpTOCNode Id="123b3b03-12a1-4378-846b-30e41a86b8be" Title="UserList Properties" Url="html/Properties.T-Notes2022.Client.Pages.Admin.UserList.htm">
+        <HelpTOCNode Title="Modal Property " Url="html/P-Notes2022.Client.Pages.Admin.UserList.Modal.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="e26f0995-a353-4922-8059-3354e1b7722d" Title="Notes2022.Client.Pages.Authentication Namespace" Url="html/N-Notes2022.Client.Pages.Authentication.htm">
+    <HelpTOCNode Id="e3fdc328-8991-4b61-9215-da7d16fc1968" Title="ConfirmEmail Class" Url="html/T-Notes2022.Client.Pages.Authentication.ConfirmEmail.htm">
+      <HelpTOCNode Title="ConfirmEmail Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Authentication.ConfirmEmail.htm" />
+      <HelpTOCNode Id="1b6f8c69-1d8e-4c2e-82b2-2d94ea1797fb" Title="ConfirmEmail Properties" Url="html/Properties.T-Notes2022.Client.Pages.Authentication.ConfirmEmail.htm">
+        <HelpTOCNode Title="payload Property " Url="html/P-Notes2022.Client.Pages.Authentication.ConfirmEmail.payload.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4c1646ef-0466-4b59-93e5-737f23018c77" Title="Login Class" Url="html/T-Notes2022.Client.Pages.Authentication.Login.htm">
+      <HelpTOCNode Title="Login Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Authentication.Login.htm" />
+      <HelpTOCNode Id="abea6c14-5b4e-4bfd-a25b-dcaa69749890" Title="Login Properties" Url="html/Properties.T-Notes2022.Client.Pages.Authentication.Login.htm">
+        <HelpTOCNode Title="myCookieValue Property " Url="html/P-Notes2022.Client.Pages.Authentication.Login.myCookieValue.htm" />
+        <HelpTOCNode Title="returnURL Property " Url="html/P-Notes2022.Client.Pages.Authentication.Login.returnURL.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c0abb271-1a4e-4a9c-b5e2-3853b465a760" Title="Login.InputModel Class" Url="html/T-Notes2022.Client.Pages.Authentication.Login.InputModel.htm">
+      <HelpTOCNode Title="Login.InputModel Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Authentication.Login.InputModel.htm" />
+      <HelpTOCNode Id="692db8f3-b8b0-4755-91f4-99a76a64843f" Title="Login.InputModel Properties" Url="html/Properties.T-Notes2022.Client.Pages.Authentication.Login.InputModel.htm">
+        <HelpTOCNode Title="Email Property " Url="html/P-Notes2022.Client.Pages.Authentication.Login.InputModel.Email.htm" />
+        <HelpTOCNode Title="Password Property " Url="html/P-Notes2022.Client.Pages.Authentication.Login.InputModel.Password.htm" />
+        <HelpTOCNode Title="RememberHours Property " Url="html/P-Notes2022.Client.Pages.Authentication.Login.InputModel.RememberHours.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Register Class" Url="html/T-Notes2022.Client.Pages.Authentication.Register.htm" />
+    <HelpTOCNode Id="a5c9cacf-87ac-4ae4-8b2e-4fc50fd792b9" Title="Register.InputModel Class" Url="html/T-Notes2022.Client.Pages.Authentication.Register.InputModel.htm">
+      <HelpTOCNode Title="Register.InputModel Members" Url="html/AllMembers.T-Notes2022.Client.Pages.Authentication.Register.InputModel.htm" />
+      <HelpTOCNode Id="5d8941cf-6510-4212-a5d0-6f7bebb918fe" Title="Register.InputModel Properties" Url="html/Properties.T-Notes2022.Client.Pages.Authentication.Register.InputModel.htm">
+        <HelpTOCNode Title="Email Property " Url="html/P-Notes2022.Client.Pages.Authentication.Register.InputModel.Email.htm" />
+        <HelpTOCNode Title="Password Property " Url="html/P-Notes2022.Client.Pages.Authentication.Register.InputModel.Password.htm" />
+        <HelpTOCNode Title="Password2 Property " Url="html/P-Notes2022.Client.Pages.Authentication.Register.InputModel.Password2.htm" />
+        <HelpTOCNode Title="UserName Property " Url="html/P-Notes2022.Client.Pages.Authentication.Register.InputModel.UserName.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="506a173e-ef82-4f6b-8d03-f47d514b30ae" Title="Notes2022.Client.Panels Namespace" Url="html/N-Notes2022.Client.Panels.htm">
+    <HelpTOCNode Id="4b32ca9e-ee8b-4f1e-8b06-65e74c51e107" Title="NoteEditor Class" Url="html/T-Notes2022.Client.Panels.NoteEditor.htm">
+      <HelpTOCNode Title="NoteEditor Members" Url="html/AllMembers.T-Notes2022.Client.Panels.NoteEditor.htm" />
+      <HelpTOCNode Title="NoteEditor Constructor " Url="html/M-Notes2022.Client.Panels.NoteEditor.-ctor.htm" />
+      <HelpTOCNode Id="df535715-5484-4524-af81-8a88ee4c17b2" Title="NoteEditor Methods" Url="html/Methods.T-Notes2022.Client.Panels.NoteEditor.htm">
+        <HelpTOCNode Title="InsertCode1 Method " Url="html/M-Notes2022.Client.Panels.NoteEditor.InsertCode1.htm" />
+        <HelpTOCNode Title="InsertCode2 Method " Url="html/M-Notes2022.Client.Panels.NoteEditor.InsertCode2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ea49aea6-6ce5-4550-b60e-e9e9e3ac98d1" Title="NoteEditor Properties" Url="html/Properties.T-Notes2022.Client.Panels.NoteEditor.htm">
+        <HelpTOCNode Title="Modal Property " Url="html/P-Notes2022.Client.Panels.NoteEditor.Modal.htm" />
+        <HelpTOCNode Title="Model Property " Url="html/P-Notes2022.Client.Panels.NoteEditor.Model.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3eaab784-9f22-4fb2-b3bd-c615313faa6e" Title="NotePanel Class" Url="html/T-Notes2022.Client.Panels.NotePanel.htm">
+      <HelpTOCNode Title="NotePanel Members" Url="html/AllMembers.T-Notes2022.Client.Panels.NotePanel.htm" />
+      <HelpTOCNode Title="NotePanel Constructor " Url="html/M-Notes2022.Client.Panels.NotePanel.-ctor.htm" />
+      <HelpTOCNode Id="86c31279-5e7d-4b83-810f-4f8665cb5cbf" Title="NotePanel Properties" Url="html/Properties.T-Notes2022.Client.Panels.NotePanel.htm">
+        <HelpTOCNode Title="AltStyle Property " Url="html/P-Notes2022.Client.Panels.NotePanel.AltStyle.htm" />
+        <HelpTOCNode Title="IsMini Property " Url="html/P-Notes2022.Client.Panels.NotePanel.IsMini.htm" />
+        <HelpTOCNode Title="IsRootNote Property " Url="html/P-Notes2022.Client.Panels.NotePanel.IsRootNote.htm" />
+        <HelpTOCNode Title="Modal Property " Url="html/P-Notes2022.Client.Panels.NotePanel.Modal.htm" />
+        <HelpTOCNode Title="MyMenu Property " Url="html/P-Notes2022.Client.Panels.NotePanel.MyMenu.htm" />
+        <HelpTOCNode Title="MyNoteIndex Property " Url="html/P-Notes2022.Client.Panels.NotePanel.MyNoteIndex.htm" />
+        <HelpTOCNode Title="NavString Property " Url="html/P-Notes2022.Client.Panels.NotePanel.NavString.htm" />
+        <HelpTOCNode Title="NoteId Property " Url="html/P-Notes2022.Client.Panels.NotePanel.NoteId.htm" />
+        <HelpTOCNode Title="respX Property " Url="html/P-Notes2022.Client.Panels.NotePanel.respX.htm" />
+        <HelpTOCNode Title="respY Property " Url="html/P-Notes2022.Client.Panels.NotePanel.respY.htm" />
+        <HelpTOCNode Title="ShowButtons Property " Url="html/P-Notes2022.Client.Panels.NotePanel.ShowButtons.htm" />
+        <HelpTOCNode Title="ShowChild Property " Url="html/P-Notes2022.Client.Panels.NotePanel.ShowChild.htm" />
+        <HelpTOCNode Title="Vers Property " Url="html/P-Notes2022.Client.Panels.NotePanel.Vers.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="31b08e26-c802-436b-bada-22eebc0e91ec" Title="Responses Class" Url="html/T-Notes2022.Client.Panels.Responses.htm">
+      <HelpTOCNode Title="Responses Members" Url="html/AllMembers.T-Notes2022.Client.Panels.Responses.htm" />
+      <HelpTOCNode Title="Responses Constructor " Url="html/M-Notes2022.Client.Panels.Responses.-ctor.htm" />
+      <HelpTOCNode Id="0242b37e-0949-4538-8b43-6a0ed656e578" Title="Responses Methods" Url="html/Methods.T-Notes2022.Client.Panels.Responses.htm">
+        <HelpTOCNode Title="DataBoundHandler Method " Url="html/M-Notes2022.Client.Panels.Responses.DataBoundHandler.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c5aa1c65-9a77-4279-be5e-54c477733601" Title="Responses Properties" Url="html/Properties.T-Notes2022.Client.Panels.Responses.htm">
+        <HelpTOCNode Title="ExpandAllR Property " Url="html/P-Notes2022.Client.Panels.Responses.ExpandAllR.htm" />
+        <HelpTOCNode Title="Headers Property " Url="html/P-Notes2022.Client.Panels.Responses.Headers.htm" />
+        <HelpTOCNode Title="ShowContentR Property " Url="html/P-Notes2022.Client.Panels.Responses.ShowContentR.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1be2f78b-3fe6-45eb-8c84-b235405da990" Title="Versions Class" Url="html/T-Notes2022.Client.Panels.Versions.htm">
+      <HelpTOCNode Title="Versions Members" Url="html/AllMembers.T-Notes2022.Client.Panels.Versions.htm" />
+      <HelpTOCNode Title="Versions Constructor " Url="html/M-Notes2022.Client.Panels.Versions.-ctor.htm" />
+      <HelpTOCNode Id="039db01f-7bc3-4e65-84a2-7f48969709df" Title="Versions Properties" Url="html/Properties.T-Notes2022.Client.Panels.Versions.htm">
+        <HelpTOCNode Title="ArcId Property " Url="html/P-Notes2022.Client.Panels.Versions.ArcId.htm" />
+        <HelpTOCNode Title="FileId Property " Url="html/P-Notes2022.Client.Panels.Versions.FileId.htm" />
+        <HelpTOCNode Title="NoteOrdinal Property " Url="html/P-Notes2022.Client.Panels.Versions.NoteOrdinal.htm" />
+        <HelpTOCNode Title="ResponseOrdinal Property " Url="html/P-Notes2022.Client.Panels.Versions.ResponseOrdinal.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="033569aa-b3aa-4c13-8964-0084259d3461" Title="Notes2022.Client.Shared Namespace" Url="html/N-Notes2022.Client.Shared.htm">
+    <HelpTOCNode Id="8220a22e-6563-431c-a598-6f728116b7d6" Title="LoginDisplay Class" Url="html/T-Notes2022.Client.Shared.LoginDisplay.htm">
+      <HelpTOCNode Title="LoginDisplay Members" Url="html/AllMembers.T-Notes2022.Client.Shared.LoginDisplay.htm" />
+      <HelpTOCNode Id="32d2525a-1cd5-4c51-839d-8e339c3536c8" Title="LoginDisplay Methods" Url="html/Methods.T-Notes2022.Client.Shared.LoginDisplay.htm">
+        <HelpTOCNode Title="Reload Method " Url="html/M-Notes2022.Client.Shared.LoginDisplay.Reload.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="bc570673-dee8-4278-9f5f-9598ce6b778a" Title="Notes2022.Server Namespace" Url="html/N-Notes2022.Server.htm">
+    <HelpTOCNode Id="59a90c20-5817-4c33-98b0-a11c2025252f" Title="AccessManager Class" Url="html/T-Notes2022.Server.AccessManager.htm">
+      <HelpTOCNode Title="AccessManager Members" Url="html/AllMembers.T-Notes2022.Server.AccessManager.htm" />
+      <HelpTOCNode Id="b99f8349-0141-4be4-aa31-88178e2e8af1" Title="AccessManager Methods" Url="html/Methods.T-Notes2022.Server.AccessManager.htm">
+        <HelpTOCNode Title="CreateBaseEntries Method " Url="html/M-Notes2022.Server.AccessManager.CreateBaseEntries.htm" />
+        <HelpTOCNode Title="GetAccess Method " Url="html/M-Notes2022.Server.AccessManager.GetAccess.htm" />
+        <HelpTOCNode Title="GetAccessListForFile Method " Url="html/M-Notes2022.Server.AccessManager.GetAccessListForFile.htm" />
+        <HelpTOCNode Title="GetOneAccess Method " Url="html/M-Notes2022.Server.AccessManager.GetOneAccess.htm" />
+        <HelpTOCNode Title="TestLinkAccess Method " Url="html/M-Notes2022.Server.AccessManager.TestLinkAccess.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4c99210b-f304-433b-b6cb-3399b10f56f7" Title="Globals Class" Url="html/T-Notes2022.Server.Globals.htm">
+      <HelpTOCNode Title="Globals Members" Url="html/AllMembers.T-Notes2022.Server.Globals.htm" />
+      <HelpTOCNode Id="698b04d9-272d-4b4d-b366-2722304d4a7a" Title="Globals Methods" Url="html/Methods.T-Notes2022.Server.Globals.htm">
+        <HelpTOCNode Title="Base64Decode Method " Url="html/M-Notes2022.Server.Globals.Base64Decode.htm" />
+        <HelpTOCNode Title="Base64Encode Method " Url="html/M-Notes2022.Server.Globals.Base64Encode.htm" />
+        <HelpTOCNode Title="UTimeBlazor Method " Url="html/M-Notes2022.Server.Globals.UTimeBlazor.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1fedce57-ae58-41a4-9d62-12f5cffec160" Title="Globals Properties" Url="html/Properties.T-Notes2022.Server.Globals.htm">
+        <HelpTOCNode Title="AccessOtherId Property " Url="html/P-Notes2022.Server.Globals.AccessOtherId.htm" />
+        <HelpTOCNode Title="GuestId Property " Url="html/P-Notes2022.Server.Globals.GuestId.htm" />
+        <HelpTOCNode Title="ImportedAuthorId Property " Url="html/P-Notes2022.Server.Globals.ImportedAuthorId.htm" />
+        <HelpTOCNode Title="ImportRoot Property " Url="html/P-Notes2022.Server.Globals.ImportRoot.htm" />
+        <HelpTOCNode Title="SendGridApiKey Property " Url="html/P-Notes2022.Server.Globals.SendGridApiKey.htm" />
+        <HelpTOCNode Title="SendGridEmail Property " Url="html/P-Notes2022.Server.Globals.SendGridEmail.htm" />
+        <HelpTOCNode Title="SendGridName Property " Url="html/P-Notes2022.Server.Globals.SendGridName.htm" />
+        <HelpTOCNode Title="TimeZoneDefaultID Property " Url="html/P-Notes2022.Server.Globals.TimeZoneDefaultID.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="43df1ec5-56b6-493e-ab4c-400eb8b22c2b" Title="Importer Class" Url="html/T-Notes2022.Server.Importer.htm">
+      <HelpTOCNode Title="Importer Members" Url="html/AllMembers.T-Notes2022.Server.Importer.htm" />
+      <HelpTOCNode Id="72eaff81-d244-4384-8197-c665cb02626e" Title="Importer Methods" Url="html/Methods.T-Notes2022.Server.Importer.htm">
+        <HelpTOCNode Title="CheckFf Method " Url="html/M-Notes2022.Server.Importer.CheckFf.htm" />
+        <HelpTOCNode Title="GetBaseNoteHeader Method " Url="html/M-Notes2022.Server.Importer.GetBaseNoteHeader.htm" />
+        <HelpTOCNode Title="Import Method " Url="html/M-Notes2022.Server.Importer.Import.htm" />
+        <HelpTOCNode Title="Output Method " Url="html/M-Notes2022.Server.Importer.Output.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6cb4f03c-30a0-46bf-a087-7ff201409bfa" Title="LocalManager Class" Url="html/T-Notes2022.Server.LocalManager.htm">
+      <HelpTOCNode Title="LocalManager Members" Url="html/AllMembers.T-Notes2022.Server.LocalManager.htm" />
+      <HelpTOCNode Id="5e36cc41-0338-4195-aadd-d7f95c589e75" Title="LocalManager Methods" Url="html/Methods.T-Notes2022.Server.LocalManager.htm">
+        <HelpTOCNode Title="GetUserTimeZone Method " Url="html/M-Notes2022.Server.LocalManager.GetUserTimeZone.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="081a0d5a-9506-47a5-8adb-6c3b4e186125" Title="NoteDataManager Class" Url="html/T-Notes2022.Server.NoteDataManager.htm">
+      <HelpTOCNode Title="NoteDataManager Members" Url="html/AllMembers.T-Notes2022.Server.NoteDataManager.htm" />
+      <HelpTOCNode Id="4cfb80b4-fcec-4be3-9ad7-595334cc52b4" Title="NoteDataManager Methods" Url="html/Methods.T-Notes2022.Server.NoteDataManager.htm">
+        <HelpTOCNode Title="CreateNote Method " Url="html/M-Notes2022.Server.NoteDataManager.CreateNote.htm" />
+        <HelpTOCNode Title="CreateNoteFile Method " Url="html/M-Notes2022.Server.NoteDataManager.CreateNoteFile.htm" />
+        <HelpTOCNode Title="CreateResponse Method " Url="html/M-Notes2022.Server.NoteDataManager.CreateResponse.htm" />
+        <HelpTOCNode Title="DeleteNote Method " Url="html/M-Notes2022.Server.NoteDataManager.DeleteNote.htm" />
+        <HelpTOCNode Title="EditNote Method " Url="html/M-Notes2022.Server.NoteDataManager.EditNote.htm" />
+        <HelpTOCNode Title="GetAllHeaders Method " Url="html/M-Notes2022.Server.NoteDataManager.GetAllHeaders.htm" />
+        <HelpTOCNode Id="f327c679-3be1-4ccb-bef9-1ababa44a250" Title="GetBaseNoteHeader Method " Url="html/Overload-Notes2022.Server.NoteDataManager.GetBaseNoteHeader.htm">
+          <HelpTOCNode Title="GetBaseNoteHeader Method (NotesDbContext, Int64)" Url="html/M-Notes2022.Server.NoteDataManager.GetBaseNoteHeader.htm" />
+          <HelpTOCNode Title="GetBaseNoteHeader Method (NotesDbContext, Int32, Int32, Int32)" Url="html/M-Notes2022.Server.NoteDataManager.GetBaseNoteHeader_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GetBaseNoteHeaderById Method " Url="html/M-Notes2022.Server.NoteDataManager.GetBaseNoteHeaderById.htm" />
+        <HelpTOCNode Title="GetFileById Method " Url="html/M-Notes2022.Server.NoteDataManager.GetFileById.htm" />
+        <HelpTOCNode Title="GetFileByName Method " Url="html/M-Notes2022.Server.NoteDataManager.GetFileByName.htm" />
+        <HelpTOCNode Title="GetNoteByIdWithFile Method " Url="html/M-Notes2022.Server.NoteDataManager.GetNoteByIdWithFile.htm" />
+        <HelpTOCNode Title="GetUserData Method " Url="html/M-Notes2022.Server.NoteDataManager.GetUserData.htm" />
+        <HelpTOCNode Title="NextBaseNoteOrdinal Method " Url="html/M-Notes2022.Server.NoteDataManager.NextBaseNoteOrdinal.htm" />
+        <HelpTOCNode Title="PutUserData Method " Url="html/M-Notes2022.Server.NoteDataManager.PutUserData.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="25fced92-e062-4882-8aef-50d05a3ed15d" Title="Notes2022.Server.Data Namespace" Url="html/N-Notes2022.Server.Data.htm">
+    <HelpTOCNode Id="4384e4e8-e538-47d9-824f-00bc19d9f320" Title="NotesDbContext Class" Url="html/T-Notes2022.Server.Data.NotesDbContext.htm">
+      <HelpTOCNode Title="NotesDbContext Members" Url="html/AllMembers.T-Notes2022.Server.Data.NotesDbContext.htm" />
+      <HelpTOCNode Title="NotesDbContext Constructor " Url="html/M-Notes2022.Server.Data.NotesDbContext.-ctor.htm" />
+      <HelpTOCNode Id="b0fe62ec-226f-45bf-b8ed-6911f4f7e6d6" Title="NotesDbContext Properties" Url="html/Properties.T-Notes2022.Server.Data.NotesDbContext.htm">
+        <HelpTOCNode Title="Audit Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.Audit.htm" />
+        <HelpTOCNode Title="HomePageMessage Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.HomePageMessage.htm" />
+        <HelpTOCNode Title="LinkedFile Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.LinkedFile.htm" />
+        <HelpTOCNode Title="LinkLog Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.LinkLog.htm" />
+        <HelpTOCNode Title="LinkQueue Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.LinkQueue.htm" />
+        <HelpTOCNode Title="Mark Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.Mark.htm" />
+        <HelpTOCNode Title="NoteAccess Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.NoteAccess.htm" />
+        <HelpTOCNode Title="NoteContent Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.NoteContent.htm" />
+        <HelpTOCNode Title="NoteFile Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.NoteFile.htm" />
+        <HelpTOCNode Title="NoteHeader Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.NoteHeader.htm" />
+        <HelpTOCNode Title="Search Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.Search.htm" />
+        <HelpTOCNode Title="Sequencer Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.Sequencer.htm" />
+        <HelpTOCNode Title="SQLFile Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.SQLFile.htm" />
+        <HelpTOCNode Title="SQLFileContent Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.SQLFileContent.htm" />
+        <HelpTOCNode Title="Subscription Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.Subscription.htm" />
+        <HelpTOCNode Title="Tags Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.Tags.htm" />
+        <HelpTOCNode Title="TZone Property " Url="html/P-Notes2022.Server.Data.NotesDbContext.TZone.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="7673d9be-a483-4443-aae1-e4ad0e838e86" Title="Notes2022.Server.Entities Namespace" Url="html/N-Notes2022.Server.Entities.htm">
+    <HelpTOCNode Id="bab5b2b8-5bd0-404e-8f41-9c4ccb958144" Title="ApplicationUser Class" Url="html/T-Notes2022.Server.Entities.ApplicationUser.htm">
+      <HelpTOCNode Title="ApplicationUser Members" Url="html/AllMembers.T-Notes2022.Server.Entities.ApplicationUser.htm" />
+      <HelpTOCNode Id="43813b6c-600b-4196-b3c8-d93328abaca3" Title="ApplicationUser Methods" Url="html/Methods.T-Notes2022.Server.Entities.ApplicationUser.htm">
+        <HelpTOCNode Title="GetApplicationUser Method " Url="html/M-Notes2022.Server.Entities.ApplicationUser.GetApplicationUser.htm" />
+        <HelpTOCNode Title="GetApplicationUsers Method " Url="html/M-Notes2022.Server.Entities.ApplicationUser.GetApplicationUsers.htm" />
+        <HelpTOCNode Title="GetGAppUser Method " Url="html/M-Notes2022.Server.Entities.ApplicationUser.GetGAppUser.htm" />
+        <HelpTOCNode Title="GetGAppUserList Method " Url="html/M-Notes2022.Server.Entities.ApplicationUser.GetGAppUserList.htm" />
+        <HelpTOCNode Title="MergeApplicationUser Method " Url="html/M-Notes2022.Server.Entities.ApplicationUser.MergeApplicationUser.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="88f0317a-a045-4867-a514-16d15fed602b" Title="ApplicationUser Properties" Url="html/Properties.T-Notes2022.Server.Entities.ApplicationUser.htm">
+        <HelpTOCNode Title="DisplayName Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.DisplayName.htm" />
+        <HelpTOCNode Title="Ipref0 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref0.htm" />
+        <HelpTOCNode Title="Ipref1 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref1.htm" />
+        <HelpTOCNode Title="Ipref2 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref2.htm" />
+        <HelpTOCNode Title="Ipref3 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref3.htm" />
+        <HelpTOCNode Title="Ipref4 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref4.htm" />
+        <HelpTOCNode Title="Ipref5 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref5.htm" />
+        <HelpTOCNode Title="Ipref6 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref6.htm" />
+        <HelpTOCNode Title="Ipref7 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref7.htm" />
+        <HelpTOCNode Title="Ipref8 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref8.htm" />
+        <HelpTOCNode Title="Ipref9 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Ipref9.htm" />
+        <HelpTOCNode Title="MyGuid Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.MyGuid.htm" />
+        <HelpTOCNode Title="Pref0 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref0.htm" />
+        <HelpTOCNode Title="Pref1 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref1.htm" />
+        <HelpTOCNode Title="Pref2 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref2.htm" />
+        <HelpTOCNode Title="Pref3 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref3.htm" />
+        <HelpTOCNode Title="Pref4 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref4.htm" />
+        <HelpTOCNode Title="Pref5 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref5.htm" />
+        <HelpTOCNode Title="Pref6 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref6.htm" />
+        <HelpTOCNode Title="Pref7 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref7.htm" />
+        <HelpTOCNode Title="Pref8 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref8.htm" />
+        <HelpTOCNode Title="Pref9 Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.Pref9.htm" />
+        <HelpTOCNode Title="TimeZoneID Property " Url="html/P-Notes2022.Server.Entities.ApplicationUser.TimeZoneID.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="cb7547d5-f814-4f17-9ae5-517a6ee5c6a4" Title="Audit Class" Url="html/T-Notes2022.Server.Entities.Audit.htm">
+      <HelpTOCNode Title="Audit Members" Url="html/AllMembers.T-Notes2022.Server.Entities.Audit.htm" />
+      <HelpTOCNode Id="18c24854-3c22-496d-b011-8602a1b15b84" Title="Audit Properties" Url="html/Properties.T-Notes2022.Server.Entities.Audit.htm">
+        <HelpTOCNode Title="AuditID Property " Url="html/P-Notes2022.Server.Entities.Audit.AuditID.htm" />
+        <HelpTOCNode Title="Event Property " Url="html/P-Notes2022.Server.Entities.Audit.Event.htm" />
+        <HelpTOCNode Title="EventTime Property " Url="html/P-Notes2022.Server.Entities.Audit.EventTime.htm" />
+        <HelpTOCNode Title="EventType Property " Url="html/P-Notes2022.Server.Entities.Audit.EventType.htm" />
+        <HelpTOCNode Title="UserID Property " Url="html/P-Notes2022.Server.Entities.Audit.UserID.htm" />
+        <HelpTOCNode Title="UserName Property " Url="html/P-Notes2022.Server.Entities.Audit.UserName.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="80f4ae04-6f59-409f-b0c0-43f5f49ecfdf" Title="HomePageMessage Class" Url="html/T-Notes2022.Server.Entities.HomePageMessage.htm">
+      <HelpTOCNode Title="HomePageMessage Members" Url="html/AllMembers.T-Notes2022.Server.Entities.HomePageMessage.htm" />
+      <HelpTOCNode Id="d8c25f44-070f-4aff-b5ba-615abb7daa83" Title="HomePageMessage Properties" Url="html/Properties.T-Notes2022.Server.Entities.HomePageMessage.htm">
+        <HelpTOCNode Title="Id Property " Url="html/P-Notes2022.Server.Entities.HomePageMessage.Id.htm" />
+        <HelpTOCNode Title="Message Property " Url="html/P-Notes2022.Server.Entities.HomePageMessage.Message.htm" />
+        <HelpTOCNode Title="Posted Property " Url="html/P-Notes2022.Server.Entities.HomePageMessage.Posted.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="LinkAction Enumeration" Url="html/T-Notes2022.Server.Entities.LinkAction.htm" />
+    <HelpTOCNode Id="f008e180-e54c-48b4-aa2a-8d156dc9154e" Title="LinkedFile Class" Url="html/T-Notes2022.Server.Entities.LinkedFile.htm">
+      <HelpTOCNode Title="LinkedFile Members" Url="html/AllMembers.T-Notes2022.Server.Entities.LinkedFile.htm" />
+      <HelpTOCNode Id="6cbd0b21-ba0a-4974-8e29-40562e7af179" Title="LinkedFile Methods" Url="html/Methods.T-Notes2022.Server.Entities.LinkedFile.htm">
+        <HelpTOCNode Title="GetGLinkedFile Method " Url="html/M-Notes2022.Server.Entities.LinkedFile.GetGLinkedFile.htm" />
+        <HelpTOCNode Title="GetGLinkedFileList Method " Url="html/M-Notes2022.Server.Entities.LinkedFile.GetGLinkedFileList.htm" />
+        <HelpTOCNode Title="GetLinkedFile Method " Url="html/M-Notes2022.Server.Entities.LinkedFile.GetLinkedFile.htm" />
+        <HelpTOCNode Title="GetSequencerList Method " Url="html/M-Notes2022.Server.Entities.LinkedFile.GetSequencerList.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a80bbb87-e3ac-4a2a-96bf-5b32e10f5e1c" Title="LinkedFile Properties" Url="html/Properties.T-Notes2022.Server.Entities.LinkedFile.htm">
+        <HelpTOCNode Title="AcceptFrom Property " Url="html/P-Notes2022.Server.Entities.LinkedFile.AcceptFrom.htm" />
+        <HelpTOCNode Title="HomeFileId Property " Url="html/P-Notes2022.Server.Entities.LinkedFile.HomeFileId.htm" />
+        <HelpTOCNode Title="HomeFileName Property " Url="html/P-Notes2022.Server.Entities.LinkedFile.HomeFileName.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-Notes2022.Server.Entities.LinkedFile.Id.htm" />
+        <HelpTOCNode Title="RemoteBaseUri Property " Url="html/P-Notes2022.Server.Entities.LinkedFile.RemoteBaseUri.htm" />
+        <HelpTOCNode Title="RemoteFileName Property " Url="html/P-Notes2022.Server.Entities.LinkedFile.RemoteFileName.htm" />
+        <HelpTOCNode Title="Secret Property " Url="html/P-Notes2022.Server.Entities.LinkedFile.Secret.htm" />
+        <HelpTOCNode Title="SendTo Property " Url="html/P-Notes2022.Server.Entities.LinkedFile.SendTo.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8e19acb8-f4f9-4e36-b9f5-250cac411afc" Title="LinkLog Class" Url="html/T-Notes2022.Server.Entities.LinkLog.htm">
+      <HelpTOCNode Title="LinkLog Members" Url="html/AllMembers.T-Notes2022.Server.Entities.LinkLog.htm" />
+      <HelpTOCNode Id="511396f3-06c7-4e06-89a9-7e6d3914f63c" Title="LinkLog Methods" Url="html/Methods.T-Notes2022.Server.Entities.LinkLog.htm">
+        <HelpTOCNode Title="GetGLinkLog Method " Url="html/M-Notes2022.Server.Entities.LinkLog.GetGLinkLog.htm" />
+        <HelpTOCNode Title="GetGSequencerList Method " Url="html/M-Notes2022.Server.Entities.LinkLog.GetGSequencerList.htm" />
+        <HelpTOCNode Title="GetLinkLog Method " Url="html/M-Notes2022.Server.Entities.LinkLog.GetLinkLog.htm" />
+        <HelpTOCNode Title="GetLinkLogList Method " Url="html/M-Notes2022.Server.Entities.LinkLog.GetLinkLogList.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f94f2408-6cdc-45c9-8e42-fa7816054f0b" Title="LinkLog Properties" Url="html/Properties.T-Notes2022.Server.Entities.LinkLog.htm">
+        <HelpTOCNode Title="Event Property " Url="html/P-Notes2022.Server.Entities.LinkLog.Event.htm" />
+        <HelpTOCNode Title="EventTime Property " Url="html/P-Notes2022.Server.Entities.LinkLog.EventTime.htm" />
+        <HelpTOCNode Title="EventType Property " Url="html/P-Notes2022.Server.Entities.LinkLog.EventType.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-Notes2022.Server.Entities.LinkLog.Id.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c1a40aca-f701-427f-ad36-7e0a124d88bc" Title="LinkQueue Class" Url="html/T-Notes2022.Server.Entities.LinkQueue.htm">
+      <HelpTOCNode Title="LinkQueue Members" Url="html/AllMembers.T-Notes2022.Server.Entities.LinkQueue.htm" />
+      <HelpTOCNode Id="88ae3ead-b466-4225-831c-ad9b6463c5e9" Title="LinkQueue Methods" Url="html/Methods.T-Notes2022.Server.Entities.LinkQueue.htm">
+        <HelpTOCNode Title="GetGLinkQueue Method " Url="html/M-Notes2022.Server.Entities.LinkQueue.GetGLinkQueue.htm" />
+        <HelpTOCNode Title="GetGSequencerList Method " Url="html/M-Notes2022.Server.Entities.LinkQueue.GetGSequencerList.htm" />
+        <HelpTOCNode Title="GetLinkQueue Method " Url="html/M-Notes2022.Server.Entities.LinkQueue.GetLinkQueue.htm" />
+        <HelpTOCNode Title="GetSequencerList Method " Url="html/M-Notes2022.Server.Entities.LinkQueue.GetSequencerList.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7818cf2c-40e8-4460-a7a6-e9cc9226dc43" Title="LinkQueue Properties" Url="html/Properties.T-Notes2022.Server.Entities.LinkQueue.htm">
+        <HelpTOCNode Title="Activity Property " Url="html/P-Notes2022.Server.Entities.LinkQueue.Activity.htm" />
+        <HelpTOCNode Title="BaseUri Property " Url="html/P-Notes2022.Server.Entities.LinkQueue.BaseUri.htm" />
+        <HelpTOCNode Title="Enqueued Property " Url="html/P-Notes2022.Server.Entities.LinkQueue.Enqueued.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-Notes2022.Server.Entities.LinkQueue.Id.htm" />
+        <HelpTOCNode Title="LinkedFileId Property " Url="html/P-Notes2022.Server.Entities.LinkQueue.LinkedFileId.htm" />
+        <HelpTOCNode Title="LinkGuid Property " Url="html/P-Notes2022.Server.Entities.LinkQueue.LinkGuid.htm" />
+        <HelpTOCNode Title="Secret Property " Url="html/P-Notes2022.Server.Entities.LinkQueue.Secret.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0e9a8592-20f5-49c8-bda7-f1ec78092ecf" Title="Mark Class" Url="html/T-Notes2022.Server.Entities.Mark.htm">
+      <HelpTOCNode Title="Mark Members" Url="html/AllMembers.T-Notes2022.Server.Entities.Mark.htm" />
+      <HelpTOCNode Id="48584d0f-63a8-4fa2-acf6-c1078c0bdb16" Title="Mark Properties" Url="html/Properties.T-Notes2022.Server.Entities.Mark.htm">
+        <HelpTOCNode Title="ArchiveId Property " Url="html/P-Notes2022.Server.Entities.Mark.ArchiveId.htm" />
+        <HelpTOCNode Title="MarkOrdinal Property " Url="html/P-Notes2022.Server.Entities.Mark.MarkOrdinal.htm" />
+        <HelpTOCNode Title="NoteFile Property " Url="html/P-Notes2022.Server.Entities.Mark.NoteFile.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Server.Entities.Mark.NoteFileId.htm" />
+        <HelpTOCNode Title="NoteHeaderId Property " Url="html/P-Notes2022.Server.Entities.Mark.NoteHeaderId.htm" />
+        <HelpTOCNode Title="NoteOrdinal Property " Url="html/P-Notes2022.Server.Entities.Mark.NoteOrdinal.htm" />
+        <HelpTOCNode Title="ResponseOrdinal Property " Url="html/P-Notes2022.Server.Entities.Mark.ResponseOrdinal.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-Notes2022.Server.Entities.Mark.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9b21a4e5-33b2-43a0-8a39-6ef71514772e" Title="NoteAccess Class" Url="html/T-Notes2022.Server.Entities.NoteAccess.htm">
+      <HelpTOCNode Title="NoteAccess Members" Url="html/AllMembers.T-Notes2022.Server.Entities.NoteAccess.htm" />
+      <HelpTOCNode Id="d1685d6a-fb99-420a-b09c-c25b4ad02809" Title="NoteAccess Methods" Url="html/Methods.T-Notes2022.Server.Entities.NoteAccess.htm">
+        <HelpTOCNode Title="GetGNoteAccess Method " Url="html/M-Notes2022.Server.Entities.NoteAccess.GetGNoteAccess.htm" />
+        <HelpTOCNode Title="GetGNoteAccessList Method " Url="html/M-Notes2022.Server.Entities.NoteAccess.GetGNoteAccessList.htm" />
+        <HelpTOCNode Title="GetNoteAccess Method " Url="html/M-Notes2022.Server.Entities.NoteAccess.GetNoteAccess.htm" />
+        <HelpTOCNode Title="GetNoteAccesses Method " Url="html/M-Notes2022.Server.Entities.NoteAccess.GetNoteAccesses.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5368aba2-aec2-4878-b5d8-11762f8aaa6b" Title="NoteAccess Properties" Url="html/Properties.T-Notes2022.Server.Entities.NoteAccess.htm">
+        <HelpTOCNode Title="ArchiveId Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.ArchiveId.htm" />
+        <HelpTOCNode Title="DeleteEdit Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.DeleteEdit.htm" />
+        <HelpTOCNode Title="EditAccess Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.EditAccess.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.NoteFileId.htm" />
+        <HelpTOCNode Title="ReadAccess Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.ReadAccess.htm" />
+        <HelpTOCNode Title="Respond Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.Respond.htm" />
+        <HelpTOCNode Title="SetTag Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.SetTag.htm" />
+        <HelpTOCNode Title="UserID Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.UserID.htm" />
+        <HelpTOCNode Title="ViewAccess Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.ViewAccess.htm" />
+        <HelpTOCNode Title="Write Property " Url="html/P-Notes2022.Server.Entities.NoteAccess.Write.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d827f0e2-6622-4497-a284-bbaecea74b0f" Title="NoteContent Class" Url="html/T-Notes2022.Server.Entities.NoteContent.htm">
+      <HelpTOCNode Title="NoteContent Members" Url="html/AllMembers.T-Notes2022.Server.Entities.NoteContent.htm" />
+      <HelpTOCNode Id="bc1a892f-2ff2-43e2-833c-c261f1f8c0ca" Title="NoteContent Methods" Url="html/Methods.T-Notes2022.Server.Entities.NoteContent.htm">
+        <HelpTOCNode Title="CloneForLink Method " Url="html/M-Notes2022.Server.Entities.NoteContent.CloneForLink.htm" />
+        <HelpTOCNode Title="GetGNoteContent Method " Url="html/M-Notes2022.Server.Entities.NoteContent.GetGNoteContent.htm" />
+        <HelpTOCNode Title="GetGNoteContentList Method " Url="html/M-Notes2022.Server.Entities.NoteContent.GetGNoteContentList.htm" />
+        <HelpTOCNode Title="GetNoteContent Method " Url="html/M-Notes2022.Server.Entities.NoteContent.GetNoteContent.htm" />
+        <HelpTOCNode Title="GetNoteContents Method " Url="html/M-Notes2022.Server.Entities.NoteContent.GetNoteContents.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="030b1cc4-a06d-4bcb-b384-a4033d0224eb" Title="NoteContent Properties" Url="html/Properties.T-Notes2022.Server.Entities.NoteContent.htm">
+        <HelpTOCNode Title="NoteBody Property " Url="html/P-Notes2022.Server.Entities.NoteContent.NoteBody.htm" />
+        <HelpTOCNode Title="NoteHeaderId Property " Url="html/P-Notes2022.Server.Entities.NoteContent.NoteHeaderId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="36e2084c-f285-48a6-bd32-fb69ec045dd7" Title="NoteFile Class" Url="html/T-Notes2022.Server.Entities.NoteFile.htm">
+      <HelpTOCNode Title="NoteFile Members" Url="html/AllMembers.T-Notes2022.Server.Entities.NoteFile.htm" />
+      <HelpTOCNode Id="bd646936-2832-4893-a864-4365dde7e40e" Title="NoteFile Methods" Url="html/Methods.T-Notes2022.Server.Entities.NoteFile.htm">
+        <HelpTOCNode Title="GetGNotefile Method " Url="html/M-Notes2022.Server.Entities.NoteFile.GetGNotefile.htm" />
+        <HelpTOCNode Title="GetGNotefileList Method " Url="html/M-Notes2022.Server.Entities.NoteFile.GetGNotefileList.htm" />
+        <HelpTOCNode Title="GetNoteFile Method " Url="html/M-Notes2022.Server.Entities.NoteFile.GetNoteFile.htm" />
+        <HelpTOCNode Title="GetNoteFiles Method " Url="html/M-Notes2022.Server.Entities.NoteFile.GetNoteFiles.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="929d3cb1-ef82-446d-923a-646e0c494204" Title="NoteFile Properties" Url="html/Properties.T-Notes2022.Server.Entities.NoteFile.htm">
+        <HelpTOCNode Title="Id Property " Url="html/P-Notes2022.Server.Entities.NoteFile.Id.htm" />
+        <HelpTOCNode Title="LastEdited Property " Url="html/P-Notes2022.Server.Entities.NoteFile.LastEdited.htm" />
+        <HelpTOCNode Title="NoteFileName Property " Url="html/P-Notes2022.Server.Entities.NoteFile.NoteFileName.htm" />
+        <HelpTOCNode Title="NoteFileTitle Property " Url="html/P-Notes2022.Server.Entities.NoteFile.NoteFileTitle.htm" />
+        <HelpTOCNode Title="NumberArchives Property " Url="html/P-Notes2022.Server.Entities.NoteFile.NumberArchives.htm" />
+        <HelpTOCNode Title="OwnerId Property " Url="html/P-Notes2022.Server.Entities.NoteFile.OwnerId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2be759d2-0fa2-4c1f-9a4f-0054b94574ae" Title="NoteHeader Class" Url="html/T-Notes2022.Server.Entities.NoteHeader.htm">
+      <HelpTOCNode Title="NoteHeader Members" Url="html/AllMembers.T-Notes2022.Server.Entities.NoteHeader.htm" />
+      <HelpTOCNode Id="d1b4a54e-2b07-4c78-8402-d1127024dc38" Title="NoteHeader Methods" Url="html/Methods.T-Notes2022.Server.Entities.NoteHeader.htm">
+        <HelpTOCNode Title="Clone Method " Url="html/M-Notes2022.Server.Entities.NoteHeader.Clone.htm" />
+        <HelpTOCNode Title="CloneForLink Method " Url="html/M-Notes2022.Server.Entities.NoteHeader.CloneForLink.htm" />
+        <HelpTOCNode Title="CloneForLinkR Method " Url="html/M-Notes2022.Server.Entities.NoteHeader.CloneForLinkR.htm" />
+        <HelpTOCNode Title="GetGNoteHeader Method " Url="html/M-Notes2022.Server.Entities.NoteHeader.GetGNoteHeader.htm" />
+        <HelpTOCNode Title="GetGNoteHeaderList Method " Url="html/M-Notes2022.Server.Entities.NoteHeader.GetGNoteHeaderList.htm" />
+        <HelpTOCNode Title="GetNoteHeader Method " Url="html/M-Notes2022.Server.Entities.NoteHeader.GetNoteHeader.htm" />
+        <HelpTOCNode Title="GetNoteHeaders Method " Url="html/M-Notes2022.Server.Entities.NoteHeader.GetNoteHeaders.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9b2403fe-69c7-407e-b8d1-956da17dbf85" Title="NoteHeader Properties" Url="html/Properties.T-Notes2022.Server.Entities.NoteHeader.htm">
+        <HelpTOCNode Title="ArchiveId Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.ArchiveId.htm" />
+        <HelpTOCNode Title="AuthorID Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.AuthorID.htm" />
+        <HelpTOCNode Title="AuthorName Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.AuthorName.htm" />
+        <HelpTOCNode Title="BaseNoteId Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.BaseNoteId.htm" />
+        <HelpTOCNode Title="CreateDate Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.CreateDate.htm" />
+        <HelpTOCNode Title="DirectorMessage Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.DirectorMessage.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.Id.htm" />
+        <HelpTOCNode Title="IsDeleted Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.IsDeleted.htm" />
+        <HelpTOCNode Title="LastEdited Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.LastEdited.htm" />
+        <HelpTOCNode Title="LinkGuid Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.LinkGuid.htm" />
+        <HelpTOCNode Title="NoteContent Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.NoteContent.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.NoteFileId.htm" />
+        <HelpTOCNode Title="NoteOrdinal Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.NoteOrdinal.htm" />
+        <HelpTOCNode Title="NoteSubject Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.NoteSubject.htm" />
+        <HelpTOCNode Title="RefId Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.RefId.htm" />
+        <HelpTOCNode Title="ResponseCount Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.ResponseCount.htm" />
+        <HelpTOCNode Title="ResponseOrdinal Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.ResponseOrdinal.htm" />
+        <HelpTOCNode Title="Tags Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.Tags.htm" />
+        <HelpTOCNode Title="ThreadLastEdited Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.ThreadLastEdited.htm" />
+        <HelpTOCNode Title="Version Property " Url="html/P-Notes2022.Server.Entities.NoteHeader.Version.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a4f73add-1886-4f49-a8e5-339bd3e80115" Title="Search Class" Url="html/T-Notes2022.Server.Entities.Search.htm">
+      <HelpTOCNode Title="Search Members" Url="html/AllMembers.T-Notes2022.Server.Entities.Search.htm" />
+      <HelpTOCNode Id="96f9e3e8-072b-4e42-a989-86bc5d48d863" Title="Search Methods" Url="html/Methods.T-Notes2022.Server.Entities.Search.htm">
+        <HelpTOCNode Title="Clone Method " Url="html/M-Notes2022.Server.Entities.Search.Clone.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7988874d-b331-4b9c-9df0-636af4861ef7" Title="Search Properties" Url="html/Properties.T-Notes2022.Server.Entities.Search.htm">
+        <HelpTOCNode Title="ArchiveId Property " Url="html/P-Notes2022.Server.Entities.Search.ArchiveId.htm" />
+        <HelpTOCNode Title="BaseOrdinal Property " Url="html/P-Notes2022.Server.Entities.Search.BaseOrdinal.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Server.Entities.Search.NoteFileId.htm" />
+        <HelpTOCNode Title="NoteID Property " Url="html/P-Notes2022.Server.Entities.Search.NoteID.htm" />
+        <HelpTOCNode Title="Option Property " Url="html/P-Notes2022.Server.Entities.Search.Option.htm" />
+        <HelpTOCNode Title="ResponseOrdinal Property " Url="html/P-Notes2022.Server.Entities.Search.ResponseOrdinal.htm" />
+        <HelpTOCNode Title="Text Property " Url="html/P-Notes2022.Server.Entities.Search.Text.htm" />
+        <HelpTOCNode Title="Time Property " Url="html/P-Notes2022.Server.Entities.Search.Time.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-Notes2022.Server.Entities.Search.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="SearchOption Enumeration" Url="html/T-Notes2022.Server.Entities.SearchOption.htm" />
+    <HelpTOCNode Id="1c1f30e9-046a-4f9b-b5bc-c17b109c2d5e" Title="Sequencer Class" Url="html/T-Notes2022.Server.Entities.Sequencer.htm">
+      <HelpTOCNode Title="Sequencer Members" Url="html/AllMembers.T-Notes2022.Server.Entities.Sequencer.htm" />
+      <HelpTOCNode Id="59f81c2e-070a-4fe4-8067-5e9aa5a62abd" Title="Sequencer Methods" Url="html/Methods.T-Notes2022.Server.Entities.Sequencer.htm">
+        <HelpTOCNode Title="GetGSequencer Method " Url="html/M-Notes2022.Server.Entities.Sequencer.GetGSequencer.htm" />
+        <HelpTOCNode Title="GetGSequencerList Method " Url="html/M-Notes2022.Server.Entities.Sequencer.GetGSequencerList.htm" />
+        <HelpTOCNode Title="GetSequencer Method " Url="html/M-Notes2022.Server.Entities.Sequencer.GetSequencer.htm" />
+        <HelpTOCNode Title="GetSequencerList Method " Url="html/M-Notes2022.Server.Entities.Sequencer.GetSequencerList.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="98ba9d1f-6cbb-4c95-8d54-05e6fac0f166" Title="Sequencer Properties" Url="html/Properties.T-Notes2022.Server.Entities.Sequencer.htm">
+        <HelpTOCNode Title="Active Property " Url="html/P-Notes2022.Server.Entities.Sequencer.Active.htm" />
+        <HelpTOCNode Title="LastTime Property " Url="html/P-Notes2022.Server.Entities.Sequencer.LastTime.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Server.Entities.Sequencer.NoteFileId.htm" />
+        <HelpTOCNode Title="Ordinal Property " Url="html/P-Notes2022.Server.Entities.Sequencer.Ordinal.htm" />
+        <HelpTOCNode Title="StartTime Property " Url="html/P-Notes2022.Server.Entities.Sequencer.StartTime.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-Notes2022.Server.Entities.Sequencer.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ebb2b017-a349-4e94-b217-bc056cec4a5b" Title="SQLFile Class" Url="html/T-Notes2022.Server.Entities.SQLFile.htm">
+      <HelpTOCNode Title="SQLFile Members" Url="html/AllMembers.T-Notes2022.Server.Entities.SQLFile.htm" />
+      <HelpTOCNode Id="9c51335a-1e8b-4f3c-8446-59c3ea9a7944" Title="SQLFile Properties" Url="html/Properties.T-Notes2022.Server.Entities.SQLFile.htm">
+        <HelpTOCNode Title="Comments Property " Url="html/P-Notes2022.Server.Entities.SQLFile.Comments.htm" />
+        <HelpTOCNode Title="Content Property " Url="html/P-Notes2022.Server.Entities.SQLFile.Content.htm" />
+        <HelpTOCNode Title="ContentType Property " Url="html/P-Notes2022.Server.Entities.SQLFile.ContentType.htm" />
+        <HelpTOCNode Title="Contributor Property " Url="html/P-Notes2022.Server.Entities.SQLFile.Contributor.htm" />
+        <HelpTOCNode Title="FileId Property " Url="html/P-Notes2022.Server.Entities.SQLFile.FileId.htm" />
+        <HelpTOCNode Title="FileName Property " Url="html/P-Notes2022.Server.Entities.SQLFile.FileName.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="03cf0c4f-a489-48d3-9bf2-ee468257539a" Title="SQLFileContent Class" Url="html/T-Notes2022.Server.Entities.SQLFileContent.htm">
+      <HelpTOCNode Title="SQLFileContent Members" Url="html/AllMembers.T-Notes2022.Server.Entities.SQLFileContent.htm" />
+      <HelpTOCNode Id="c8452957-8300-4441-ba6a-9810c5890bdb" Title="SQLFileContent Properties" Url="html/Properties.T-Notes2022.Server.Entities.SQLFileContent.htm">
+        <HelpTOCNode Title="Content Property " Url="html/P-Notes2022.Server.Entities.SQLFileContent.Content.htm" />
+        <HelpTOCNode Title="SQLFile Property " Url="html/P-Notes2022.Server.Entities.SQLFileContent.SQLFile.htm" />
+        <HelpTOCNode Title="SQLFileId Property " Url="html/P-Notes2022.Server.Entities.SQLFileContent.SQLFileId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="644e1d76-3023-49c2-b7df-b2067ba08ac3" Title="Subscription Class" Url="html/T-Notes2022.Server.Entities.Subscription.htm">
+      <HelpTOCNode Title="Subscription Members" Url="html/AllMembers.T-Notes2022.Server.Entities.Subscription.htm" />
+      <HelpTOCNode Id="f0147655-b9ec-4f7d-95c1-725e7a416f49" Title="Subscription Properties" Url="html/Properties.T-Notes2022.Server.Entities.Subscription.htm">
+        <HelpTOCNode Title="Id Property " Url="html/P-Notes2022.Server.Entities.Subscription.Id.htm" />
+        <HelpTOCNode Title="NoteFile Property " Url="html/P-Notes2022.Server.Entities.Subscription.NoteFile.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Server.Entities.Subscription.NoteFileId.htm" />
+        <HelpTOCNode Title="SubscriberId Property " Url="html/P-Notes2022.Server.Entities.Subscription.SubscriberId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="bfc29ab1-2fa0-4736-85e7-a1b6d2876621" Title="SystemMessage Class" Url="html/T-Notes2022.Server.Entities.SystemMessage.htm">
+      <HelpTOCNode Title="SystemMessage Members" Url="html/AllMembers.T-Notes2022.Server.Entities.SystemMessage.htm" />
+      <HelpTOCNode Id="5f72d464-adfc-4eae-8859-b523ddbf9460" Title="SystemMessage Properties" Url="html/Properties.T-Notes2022.Server.Entities.SystemMessage.htm">
+        <HelpTOCNode Title="message Property " Url="html/P-Notes2022.Server.Entities.SystemMessage.message.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c579e7bc-cb2a-498f-a490-ab045b3f9e65" Title="Tags Class" Url="html/T-Notes2022.Server.Entities.Tags.htm">
+      <HelpTOCNode Title="Tags Members" Url="html/AllMembers.T-Notes2022.Server.Entities.Tags.htm" />
+      <HelpTOCNode Id="756b5633-2faf-4874-ba16-2920b13ad271" Title="Tags Methods" Url="html/Methods.T-Notes2022.Server.Entities.Tags.htm">
+        <HelpTOCNode Title="CloneForLink Method " Url="html/M-Notes2022.Server.Entities.Tags.CloneForLink.htm" />
+        <HelpTOCNode Title="GetGTags Method " Url="html/M-Notes2022.Server.Entities.Tags.GetGTags.htm" />
+        <HelpTOCNode Title="GetGTagsList Method " Url="html/M-Notes2022.Server.Entities.Tags.GetGTagsList.htm" />
+        <HelpTOCNode Title="GetTags Method " Url="html/M-Notes2022.Server.Entities.Tags.GetTags.htm" />
+        <HelpTOCNode Title="GetTagsList Method " Url="html/M-Notes2022.Server.Entities.Tags.GetTagsList.htm" />
+        <HelpTOCNode Title="ListToString Method " Url="html/M-Notes2022.Server.Entities.Tags.ListToString.htm" />
+        <HelpTOCNode Id="8a1e0b68-556c-4715-9c86-9b91e8d6e716" Title="StringToList Method " Url="html/Overload-Notes2022.Server.Entities.Tags.StringToList.htm">
+          <HelpTOCNode Title="StringToList Method (String)" Url="html/M-Notes2022.Server.Entities.Tags.StringToList.htm" />
+          <HelpTOCNode Title="StringToList Method (String, Int64, Int32, Int32)" Url="html/M-Notes2022.Server.Entities.Tags.StringToList_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ToString Method " Url="html/M-Notes2022.Server.Entities.Tags.ToString.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9311da3d-7dc7-41d1-92cf-1112f1aec14a" Title="Tags Properties" Url="html/Properties.T-Notes2022.Server.Entities.Tags.htm">
+        <HelpTOCNode Title="ArchiveId Property " Url="html/P-Notes2022.Server.Entities.Tags.ArchiveId.htm" />
+        <HelpTOCNode Title="NoteFileId Property " Url="html/P-Notes2022.Server.Entities.Tags.NoteFileId.htm" />
+        <HelpTOCNode Title="NoteHeaderId Property " Url="html/P-Notes2022.Server.Entities.Tags.NoteHeaderId.htm" />
+        <HelpTOCNode Title="Tag Property " Url="html/P-Notes2022.Server.Entities.Tags.Tag.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7623542c-589c-484d-96f4-b90663fa04c7" Title="TZone Class" Url="html/T-Notes2022.Server.Entities.TZone.htm">
+      <HelpTOCNode Title="TZone Members" Url="html/AllMembers.T-Notes2022.Server.Entities.TZone.htm" />
+      <HelpTOCNode Id="390e20e7-475b-42c7-9a4c-7782389137c2" Title="TZone Methods" Url="html/Methods.T-Notes2022.Server.Entities.TZone.htm">
+        <HelpTOCNode Title="Local Method " Url="html/M-Notes2022.Server.Entities.TZone.Local.htm" />
+        <HelpTOCNode Title="Universal Method " Url="html/M-Notes2022.Server.Entities.TZone.Universal.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="19cf754d-a592-4024-885b-1f231680ba86" Title="TZone Properties" Url="html/Properties.T-Notes2022.Server.Entities.TZone.htm">
+        <HelpTOCNode Title="Abbreviation Property " Url="html/P-Notes2022.Server.Entities.TZone.Abbreviation.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-Notes2022.Server.Entities.TZone.Id.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-Notes2022.Server.Entities.TZone.Name.htm" />
+        <HelpTOCNode Title="Offset Property " Url="html/P-Notes2022.Server.Entities.TZone.Offset.htm" />
+        <HelpTOCNode Title="OffsetHours Property " Url="html/P-Notes2022.Server.Entities.TZone.OffsetHours.htm" />
+        <HelpTOCNode Title="OffsetMinutes Property " Url="html/P-Notes2022.Server.Entities.TZone.OffsetMinutes.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="0095dda0-7178-438f-9734-d3614276b74d" Title="Notes2022.Server.Migrations Namespace" Url="html/N-Notes2022.Server.Migrations.htm">
+    <HelpTOCNode Title="first Class" Url="html/T-Notes2022.Server.Migrations.first.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="a826c774-7509-4f3e-8d30-6cfec775a9a4" Title="Notes2022.Server.Pages Namespace" Url="html/N-Notes2022.Server.Pages.htm">
+    <HelpTOCNode Id="89c944a4-fa90-4858-9eed-ae4ff743a5e0" Title="ErrorModel Class" Url="html/T-Notes2022.Server.Pages.ErrorModel.htm">
+      <HelpTOCNode Title="ErrorModel Members" Url="html/AllMembers.T-Notes2022.Server.Pages.ErrorModel.htm" />
+      <HelpTOCNode Title="ErrorModel Constructor " Url="html/M-Notes2022.Server.Pages.ErrorModel.-ctor.htm" />
+      <HelpTOCNode Id="1e945367-c414-4325-8fda-af365165b6f0" Title="ErrorModel Methods" Url="html/Methods.T-Notes2022.Server.Pages.ErrorModel.htm">
+        <HelpTOCNode Title="OnGet Method " Url="html/M-Notes2022.Server.Pages.ErrorModel.OnGet.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="83546172-9a3d-40a8-abf6-8967acb5a7b4" Title="ErrorModel Properties" Url="html/Properties.T-Notes2022.Server.Pages.ErrorModel.htm">
+        <HelpTOCNode Title="RequestId Property " Url="html/P-Notes2022.Server.Pages.ErrorModel.RequestId.htm" />
+        <HelpTOCNode Title="ShowRequestId Property " Url="html/P-Notes2022.Server.Pages.ErrorModel.ShowRequestId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="ef954b95-034a-41cf-a571-97e08cdcdecf" Title="Notes2022.Server.Services Namespace" Url="html/N-Notes2022.Server.Services.htm">
+    <HelpTOCNode Id="f1238bf8-7532-4ff4-9304-1d15bc14d4c4" Title="AuthMessageSenderOptions Class" Url="html/T-Notes2022.Server.Services.AuthMessageSenderOptions.htm">
+      <HelpTOCNode Title="AuthMessageSenderOptions Members" Url="html/AllMembers.T-Notes2022.Server.Services.AuthMessageSenderOptions.htm" />
+      <HelpTOCNode Id="7ddce673-dca5-418e-86ed-52cb386f7736" Title="AuthMessageSenderOptions Properties" Url="html/Properties.T-Notes2022.Server.Services.AuthMessageSenderOptions.htm">
+        <HelpTOCNode Title="SendGridKey Property " Url="html/P-Notes2022.Server.Services.AuthMessageSenderOptions.SendGridKey.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="315235f3-3488-4a4d-bd55-c63312323b07" Title="EmailSender Class" Url="html/T-Notes2022.Server.Services.EmailSender.htm">
+      <HelpTOCNode Title="EmailSender Members" Url="html/AllMembers.T-Notes2022.Server.Services.EmailSender.htm" />
+      <HelpTOCNode Id="fc058829-0b87-432b-926e-aca81a8373f0" Title="EmailSender Constructor " Url="html/Overload-Notes2022.Server.Services.EmailSender.-ctor.htm">
+        <HelpTOCNode Title="EmailSender Constructor (IOptions(AuthMessageSenderOptions))" Url="html/M-Notes2022.Server.Services.EmailSender.-ctor.htm" />
+        <HelpTOCNode Title="EmailSender Constructor " Url="html/M-Notes2022.Server.Services.EmailSender.-ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="180af854-02af-467e-a4d6-723aefcb845e" Title="EmailSender Methods" Url="html/Methods.T-Notes2022.Server.Services.EmailSender.htm">
+        <HelpTOCNode Title="SendEmailAsync Method " Url="html/M-Notes2022.Server.Services.EmailSender.SendEmailAsync.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4a450cd6-d320-4495-9082-4507fbb96ee4" Title="EmailSender Properties" Url="html/Properties.T-Notes2022.Server.Services.EmailSender.htm">
+        <HelpTOCNode Title="Options Property " Url="html/P-Notes2022.Server.Services.EmailSender.Options.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0dc98f67-d7c0-45ec-8757-9df08e258519" Title="LocalService Class" Url="html/T-Notes2022.Server.Services.LocalService.htm">
+      <HelpTOCNode Title="LocalService Members" Url="html/AllMembers.T-Notes2022.Server.Services.LocalService.htm" />
+      <HelpTOCNode Id="5902b489-88cb-4498-878d-6634805d64de" Title="LocalService Methods" Url="html/Methods.T-Notes2022.Server.Services.LocalService.htm">
+        <HelpTOCNode Title="MakeNoteForEmail Method " Url="html/M-Notes2022.Server.Services.LocalService.MakeNoteForEmail.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e1f1e658-3b3e-475b-a3e8-960c50214e6b" Title="Notes2022Service Class" Url="html/T-Notes2022.Server.Services.Notes2022Service.htm">
+      <HelpTOCNode Title="Notes2022Service Members" Url="html/AllMembers.T-Notes2022.Server.Services.Notes2022Service.htm" />
+      <HelpTOCNode Title="Notes2022Service Constructor " Url="html/M-Notes2022.Server.Services.Notes2022Service.-ctor.htm" />
+      <HelpTOCNode Id="7cb4440b-899e-4785-966f-c54504707ba1" Title="Notes2022Service Methods" Url="html/Methods.T-Notes2022.Server.Services.Notes2022Service.htm">
+        <HelpTOCNode Title="AddAccessItem Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.AddAccessItem.htm" />
+        <HelpTOCNode Title="ConfirmEmail Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.ConfirmEmail.htm" />
+        <HelpTOCNode Title="CopyNote Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.CopyNote.htm" />
+        <HelpTOCNode Title="CreateNewNote Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.CreateNewNote.htm" />
+        <HelpTOCNode Title="CreateNoteFile Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.CreateNoteFile.htm" />
+        <HelpTOCNode Title="CreateSequencer Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.CreateSequencer.htm" />
+        <HelpTOCNode Title="DeleteAccessItem Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.DeleteAccessItem.htm" />
+        <HelpTOCNode Title="DeleteNote Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.DeleteNote.htm" />
+        <HelpTOCNode Title="DeleteNoteFile Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.DeleteNoteFile.htm" />
+        <HelpTOCNode Title="DeleteSequencer Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.DeleteSequencer.htm" />
+        <HelpTOCNode Title="DoForward Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.DoForward.htm" />
+        <HelpTOCNode Title="GetAbout Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetAbout.htm" />
+        <HelpTOCNode Title="GetAccessAndUserList Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetAccessAndUserList.htm" />
+        <HelpTOCNode Title="GetAccessList Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetAccessList.htm" />
+        <HelpTOCNode Title="GetAdminPageModel Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetAdminPageModel.htm" />
+        <HelpTOCNode Title="GetExport Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetExport.htm" />
+        <HelpTOCNode Title="GetExport2 Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetExport2.htm" />
+        <HelpTOCNode Title="GetExportJson Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetExportJson.htm" />
+        <HelpTOCNode Title="GetHeaderForNoteId Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetHeaderForNoteId.htm" />
+        <HelpTOCNode Title="GetHomePageModel Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetHomePageModel.htm" />
+        <HelpTOCNode Title="GetNoteContent Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetNoteContent.htm" />
+        <HelpTOCNode Title="GetNoteFile Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetNoteFile.htm" />
+        <HelpTOCNode Title="GetNoteFileIndexData Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetNoteFileIndexData.htm" />
+        <HelpTOCNode Title="GetNoteFilesOrderedByName Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetNoteFilesOrderedByName.htm" />
+        <HelpTOCNode Title="GetSequencer Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetSequencer.htm" />
+        <HelpTOCNode Title="GetTextFile Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetTextFile.htm" />
+        <HelpTOCNode Title="GetUserData Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetUserData.htm" />
+        <HelpTOCNode Title="GetUserList Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetUserList.htm" />
+        <HelpTOCNode Title="GetUserRoles Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetUserRoles.htm" />
+        <HelpTOCNode Title="GetVersions Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.GetVersions.htm" />
+        <HelpTOCNode Title="Import Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.Import.htm" />
+        <HelpTOCNode Title="Login Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.Login.htm" />
+        <HelpTOCNode Title="Logout Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.Logout.htm" />
+        <HelpTOCNode Title="Register Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.Register.htm" />
+        <HelpTOCNode Title="SendEmail Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.SendEmail.htm" />
+        <HelpTOCNode Title="SendEmailAuth Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.SendEmailAuth.htm" />
+        <HelpTOCNode Title="UpdateAccessItem Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.UpdateAccessItem.htm" />
+        <HelpTOCNode Title="UpdateNote Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.UpdateNote.htm" />
+        <HelpTOCNode Title="UpdateNoteFile Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.UpdateNoteFile.htm" />
+        <HelpTOCNode Title="UpdateSequencer Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.UpdateSequencer.htm" />
+        <HelpTOCNode Title="UpdateSequencerOrdinal Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.UpdateSequencerOrdinal.htm" />
+        <HelpTOCNode Title="UpdateUserData Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.UpdateUserData.htm" />
+        <HelpTOCNode Title="UpdateUserRoles Method " Url="html/M-Notes2022.Server.Services.Notes2022Service.UpdateUserRoles.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="db24daa5-10d8-46d6-b6a2-2baee3a3a285" Title="Notes2022.Shared Namespace" Url="html/N-Notes2022.Shared.htm">
+    <HelpTOCNode Id="a1504fcc-40c0-4992-bfc6-13e8bcab8589" Title="UserData Class" Url="html/T-Notes2022.Shared.UserData.htm">
+      <HelpTOCNode Title="UserData Members" Url="html/AllMembers.T-Notes2022.Shared.UserData.htm" />
+      <HelpTOCNode Id="b961aa8d-851d-4dfc-84bb-57edcdd7a434" Title="UserData Properties" Url="html/Properties.T-Notes2022.Shared.UserData.htm">
+        <HelpTOCNode Title="DisplayName Property " Url="html/P-Notes2022.Shared.UserData.DisplayName.htm" />
+        <HelpTOCNode Title="DisplayName2 Property " Url="html/P-Notes2022.Shared.UserData.DisplayName2.htm" />
+        <HelpTOCNode Title="Email Property " Url="html/P-Notes2022.Shared.UserData.Email.htm" />
+        <HelpTOCNode Title="Ipref0 Property " Url="html/P-Notes2022.Shared.UserData.Ipref0.htm" />
+        <HelpTOCNode Title="Ipref1 Property " Url="html/P-Notes2022.Shared.UserData.Ipref1.htm" />
+        <HelpTOCNode Title="Ipref2 Property " Url="html/P-Notes2022.Shared.UserData.Ipref2.htm" />
+        <HelpTOCNode Title="Ipref3 Property " Url="html/P-Notes2022.Shared.UserData.Ipref3.htm" />
+        <HelpTOCNode Title="Ipref4 Property " Url="html/P-Notes2022.Shared.UserData.Ipref4.htm" />
+        <HelpTOCNode Title="Ipref5 Property " Url="html/P-Notes2022.Shared.UserData.Ipref5.htm" />
+        <HelpTOCNode Title="Ipref6 Property " Url="html/P-Notes2022.Shared.UserData.Ipref6.htm" />
+        <HelpTOCNode Title="Ipref7 Property " Url="html/P-Notes2022.Shared.UserData.Ipref7.htm" />
+        <HelpTOCNode Title="Ipref8 Property " Url="html/P-Notes2022.Shared.UserData.Ipref8.htm" />
+        <HelpTOCNode Title="Ipref9 Property " Url="html/P-Notes2022.Shared.UserData.Ipref9.htm" />
+        <HelpTOCNode Title="MyGuid Property " Url="html/P-Notes2022.Shared.UserData.MyGuid.htm" />
+        <HelpTOCNode Title="Pref0 Property " Url="html/P-Notes2022.Shared.UserData.Pref0.htm" />
+        <HelpTOCNode Title="Pref1 Property " Url="html/P-Notes2022.Shared.UserData.Pref1.htm" />
+        <HelpTOCNode Title="Pref2 Property " Url="html/P-Notes2022.Shared.UserData.Pref2.htm" />
+        <HelpTOCNode Title="Pref3 Property " Url="html/P-Notes2022.Shared.UserData.Pref3.htm" />
+        <HelpTOCNode Title="Pref4 Property " Url="html/P-Notes2022.Shared.UserData.Pref4.htm" />
+        <HelpTOCNode Title="Pref5 Property " Url="html/P-Notes2022.Shared.UserData.Pref5.htm" />
+        <HelpTOCNode Title="Pref6 Property " Url="html/P-Notes2022.Shared.UserData.Pref6.htm" />
+        <HelpTOCNode Title="Pref7 Property " Url="html/P-Notes2022.Shared.UserData.Pref7.htm" />
+        <HelpTOCNode Title="Pref8 Property " Url="html/P-Notes2022.Shared.UserData.Pref8.htm" />
+        <HelpTOCNode Title="Pref9 Property " Url="html/P-Notes2022.Shared.UserData.Pref9.htm" />
+        <HelpTOCNode Title="TimeZoneID Property " Url="html/P-Notes2022.Shared.UserData.TimeZoneID.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-Notes2022.Shared.UserData.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8b2cb7b3-27cf-4fc7-9de4-1003d2b83800" Title="UserRoles Class" Url="html/T-Notes2022.Shared.UserRoles.htm">
+      <HelpTOCNode Title="UserRoles Members" Url="html/AllMembers.T-Notes2022.Shared.UserRoles.htm" />
+      <HelpTOCNode Id="52c3d6f2-8fcf-438f-82c8-0d3d29091b10" Title="UserRoles Fields" Url="html/Fields.T-Notes2022.Shared.UserRoles.htm">
+        <HelpTOCNode Title="Admin Field" Url="html/F-Notes2022.Shared.UserRoles.Admin.htm" />
+        <HelpTOCNode Title="User Field" Url="html/F-Notes2022.Shared.UserRoles.User.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

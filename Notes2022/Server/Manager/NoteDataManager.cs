@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-26-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="NoteDataManager.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -34,6 +47,9 @@ using System.Security.Claims;
 
 namespace Notes2022.Server
 {
+    /// <summary>
+    /// Class NoteDataManager.
+    /// </summary>
     public static class NoteDataManager
     {
         /// <summary>
@@ -44,7 +60,7 @@ namespace Notes2022.Server
         /// <param name="userId">UserID of creator</param>
         /// <param name="name">NoteFile name</param>
         /// <param name="title">NoteFile title</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static async Task<bool> CreateNoteFile(NotesDbContext db,
             UserManager<ApplicationUser> userManager,
             string userId, string name, string title)
@@ -233,7 +249,7 @@ namespace Notes2022.Server
         /// <param name="send">Should we send emails? / Is this an Imported note?</param>
         /// <param name="linked">Are we processing linked file?</param>
         /// <param name="editing">Are we editing?</param>
-        /// <returns></returns>
+        /// <returns>NoteHeader.</returns>
         public static async Task<NoteHeader> CreateNote(NotesDbContext db, NoteHeader nh, string body, string tags, string dMessage, bool send, bool linked, bool editing = false)
         {
             long editingId = nh.Id;
@@ -378,15 +394,15 @@ namespace Notes2022.Server
         /// <summary>
         /// Create a new Response - See CreateNote for params
         /// </summary>
-        /// <param name="db"></param>
-        /// <param name="nh"></param>
-        /// <param name="body"></param>
-        /// <param name="tags"></param>
-        /// <param name="dMessage"></param>
-        /// <param name="send"></param>
-        /// <param name="linked"></param>
-        /// <param name="editing"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="nh">The nh.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="tags">The tags.</param>
+        /// <param name="dMessage">The d message.</param>
+        /// <param name="send">if set to <c>true</c> [send].</param>
+        /// <param name="linked">if set to <c>true</c> [linked].</param>
+        /// <param name="editing">if set to <c>true</c> [editing].</param>
+        /// <returns>NoteHeader.</returns>
         public static async Task<NoteHeader> CreateResponse(NotesDbContext db, NoteHeader nh, string body, string tags, string dMessage, bool send, bool linked, bool editing = false)
         {
             // do setup and call CreateNote
@@ -408,9 +424,8 @@ namespace Notes2022.Server
         /// <summary>
         /// Delete a Note
         /// </summary>
-        /// <param name="db">NotesDbContext</param>
-        /// <param name="nc">NoteContent</param>
-        /// <returns></returns>
+        /// <param name="_db">The database.</param>
+        /// <param name="nh">The nh.</param>
         public static async Task DeleteNote(NotesDbContext _db, NoteHeader nh)
         {
             nh.IsDeleted = true;
@@ -433,52 +448,12 @@ namespace Notes2022.Server
         /// <summary>
         /// Delete a linked note - NOT called now...
         /// </summary>
-        /// <param name="db"></param>
-        /// <param name="nh"></param>
-        /// <returns></returns>
-        //public static async Task<string> DeleteLinked(NotesDbContext db, NoteHeader nh)
-        //{
-        //    // Check for linked notefile(s)
-
-        //    List<LinkedFile> links = await db.LinkedFile.Where(p => p.HomeFileId == nh.NoteFileId).ToListAsync();
-
-        //    if (links is null || links.Count < 1)
-        //    {
-
-        //    }
-        //    else
-        //    {
-        //        foreach (var link in links)
-        //        {
-        //            if (link.SendTo)
-        //            {
-        //                LinkQueue q = new()
-        //                {
-        //                    Activity = LinkAction.Delete,
-        //                    LinkGuid = nh.LinkGuid,
-        //                    LinkedFileId = nh.NoteFileId,
-        //                    BaseUri = link.RemoteBaseUri,
-        //                    Secret = link.Secret
-        //                };
-
-        //                db.LinkQueue.Add(q);
-        //                await db.SaveChangesAsync();
-        //            }
-        //        }
-        //    }
-
-        //    return "Ok";
-        //}
-
-        /// <summary>
-        /// Edit a note - does setup to keep version history then creates a new note: CreateNote
-        /// </summary>
-        /// <param name="db"></param>
-        /// <param name="userManager"></param>
-        /// <param name="nh"></param>
-        /// <param name="nc"></param>
-        /// <param name="tags"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="nh">The nh.</param>
+        /// <param name="nc">The nc.</param>
+        /// <param name="tags">The tags.</param>
+        /// <returns>NoteHeader.</returns>
         public static async Task<NoteHeader> EditNote(NotesDbContext db, UserManager<ApplicationUser> userManager, NoteHeader nh, NoteContent nc, string tags)
         {
             // this is for making the current version 0 a higher version and creating a new version 0
@@ -593,8 +568,8 @@ namespace Notes2022.Server
         /// <summary>
         /// Copy user prefs from ApplicationUser to UserData entity
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
+        /// <param name="user">The user.</param>
+        /// <returns>UserData.</returns>
         public static UserData GetUserData(ApplicationUser user)
         {
             UserData aux = new();
@@ -636,9 +611,9 @@ namespace Notes2022.Server
         /// <summary>
         /// Put user data from UserData into ApplicationUser Entity
         /// </summary>
-        /// <param name="aux"></param>
-        /// <param name="user"></param>
-        /// <returns></returns>
+        /// <param name="aux">The aux.</param>
+        /// <param name="user">The user.</param>
+        /// <returns>ApplicationUser.</returns>
         public static ApplicationUser PutUserData(ApplicationUser aux, UserData user)
         {
 
@@ -677,52 +652,9 @@ namespace Notes2022.Server
         /// <summary>
         /// Write user data to Db
         /// </summary>
-        /// <param name="userManager"></param>
-        /// <param name="httpContextAccessor"></param>
-        /// <param name="db"></param>
-        /// <param name="userD"></param>
-        //public static void PutUserData(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, NotesDbContext db, UserData userD)
-        //{
-        //    try
-        //    {
-        //        string userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //        ApplicationUser user = userManager.FindByIdAsync(userId).GetAwaiter().GetResult();
-
-
-        //        user = PutUserData(user, userD);
-
-        //        db.Entry(user).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string x = ex.Message;
-        //    }
-        //    return;
-        //}
-
-        //public static async Task<Search> GetUserSearch(NotesDbContext db, string userid)
-        //{
-        //    return await db.Search
-        //        .Where(p => p.UserId == userid)
-        //        .FirstOrDefaultAsync();
-        //}
-
-        //public static async Task<NoteHeader> GetNoteById(NotesDbContext db, long noteid)
-        //{
-        //    return await db.NoteHeader
-        //        .Include("NoteContent")
-        //        .Include("Tags")
-        //        .Where(p => p.Id == noteid)
-        //        .FirstOrDefaultAsync();
-        //}
-
-        /// <summary>
-        /// Get notefile object from a file name
-        /// </summary>
-        /// <param name="db"></param>
-        /// <param name="fname"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="fname">The fname.</param>
+        /// <returns>NoteFile.</returns>
         public static async Task<NoteFile> GetFileByName(NotesDbContext db, string fname)
         {
 #pragma warning disable CS8603 // Possible null reference return.
@@ -754,7 +686,8 @@ namespace Notes2022.Server
         /// </summary>
         /// <param name="db">NotesDbContext</param>
         /// <param name="noteFileId">NoteFileID</param>
-        /// <returns></returns>
+        /// <param name="arcId">The arc identifier.</param>
+        /// <returns>System.Int32.</returns>
         public static async Task<int> NextBaseNoteOrdinal(NotesDbContext db, int noteFileId, int arcId)
         {
             IOrderedQueryable<NoteHeader> bnhq = GetBaseNoteHeaderByIdRev(db, noteFileId, arcId);
@@ -783,12 +716,13 @@ namespace Notes2022.Server
         //}
 
         /// <summary>
-        /// Get BaseNoteHeaders in reverse order - we only plan to look at the 
+        /// Get BaseNoteHeaders in reverse order - we only plan to look at the
         /// first one/one with highest NoteOrdinal
         /// </summary>
-        /// <param name="db"></param>
-        /// <param name="noteFileId"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="noteFileId">The note file identifier.</param>
+        /// <param name="arcId">The arc identifier.</param>
+        /// <returns>IOrderedQueryable&lt;NoteHeader&gt;.</returns>
         private static IOrderedQueryable<NoteHeader> GetBaseNoteHeaderByIdRev(NotesDbContext db, int noteFileId, int arcId)
         {
             return db.NoteHeader
@@ -799,9 +733,9 @@ namespace Notes2022.Server
         /// <summary>
         /// Get notefile entity from its Id
         /// </summary>
-        /// <param name="db"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="id">The identifier.</param>
+        /// <returns>NoteFile.</returns>
         public static async Task<NoteFile> GetFileById(NotesDbContext db, int id)
         {
 #pragma warning disable CS8603 // Possible null reference return.
@@ -839,9 +773,9 @@ namespace Notes2022.Server
         /// <summary>
         /// No Longer includes NoteFile but does include NoteContent
         /// </summary>
-        /// <param name="db"></param>
-        /// <param name="noteid"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="noteid">The noteid.</param>
+        /// <returns>NoteHeader.</returns>
         public static async Task<NoteHeader> GetNoteByIdWithFile(NotesDbContext db, long noteid)
         {
 #pragma warning disable CS8603 // Possible null reference return.
@@ -859,9 +793,9 @@ namespace Notes2022.Server
         /// <summary>
         /// Get a NoteHeader given its Id
         /// </summary>
-        /// <param name="db"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="db">The database.</param>
+        /// <param name="id">The identifier.</param>
+        /// <returns>NoteHeader.</returns>
         public static async Task<NoteHeader> GetBaseNoteHeader(NotesDbContext db, long id)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
@@ -970,38 +904,9 @@ namespace Notes2022.Server
         /// Get the BaseNoteHeader for a Note
         /// </summary>
         /// <param name="db">NotesDbContext</param>
-        /// <param name="nfid">fileid</param>
-        /// <param name="noteord"></param>
-        /// <returns></returns>
-        //public static async Task<List<NoteHeader>> GetBaseNoteHeadersForNote(NotesDbContext db, int nfid, int arcId, int noteord)
-        //{
-        //    return await db.NoteHeader
-        //        .Where(p => p.NoteFileId == nfid && p.ArchiveId == arcId && p.NoteOrdinal == noteord && p.ResponseOrdinal == 0)
-        //        .ToListAsync();
-        //}
-
-        //public static async Task<NoteHeader> GetBaseNoteHeaderForOrdinal(NotesDbContext db, int fileid, int arcId, int ord)
-        //{
-        //    return await db.NoteHeader
-        //        .Where(p => p.NoteFileId == fileid && p.ArchiveId == arcId && p.NoteOrdinal == ord && p.ResponseOrdinal == 0)
-        //        .FirstOrDefaultAsync();
-        //}
-
-
-        //public static async Task<NoteHeader> GetEditedNoteHeader(NotesDbContext db, NoteHeader edited)
-        //{
-        //    return await db.NoteHeader
-        //        .Where(p => p.NoteFileId == edited.NoteFileId && p.ArchiveId == edited.ArchiveId && p.NoteOrdinal == edited.NoteOrdinal)
-        //        .FirstOrDefaultAsync();
-        //}
-
-        /// <summary>
-        /// Given a NoteContent Object and Response number get the response NoteID
-        /// </summary>
-        /// <param name="db"></param>
-        /// <param name="nc"></param>
-        /// <param name="resp"></param>
-        /// <returns></returns>
+        /// <param name="id">The identifier.</param>
+        /// <param name="arcId">The arc identifier.</param>
+        /// <returns>List&lt;NoteHeader&gt;.</returns>
         //public static async Task<long?> FindResponseId(NotesDbContext db, NoteHeader nc, int resp)
         //{
         //    NoteHeader content = await db.NoteHeader
@@ -1022,7 +927,7 @@ namespace Notes2022.Server
         //    return nf;
         //}
 
-        
+
         public static async Task<List<NoteHeader>> GetAllHeaders(NotesDbContext db, int id, int arcId)
         {
             return await db.NoteHeader.Where(p => p.NoteFileId == id && p.ArchiveId == arcId).ToListAsync();
@@ -1033,8 +938,9 @@ namespace Notes2022.Server
         /// </summary>
         /// <param name="db">NotesDbContext</param>
         /// <param name="fileId">fileid</param>
+        /// <param name="arcId">The arc identifier.</param>
         /// <param name="noteOrd">noteordinal</param>
-        /// <returns></returns>
+        /// <returns>NoteHeader.</returns>
         public static async Task<NoteHeader> GetBaseNoteHeader(NotesDbContext db, int fileId, int arcId, int noteOrd)
         {
 #pragma warning disable CS8603 // Possible null reference return.
@@ -1048,103 +954,8 @@ namespace Notes2022.Server
         /// Get a list of all Notes in a string/thread
         /// </summary>
         /// <param name="db">NotesDbContext</param>
-        /// <param name="fileId">fileid</param>
-        /// <param name="noteOrd">NoteOrdinal - identifies the string/thread</param>
-        /// <returns></returns>
-        //private static async Task<List<NoteHeader>> GetNoteContentList(NotesDbContext db, int fileId, int arcId, int noteOrd)
-        //{
-        //    return await db.NoteHeader
-        //        .Where(p => p.NoteFileId == fileId && p.ArchiveId == arcId && p.NoteOrdinal == noteOrd)
-        //        .ToListAsync();
-        //}
-
-        //public static async Task<List<NoteHeader>> GetSearchResponseList(NotesDbContext db, Search start, int myRespOrdinal, NoteHeader bnh, SearchOption so)
-        //{
-        //    // First try responses
-        //    if (so == SearchOption.Tag)
-        //    {
-        //        return await db.NoteHeader
-        //            .Include("Tags")
-        //            .Where(x => x.NoteFileId == start.NoteFileId && x.ArchiveId == start.ArchiveId && x.NoteOrdinal == bnh.NoteOrdinal && x.ResponseOrdinal > myRespOrdinal)
-        //            .ToListAsync();
-
-        //    }
-        //    if (so == SearchOption.Content || so == SearchOption.DirMess)
-        //    {
-        //        return await db.NoteHeader
-        //        .Include("NoteContent")
-        //        .Where(x => x.NoteFileId == start.NoteFileId && x.ArchiveId == start.ArchiveId && x.NoteOrdinal == bnh.NoteOrdinal && x.ResponseOrdinal > myRespOrdinal)
-        //        .ToListAsync();
-        //    }
-
-        //    return await db.NoteHeader
-        //    .Where(x => x.NoteFileId == start.NoteFileId && x.ArchiveId == start.ArchiveId && x.NoteOrdinal == bnh.NoteOrdinal && x.ResponseOrdinal > myRespOrdinal)
-        //    .ToListAsync();
-        //}
-
-        //public static async Task<List<NoteHeader>> GetSearchHeaders(NotesDbContext db, Search start, NoteHeader bnh, SearchOption so)
-        //{
-        //    if (so == SearchOption.Tag)
-        //    {
-        //        return await db.NoteHeader
-        //        .Include("Tags")
-        //        .Where(x => x.NoteFileId == start.NoteFileId && x.ArchiveId == start.ArchiveId && x.NoteOrdinal > bnh.NoteOrdinal)
-        //        .ToListAsync();
-        //    }
-        //    if (so == SearchOption.Content || so == SearchOption.DirMess)
-        //    {
-        //        return await db.NoteHeader
-        //        .Include("NoteContent")
-        //        .Where(x => x.NoteFileId == start.NoteFileId && x.ArchiveId == start.ArchiveId && x.NoteOrdinal > bnh.NoteOrdinal)
-        //        .ToListAsync();
-        //    }
-        //    return await db.NoteHeader
-        //        .Where(x => x.NoteFileId == start.NoteFileId && x.ArchiveId == start.ArchiveId && x.NoteOrdinal > bnh.NoteOrdinal)
-        //        .ToListAsync();
-
-        //}
-
-        //public static async Task<List<Sequencer>> GetSeqListForUser(NotesDbContext db, string userid)
-        //{
-        //    return await db.Sequencer
-        //        .Where(x => x.UserId == userid)
-        //        .OrderBy(x => x.Ordinal)
-        //        .ToListAsync();
-        //}
-
-        //public static async Task<List<NoteHeader>> GetSbnh(NotesDbContext db, Sequencer myseqfile)
-        //{
-        //    return await db.NoteHeader
-        //                    .Where(x => x.NoteFileId == myseqfile.NoteFileId && x.ArchiveId == 0
-        //                    && x.ResponseOrdinal == 0
-        //                    && x.ThreadLastEdited >= myseqfile.LastTime)
-        //                    .OrderBy(x => x.NoteOrdinal)
-        //                    .ToListAsync();
-        //}
-
-        //public static async Task<List<NoteHeader>> GetSeqHeader1(NotesDbContext db, Sequencer myseqfile, NoteHeader bnh)
-        //{
-        //    return await db.NoteHeader
-        //        .Where(x => x.NoteFileId == myseqfile.NoteFileId && x.ArchiveId == 0
-        //            && x.LastEdited >= myseqfile.LastTime && x.NoteOrdinal > bnh.NoteOrdinal && x.ResponseOrdinal == 0)
-        //        .OrderBy(x => x.NoteOrdinal)
-        //        .ToListAsync();
-        //}
-
-        //public static async Task<List<NoteHeader>> GetSeqHeader2(NotesDbContext db, Sequencer myseqfile)
-        //{
-        //    return await db.NoteHeader
-        //        .Where(x => x.NoteFileId == myseqfile.NoteFileId && x.ArchiveId == 0 && x.LastEdited >= myseqfile.LastTime && x.ResponseOrdinal == 0)
-        //        .OrderBy(x => x.NoteOrdinal)
-        //        .ToListAsync();
-        //}
-
-        /// <summary>
-        /// Get all the BaseNoteHeaders for a file
-        /// </summary>
-        /// <param name="db">NotesDbContext</param>
-        /// <param name="nfid">fileid</param>
-        /// <returns></returns>
+        /// <param name="id">The identifier.</param>
+        /// <returns>NoteHeader.</returns>
         //public static async Task<List<NoteHeader>> GetBaseNoteHeadersForFile(NotesDbContext db, int nfid, int arcId)
         //{
         //    return await db.NoteHeader
@@ -1172,7 +983,7 @@ namespace Notes2022.Server
         //        .FirstAsync();
         //}
 
-        
+
         public static async Task<NoteHeader> GetBaseNoteHeaderById(NotesDbContext db, long id)
         {
 #pragma warning disable CS8603 // Possible null reference return.

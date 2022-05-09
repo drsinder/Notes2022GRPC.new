@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-05-2022
+// ***********************************************************************
+// <copyright file="Program.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

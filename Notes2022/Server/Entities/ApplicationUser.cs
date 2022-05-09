@@ -1,4 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-29-2022
+// ***********************************************************************
+// <copyright file="ApplicationUser.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using Notes2022.Proto;
 
@@ -6,86 +19,171 @@ namespace Notes2022.Server.Entities
 {
     /// <summary>
     /// Extentions to the base IdentityUser
-    /// 
     /// Contains fields mirrored locally in UserData
-    /// 
     /// These fields are accessed and edited there and then written back
     /// enmass.  By contrast the predefined field not seen here are
-    /// almost always accessed via methods.  These methods create a Validation 
+    /// almost always accessed via methods.  These methods create a Validation
     /// Stamp for the predefined fields.  Tinker with those directly and
     /// you will probably make the user "Unusable".
-    /// 
     /// </summary>
     public class ApplicationUser : IdentityUser
     {
 
         //[Required]
+        /// <summary>
+        /// Gets or sets the display name.
+        /// </summary>
+        /// <value>The display name.</value>
         [Display(Name = "Display Name")]
         [StringLength(50)]
         [PersonalData]
         public string? DisplayName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the time zone identifier.
+        /// </summary>
+        /// <value>The time zone identifier.</value>
         [PersonalData]
         public int TimeZoneID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref0.
+        /// </summary>
+        /// <value>The ipref0.</value>
         [PersonalData]
         public int Ipref0 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref1.
+        /// </summary>
+        /// <value>The ipref1.</value>
         [PersonalData]
         public int Ipref1 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref2.
+        /// </summary>
+        /// <value>The ipref2.</value>
         [PersonalData]
         public int Ipref2 { get; set; } // user choosen page size
 
+        /// <summary>
+        /// Gets or sets the ipref3.
+        /// </summary>
+        /// <value>The ipref3.</value>
         [PersonalData]
         public int Ipref3 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref4.
+        /// </summary>
+        /// <value>The ipref4.</value>
         [PersonalData]
         public int Ipref4 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref5.
+        /// </summary>
+        /// <value>The ipref5.</value>
         [PersonalData]
         public int Ipref5 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref6.
+        /// </summary>
+        /// <value>The ipref6.</value>
         [PersonalData]
         public int Ipref6 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref7.
+        /// </summary>
+        /// <value>The ipref7.</value>
         [PersonalData]
         public int Ipref7 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref8.
+        /// </summary>
+        /// <value>The ipref8.</value>
         [PersonalData]
         public int Ipref8 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ipref9.
+        /// </summary>
+        /// <value>The ipref9.</value>
         [PersonalData]
         public int Ipref9 { get; set; } // bits extend bool properties
 
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref0.
+        /// </summary>
+        /// <value><c>true</c> if pref0; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref0 { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref1.
+        /// </summary>
+        /// <value><c>true</c> if pref1; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref1 { get; set; } // false = use paged note index, true= scrolled
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref2.
+        /// </summary>
+        /// <value><c>true</c> if pref2; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref2 { get; set; } // use alternate editor
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref3.
+        /// </summary>
+        /// <value><c>true</c> if pref3; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref3 { get; set; } // show responses by default
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref4.
+        /// </summary>
+        /// <value><c>true</c> if pref4; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref4 { get; set; } // multiple expanded responses
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref5.
+        /// </summary>
+        /// <value><c>true</c> if pref5; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref5 { get; set; } // expanded responses
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref6.
+        /// </summary>
+        /// <value><c>true</c> if pref6; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref6 { get; set; } // alternate text editor
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref7.
+        /// </summary>
+        /// <value><c>true</c> if pref7; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref7 { get; set; } // show content when expanded
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref8.
+        /// </summary>
+        /// <value><c>true</c> if pref8; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref8 { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref9.
+        /// </summary>
+        /// <value><c>true</c> if pref9; otherwise, <c>false</c>.</value>
         [PersonalData]
         public bool Pref9 { get; set; }
 
@@ -95,6 +193,10 @@ namespace Notes2022.Server.Entities
         //[PersonalData]
         //public string? MyStyle { get; set; }
 
+        /// <summary>
+        /// Gets or sets my unique identifier.
+        /// </summary>
+        /// <value>My unique identifier.</value>
         [StringLength(100)]
         [PersonalData]
         public string? MyGuid { get; set; }
@@ -102,6 +204,11 @@ namespace Notes2022.Server.Entities
         //
         // Conversions between Db Entity space and gRPC space.
         //
+        /// <summary>
+        /// Gets the application user.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>ApplicationUser.</returns>
         public static ApplicationUser GetApplicationUser(GAppUser other)
         {
             ApplicationUser u = new ApplicationUser();
@@ -132,6 +239,12 @@ namespace Notes2022.Server.Entities
             return u;
         }
 
+        /// <summary>
+        /// Merges the application user.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <param name="u">The u.</param>
+        /// <returns>ApplicationUser.</returns>
         public static ApplicationUser MergeApplicationUser(GAppUser other, ApplicationUser u)
         {
             u.Id = other.Id;
@@ -162,6 +275,10 @@ namespace Notes2022.Server.Entities
         }
 
 
+        /// <summary>
+        /// Gets the g application user.
+        /// </summary>
+        /// <returns>GAppUser.</returns>
         public GAppUser GetGAppUser()
         {
             GAppUser u = new GAppUser();
@@ -192,6 +309,11 @@ namespace Notes2022.Server.Entities
             return u;
         }
 
+        /// <summary>
+        /// Gets the application users.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>List&lt;ApplicationUser&gt;.</returns>
         public static List<ApplicationUser> GetApplicationUsers(GAppUserList other)
         {
             List<ApplicationUser> list = new List<ApplicationUser>();
@@ -202,6 +324,11 @@ namespace Notes2022.Server.Entities
             return list;
         }
 
+        /// <summary>
+        /// Gets the g application user list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>GAppUserList.</returns>
         public static GAppUserList GetGAppUserList(List<ApplicationUser> other)
         {
             GAppUserList list = new GAppUserList();

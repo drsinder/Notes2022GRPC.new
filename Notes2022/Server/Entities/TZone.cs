@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-14-2022
+// ***********************************************************************
+// <copyright file="TZone.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -36,6 +49,10 @@ namespace Notes2022.Server.Entities
     [DataContract]
     public class TZone
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [Required]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -43,28 +60,53 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 1)]
         public int Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         [Required]
         [StringLength(200)]
         [DataMember(Order = 2)]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the abbreviation.
+        /// </summary>
+        /// <value>The abbreviation.</value>
         [Required]
         [StringLength(10)]
         [DataMember(Order = 3)]
         public string? Abbreviation { get; set; }
 
+        /// <summary>
+        /// Gets or sets the offset.
+        /// </summary>
+        /// <value>The offset.</value>
         [Required]
         [DataMember(Order = 4)]
         public string? Offset { get; set; }
 
+        /// <summary>
+        /// Gets or sets the offset hours.
+        /// </summary>
+        /// <value>The offset hours.</value>
         [Required]
         [DataMember(Order = 5)]
         public int OffsetHours { get; set; }
 
+        /// <summary>
+        /// Gets or sets the offset minutes.
+        /// </summary>
+        /// <value>The offset minutes.</value>
         [Required]
         [DataMember(Order = 6)]
         public int OffsetMinutes { get; set; }
 
+        /// <summary>
+        /// Locals the specified dt.
+        /// </summary>
+        /// <param name="dt">The dt.</param>
+        /// <returns>DateTime.</returns>
         public DateTime Local(DateTime dt)
         {
             return dt.AddHours(OffsetHours).AddMinutes(OffsetMinutes);
@@ -79,6 +121,11 @@ namespace Notes2022.Server.Entities
         //}
 
 
+        /// <summary>
+        /// Universals the specified dt.
+        /// </summary>
+        /// <param name="dt">The dt.</param>
+        /// <returns>DateTime.</returns>
         public DateTime Universal(DateTime dt)
         {
             return dt.AddHours(-OffsetHours).AddMinutes(-OffsetMinutes);

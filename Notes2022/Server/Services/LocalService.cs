@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 05-03-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="LocalService.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -32,8 +45,20 @@ using System.Text;
 
 namespace Notes2022.Server.Services
 {
+    /// <summary>
+    /// Class LocalService.
+    /// </summary>
     public static class LocalService
     {
+        /// <summary>
+        /// Makes the note for email.
+        /// </summary>
+        /// <param name="fv">The fv.</param>
+        /// <param name="NoteFile">The note file.</param>
+        /// <param name="db">The database.</param>
+        /// <param name="email">The email.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>System.String.</returns>
         public static async Task<string> MakeNoteForEmail(ForwardViewModel fv, GNotefile NoteFile, NotesDbContext db, string email, string name)
         {
             NoteHeader nc = await NoteDataManager.GetNoteByIdWithFile(db, fv.NoteID);

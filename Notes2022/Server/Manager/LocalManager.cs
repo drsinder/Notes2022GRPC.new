@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-26-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-26-2022
+// ***********************************************************************
+// <copyright file="LocalManager.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -31,15 +44,18 @@ using Notes2022.Shared;
 
 namespace Notes2022.Server
 {
+    /// <summary>
+    /// Class LocalManager.
+    /// </summary>
     public static class LocalManager
     {
         /// <summary>
         /// Get Users selected time zone
         /// No longer needed with use of Blazor WASM!
         /// </summary>
-        /// <param name="applicationUser"></param>
-        /// <param name="db"></param>
-        /// <returns></returns>
+        /// <param name="applicationUser">The application user.</param>
+        /// <param name="db">The database.</param>
+        /// <returns>TZone.</returns>
         public static async Task<TZone> GetUserTimeZone(ApplicationUser applicationUser, NotesDbContext db)
         {
             int tzid = Globals.TimeZoneDefaultID;

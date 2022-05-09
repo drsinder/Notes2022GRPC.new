@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-20-2022
+// ***********************************************************************
+// <copyright file="LinkedFile.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -33,48 +46,78 @@ namespace Notes2022.Server.Entities
 {
     /// <summary>
     /// This class defines a table in the database.
-    /// 
     /// It is used to link a file to a file on a remote system
     /// such that notes written on one system will be transmitted
     /// to the other.
-    /// 
     /// </summary>
     [DataContract]
     public class LinkedFile
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [Required]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DataMember(Order = 1)]
         public int Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the home file identifier.
+        /// </summary>
+        /// <value>The home file identifier.</value>
         [Required]
         [DataMember(Order = 2)]
         public int HomeFileId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the home file.
+        /// </summary>
+        /// <value>The name of the home file.</value>
         [Required]
         [StringLength(20)]
         [DataMember(Order = 3)]
         public string? HomeFileName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the remote file.
+        /// </summary>
+        /// <value>The name of the remote file.</value>
         [Required]
         [StringLength(20)]
         [DataMember(Order = 4)]
         public string? RemoteFileName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the remote base URI.
+        /// </summary>
+        /// <value>The remote base URI.</value>
         [Required]
         [StringLength(450)]
         [DataMember(Order = 5)]
         public string? RemoteBaseUri { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [accept from].
+        /// </summary>
+        /// <value><c>true</c> if [accept from]; otherwise, <c>false</c>.</value>
         [Required]
         [DataMember(Order = 6)]
         public bool AcceptFrom { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [send to].
+        /// </summary>
+        /// <value><c>true</c> if [send to]; otherwise, <c>false</c>.</value>
         [Required]
         [DataMember(Order = 7)]
         public bool SendTo { get; set; }
 
+        /// <summary>
+        /// Gets or sets the secret.
+        /// </summary>
+        /// <value>The secret.</value>
         [StringLength(50)]
         [DataMember(Order = 8)]
         public string? Secret { get; set; }
@@ -83,6 +126,11 @@ namespace Notes2022.Server.Entities
         //
         // Conversions between Db Entity space and gRPC space.
         //
+        /// <summary>
+        /// Gets the linked file.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>LinkedFile.</returns>
         public static LinkedFile GetLinkedFile(GLinkedFile other)
         {
             LinkedFile s = new LinkedFile();
@@ -97,6 +145,10 @@ namespace Notes2022.Server.Entities
             return s;
         }
 
+        /// <summary>
+        /// Gets the g linked file.
+        /// </summary>
+        /// <returns>GLinkedFile.</returns>
         public GLinkedFile GetGLinkedFile()
         {
             GLinkedFile s = new GLinkedFile();
@@ -111,6 +163,11 @@ namespace Notes2022.Server.Entities
             return s;
         }
 
+        /// <summary>
+        /// Gets the sequencer list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>List&lt;LinkedFile&gt;.</returns>
         public static List<LinkedFile> GetSequencerList(GLinkedFileList other)
         {
             List<LinkedFile> list = new List<LinkedFile>();
@@ -121,6 +178,11 @@ namespace Notes2022.Server.Entities
             return list;
         }
 
+        /// <summary>
+        /// Gets the g linked file list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>GLinkedFileList.</returns>
         public static GLinkedFileList GetGLinkedFileList(List<LinkedFile> other)
         {
             GLinkedFileList list = new GLinkedFileList();

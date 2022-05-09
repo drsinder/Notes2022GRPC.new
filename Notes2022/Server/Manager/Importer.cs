@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-26-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-09-2022
+// ***********************************************************************
+// <copyright file="Importer.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
 **
 **  Copyright © 2022, Dale Sinder
 **
@@ -37,8 +50,18 @@ namespace Notes2022.Server
     /// </summary>
     public partial class Importer
     {
+        /// <summary>
+        /// The ff
+        /// </summary>
         private const char Ff = (char)(12); //  FF
 
+        /// <summary>
+        /// Imports the specified database.
+        /// </summary>
+        /// <param name="_db">The database.</param>
+        /// <param name="myFileInput">My file input.</param>
+        /// <param name="myNotesFile">My notes file.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public async Task<bool> Import(NotesDbContext _db, string myFileInput, string myNotesFile)
         {
             Output("");
@@ -611,7 +634,7 @@ namespace Notes2022.Server
         /// </summary>
         /// <param name="inline">input line</param>
         /// <param name="file">StreamReader for import file</param>
-        /// <returns></returns>
+        /// <returns>System.String.</returns>
         public async Task<string> CheckFf(string inline, StreamReader file)
         {
             if (inline.Length == 1)
@@ -651,13 +674,18 @@ namespace Notes2022.Server
         /// <summary>
         /// Get the BaseNoteHeader for a NoteContent
         /// </summary>
+        /// <param name="_db">The database.</param>
         /// <param name="nc">NoteContent</param>
-        /// <returns></returns>
+        /// <returns>NoteHeader.</returns>
         public async Task<NoteHeader> GetBaseNoteHeader(NotesDbContext _db, NoteHeader nc)
         {
             return await NoteDataManager.GetBaseNoteHeader(_db, nc.NoteFileId, 0, nc.NoteOrdinal);
         }
 
+        /// <summary>
+        /// Outputs the specified message.
+        /// </summary>
+        /// <param name="message">The message.</param>
         public virtual void Output(string message)
         {
         }

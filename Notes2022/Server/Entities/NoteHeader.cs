@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-29-2022
+// ***********************************************************************
+// <copyright file="NoteHeader.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -37,17 +50,14 @@ namespace Notes2022.Server.Entities
     /// NoteHeader objects are the high level descriptors for a note.
     /// They contain all the information about a note EXCEPT the
     /// body, which is contained in related class NoteContent.
-    /// 
     /// The client index gets the complete set for a given notfile.
     /// This enables quick display, manipulation, and searching of
     /// the index.  Each object is related to one file object.
-    /// 
     /// Fields:
-    /// 
     /// Id          - The 64 bit unique Identifier for the note.
     /// NoteFileId  - The file which the note is a part of.
     /// ArchiveId   - 0 for the main file. Positive for archived notes.
-    ///                 An Archive is a kind of subfile.
+    /// An Archive is a kind of subfile.
     /// BaseNoteId  - 0 for base notes. For responses the Id of its parent.
     /// NoteOrdinal - The number that appears in the index to Id a Base note.
     /// ResponseOrdinal - The number of a response. 0 for a base note.
@@ -63,14 +73,16 @@ namespace Notes2022.Server.Entities
     /// IsDeleted   - true if the note has been marked as deleted
     /// Version     - Version Id for edited notes. Current is 0. Older are +
     /// DirectorMessage - Text message that may head a note.
-    /// 
     /// A single NoteContent is associated with each NoteHeader.
-    /// 
     /// </summary>
     [DataContract]
     public class NoteHeader
     {
         // Uniquely identifies the note
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [Required]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -78,30 +90,54 @@ namespace Notes2022.Server.Entities
         public long Id { get; set; }
 
         // The fileid the note belongs to
+        /// <summary>
+        /// Gets or sets the note file identifier.
+        /// </summary>
+        /// <value>The note file identifier.</value>
         [Required]
         [DataMember(Order = 2)]
         public int NoteFileId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the archive identifier.
+        /// </summary>
+        /// <value>The archive identifier.</value>
         [Required]
         [DataMember(Order = 3)]
         public int ArchiveId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the base note identifier.
+        /// </summary>
+        /// <value>The base note identifier.</value>
         [DataMember(Order = 4)]
         public long BaseNoteId { get; set; }
 
         // the ordinal on a Base note and all its responses
+        /// <summary>
+        /// Gets or sets the note ordinal.
+        /// </summary>
+        /// <value>The note ordinal.</value>
         [Required]
         [Display(Name = "Note #")]
         [DataMember(Order = 5)]
         public int NoteOrdinal { get; set; }
 
         // The ordinal of the response where 0 is a Base Note
+        /// <summary>
+        /// Gets or sets the response ordinal.
+        /// </summary>
+        /// <value>The response ordinal.</value>
         [Required]
         [Display(Name = "Response #")]
         [DataMember(Order = 6)]
         public int ResponseOrdinal { get; set; }
 
         // Subject/Title of a note
+        /// <summary>
+        /// Gets or sets the note subject.
+        /// </summary>
+        /// <value>The note subject.</value>
         [Required]
         [StringLength(200)]
         [Display(Name = "Subject")]
@@ -109,60 +145,116 @@ namespace Notes2022.Server.Entities
         public string? NoteSubject { get; set; }
 
         // When the note was created or last edited
+        /// <summary>
+        /// Gets or sets the last edited.
+        /// </summary>
+        /// <value>The last edited.</value>
         [Required]
         [Display(Name = "Last Edited")]
         [DataMember(Order = 8)]
         public DateTime LastEdited { get; set; }
 
         // When the thread was last edited
+        /// <summary>
+        /// Gets or sets the thread last edited.
+        /// </summary>
+        /// <value>The thread last edited.</value>
         [Required]
         [Display(Name = "Thread Last Edited")]
         [DataMember(Order = 9)]
         public DateTime ThreadLastEdited { get; set; }
 
+        /// <summary>
+        /// Gets or sets the create date.
+        /// </summary>
+        /// <value>The create date.</value>
         [Required]
         [Display(Name = "Created")]
         [DataMember(Order = 10)]
         public DateTime CreateDate { get; set; }
 
         // Meaningful only if ResponseOrdinal = 0
+        /// <summary>
+        /// Gets or sets the response count.
+        /// </summary>
+        /// <value>The response count.</value>
         [Required]
         [DataMember(Order = 11)]
         public int ResponseCount { get; set; }
 
         // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Gets or sets the author identifier.
+        /// </summary>
+        /// <value>The author identifier.</value>
         [StringLength(450)]
         [DataMember(Order = 12)]
         public string? AuthorID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the author.
+        /// </summary>
+        /// <value>The name of the author.</value>
         [Required]
         [StringLength(50)]
         [DataMember(Order = 13)]
         public string? AuthorName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the link unique identifier.
+        /// </summary>
+        /// <value>The link unique identifier.</value>
         [StringLength(100)]
         [DataMember(Order = 14)]
         public string? LinkGuid { get; set; }
 
+        /// <summary>
+        /// Gets or sets the reference identifier.
+        /// </summary>
+        /// <value>The reference identifier.</value>
         [DataMember(Order = 15)]
         public long RefId { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is deleted.
+        /// </summary>
+        /// <value><c>true</c> if this instance is deleted; otherwise, <c>false</c>.</value>
         [DataMember(Order = 16)]
         public bool IsDeleted { get; set; }
 
+        /// <summary>
+        /// Gets or sets the version.
+        /// </summary>
+        /// <value>The version.</value>
         [DataMember(Order = 17)]
         public int Version { get; set; }
 
+        /// <summary>
+        /// Gets or sets the director message.
+        /// </summary>
+        /// <value>The director message.</value>
         [StringLength(200)]
         [Display(Name = "Director Message")]
         [DataMember(Order = 18)]
         public string? DirectorMessage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the content of the note.
+        /// </summary>
+        /// <value>The content of the note.</value>
         public NoteContent? NoteContent { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tags.
+        /// </summary>
+        /// <value>The tags.</value>
         public List<Tags>? Tags { get; set; }
 
 
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>NoteHeader.</returns>
         public NoteHeader Clone()
         {
             NoteHeader nh = new NoteHeader()
@@ -191,6 +283,10 @@ namespace Notes2022.Server.Entities
         }
 
 
+        /// <summary>
+        /// Clones for link.
+        /// </summary>
+        /// <returns>NoteHeader.</returns>
         public NoteHeader CloneForLink()
         {
             NoteHeader nh = new NoteHeader()
@@ -209,6 +305,10 @@ namespace Notes2022.Server.Entities
             return nh;
         }
 
+        /// <summary>
+        /// Clones for link r.
+        /// </summary>
+        /// <returns>NoteHeader.</returns>
         public NoteHeader CloneForLinkR()
         {
             NoteHeader nh = new NoteHeader()
@@ -231,6 +331,11 @@ namespace Notes2022.Server.Entities
         //
         // Conversions between Db Entity space and gRPC space.
         //
+        /// <summary>
+        /// Gets the note header.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>NoteHeader.</returns>
         public static NoteHeader GetNoteHeader(GNoteHeader other)
         {
             NoteHeader h = new NoteHeader();
@@ -256,6 +361,10 @@ namespace Notes2022.Server.Entities
             return h;
         }
 
+        /// <summary>
+        /// Gets the g note header.
+        /// </summary>
+        /// <returns>GNoteHeader.</returns>
         public GNoteHeader GetGNoteHeader()
         {
             GNoteHeader h = new GNoteHeader();
@@ -282,6 +391,11 @@ namespace Notes2022.Server.Entities
             return h;
         }
 
+        /// <summary>
+        /// Gets the note headers.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>List&lt;NoteHeader&gt;.</returns>
         public static List<NoteHeader> GetNoteHeaders(GNoteHeaderList other)
         {
             List<NoteHeader> list = new List<NoteHeader>();
@@ -292,6 +406,11 @@ namespace Notes2022.Server.Entities
             return list;
         }
 
+        /// <summary>
+        /// Gets the g note header list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>GNoteHeaderList.</returns>
         public static GNoteHeaderList GetGNoteHeaderList(List<NoteHeader> other)
         {
             GNoteHeaderList list = new GNoteHeaderList();

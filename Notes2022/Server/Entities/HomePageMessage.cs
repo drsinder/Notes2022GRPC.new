@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-14-2022
+// ***********************************************************************
+// <copyright file="HomePageMessage.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -34,13 +47,25 @@ namespace Notes2022.Server.Entities
     /// </summary>
     public class HomePageMessage
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [Required]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>The message.</value>
         [Required]
         [StringLength(1000)]
         public string? Message { get; set; }
+        /// <summary>
+        /// Gets or sets the posted.
+        /// </summary>
+        /// <value>The posted.</value>
         [Required]
         public DateTime Posted { get; set; }
     }

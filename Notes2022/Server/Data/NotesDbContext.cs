@@ -1,4 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-16-2022
+// ***********************************************************************
+// <copyright file="NotesDbContext.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Notes2022.Server.Entities;
@@ -6,23 +19,84 @@ using Notes2022.Shared;
 
 namespace Notes2022.Server.Data
 {
+    /// <summary>
+    /// Class NotesDbContext.
+    /// Implements the <see cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext{Notes2022.Server.Entities.ApplicationUser}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext{Notes2022.Server.Entities.ApplicationUser}" />
     public partial class NotesDbContext : IdentityDbContext<ApplicationUser>
     {
+        /// <summary>
+        /// Gets or sets the t zone.
+        /// </summary>
+        /// <value>The t zone.</value>
         public DbSet<TZone> TZone { get; set; }
+        /// <summary>
+        /// Gets or sets the note file.
+        /// </summary>
+        /// <value>The note file.</value>
         public DbSet<NoteFile> NoteFile { get; set; }
+        /// <summary>
+        /// Gets or sets the note access.
+        /// </summary>
+        /// <value>The note access.</value>
         public DbSet<NoteAccess> NoteAccess { get; set; }
+        /// <summary>
+        /// Gets or sets the note header.
+        /// </summary>
+        /// <value>The note header.</value>
         public DbSet<NoteHeader> NoteHeader { get; set; }
+        /// <summary>
+        /// Gets or sets the content of the note.
+        /// </summary>
+        /// <value>The content of the note.</value>
         public DbSet<NoteContent> NoteContent { get; set; }
+        /// <summary>
+        /// Gets or sets the tags.
+        /// </summary>
+        /// <value>The tags.</value>
         public DbSet<Tags> Tags { get; set; }
 
+        /// <summary>
+        /// Gets or sets the audit.
+        /// </summary>
+        /// <value>The audit.</value>
         public DbSet<Audit> Audit { get; set; }
+        /// <summary>
+        /// Gets or sets the home page message.
+        /// </summary>
+        /// <value>The home page message.</value>
         public DbSet<HomePageMessage> HomePageMessage { get; set; }
+        /// <summary>
+        /// Gets or sets the mark.
+        /// </summary>
+        /// <value>The mark.</value>
         public DbSet<Mark> Mark { get; set; }
+        /// <summary>
+        /// Gets or sets the search.
+        /// </summary>
+        /// <value>The search.</value>
         public DbSet<Search> Search { get; set; }
+        /// <summary>
+        /// Gets or sets the sequencer.
+        /// </summary>
+        /// <value>The sequencer.</value>
         public DbSet<Sequencer> Sequencer { get; set; }
+        /// <summary>
+        /// Gets or sets the subscription.
+        /// </summary>
+        /// <value>The subscription.</value>
         public DbSet<Subscription> Subscription { get; set; }
 
+        /// <summary>
+        /// Gets or sets the SQL file.
+        /// </summary>
+        /// <value>The SQL file.</value>
         public DbSet<SQLFile> SQLFile { get; set; }
+        /// <summary>
+        /// Gets or sets the content of the SQL file.
+        /// </summary>
+        /// <value>The content of the SQL file.</value>
         public DbSet<SQLFileContent> SQLFileContent { get; set; }
 
         //public void AddJsonFile(string v, bool optional)
@@ -30,15 +104,35 @@ namespace Notes2022.Server.Data
         //    throw new NotImplementedException();
         //}
 
+        /// <summary>
+        /// Gets or sets the linked file.
+        /// </summary>
+        /// <value>The linked file.</value>
         public DbSet<LinkedFile> LinkedFile { get; set; }
+        /// <summary>
+        /// Gets or sets the link queue.
+        /// </summary>
+        /// <value>The link queue.</value>
         public DbSet<LinkQueue> LinkQueue { get; set; }
+        /// <summary>
+        /// Gets or sets the link log.
+        /// </summary>
+        /// <value>The link log.</value>
         public DbSet<LinkLog> LinkLog { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NotesDbContext"/> class.
+        /// </summary>
+        /// <param name="options">The options.</param>
         public NotesDbContext(DbContextOptions<NotesDbContext> options) : base(options)
         {
 
         }
 
+        /// <summary>
+        /// Called when [model creating].
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

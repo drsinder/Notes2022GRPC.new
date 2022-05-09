@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-29-2022
+// ***********************************************************************
+// <copyright file="Sequencer.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -34,16 +47,18 @@ namespace Notes2022.Server.Entities
 {
     /// <summary>
     /// This class defines a table in the database.
-    /// 
     /// Object of this class may be associated with a user
     /// and file to be used to find notes written since the
     /// "Recent" function was last invoked.
-    /// 
     /// </summary>
     [DataContract]
     public class Sequencer
     {
         // ID of the user who owns the item
+        /// <summary>
+        /// Gets or sets the user identifier.
+        /// </summary>
+        /// <value>The user identifier.</value>
         [Required]
         [Column(Order = 0)]
         [StringLength(450)]
@@ -51,26 +66,46 @@ namespace Notes2022.Server.Entities
         public string? UserId { get; set; }
 
         // ID of target notfile
+        /// <summary>
+        /// Gets or sets the note file identifier.
+        /// </summary>
+        /// <value>The note file identifier.</value>
         [Required]
         [Column(Order = 1)]
         [DataMember(Order = 2)]
         public int NoteFileId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ordinal.
+        /// </summary>
+        /// <value>The ordinal.</value>
         [Required]
         [Display(Name = "Position in List")]
         [DataMember(Order = 3)]
         public int Ordinal { get; set; }
 
         // Time we last completed a run with this
+        /// <summary>
+        /// Gets or sets the last time.
+        /// </summary>
+        /// <value>The last time.</value>
         [Display(Name = "Last Time")]
         [DataMember(Order = 4)]
         public DateTime LastTime { get; set; }
 
         // Time a run in this file started - will get copied to LastTime when complete
+        /// <summary>
+        /// Gets or sets the start time.
+        /// </summary>
+        /// <value>The start time.</value>
         [DataMember(Order = 5)]
         public DateTime StartTime { get; set; }
 
         // Is this item active now?  Are we sequencing this file
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="Sequencer"/> is active.
+        /// </summary>
+        /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         [DataMember(Order = 6)]
         public bool Active { get; set; }
 
@@ -80,6 +115,11 @@ namespace Notes2022.Server.Entities
         //
         // Conversions between Db Entity space and gRPC space.
         //
+        /// <summary>
+        /// Gets the sequencer.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>Sequencer.</returns>
         public static Sequencer GetSequencer(GSequencer other)
         {
             Sequencer s = new Sequencer();
@@ -92,6 +132,10 @@ namespace Notes2022.Server.Entities
             return s;
         }
 
+        /// <summary>
+        /// Gets the g sequencer.
+        /// </summary>
+        /// <returns>GSequencer.</returns>
         public GSequencer GetGSequencer()
         {
             GSequencer s = new GSequencer();
@@ -104,6 +148,11 @@ namespace Notes2022.Server.Entities
             return s;
         }
 
+        /// <summary>
+        /// Gets the sequencer list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>List&lt;Sequencer&gt;.</returns>
         public static List<Sequencer> GetSequencerList(GSequencerList other)
         {
             List<Sequencer> list = new List<Sequencer>();
@@ -114,6 +163,11 @@ namespace Notes2022.Server.Entities
             return list;
         }
 
+        /// <summary>
+        /// Gets the g sequencer list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>GSequencerList.</returns>
         public static GSequencerList GetGSequencerList(List<Sequencer> other)
         {
             GSequencerList list = new GSequencerList();

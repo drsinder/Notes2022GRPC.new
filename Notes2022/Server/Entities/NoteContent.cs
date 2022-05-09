@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="NoteContent.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -34,11 +47,14 @@ namespace Notes2022.Server.Entities
     /// This class defines a table in the database.
     /// Each NoteContent object is associated with one NoteHeader
     /// It contains the "Body" of the note.
-    /// 
     /// </summary>
     [DataContract]
     public class NoteContent
     {
+        /// <summary>
+        /// Gets or sets the note header identifier.
+        /// </summary>
+        /// <value>The note header identifier.</value>
         [Required]
         [Key]
         [DataMember(Order = 1)]
@@ -48,6 +64,10 @@ namespace Notes2022.Server.Entities
         //public NoteHeader? NoteHeader { get; set; }
 
         // The Body or content of the note
+        /// <summary>
+        /// Gets or sets the note body.
+        /// </summary>
+        /// <value>The note body.</value>
         [Required]
         [StringLength(100000)]
         [Display(Name = "Note")]
@@ -59,6 +79,10 @@ namespace Notes2022.Server.Entities
         //[Display(Name = "Director Message")]
         //public string? DirectorMessage { get; set; }
 
+        /// <summary>
+        /// Clones for link.
+        /// </summary>
+        /// <returns>NoteContent.</returns>
         public NoteContent CloneForLink()
         {
             NoteContent nc = new NoteContent()
@@ -73,6 +97,11 @@ namespace Notes2022.Server.Entities
         //
         // Conversions between Db Entity space and gRPC space.
         //
+        /// <summary>
+        /// Gets the content of the note.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>NoteContent.</returns>
         public static NoteContent GetNoteContent(GNoteContent other)
         {
             NoteContent c = new NoteContent();
@@ -81,6 +110,10 @@ namespace Notes2022.Server.Entities
             return c;
         }
 
+        /// <summary>
+        /// Gets the content of the g note.
+        /// </summary>
+        /// <returns>GNoteContent.</returns>
         public GNoteContent GetGNoteContent()
         {
             GNoteContent nc = new GNoteContent();
@@ -89,6 +122,11 @@ namespace Notes2022.Server.Entities
             return nc;
         }
 
+        /// <summary>
+        /// Gets the note contents.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>List&lt;NoteContent&gt;.</returns>
         public static List<NoteContent> GetNoteContents(GNoteContentList other)
         {
             List<NoteContent> list = new List<NoteContent>();
@@ -99,6 +137,11 @@ namespace Notes2022.Server.Entities
             return list;
         }
 
+        /// <summary>
+        /// Gets the g note content list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>GNoteContentList.</returns>
         public static GNoteContentList GetGNoteContentList(List<NoteContent> other)
         {
             GNoteContentList list = new GNoteContentList();

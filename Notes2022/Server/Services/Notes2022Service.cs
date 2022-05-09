@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-20-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="Notes2022Service.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -40,17 +53,53 @@ using System.Text.Json;
 
 namespace Notes2022.Server.Services
 {
+    /// <summary>
+    /// Class Notes2022Service.
+    /// Implements the <see cref="Notes2022.Proto.Notes2022Server.Notes2022ServerBase" />
+    /// </summary>
+    /// <seealso cref="Notes2022.Proto.Notes2022Server.Notes2022ServerBase" />
     public class Notes2022Service : Notes2022Server.Notes2022ServerBase
     {
 
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly ILogger<Notes2022Service> _logger;
+        /// <summary>
+        /// The database
+        /// </summary>
         private readonly NotesDbContext _db;
+        /// <summary>
+        /// The user manager
+        /// </summary>
         private readonly UserManager<ApplicationUser> _userManager;
+        /// <summary>
+        /// The role manager
+        /// </summary>
         private readonly RoleManager<IdentityRole> _roleManager;
+        /// <summary>
+        /// The configuration
+        /// </summary>
         private readonly IConfiguration _configuration;
+        /// <summary>
+        /// The sign in manager
+        /// </summary>
         private readonly SignInManager<ApplicationUser> _signInManager;
+        /// <summary>
+        /// The email sender
+        /// </summary>
         private readonly IEmailSender _emailSender;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Notes2022Service"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="db">The database.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="roleManager">The role manager.</param>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="emailSender">The email sender.</param>
+        /// <param name="userManager">The user manager.</param>
         public Notes2022Service(ILogger<Notes2022Service> logger,
             NotesDbContext db,
             IConfiguration configuration,
@@ -74,6 +123,12 @@ namespace Notes2022.Server.Services
         //    return new NoRequest();
         //}
 
+        /// <summary>
+        /// Registers the specified request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>AuthReply.</returns>
         public override async Task<AuthReply> Register(RegisterRequest request, ServerCallContext context)
         {
             var userExists = await _userManager.FindByEmailAsync(request.Email);
@@ -134,6 +189,12 @@ namespace Notes2022.Server.Services
             return new AuthReply() { Status = StatusCodes.Status200OK, Message = "User created!" };
         }
 
+        /// <summary>
+        /// Confirms the email.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>AuthReply.</returns>
         public override async Task<AuthReply> ConfirmEmail(ConfirmEmailRequest request, ServerCallContext context)
         {
             AuthReply ret = new()
@@ -167,6 +228,12 @@ namespace Notes2022.Server.Services
             return ret;
         }
 
+        /// <summary>
+        /// Logins the specified request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>LoginReply.</returns>
         public override async Task<LoginReply> Login(LoginRequest request, ServerCallContext context)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
@@ -224,12 +291,24 @@ namespace Notes2022.Server.Services
             return new LoginReply() { Status = StatusCodes.Status500InternalServerError, Message = "User Login failed! Please check user details and try again." };
         }
 
+        /// <summary>
+        /// Logouts the specified request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>AuthReply.</returns>
         public override async Task<AuthReply> Logout(NoRequest request, ServerCallContext context)
         {
             await _signInManager.SignOutAsync();
             return new AuthReply() { Status = StatusCodes.Status200OK, Message = "User logged out!" };
         }
 
+        /// <summary>
+        /// Gets the token.
+        /// </summary>
+        /// <param name="authClaims">The authentication claims.</param>
+        /// <param name="hours">The hours.</param>
+        /// <returns>JwtSecurityToken.</returns>
         private JwtSecurityToken GetToken(List<Claim> authClaims, int hours)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWTAuth:SecretKey"]));
@@ -254,6 +333,12 @@ namespace Notes2022.Server.Services
         //    return user.GetGAppUser();
         //}
 
+        /// <summary>
+        /// Gets the user list.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GAppUserList.</returns>
         [Authorize (Roles = "Admin")]
         public override async Task<GAppUserList> GetUserList(NoRequest request, ServerCallContext context)
         {
@@ -261,6 +346,12 @@ namespace Notes2022.Server.Services
             return Notes2022.Server.Entities.ApplicationUser.GetGAppUserList(list);
         }
 
+        /// <summary>
+        /// Gets the user roles.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>EditUserViewModel.</returns>
         [Authorize(Roles = "Admin")]
         public override async Task<EditUserViewModel> GetUserRoles(AppUserRequest request, ServerCallContext context)
         {
@@ -293,6 +384,12 @@ namespace Notes2022.Server.Services
             return model;
         }
 
+        /// <summary>
+        /// Updates the user roles.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize (Roles="Admin")]
         public override async Task<NoRequest> UpdateUserRoles(EditUserViewModel model, ServerCallContext context)
         {
@@ -325,6 +422,11 @@ namespace Notes2022.Server.Services
         //}
 
 
+        /// <summary>
+        /// Gets the application user.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>ApplicationUser.</returns>
         private async Task<ApplicationUser> GetAppUser(ServerCallContext context)
         {
             var user = context.GetHttpContext().User;
@@ -335,6 +437,12 @@ namespace Notes2022.Server.Services
         }
 
 
+        /// <summary>
+        /// Creates the note file.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>System.Nullable&lt;GNotefile&gt;.</returns>
         [Authorize(Roles = "Admin")]
         public override async Task<GNotefile?> CreateNoteFile(GNotefile request, ServerCallContext context)
         { 
@@ -347,12 +455,24 @@ namespace Notes2022.Server.Services
             return newfile.GetGNotefile();
         }
 
+        /// <summary>
+        /// Gets the home page model.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>HomePageModel.</returns>
         [Authorize]
         public override async Task<HomePageModel> GetHomePageModel(NoRequest request, ServerCallContext context)
         {
             return await GetBaseHomePageModelAsync(request, context);
         }
 
+        /// <summary>
+        /// Gets the admin page model.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>HomePageModel.</returns>
         [Authorize(Roles = "Admin")]
         public override async Task<HomePageModel> GetAdminPageModel(NoRequest request, ServerCallContext context)
         {
@@ -377,6 +497,12 @@ namespace Notes2022.Server.Services
             return homepageModel;
         }
 
+        /// <summary>
+        /// Get base home page model as an asynchronous operation.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>A Task&lt;HomePageModel&gt; representing the asynchronous operation.</returns>
         private async Task<HomePageModel> GetBaseHomePageModelAsync(NoRequest request, ServerCallContext context)
         {
             HomePageModel homepageModel = new();
@@ -435,6 +561,12 @@ namespace Notes2022.Server.Services
             return homepageModel;
         }
 
+        /// <summary>
+        /// Updates the note file.
+        /// </summary>
+        /// <param name="noteFile">The note file.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNotefile.</returns>
         [Authorize(Roles = "Admin")]
         public override async Task<GNotefile> UpdateNoteFile(GNotefile noteFile, ServerCallContext context)
         {
@@ -446,6 +578,12 @@ namespace Notes2022.Server.Services
             return noteFile;
         }
 
+        /// <summary>
+        /// Deletes the note file.
+        /// </summary>
+        /// <param name="noteFile">The note file.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize(Roles = "Admin")]
         public override async Task<NoRequest> DeleteNoteFile(GNotefile noteFile, ServerCallContext context)
         {
@@ -476,6 +614,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Imports the specified request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize(Roles = "Admin")]
         public override async Task<NoRequest> Import(ImportRequest request, ServerCallContext context)
         {
@@ -484,6 +628,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Gets the note file index data.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoteDisplayIndexModel.</returns>
         [Authorize]
         public override async Task<NoteDisplayIndexModel> GetNoteFileIndexData(NoteIndexRequest request, ServerCallContext context)
         {
@@ -563,6 +713,12 @@ namespace Notes2022.Server.Services
             return idxModel;
         }
 
+        /// <summary>
+        /// Gets the content of the note.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>DisplayModel.</returns>
         [Authorize]
         public override async Task<DisplayModel> GetNoteContent(DisplayModelRequest request, ServerCallContext context)
         {
@@ -599,12 +755,24 @@ namespace Notes2022.Server.Services
             return model;
         }
 
+        /// <summary>
+        /// Gets the access list.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteAccessList.</returns>
         [Authorize]
         public override async Task<GNoteAccessList> GetAccessList(AccessAndUserListRequest request, ServerCallContext context)
         {
             return NoteAccess.GetGNoteAccessList(await _db.NoteAccess.Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId).ToListAsync());
         }
 
+        /// <summary>
+        /// Gets the access and user list.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>AccessAndUserList.</returns>
         [Authorize]
         public override async Task<AccessAndUserList> GetAccessAndUserList(AccessAndUserListRequest request, ServerCallContext context)
         {
@@ -618,6 +786,12 @@ namespace Notes2022.Server.Services
             return accessAndUserList;
         }
 
+        /// <summary>
+        /// Updates the access item.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteAccess.</returns>
         [Authorize]
         public override async Task<GNoteAccess> UpdateAccessItem(GNoteAccess request, ServerCallContext context)
         {
@@ -633,6 +807,12 @@ namespace Notes2022.Server.Services
             return request;
         }
 
+        /// <summary>
+        /// Deletes the access item.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize]
         public override async Task<NoRequest> DeleteAccessItem(GNoteAccess request, ServerCallContext context)
         {
@@ -648,6 +828,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Adds the access item.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteAccess.</returns>
         [Authorize]
         public override async Task<GNoteAccess> AddAccessItem(GNoteAccess request, ServerCallContext context)
         {
@@ -662,6 +848,12 @@ namespace Notes2022.Server.Services
             return request;
         }
 
+        /// <summary>
+        /// Gets the user data.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GAppUser.</returns>
         [Authorize]
         public override async Task<GAppUser> GetUserData(NoRequest request, ServerCallContext context)
         {
@@ -670,6 +862,12 @@ namespace Notes2022.Server.Services
         }
 
 
+        /// <summary>
+        /// Updates the user data.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GAppUser.</returns>
         [Authorize]
         public override async Task<GAppUser> UpdateUserData(GAppUser request, ServerCallContext context)
         {
@@ -686,6 +884,12 @@ namespace Notes2022.Server.Services
             return request;
         }
 
+        /// <summary>
+        /// Gets the versions.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteHeaderList.</returns>
         [Authorize]
         public override async Task<GNoteHeaderList> GetVersions(GetVersionsRequest request, ServerCallContext context)
         {
@@ -705,6 +909,12 @@ namespace Notes2022.Server.Services
             return NoteHeader.GetGNoteHeaderList(hl);
         }
 
+        /// <summary>
+        /// Gets the sequencer.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GSequencerList.</returns>
         [Authorize]
         public override async Task<GSequencerList> GetSequencer(NoRequest request, ServerCallContext context)
         {
@@ -727,6 +937,12 @@ namespace Notes2022.Server.Services
             return Sequencer.GetGSequencerList( avail.OrderBy(p => p.Ordinal).ToList());
         }
 
+        /// <summary>
+        /// Creates the sequencer.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize]
         public override async Task<NoRequest> CreateSequencer(SCheckModel request, ServerCallContext context)
         {
@@ -760,6 +976,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Deletes the sequencer.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize]
         public override async Task<NoRequest> DeleteSequencer(SCheckModel request, ServerCallContext context)
         {
@@ -777,6 +999,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Updates the sequencer ordinal.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize]
         public override async Task<NoRequest> UpdateSequencerOrdinal(GSequencer request, ServerCallContext context)
         {
@@ -791,6 +1019,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Updates the sequencer.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize]
         public override async Task<NoRequest> UpdateSequencer(GSequencer request, ServerCallContext context)
         {
@@ -812,6 +1046,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Gets the note file.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNotefile.</returns>
         [Authorize]
         public override async Task<GNotefile> GetNoteFile(NoteIndexRequest request, ServerCallContext context)
         {
@@ -827,6 +1067,12 @@ namespace Notes2022.Server.Services
             return nf.GetGNotefile();
         }
 
+        /// <summary>
+        /// Creates the new note.
+        /// </summary>
+        /// <param name="tvm">The TVM.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteHeader.</returns>
         public override async Task<GNoteHeader> CreateNewNote(TextViewModel tvm, ServerCallContext context)
         {
             if (tvm.MyNote is null || tvm.MySubject is null)
@@ -888,6 +1134,12 @@ namespace Notes2022.Server.Services
         //    return nh.GetGNoteHeader();
         //}
 
+        /// <summary>
+        /// Updates the note.
+        /// </summary>
+        /// <param name="tvm">The TVM.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteHeader.</returns>
         [Authorize]
         public override async Task<GNoteHeader> UpdateNote(TextViewModel tvm, ServerCallContext context)
         {
@@ -925,6 +1177,12 @@ namespace Notes2022.Server.Services
             return newheader.GetGNoteHeader();
         }
 
+        /// <summary>
+        /// Gets the header for note identifier.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteHeader.</returns>
         [Authorize]
         public override async Task<GNoteHeader> GetHeaderForNoteId(NoteId request, ServerCallContext context)
         {
@@ -948,6 +1206,12 @@ namespace Notes2022.Server.Services
         }
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        /// <summary>
+        /// Gets the about.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>AboutModel.</returns>
         public override async Task<AboutModel> GetAbout(NoRequest request, ServerCallContext context)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
@@ -958,9 +1222,21 @@ namespace Notes2022.Server.Services
             };
         }
 
+        /// <summary>
+        /// The throttle
+        /// </summary>
         private static int throttle = 0;
+        /// <summary>
+        /// The time of throttle
+        /// </summary>
         private static DateTime? TimeOfThrottle = null;
 
+        /// <summary>
+        /// unauthenticated - slower - use it too much and it really hurts you!
+        /// </summary>
+        /// <param name="request">The request received from the client.</param>
+        /// <param name="context">The context of the server-side call handler being invoked.</param>
+        /// <returns>The response to send back to the client (wrapped by a task).</returns>
         public override async Task<NoRequest> SendEmail(GEmail request, ServerCallContext context)
         {
             try
@@ -999,6 +1275,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// authenticated
+        /// </summary>
+        /// <param name="request">The request received from the client.</param>
+        /// <param name="context">The context of the server-side call handler being invoked.</param>
+        /// <returns>The response to send back to the client (wrapped by a task).</returns>
         [Authorize]
         public override async Task<NoRequest> SendEmailAuth(GEmail request, ServerCallContext context)
         {
@@ -1006,6 +1288,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Gets the export.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteHeaderList.</returns>
         [Authorize]
         public override async Task<GNoteHeaderList> GetExport(ExportRequest request, ServerCallContext context)
         {
@@ -1033,6 +1321,12 @@ namespace Notes2022.Server.Services
             return NoteHeader.GetGNoteHeaderList(nhl);
         }
 
+        /// <summary>
+        /// Gets the export2.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNoteContent.</returns>
         [Authorize]
         public override async Task<GNoteContent> GetExport2(NoteId request, ServerCallContext context)
         {
@@ -1055,6 +1349,12 @@ namespace Notes2022.Server.Services
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
 
+        /// <summary>
+        /// Does the forward.
+        /// </summary>
+        /// <param name="fv">The fv.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize]
         public override async Task<NoRequest> DoForward(ForwardViewModel fv, ServerCallContext context)
         {
@@ -1071,6 +1371,12 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
+        /// <summary>
+        /// Gets the name of the note files ordered by.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>GNotefileList.</returns>
         [Authorize]
         public override async Task<GNotefileList> GetNoteFilesOrderedByName(NoRequest request, ServerCallContext context)
         {
@@ -1078,6 +1384,12 @@ namespace Notes2022.Server.Services
             return NoteFile.GetGNotefileList(noteFiles);
         }
 
+        /// <summary>
+        /// Copies the note.
+        /// </summary>
+        /// <param name="Model">The model.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize]
         public override async Task<NoRequest> CopyNote(CopyModel Model, ServerCallContext context)
         {
@@ -1210,6 +1522,12 @@ namespace Notes2022.Server.Services
         }
 
         // Utility method - makes a viewable header for the copied note
+        /// <summary>
+        /// Makes the header.
+        /// </summary>
+        /// <param name="header">The header.</param>
+        /// <param name="noteFile">The note file.</param>
+        /// <returns>System.String.</returns>
         private static string MakeHeader(NoteHeader header, NoteFile noteFile)
         {
             StringBuilder sb = new();
@@ -1226,6 +1544,12 @@ namespace Notes2022.Server.Services
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Deletes the note.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>NoRequest.</returns>
         [Authorize]
         public override async Task<NoRequest> DeleteNote(NoteId request, ServerCallContext context)
         {
@@ -1276,6 +1600,12 @@ namespace Notes2022.Server.Services
         //    return stuff;
         //}
 
+        /// <summary>
+        /// Gets the export json.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <param name="context">The context.</param>
+        /// <returns>JsonExport.</returns>
         [Authorize]
         public override async Task<JsonExport> GetExportJson(ExportRequest request, ServerCallContext context)
         {
@@ -1319,6 +1649,12 @@ namespace Notes2022.Server.Services
         }
 
 
+        /// <summary>
+        /// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
+        /// </summary>
+        /// <param name="request">The request received from the client.</param>
+        /// <param name="context">The context of the server-side call handler being invoked.</param>
+        /// <returns>The response to send back to the client (wrapped by a task).</returns>
         public override async Task<AString> GetTextFile(AString request, ServerCallContext context)
         {
             AString stuff = new()

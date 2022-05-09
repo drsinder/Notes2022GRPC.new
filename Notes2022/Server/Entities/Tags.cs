@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Server
+// Author           : sinde
+// Created          : 04-19-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-09-2022
+// ***********************************************************************
+// <copyright file="Tags.cs" company="Notes2022.Server">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -32,22 +45,32 @@ namespace Notes2022.Server.Entities
 {
     /// <summary>
     /// This class defines a table in the database.
-    /// 
     /// Zero or more of these objects may be associated with each note.
     /// Defines a simple tag or set of tags for a note.
-    /// 
     /// </summary>
     [DataContract]
     public class Tags
     {
         // The fileid the note belongs to
+        /// <summary>
+        /// Gets or sets the note file identifier.
+        /// </summary>
+        /// <value>The note file identifier.</value>
         [Required]
         [DataMember(Order = 1)]
         public int NoteFileId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the archive identifier.
+        /// </summary>
+        /// <value>The archive identifier.</value>
         [Required]
         [DataMember(Order = 2)]
         public int ArchiveId { get; set; }
+        /// <summary>
+        /// Gets or sets the note header identifier.
+        /// </summary>
+        /// <value>The note header identifier.</value>
         [Required]
         [DataMember(Order = 3)]
         public long NoteHeaderId { get; set; }
@@ -55,16 +78,29 @@ namespace Notes2022.Server.Entities
         //[ForeignKey("NoteHeaderId")]
         //public NoteHeader? NoteHeader { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tag.
+        /// </summary>
+        /// <value>The tag.</value>
         [Required]
         [StringLength(30)]
         [DataMember(Order = 4)]
         public string? Tag { get; set; }
 
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string? ToString()
         {
             return Tag;
         }
 
+        /// <summary>
+        /// Lists to string.
+        /// </summary>
+        /// <param name="list">The list.</param>
+        /// <returns>System.String.</returns>
         public static string ListToString(List<Tags> list)
         {
             string s = string.Empty;
@@ -79,6 +115,11 @@ namespace Notes2022.Server.Entities
             return s.TrimEnd(' ');
         }
 
+        /// <summary>
+        /// Strings to list.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <returns>List&lt;Tags&gt;.</returns>
         public static List<Tags> StringToList(string s)
         {
             List<Tags> list = new();
@@ -100,6 +141,14 @@ namespace Notes2022.Server.Entities
             return list;
         }
 
+        /// <summary>
+        /// Strings to list.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <param name="hId">The h identifier.</param>
+        /// <param name="fId">The f identifier.</param>
+        /// <param name="arcId">The arc identifier.</param>
+        /// <returns>List&lt;Tags&gt;.</returns>
         public static List<Tags> StringToList(string s, long hId, int fId, int arcId)
         {
             List<Tags> list = new();
@@ -121,6 +170,11 @@ namespace Notes2022.Server.Entities
             return list;
         }
 
+        /// <summary>
+        /// Clones for link.
+        /// </summary>
+        /// <param name="inp">The inp.</param>
+        /// <returns>List&lt;Tags&gt;.</returns>
         public static List<Tags> CloneForLink(List<Tags> inp)
         {
             if (inp is null)
@@ -144,6 +198,11 @@ namespace Notes2022.Server.Entities
         //
         // Conversions between Db Entity space and gRPC space.
         //
+        /// <summary>
+        /// Gets the tags.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>Tags.</returns>
         public static Tags GetTags(GTags other)
         {
             Tags t = new()
@@ -157,6 +216,10 @@ namespace Notes2022.Server.Entities
             return t;
         }
 
+        /// <summary>
+        /// Gets the g tags.
+        /// </summary>
+        /// <returns>GTags.</returns>
         public GTags GetGTags()
         {
             GTags t = new()
@@ -169,6 +232,11 @@ namespace Notes2022.Server.Entities
             return t;
         }
 
+        /// <summary>
+        /// Gets the tags list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>List&lt;Tags&gt;.</returns>
         public static List<Tags> GetTagsList(GTagsList other)
         {
             List<Tags> list = new();
@@ -179,6 +247,11 @@ namespace Notes2022.Server.Entities
             return list;
         }
 
+        /// <summary>
+        /// Gets the g tags list.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>GTagsList.</returns>
         public static GTagsList GetGTagsList(List<Tags> other)
         {
             GTagsList list = new();
