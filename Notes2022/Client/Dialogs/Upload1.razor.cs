@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-08-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="Upload1.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,18 +41,37 @@ using Syncfusion.Blazor.Calendars;
 
 namespace Notes2022.Client.Dialogs
 {
+    /// <summary>
+    /// Class Upload1.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class Upload1
     {
+        /// <summary>
+        /// Gets or sets the modal instance.
+        /// </summary>
+        /// <value>The modal instance.</value>
         [CascadingParameter]
         public BlazoredModalInstance ModalInstance { get; set; }
 
+        /// <summary>
+        /// Gets or sets the filename.
+        /// </summary>
+        /// <value>The filename.</value>
         public string filename { get; set; }
 
+        /// <summary>
+        /// Oks this instance.
+        /// </summary>
         private void Ok()
         {
             ModalInstance.CloseAsync(ModalResult.Ok(filename));
         }
 
+        /// <summary>
+        /// Cancels this instance.
+        /// </summary>
         private void Cancel()
         {
             ModalInstance.CancelAsync();

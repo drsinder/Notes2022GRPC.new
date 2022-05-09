@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-08-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="About2.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,19 +42,35 @@ using Notes2022.Shared;
 
 namespace Notes2022.Client.Pages
 {
+    /// <summary>
+    /// Class About2.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class About2
     {
 #pragma warning disable IDE1006 // Naming Styles
+        /// <summary>
+        /// Gets or sets the model.
+        /// </summary>
+        /// <value>The model.</value>
         private AboutModel model { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
+        /// <summary>
+        /// Gets or sets up time.
+        /// </summary>
+        /// <value>Up time.</value>
         private TimeSpan upTime { get; set; }
 
+        /// <summary>
+        /// The text
+        /// </summary>
         private string text = string.Empty;
         /// <summary>
         /// Get some simple stuff from server
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnInitializedAsync()
         {
             text = (await Client.GetTextFileAsync(new AString()

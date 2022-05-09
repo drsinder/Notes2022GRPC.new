@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-29-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-29-2022
+// ***********************************************************************
+// <copyright file="AccessItem.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -27,14 +40,38 @@ using Notes2022.Proto;
 
 namespace Notes2022.Client.Dialogs
 {
+    /// <summary>
+    /// Enum AccessX
+    /// </summary>
     public enum AccessX
     {
+        /// <summary>
+        /// The read access
+        /// </summary>
         ReadAccess,
+        /// <summary>
+        /// The respond
+        /// </summary>
         Respond,
+        /// <summary>
+        /// The write
+        /// </summary>
         Write,
+        /// <summary>
+        /// The set tag
+        /// </summary>
         SetTag,
+        /// <summary>
+        /// The delete edit
+        /// </summary>
         DeleteEdit,
+        /// <summary>
+        /// The view access
+        /// </summary>
         ViewAccess,
+        /// <summary>
+        /// The edit access
+        /// </summary>
         EditAccess
     }
 
@@ -46,21 +83,25 @@ namespace Notes2022.Client.Dialogs
         /// <summary>
         /// The whole token
         /// </summary>
+        /// <value>The item.</value>
         public GNoteAccess Item { get; set; }
 
         /// <summary>
         /// Indicates which segment we are dealing with
         /// </summary>
+        /// <value>The which.</value>
         public AccessX which { get; set; }
 
         /// <summary>
         /// Is it currently checked?
         /// </summary>
+        /// <value><c>true</c> if this instance is checked; otherwise, <c>false</c>.</value>
         public bool isChecked { get; set; }
 
         /// <summary>
         /// Can current user change it?
         /// </summary>
+        /// <value><c>true</c> if this instance can edit; otherwise, <c>false</c>.</value>
         public bool canEdit { get; set; }
     }
 

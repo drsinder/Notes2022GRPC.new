@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-06-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="ListMenu.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     **Copyright © 2022, Dale Sinder
     **
@@ -40,56 +53,74 @@ namespace Notes2022.Client.Menus
     public partial class ListMenu
     {
         /// <summary>
-        ///  for showing dialogs
+        /// for showing dialogs
         /// </summary>
+        /// <value>The modal.</value>
         [CascadingParameter] public IModalService Modal { get; set; }
 
         /// <summary>
         /// reference to data model for index display
         /// </summary>
+        /// <value>The model.</value>
         [Parameter] public NoteDisplayIndexModel Model { get; set; }
 
         /// <summary>
         /// reference to the caller/container
         /// </summary>
+        /// <value>The caller.</value>
         [Parameter] public NoteIndex Caller { get; set; }
 
         /// <summary>
         /// Menu items/structure
         /// </summary>
+        /// <value>The menu items.</value>
         private static List<MenuItem>? menuItems { get; set; }
 
         /// <summary>
         /// Top menu item instance
         /// </summary>
+        /// <value>The top menu.</value>
         protected SfMenu<MenuItem> topMenu { get; set; }
 
+        /// <summary>
+        /// Gets or sets my gauge.
+        /// </summary>
+        /// <value>My gauge.</value>
         public SfLinearGauge myGauge { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [hamburger mode].
+        /// </summary>
+        /// <value><c>true</c> if [hamburger mode]; otherwise, <c>false</c>.</value>
         private bool HamburgerMode { get; set; } = false;
 
         /// <summary>
         /// Are we printing?
         /// </summary>
+        /// <value><c>true</c> if this instance is printing; otherwise, <c>false</c>.</value>
         public bool IsPrinting { get; set; } = false;
 
         /// <summary>
         /// Text value for slider while doing background processing
         /// </summary>
-        //public string sliderValueText { get; set; }
-
-        /// <summary>
-        /// Number of base notes we have
-        /// </summary>
+        /// <value>The base notes.</value>
         protected int baseNotes { get; set; }
 
         /// <summary>
         /// Ordinal of the current note
         /// </summary>
+        /// <value>The curr note.</value>
         protected int currNote { get; set; }
 
+        /// <summary>
+        /// Gets or sets the navigation.
+        /// </summary>
+        /// <value>The navigation.</value>
         [Inject] NavigationManager Navigation { get; set; }
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ListMenu"/> class.
+        /// </summary>
         public ListMenu()   // needed for injection above...
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
@@ -99,7 +130,6 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Initializations
         /// </summary>
-        /// <returns></returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.", Justification = "<Pending>")]
         protected override void OnParametersSet()
         {
@@ -153,8 +183,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// When a Menu item is selected
         /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
+        /// <param name="e">The e.</param>
         private async Task OnSelect(MenuEventArgs<MenuItem> e)
         {
             await ExecMenu(e.Item.Id);
@@ -163,8 +192,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// The container has a refernce to "this" and can call this method...
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The identifier.</param>
         public async Task ExecMenu(string id)
         {
             switch (id)
@@ -239,7 +267,6 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Display Search dialog in prep for a search
         /// </summary>
-        /// <returns></returns>
         private async Task SetSearch()
         {
             var parameters = new ModalParameters();
@@ -261,7 +288,6 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Print file set up
         /// </summary>
-        /// <returns></returns>
         private async Task PrintFile()
         {
             currNote = 1;
@@ -357,7 +383,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Export a file
         /// </summary>
-        /// <param name="isHtml">true if in html format - else text </param>
+        /// <param name="isHtml">true if in html format - else text</param>
         /// <param name="isCollapsible">collapsible/expandable html?</param>
         /// <param name="isEmail">Should we mail it?</param>
         /// <param name="emailaddr">Where to mail it</param>
@@ -382,6 +408,9 @@ namespace Notes2022.Client.Menus
             Modal.Show<ExportUtil1>("", parameters);
         }
 
+        /// <summary>
+        /// Replots this instance.
+        /// </summary>
         public void Replot()
         {
             StateHasChanged();
@@ -390,6 +419,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Prepare Json output
         /// </summary>
+        /// <param name="ext">if set to <c>true</c> [ext].</param>
         private void DoJson(bool ext = false)
         {
             var parameters = new ModalParameters();
@@ -405,6 +435,9 @@ namespace Notes2022.Client.Menus
             Modal.Show<ExportJson>("", parameters);
         }
 
+        /// <summary>
+        /// Does the email.
+        /// </summary>
         private async Task DoEmail()
         {
             string emailaddr;
@@ -420,6 +453,10 @@ namespace Notes2022.Client.Menus
             DoExport(true, true, true, emailaddr);
         }
 
+        /// <summary>
+        /// Shows the message.
+        /// </summary>
+        /// <param name="message">The message.</param>
         private void ShowMessage(string message)
         {
             var parameters = new ModalParameters();

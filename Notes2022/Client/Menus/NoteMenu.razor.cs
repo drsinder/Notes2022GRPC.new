@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-28-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-09-2022
+// ***********************************************************************
+// <copyright file="NoteMenu.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     **Copyright © 2022, Dale Sinder
     **
@@ -40,33 +53,49 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// For dialogs
         /// </summary>
+        /// <value>The modal.</value>
         [CascadingParameter] public IModalService Modal { get; set; }
 
         /// <summary>
         /// Model data reference from container
         /// </summary>
+        /// <value>The model.</value>
         [Parameter] public DisplayModel Model { get; set; }
 
         /// <summary>
         /// Reference to our caller/container so we can call back into it.
         /// </summary>
+        /// <value>The index of my note.</value>
         [Parameter] public NoteIndex MyNoteIndex { get; set; }
 
         /// <summary>
         /// Menu structure
         /// </summary>
+        /// <value>The menu items.</value>
 #pragma warning disable IDE1006 // Naming Styles
         private static List<MenuItem> menuItems { get; set; }
 
         /// <summary>
         /// Top level menu instance
         /// </summary>
+        /// <value>The top menu.</value>
         protected SfMenu<MenuItem> topMenu { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [hamburger mode].
+        /// </summary>
+        /// <value><c>true</c> if [hamburger mode]; otherwise, <c>false</c>.</value>
         private bool HamburgerMode { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets the navigation.
+        /// </summary>
+        /// <value>The navigation.</value>
         [Inject] NavigationManager Navigation { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NoteMenu"/> class.
+        /// </summary>
         public NoteMenu()
         {
         }
@@ -74,7 +103,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Construct our menu based on user access token
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing any asynchronous operation.</returns>
         protected override Task OnParametersSetAsync()
         {
             menuItems = new List<MenuItem>();
@@ -141,8 +170,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Menu item invoked
         /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
+        /// <param name="e">The e.</param>
         public async Task OnSelect(MenuEventArgs<MenuItem> e)
         {
             await ExecMenu(e.Item.Id);
@@ -152,8 +180,7 @@ namespace Notes2022.Client.Menus
         /// This can be called not only from above but also by the container
         /// that shares the same model
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The identifier.</param>
         public async Task ExecMenu(string id)
         {
             long myId;
@@ -282,10 +309,10 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Exports a note
         /// </summary>
-        /// <param name="isHtml"></param>
-        /// <param name="isCollapsible"></param>
-        /// <param name="isEmail"></param>
-        /// <param name="emailaddr"></param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
+        /// <param name="isCollapsible">if set to <c>true</c> [is collapsible].</param>
+        /// <param name="isEmail">if set to <c>true</c> [is email].</param>
+        /// <param name="emailaddr">The emailaddr.</param>
         private void DoExport(bool isHtml, bool isCollapsible, bool isEmail = false, string emailaddr = "")
         {
             var parameters = new ModalParameters();
@@ -311,7 +338,6 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Emails a note
         /// </summary>
-        /// <returns></returns>
         private async Task DoEmail()
         {
             string emailaddr;
@@ -331,8 +357,8 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Confirmation dialog
         /// </summary>
-        /// <param name="message"></param>
-        /// <returns></returns>
+        /// <param name="message">The message.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private async Task<bool> YesNo(string message)
         {
             var parameters = new ModalParameters();
@@ -342,6 +368,10 @@ namespace Notes2022.Client.Menus
             return !result.Cancelled;
         }
 
+        /// <summary>
+        /// Shows the message.
+        /// </summary>
+        /// <param name="message">The message.</param>
         private void ShowMessage(string message)
         {
             var parameters = new ModalParameters();

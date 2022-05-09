@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-28-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="SearchDlg.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Blazored.Modal;
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
@@ -6,26 +19,58 @@ using static Notes2022.Client.Pages.NoteIndex;
 
 namespace Notes2022.Client.Dialogs
 {
+    /// <summary>
+    /// Class SearchDlg.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class SearchDlg
     {
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        /// <summary>
+        /// Gets or sets the modal instance.
+        /// </summary>
+        /// <value>The modal instance.</value>
         [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 
         //[Parameter] public TZone zone { get; set; }
+        /// <summary>
+        /// Gets or sets the searchtype.
+        /// </summary>
+        /// <value>The searchtype.</value>
         [Parameter] public string searchtype { get; set; }
 
         //string Message { get; set; }
 
+        /// <summary>
+        /// Gets or sets the option.
+        /// </summary>
+        /// <value>The option.</value>
         private int option { get; set; }
+        /// <summary>
+        /// Gets or sets the text.
+        /// </summary>
+        /// <value>The text.</value>
         private string text { get; set; }
+        /// <summary>
+        /// Gets or sets the time.
+        /// </summary>
+        /// <value>The time.</value>
         private DateTime theTime { get; set; }
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
+        /// <summary>
+        /// Method invoked when the component has received parameters from its parent in
+        /// the render tree, and the incoming values have been assigned to properties.
+        /// </summary>
         protected override void OnParametersSet()
         {
             option = 0;
             theTime = DateTime.UtcNow;
         }
+        /// <summary>
+        /// Searchfors this instance.
+        /// </summary>
         private void Searchfor()
         {
             Search target = new Search();
@@ -51,6 +96,9 @@ namespace Notes2022.Client.Dialogs
             ModalInstance.CloseAsync(ModalResult.Ok<Search>(target));
         }
 
+        /// <summary>
+        /// Cancels this instance.
+        /// </summary>
         private void Cancel()
         {
             ModalInstance.CloseAsync(ModalResult.Cancel());

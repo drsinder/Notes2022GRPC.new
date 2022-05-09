@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-29-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-07-2022
+// ***********************************************************************
+// <copyright file="Responses.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
     **
@@ -38,16 +51,19 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// List of response headers
         /// </summary>
+        /// <value>The headers.</value>
         [Parameter] public List<GNoteHeader> Headers { get; set; }
 
         /// <summary>
         /// Show content for responses
         /// </summary>
+        /// <value><c>true</c> if [show content r]; otherwise, <c>false</c>.</value>
         [Parameter] public bool ShowContentR { get; set; }
 
         /// <summary>
         /// Expand all rows
         /// </summary>
+        /// <value><c>true</c> if [expand all r]; otherwise, <c>false</c>.</value>
         [Parameter] public bool ExpandAllR { get; set; }
 
         //[Parameter] public NoteIndex Parent {get; set;}
@@ -56,9 +72,20 @@ namespace Notes2022.Client.Panels
         //public bool ExpandAll { get; set; }
 
 
+        /// <summary>
+        /// Gets or sets the sf grid2.
+        /// </summary>
+        /// <value>The sf grid2.</value>
         protected SfGrid<GNoteHeader> sfGrid2 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the navigation.
+        /// </summary>
+        /// <value>The navigation.</value>
         [Inject] NavigationManager Navigation { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Responses"/> class.
+        /// </summary>
         public Responses()
         {
         }
@@ -66,7 +93,6 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Copy parameter to local copy
         /// </summary>
-        /// <returns></returns>
         //protected override async Task OnParametersSetAsync()
         //{
         //}
@@ -104,7 +130,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// GO show the note
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The arguments.</param>
         protected void DisplayIt(RowSelectEventArgs<GNoteHeader> args)
         {
             Navigation.NavigateTo("notedisplay/" + args.Data.Id);

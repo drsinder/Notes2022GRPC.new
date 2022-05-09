@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-08-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="MessageBox.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,14 +41,30 @@ using Syncfusion.Blazor.Calendars;
 
 namespace Notes2022.Client.Dialogs
 {
+    /// <summary>
+    /// Class MessageBox.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class MessageBox
     {
+        /// <summary>
+        /// Gets or sets the modal instance.
+        /// </summary>
+        /// <value>The modal instance.</value>
         [CascadingParameter]
         BlazoredModalInstance ModalInstance { get; set; }
 
+        /// <summary>
+        /// Gets or sets the message input.
+        /// </summary>
+        /// <value>The message input.</value>
         [Parameter]
         public string MessageInput { get; set; }
 
+        /// <summary>
+        /// Cancels this instance.
+        /// </summary>
         private void Cancel()
         {
             ModalInstance.CancelAsync();

@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-08-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="HelpDialog.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,22 +41,37 @@ using Syncfusion.Blazor.Calendars;
 
 namespace Notes2022.Client.Dialogs
 {
+    /// <summary>
+    /// Class HelpDialog.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class HelpDialog
     {
+        /// <summary>
+        /// Gets or sets the modal instance.
+        /// </summary>
+        /// <value>The modal instance.</value>
         [CascadingParameter]
         BlazoredModalInstance ModalInstance { get; set; }
 
+        /// <summary>
+        /// The text
+        /// </summary>
         private string text = string.Empty;
         /// <summary>
         /// Get some simple stuff from server
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnInitializedAsync()
         {
             text = (await Client.GetTextFileAsync(new AString()
             {Val = "helpdialog.html"})).Val;
         }
 
+        /// <summary>
+        /// Cancels this instance.
+        /// </summary>
         private void Cancel()
         {
             ModalInstance.CancelAsync();

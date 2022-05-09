@@ -1,4 +1,17 @@
-﻿using Blazored.Modal;
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-29-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="AddAccessDlg.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Blazored.Modal;
 using Microsoft.AspNetCore.Components;
 using Notes2022.Proto;
 using Notes2022.Shared;
@@ -13,22 +26,61 @@ namespace Notes2022.Client.Dialogs
     /// </summary>
     public partial class AddAccessDlg
     {
+        /// <summary>
+        /// Gets or sets the modal instance.
+        /// </summary>
+        /// <value>The modal instance.</value>
         [CascadingParameter] public BlazoredModalInstance ModalInstance { get; set; }
+        /// <summary>
+        /// Gets or sets the user list.
+        /// </summary>
+        /// <value>The user list.</value>
         [Parameter] public List<GAppUser> userList { get; set; }
+        /// <summary>
+        /// Gets or sets the note file identifier.
+        /// </summary>
+        /// <value>The note file identifier.</value>
         [Parameter] public int NoteFileId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the selected user identifier.
+        /// </summary>
+        /// <value>The selected user identifier.</value>
         protected string selectedUserId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the delay.
+        /// </summary>
+        /// <value>The delay.</value>
         protected System.Timers.Timer delay { get; set; }
 
+        /// <summary>
+        /// Gets or sets the arc string.
+        /// </summary>
+        /// <value>The arc string.</value>
         protected string ArcString { get; set; }
 
+        /// <summary>
+        /// Gets or sets the client.
+        /// </summary>
+        /// <value>The client.</value>
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
+        /// <summary>
+        /// Gets or sets the session storage.
+        /// </summary>
+        /// <value>The session storage.</value>
         [Inject] Blazored.SessionStorage.ISessionStorageService sessionStorage { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddAccessDlg"/> class.
+        /// </summary>
         public AddAccessDlg()
         {
         }
 
+        /// <summary>
+        /// Method invoked when the component has received parameters from its parent in
+        /// the render tree, and the incoming values have been assigned to properties.
+        /// </summary>
         protected override void OnParametersSet()
         {
             selectedUserId = "none";
@@ -36,11 +88,17 @@ namespace Notes2022.Client.Dialogs
             //    Cancel();
         }
 
+        /// <summary>
+        /// Cancels this instance.
+        /// </summary>
         private void Cancel()
         {
             ModalInstance.CancelAsync();
         }
 
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
         private async Task Create()
         {
             if (selectedUserId != "none")
@@ -68,6 +126,11 @@ namespace Notes2022.Client.Dialogs
             await ModalInstance.CancelAsync();
         }
 
+        /// <summary>
+        /// Dones the specified source.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="e">The <see cref="ElapsedEventArgs"/> instance containing the event data.</param>
         public void Done(Object source, ElapsedEventArgs e)
         {
             delay.Enabled = false;

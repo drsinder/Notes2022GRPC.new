@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-08-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="Upload2.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,17 +41,39 @@ using Notes2022.Proto;
 
 namespace Notes2022.Client.Dialogs
 {
+    /// <summary>
+    /// Class Upload2.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class Upload2
     {
+        /// <summary>
+        /// Gets or sets the modal instance.
+        /// </summary>
+        /// <value>The modal instance.</value>
         [CascadingParameter]
         public BlazoredModalInstance ModalInstance { get; set; }
 
+        /// <summary>
+        /// Gets or sets the note file.
+        /// </summary>
+        /// <value>The note file.</value>
         [Parameter]
         public string NoteFile { get; set; }
 
+        /// <summary>
+        /// Gets or sets the upload file.
+        /// </summary>
+        /// <value>The upload file.</value>
         [Parameter]
         public string UploadFile { get; set; }
 
+        /// <summary>
+        /// On after render as an asynchronous operation.
+        /// </summary>
+        /// <param name="firstRender">if set to <c>true</c> [first render].</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)

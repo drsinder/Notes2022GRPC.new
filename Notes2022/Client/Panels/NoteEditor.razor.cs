@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-29-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-04-2022
+// ***********************************************************************
+// <copyright file="NoteEditor.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     **Copyright © 2022, Dale Sinder
     **
@@ -44,33 +57,42 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// For dialogs
         /// </summary>
+        /// <value>The modal.</value>
         [CascadingParameter] public IModalService Modal { get; set; }
 
         /// <summary>
         /// The data model used
         /// </summary>
+        /// <value>The model.</value>
         [Parameter] public TextViewModel Model { get; set; }
 
+        /// <summary>
+        /// The show child
+        /// </summary>
         private bool ShowChild = false;
 
         /// <summary>
         /// The Notefile we are using
         /// </summary>
+        /// <value>The note file.</value>
         private GNotefile noteFile { get; set; } = new GNotefile();
 
         /// <summary>
         /// Reference to the Body Editor
         /// </summary>
+        /// <value>The edit object.</value>
         private SfRichTextEditor EditObj { get; set; }
 
         /// <summary>
         /// Reference to the Editor Tool bar
         /// </summary>
+        /// <value>The tool bar object.</value>
         private RichTextEditorToolbarSettings ToolBarObj { get; set; }
 
         /// <summary>
         /// Holding place to prepared code to be inserted
         /// </summary>
+        /// <value>The prepared code.</value>
         protected string PreparedCode { get; set; }
 
         /// <summary>
@@ -112,8 +134,19 @@ namespace Notes2022.Client.Panels
             new ToolbarItemModel() { Command = ToolbarCommand.FullScreen }
         };
 
+        /// <summary>
+        /// Gets or sets the client.
+        /// </summary>
+        /// <value>The client.</value>
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
+        /// <summary>
+        /// Gets or sets the navigation.
+        /// </summary>
+        /// <value>The navigation.</value>
         [Inject] NavigationManager Navigation { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NoteEditor"/> class.
+        /// </summary>
         public NoteEditor()
         {
         }
@@ -121,7 +154,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Get a NoteFile Object for the file we are using
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected async override Task OnParametersSetAsync()
         {
             if (Model.NoteFileID != 0)
@@ -134,7 +167,6 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// User has asked to store the note
         /// </summary>
-        /// <returns></returns>
         protected async Task HandleValidSubmit()
         {
             if (string.IsNullOrEmpty(Model.MySubject))
@@ -185,7 +217,6 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Prepare code for insertion - collect the text
         /// </summary>
-        /// <returns></returns>
         public async Task InsertCode1()
         {
             string xx = await EditObj.GetSelectedHtmlAsync();
@@ -210,7 +241,6 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Insert the previously prepared code.
         /// </summary>
-        /// <returns></returns>
         public async Task InsertCode2()
         {
             if (!string.IsNullOrEmpty(PreparedCode))
@@ -220,7 +250,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Shows a message
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">The message.</param>
         private void ShowMessage(string message)
         {
             var parameters = new ModalParameters();

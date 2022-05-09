@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-06-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="NavMenu.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,52 +45,92 @@ using Notes2022.Client.Dialogs;
 
 namespace Notes2022.Client.Menus
 {
+    /// <summary>
+    /// Class NavMenu.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class NavMenu
     {
         /// <summary>
         /// For display of error message during initialization
         /// </summary>
+        /// <value>The modal.</value>
         [CascadingParameter]
         public IModalService Modal { get; set; }
 
         /// <summary>
         /// The list of menu bar items (structure of the menu)
         /// </summary>
+        /// <value>The menu items top.</value>
         protected static List<MenuItem>? menuItemsTop { get; set; }
 
         /// <summary>
         /// Root menu item
         /// </summary>
+        /// <value>The top menu.</value>
         protected SfMenu<MenuItem> topMenu { get; set; }
 
         /// <summary>
         /// Current time
         /// </summary>
+        /// <value>The mytime.</value>
         private string mytime { get; set; }
 
         /// <summary>
         /// Used to compare time and abort re-render in same minute
         /// </summary>
+        /// <value>The mytime2.</value>
         private string mytime2 { get; set; } = "";
         /// <summary>
         /// Used to update menu bar time - tick once per second
         /// </summary>
+        /// <value>The timer2.</value>
         private System.Timers.Timer timer2 { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [do seq].
+        /// </summary>
+        /// <value><c>true</c> if [do seq]; otherwise, <c>false</c>.</value>
         private bool DoSeq { get; set; } = false;
 
+        /// <summary>
+        /// The collapse nav menu
+        /// </summary>
         private bool collapseNavMenu = true;
+        /// <summary>
+        /// Gets the nav menu CSS class.
+        /// </summary>
+        /// <value>The nav menu CSS class.</value>
         private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
+        /// <summary>
+        /// Gets or sets the navigation.
+        /// </summary>
+        /// <value>The navigation.</value>
         [Inject] NavigationManager Navigation { get; set; }
+        /// <summary>
+        /// Gets or sets the session storage.
+        /// </summary>
+        /// <value>The session storage.</value>
         [Inject] Blazored.SessionStorage.ISessionStorageService sessionStorage { get; set; }
+        /// <summary>
+        /// Gets or sets the client.
+        /// </summary>
+        /// <value>The client.</value>
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavMenu"/> class.
+        /// </summary>
         public NavMenu()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
         }
 
+        /// <summary>
+        /// Toggles the nav menu.
+        /// </summary>
         private void ToggleNavMenu()
         {
             collapseNavMenu = !collapseNavMenu;
@@ -86,7 +139,12 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Update the clock once per second
         /// </summary>
-        /// <param name="firstRender"></param>
+        /// <param name="firstRender">Set to <c>true</c> if this is the first time <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)" /> has been invoked
+        /// on this component instance; otherwise <c>false</c>.</param>
+        /// <remarks>The <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)" /> and <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)" /> lifecycle methods
+        /// are useful for performing interop, or interacting with values received from <c>@ref</c>.
+        /// Use the <paramref name="firstRender" /> parameter to ensure that initialization work is only performed
+        /// once.</remarks>
         protected override void OnAfterRender(bool firstRender)
         {
             if (firstRender)
@@ -104,8 +162,8 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Invoked once per second
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="e"></param>
+        /// <param name="source">The source.</param>
+        /// <param name="e">The <see cref="ElapsedEventArgs"/> instance containing the event data.</param>
         protected void TimerTick2(object source, ElapsedEventArgs e)
         {
             //mytime = DateTime.Now.ToShortTimeString();
@@ -125,8 +183,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Invoked when an Item is selected
         /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
+        /// <param name="e">The e.</param>
         public async Task OnSelect(MenuEventArgs<MenuItem> e)
         {
             await ExecMenu(e.Item.Id);
@@ -136,8 +193,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// This could potentially be called from other places...
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The identifier.</param>
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         private async Task ExecMenu(string id)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
@@ -196,12 +252,19 @@ namespace Notes2022.Client.Menus
             }
         }
 
+        /// <summary>
+        /// Reloads this instance.
+        /// </summary>
         public async Task Reload()
         {
             StateHasChanged();
             await UpdateMenu();
         }
 
+        /// <summary>
+        /// On parameters set as an asynchronous operation.
+        /// </summary>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnParametersSetAsync()
         {
             Globals.NavMenu = this;
@@ -212,7 +275,6 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Enable only items available to logged in user
         /// </summary>
-        /// <returns></returns>
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.", Justification = "<Pending>")]
         public async Task UpdateMenu()
@@ -287,7 +349,6 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Recent menu item - start sequencing
         /// </summary>
-        /// <returns></returns>
         private async Task StartSeq()
         {
             // get users list of files
@@ -315,7 +376,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Show error message
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">The message.</param>
         private void ShowMessage(string message)
         {
             var parameters = new ModalParameters();

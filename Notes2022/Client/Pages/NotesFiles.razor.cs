@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-30-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 04-30-2022
+// ***********************************************************************
+// <copyright file="NotesFiles.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 /*--------------------------------------------------------------------------
     **
     **  Copyright © 2022, Dale Sinder
@@ -33,14 +46,22 @@ namespace Notes2022.Client.Pages
     /// </summary>
     public partial class NotesFiles
     {
+        /// <summary>
+        /// Gets or sets the files.
+        /// </summary>
+        /// <value>The files.</value>
         private GNotefileList Files { get; set; }
 
+        /// <summary>
+        /// Gets or sets the user data.
+        /// </summary>
+        /// <value>The user data.</value>
         private GAppUser UserData { get; set; }
 
         /// <summary>
         /// Set up and get data from server
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnParametersSetAsync()
         {
             await sessionStorage.SetItemAsync("ArcId", 0);
@@ -55,6 +76,10 @@ namespace Notes2022.Client.Pages
                 UserData.Ipref2 = 10;
         }
 
+        /// <summary>
+        /// Displays it.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void DisplayIt(RowSelectEventArgs<GNotefile> args)
         {
             Navigation.NavigateTo("noteindex/" + args.Data.Id);

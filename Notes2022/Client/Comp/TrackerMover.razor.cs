@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-29-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="TrackerMover.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Microsoft.AspNetCore.Components;
 using Notes2022.Client.Pages;
 using Notes2022.Proto;
@@ -15,41 +28,52 @@ namespace Notes2022.Client.Comp
         /// <summary>
         /// Who are we
         /// </summary>
+        /// <value>The current tracker.</value>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         [Parameter] public GSequencer CurrentTracker { get; set; }
 
         /// <summary>
         /// List of trackers
         /// </summary>
+        /// <value>The trackers.</value>
         [Parameter] public List<GSequencer> Trackers { get; set; }
 
         /// <summary>
         /// Our container/caller
         /// </summary>
+        /// <value>The tracker.</value>
         [Parameter] public Tracker Tracker { get; set; }
 
         /// <summary>
         /// List of items before me
         /// </summary>
+        /// <value>The befores.</value>
         List<GSequencer> befores { get; set; }
 
         /// <summary>
         /// List of items after me
         /// </summary>
+        /// <value>The afters.</value>
         List<GSequencer> afters { get; set; }
 
         /// <summary>
         /// Item just before me
         /// </summary>
+        /// <value>The before.</value>
         GSequencer before { get; set; }
 
         /// <summary>
         /// Item just after me
         /// </summary>
+        /// <value>The after.</value>
         GSequencer after { get; set; }
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
 
+        /// <summary>
+        /// Method invoked when the component has received parameters from its parent in
+        /// the render tree, and the incoming values have been assigned to properties.
+        /// </summary>
         protected override void OnParametersSet()
         {
             // find before and after items
@@ -68,8 +92,7 @@ namespace Notes2022.Client.Comp
         /// <summary>
         /// Move an item as wished
         /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
+        /// <param name="args">The <see cref="MenuEventArgs"/> instance containing the event data.</param>
         private async Task ItemSelected(MenuEventArgs args)
         {
 
@@ -114,9 +137,8 @@ namespace Notes2022.Client.Comp
         /// <summary>
         /// Swap the postion of two trackers
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">a.</param>
+        /// <param name="b">The b.</param>
         private async Task Swap(GSequencer a, GSequencer b)
         {
             int aord = a.Ordinal;

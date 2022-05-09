@@ -1,16 +1,46 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-02-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="ConfirmEmail.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Microsoft.AspNetCore.Components;
 using Notes2022.Proto;
 using System.Text.Json;
 
 namespace Notes2022.Client.Pages.Authentication
 {
+    /// <summary>
+    /// Class ConfirmEmail.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class ConfirmEmail
     {
+        /// <summary>
+        /// Gets or sets the payload.
+        /// </summary>
+        /// <value>The payload.</value>
         [Parameter]
         public string? payload { get; set; }
 
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>The message.</value>
         private string? Message { get; set; }
 
+        /// <summary>
+        /// On parameters set as an asynchronous operation.
+        /// </summary>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnParametersSetAsync()
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.

@@ -1,4 +1,17 @@
-﻿using Blazored.Modal;
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-06-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-09-2022
+// ***********************************************************************
+// <copyright file="NotesFilesAdmin.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Blazored.Modal;
 using Blazored.Modal.Services;
 //using Grpc.Net.Client;
 using Microsoft.AspNetCore.Components;
@@ -8,37 +21,83 @@ using Notes2022.Proto;
 
 namespace Notes2022.Client.Pages.Admin
 {
+    /// <summary>
+    /// Class NotesFilesAdmin.
+    /// Implements the <see cref="ComponentBase" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
     public partial class NotesFilesAdmin
     {
 #pragma warning disable IDE1006 // Naming Styles
+        /// <summary>
+        /// Gets or sets the todo.
+        /// </summary>
+        /// <value>The todo.</value>
         private List<string> todo { get; set; }
+        /// <summary>
+        /// Gets or sets the files.
+        /// </summary>
+        /// <value>The files.</value>
         private GNotefileList files { get; set; }
 
 
+        /// <summary>
+        /// Gets or sets the model.
+        /// </summary>
+        /// <value>The model.</value>
         private HomePageModel model { get; set; }
+        /// <summary>
+        /// Gets or sets the u list.
+        /// </summary>
+        /// <value>The u list.</value>
         private List<GAppUser> uList { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
 
+        /// <summary>
+        /// Gets or sets the client.
+        /// </summary>
+        /// <value>The client.</value>
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
+        /// <summary>
+        /// Gets or sets the navigation.
+        /// </summary>
+        /// <value>The navigation.</value>
         [Inject] NavigationManager Navigation { get; set; }
+        /// <summary>
+        /// Gets or sets the modal.
+        /// </summary>
+        /// <value>The modal.</value>
         [Inject] IModalService Modal { get; set; }
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NotesFilesAdmin"/> class.
+        /// </summary>
         public NotesFilesAdmin()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
         }
 
+        /// <summary>
+        /// Reloads this instance.
+        /// </summary>
         public async Task Reload()
         {
             await GetStuff();
             StateHasChanged();
         }
 
+        /// <summary>
+        /// On parameters set as an asynchronous operation.
+        /// </summary>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnParametersSetAsync()
         {
             await GetStuff();
         }
 
+        /// <summary>
+        /// Gets the stuff.
+        /// </summary>
         protected async Task GetStuff()
         {
             model = await Client.GetAdminPageModelAsync(new NoRequest(), myState.AuthHeader);
@@ -64,6 +123,9 @@ namespace Notes2022.Client.Pages.Admin
             files = model.NoteFiles;
         }
 
+        /// <summary>
+        /// Creates the announce.
+        /// </summary>
         private async Task CreateAnnounce()
         {
             await Client.CreateNoteFileAsync(new GNotefile() { NoteFileName = "announce", NoteFileTitle = "Notes 2022 Announcements" }, myState.AuthHeader);
@@ -71,6 +133,9 @@ namespace Notes2022.Client.Pages.Admin
             Navigation.NavigateTo("admin/notefilelist");
         }
 
+        /// <summary>
+        /// Creates the pbnotes.
+        /// </summary>
         private async Task CreatePbnotes()
         {
             await Client.CreateNoteFileAsync(new GNotefile() { NoteFileName = "pbnotes", NoteFileTitle = "Public Notes" }, myState.AuthHeader);
@@ -78,6 +143,9 @@ namespace Notes2022.Client.Pages.Admin
             Navigation.NavigateTo("admin/notefilelist");
         }
 
+        /// <summary>
+        /// Creates the notes help.
+        /// </summary>
         private async Task CreateNotesHelp()
         {
             await Client.CreateNoteFileAsync(new GNotefile() { NoteFileName = "noteshelp", NoteFileTitle = "Help with Notes 2022" }, myState.AuthHeader);
@@ -85,6 +153,9 @@ namespace Notes2022.Client.Pages.Admin
             Navigation.NavigateTo("admin/notefilelist");
         }
 
+        /// <summary>
+        /// Creates the pad.
+        /// </summary>
         private async Task CreatePad()
         {
             await Client.CreateNoteFileAsync(new GNotefile() { NoteFileName = "pad", NoteFileTitle = "Traditional Pad" }, myState.AuthHeader);
@@ -92,6 +163,9 @@ namespace Notes2022.Client.Pages.Admin
             Navigation.NavigateTo("admin/notefilelist");
         }
 
+        /// <summary>
+        /// Creates the home page messages.
+        /// </summary>
         private async Task CreateHomePageMessages()
         {
             await Client.CreateNoteFileAsync(new GNotefile() { NoteFileName = "homepagemessages", NoteFileTitle = "Home Page Messages" }, myState.AuthHeader);
@@ -99,6 +173,10 @@ namespace Notes2022.Client.Pages.Admin
             Navigation.NavigateTo("admin/notefilelist");
         }
 
+        /// <summary>
+        /// Creates the note file.
+        /// </summary>
+        /// <param name="Id">The identifier.</param>
         async void CreateNoteFile(int Id)
         {
             StateHasChanged();
@@ -112,6 +190,11 @@ namespace Notes2022.Client.Pages.Admin
         }
 
 
+        /// <summary>
+        /// Gets the application users.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>List&lt;GAppUser&gt;.</returns>
         private List<GAppUser> GetApplicationUsers(GAppUserList other)
         {
             List<GAppUser> list = new List<GAppUser>();
@@ -123,6 +206,10 @@ namespace Notes2022.Client.Pages.Admin
         }
 
 
+        /// <summary>
+        /// Deletes the note file.
+        /// </summary>
+        /// <param name="Id">The identifier.</param>
         async void DeleteNoteFile(int Id)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
@@ -146,6 +233,10 @@ namespace Notes2022.Client.Pages.Admin
 
         }
 
+        /// <summary>
+        /// Notes the file details.
+        /// </summary>
+        /// <param name="Id">The identifier.</param>
         async void NoteFileDetails(int Id)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
@@ -165,6 +256,10 @@ namespace Notes2022.Client.Pages.Admin
             await xModal.Result;
         }
 
+        /// <summary>
+        /// Edits the note file.
+        /// </summary>
+        /// <param name="Id">The identifier.</param>
         async void EditNoteFile(int Id)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
@@ -189,6 +284,10 @@ namespace Notes2022.Client.Pages.Admin
             }
         }
 
+        /// <summary>
+        /// Imports the note file.
+        /// </summary>
+        /// <param name="Id">The identifier.</param>
         async Task ImportNoteFile(int Id)
         {
             var parameters = new ModalParameters();

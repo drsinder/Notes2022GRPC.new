@@ -1,4 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-28-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="NoteIndex.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/*--------------------------------------------------------------------------
     **
     **Copyright © 2022, Dale Sinder
     **
@@ -52,86 +65,111 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// For dialogs
         /// </summary>
+        /// <value>The modal.</value>
         [CascadingParameter] public IModalService Modal { get; set; }
 
         /// <summary>
         /// The NoteFileId we are using
         /// </summary>
+        /// <value>The notesfile identifier.</value>
         [Parameter] public int NotesfileId { get; set; }
 
         /// <summary>
         /// Non zero when viewing a note
         /// </summary>
+        /// <value>The current note identifier.</value>
         [Parameter] public long CurrentNoteId { get; set; }
 
         /// <summary>
         /// Reference to the menu so we can talk to it.
         /// </summary>
+        /// <value>My menu.</value>
         protected ListMenu MyMenu { get; set; }
 
         /// <summary>
         /// Accumulator for the navigation string
         /// </summary>
+        /// <value>The nav string.</value>
         public string NavString { get; set; }
 
         /// <summary>
         /// Our direct navigation typin box
         /// </summary>
+        /// <value>The sf text box.</value>
         protected SfTextBox sfTextBox { get; set; }
 
         /// <summary>
         /// Our index grid
         /// </summary>
+        /// <value>The sf grid1.</value>
         public SfGrid<GNoteHeader> sfGrid1 { get; set; }
 
         /// <summary>
         /// Filter setting for the grid
         /// </summary>
-        //protected GridFilterSettings FilterSettings { get; set; }
-
-        /// <summary>
-        /// Page settings for the grid
-        /// </summary>
+        /// <value>The page settings.</value>
         protected GridPageSettings PageSettings { get; set; }
 
         /// <summary>
         /// Grid page size
         /// </summary>
+        /// <value>The size of the page.</value>
         protected int PageSize { get; set; }
 
         /// <summary>
         /// Current page of grid
         /// </summary>
+        /// <value>The current page.</value>
         protected int CurPage { get; set; }
 
         /// <summary>
         /// Should note body be shown?
         /// </summary>
+        /// <value><c>true</c> if [show content]; otherwise, <c>false</c>.</value>
         protected bool ShowContent { get; set; }
 
         /// <summary>
         /// Should resopnse body be shown?
         /// </summary>
+        /// <value><c>true</c> if [show content r]; otherwise, <c>false</c>.</value>
         protected bool ShowContentR { get; set; }
 
         /// <summary>
         /// If the grid expanded fully expanded
         /// </summary>
+        /// <value><c>true</c> if [expand all]; otherwise, <c>false</c>.</value>
         protected bool ExpandAll { get; set; }
 
         /// <summary>
         /// Are we sequencing?
         /// </summary>
+        /// <value><c>true</c> if this instance is seq; otherwise, <c>false</c>.</value>
         protected bool IsSeq { get; set; }
 
         /// <summary>
         /// Model for the index data
         /// </summary>
+        /// <value>The model.</value>
         public NoteDisplayIndexModel Model { get; set; }
 
+        /// <summary>
+        /// Gets or sets the client.
+        /// </summary>
+        /// <value>The client.</value>
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
+        /// <summary>
+        /// Gets or sets the navigation.
+        /// </summary>
+        /// <value>The navigation.</value>
         [Inject] NavigationManager Navigation { get; set; }
+        /// <summary>
+        /// Gets or sets the session storage.
+        /// </summary>
+        /// <value>The session storage.</value>
         [Inject] Blazored.SessionStorage.ISessionStorageService sessionStorage { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NoteIndex"/> class.
+        /// </summary>
         public NoteIndex()
         {
         }
@@ -145,7 +183,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Set up and get data
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnParametersSetAsync()
         {
             try
@@ -213,7 +251,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Note selected for display
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The arguments.</param>
         protected void DisplayIt(RowSelectEventArgs<GNoteHeader> args)
         {
             sessionStorage.SetItemAsync("IndexPage", sfGrid1.PageSettings.CurrentPage).GetAwaiter();
@@ -224,7 +262,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Goto a specific note
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="Id">The identifier.</param>
         public void GotoNote(long Id)
         {
             CurrentNoteId = Id;
@@ -243,8 +281,8 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Get the next base note header given the current one
         /// </summary>
-        /// <param name="oh"></param>
-        /// <returns></returns>
+        /// <param name="oh">The oh.</param>
+        /// <returns>System.Int64.</returns>
         public long GetNextBaseNote(GNoteHeader oh)
         {
             long newId = 0;
@@ -258,8 +296,8 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Get the nest note given the current one
         /// </summary>
-        /// <param name="oh"></param>
-        /// <returns></returns>
+        /// <param name="oh">The oh.</param>
+        /// <returns>System.Int64.</returns>
         public long GetNextNote(GNoteHeader oh)
         {
             long newId = 0;
@@ -275,8 +313,8 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Get the previous base note
         /// </summary>
-        /// <param name="oh"></param>
-        /// <returns></returns>
+        /// <param name="oh">The oh.</param>
+        /// <returns>System.Int64.</returns>
         public long GetPreviousBaseNote(GNoteHeader oh)
         {
             long newId = 0;
@@ -289,8 +327,8 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Get the previous note
         /// </summary>
-        /// <param name="oh"></param>
-        /// <returns></returns>
+        /// <param name="oh">The oh.</param>
+        /// <returns>System.Int64.</returns>
         public long GetPreviousNote(GNoteHeader oh)
         {
             long newId = 0;
@@ -306,8 +344,8 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Get just the response headers for the given noteid
         /// </summary>
-        /// <param name="headerId"></param>
-        /// <returns></returns>
+        /// <param name="headerId">The header identifier.</param>
+        /// <returns>List&lt;GNoteHeader&gt;.</returns>
         public List<GNoteHeader> GetResponseHeaders(long headerId)
         {
             return Model.AllNotes.List.Where(p => p.BaseNoteId == headerId && (p.ResponseOrdinal != 0) && p.IsDeleted == false && p.Version == 0)
@@ -317,7 +355,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Get the Index model - used by the NotePanel
         /// </summary>
-        /// <returns></returns>
+        /// <returns>NoteDisplayIndexModel.</returns>
         public NoteDisplayIndexModel GetModel()
         {
             return Model;
@@ -326,9 +364,9 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Get note header Id given note ordinal and response ordinal
         /// </summary>
-        /// <param name="noteOrd"></param>
-        /// <param name="respOrd"></param>
-        /// <returns></returns>
+        /// <param name="noteOrd">The note ord.</param>
+        /// <param name="respOrd">The resp ord.</param>
+        /// <returns>System.Int64.</returns>
         public long GetNoteHeaderId(int noteOrd, int respOrd)
         {
             long newId = 0;
@@ -352,63 +390,112 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Search results
         /// </summary>
+        /// <value>The results.</value>
         private List<GNoteHeader> results { get; set; }
 
         /// <summary>
         /// Are we searching?
         /// </summary>
+        /// <value><c>true</c> if this instance is search; otherwise, <c>false</c>.</value>
         private bool isSearch { get; set; }
 
         /// <summary>
         /// Temp used for navigation
         /// </summary>
+        /// <value>The mode.</value>
         private long mode { get; set; }
 
+        /// <summary>
+        /// Enum SearchOption
+        /// </summary>
         public enum SearchOption { Author, Title, Content, Tag, DirMess, TimeIsAfter, TimeIsBefore }
+        /// <summary>
+        /// Class Search.
+        /// </summary>
         [DataContract]
         public class Search
         {
             // User doing the search
+            /// <summary>
+            /// Gets or sets the user identifier.
+            /// </summary>
+            /// <value>The user identifier.</value>
             [StringLength(450)]
             [DataMember(Order = 1)]
             public string? UserId { get; set; }
 
             // search specs Option
+            /// <summary>
+            /// Gets or sets the option.
+            /// </summary>
+            /// <value>The option.</value>
             [Display(Name = "Search By")]
             [DataMember(Order = 2)]
             public SearchOption Option { get; set; }
 
             // Text to search for
+            /// <summary>
+            /// Gets or sets the text.
+            /// </summary>
+            /// <value>The text.</value>
             [Display(Name = "Search Text")]
             [DataMember(Order = 3)]
             public string? Text { get; set; }
 
             // DateTime to compare to
+            /// <summary>
+            /// Gets or sets the time.
+            /// </summary>
+            /// <value>The time.</value>
             [Display(Name = "Search Date/Time")]
             [DataMember(Order = 4)]
             public DateTime Time { get; set; }
 
             // current/next info -- where we are in the search
+            /// <summary>
+            /// Gets or sets the note file identifier.
+            /// </summary>
+            /// <value>The note file identifier.</value>
             [Column(Order = 0)]
             [DataMember(Order = 5)]
             public int NoteFileId { get; set; }
 
+            /// <summary>
+            /// Gets or sets the archive identifier.
+            /// </summary>
+            /// <value>The archive identifier.</value>
             [Required]
             [Column(Order = 1)]
             [DataMember(Order = 6)]
             public int ArchiveId { get; set; }
 
+            /// <summary>
+            /// Gets or sets the base ordinal.
+            /// </summary>
+            /// <value>The base ordinal.</value>
             [Column(Order = 2)]
             [DataMember(Order = 7)]
             public int BaseOrdinal { get; set; }
+            /// <summary>
+            /// Gets or sets the response ordinal.
+            /// </summary>
+            /// <value>The response ordinal.</value>
             [Column(Order = 3)]
             [DataMember(Order = 8)]
             public int ResponseOrdinal { get; set; }
+            /// <summary>
+            /// Gets or sets the note identifier.
+            /// </summary>
+            /// <value>The note identifier.</value>
             [Column(Order = 4)]
             [DataMember(Order = 9)]
             public long NoteID { get; set; }
         }
-         
+
+        /// <summary>
+        /// Starts the search.
+        /// </summary>
+        /// <param name="target">The target.</param>
         public async Task StartSearch(Search target)
         {
             //message = "Searching... Please Wait...";
@@ -445,6 +532,10 @@ namespace Notes2022.Client.Pages
         }
 
 
+        /// <summary>
+        /// Searches the tags.
+        /// </summary>
+        /// <param name="target">The target.</param>
         protected async Task SearchTags(Search target)
         {
             if (Model.Tags.List == null || Model.Tags.List.Count == 0)
@@ -488,6 +579,10 @@ namespace Notes2022.Client.Pages
             StateHasChanged();
         }
 
+        /// <summary>
+        /// Searches the header.
+        /// </summary>
+        /// <param name="target">The target.</param>
         protected async Task SearchHeader(Search target)
         {
             results = new List<GNoteHeader>();
@@ -538,6 +633,10 @@ namespace Notes2022.Client.Pages
             StateHasChanged();
         }
 
+        /// <summary>
+        /// Searches the contents.
+        /// </summary>
+        /// <param name="target">The target.</param>
         protected async Task SearchContents(Search target)
         {
             results = new List<GNoteHeader>();
@@ -581,6 +680,9 @@ namespace Notes2022.Client.Pages
         }
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
+        /// <summary>
+        /// Starts the seq.
+        /// </summary>
         protected async Task StartSeq()
         {
             GSequencer seq = await sessionStorage.GetItemAsync<GSequencer>("SeqItem");
@@ -648,6 +750,10 @@ namespace Notes2022.Client.Pages
             StateHasChanged();
         }
 
+        /// <summary>
+        /// Actions the complete handler.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         public async void ActionCompleteHandler(ActionEventArgs<GNoteHeader> args)
         {
             await sessionStorage.SetItemAsync("IndexPage", sfGrid1.PageSettings.CurrentPage);
@@ -657,8 +763,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Potential navigation event when ever a key up occurs
         /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
+        /// <param name="args">The <see cref="KeyboardEventArgs"/> instance containing the event data.</param>
         private async Task KeyUpHandler(KeyboardEventArgs args)
         {
             // handle single key press events
@@ -797,7 +902,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Accumulate input
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">The <see cref="InputEventArgs"/> instance containing the event data.</param>
         private async void NavInputHandler(InputEventArgs args)
         {
             NavString = args.Value;
@@ -807,7 +912,6 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Clear accumulated input
         /// </summary>
-        /// <returns></returns>
         private async Task ClearNav()
         {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
@@ -820,24 +924,7 @@ namespace Notes2022.Client.Pages
         /// <summary>
         /// Handle state change for expand all switch
         /// </summary>
-        /// <param name="args"></param>
-        //private async void ExpandAllChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
-        //{
-        //    if (ExpandAll)
-        //    {
-        //        await sfGrid1.ExpandAllDetailRowAsync();
-        //    }
-        //    else
-        //    {
-        //        await sfGrid1.CollapseAllDetailRowAsync();
-        //    }
-        //    StateHasChanged();
-        //}
-
-        /// <summary>
-        /// Shows a simple text message dialog
-        /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">The message.</param>
         private void ShowMessage(string message)
         {
             var parameters = new ModalParameters();
@@ -846,6 +933,11 @@ namespace Notes2022.Client.Pages
         }
 #pragma warning restore CS8604 // Possible null reference argument.
 
+        /// <summary>
+        /// On after render as an asynchronous operation.
+        /// </summary>
+        /// <param name="firstRender">if set to <c>true</c> [first render].</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);

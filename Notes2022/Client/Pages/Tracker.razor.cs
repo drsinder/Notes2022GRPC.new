@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-29-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="Tracker.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 /*--------------------------------------------------------------------------
     **
     ** Copyright © 2022, Dale Sinder
@@ -29,16 +42,37 @@ using Notes2022.Shared;
 
 namespace Notes2022.Client.Pages
 {
+    /// <summary>
+    /// Class Tracker.
+    /// Implements the <see cref="Microsoft.AspNetCore.Components.ComponentBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Components.ComponentBase" />
     public partial class Tracker
     {
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        /// <summary>
+        /// Gets or sets the stuff.
+        /// </summary>
+        /// <value>The stuff.</value>
         private List<GNotefile> stuff { get; set; }
 
+        /// <summary>
+        /// Gets or sets the files.
+        /// </summary>
+        /// <value>The files.</value>
         private List<GNotefile> files { get; set; }
 
+        /// <summary>
+        /// Gets or sets the trackers.
+        /// </summary>
+        /// <value>The trackers.</value>
         private List<GSequencer> trackers { get; set; }
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
+        /// <summary>
+        /// On parameters set as an asynchronous operation.
+        /// </summary>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnParametersSetAsync()
         {
             trackers = (await Client.GetSequencerAsync(new NoRequest(), myState.AuthHeader)).List.ToList();
@@ -48,6 +82,9 @@ namespace Notes2022.Client.Pages
             await Shuffle();
         }
 
+        /// <summary>
+        /// Shuffles this instance.
+        /// </summary>
         public async Task Shuffle()
         {
             files = new List<GNotefile>();
@@ -71,6 +108,9 @@ namespace Notes2022.Client.Pages
             StateHasChanged();
         }
 
+        /// <summary>
+        /// Cancels this instance.
+        /// </summary>
         private void Cancel()
         {
             NavMan.NavigateTo("");

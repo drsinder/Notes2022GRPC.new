@@ -359,7 +359,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Return to index mode...
         /// </summary>
-        /// <param name="args">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
+        /// <param name="args">The <see cref="MouseEventArgs" /> instance containing the event data.</param>
         private void OnDone(MouseEventArgs args)
         {
             MyNoteIndex.Listing();
@@ -368,7 +368,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Print the note
         /// </summary>
-        /// <param name="args">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
+        /// <param name="args">The <see cref="MouseEventArgs" /> instance containing the event data.</param>
         private async void OnPrint(MouseEventArgs args)
         {
             await PrintString(false);
@@ -377,7 +377,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// Print the whole string
         /// </summary>
-        /// <param name="args">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
+        /// <param name="args">The <see cref="MouseEventArgs" /> instance containing the event data.</param>
         private async void OnPrintString(MouseEventArgs args)
         {
             await PrintString(true);
@@ -464,7 +464,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// collect input and clear EatEnter
         /// </summary>
-        /// <param name="args">The <see cref="InputEventArgs"/> instance containing the event data.</param>
+        /// <param name="args">The <see cref="InputEventArgs" /> instance containing the event data.</param>
         private async void NavInputHandler(InputEventArgs args)
         {
             NavString = args.Value;
@@ -486,7 +486,7 @@ namespace Notes2022.Client.Panels
         /// Handle single key press commands right away.  Otherwise
         /// let input accumulate.
         /// </summary>
-        /// <param name="args">The <see cref="KeyboardEventArgs"/> instance containing the event data.</param>
+        /// <param name="args">The <see cref="KeyboardEventArgs" /> instance containing the event data.</param>
         private async Task KeyUpHandler(KeyboardEventArgs args)
         {
             switch (NavString)

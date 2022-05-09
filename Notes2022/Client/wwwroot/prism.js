@@ -1,7 +1,21 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 04-20-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 11-20-2021
+// ***********************************************************************
+// <copyright file="prism.js" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 /* PrismJS 1.25.0
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+aspnet+c+csharp+cpp+java+json+markup-templating+perl+php+powershell+cshtml+sql+wasm+xml-doc */
 /// <reference lib="WebWorker"/>
 
+/// <var>The self</var>
 var _self = (typeof window !== 'undefined')
 	? window   // if in browser
 	: (
@@ -28,12 +42,15 @@ var Prism = (function (_self) {
 
 	// Private helper vars
 	var lang = /\blang(?:uage)?-([\w-]+)\b/i;
+	/// <var>The unique identifier</var>
 	var uniqueId = 0;
 
 	// The grammar object for plaintext
+	/// <var>The plain text grammar</var>
 	var plainTextGrammar = {};
 
 
+	/// <var>The </var>
 	var _ = {
 		/**
 		 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
@@ -91,6 +108,10 @@ var Prism = (function (_self) {
 		 */
 		util: {
 			encode: function encode(tokens) {
+				/// <summary>
+				/// Encodes the specified tokens.
+				/// </summary>
+				/// <param name="tokens">The tokens.</param>
 				if (tokens instanceof Token) {
 					return new Token(tokens.type, encode(tokens.content), tokens.alias);
 				} else if (Array.isArray(tokens)) {
@@ -117,6 +138,9 @@ var Prism = (function (_self) {
 			 * type(/abc+/)    === 'RegExp'
 			 */
 			type: function (o) {
+				/// <summary>
+				/// </summary>
+				/// <param name="o">The o.</param>
 				return Object.prototype.toString.call(o).slice(8, -1);
 			},
 
@@ -127,6 +151,9 @@ var Prism = (function (_self) {
 			 * @returns {number}
 			 */
 			objId: function (obj) {
+				/// <summary>
+				/// </summary>
+				/// <param name="obj">The object.</param>
 				if (!obj['__id']) {
 					Object.defineProperty(obj, '__id', { value: ++uniqueId });
 				}
@@ -144,6 +171,11 @@ var Prism = (function (_self) {
 			 * @template T
 			 */
 			clone: function deepClone(o, visited) {
+				/// <summary>
+				/// Deeps the clone.
+				/// </summary>
+				/// <param name="o">The o.</param>
+				/// <param name="visited">The visited.</param>
 				visited = visited || {};
 
 				var clone; var id;
@@ -173,6 +205,10 @@ var Prism = (function (_self) {
 						visited[id] = clone;
 
 						(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
+							/// <summary>
+							/// </summary>
+							/// <param name="v">The v.</param>
+							/// <param name="i">The i.</param>
 							clone[i] = deepClone(v, visited);
 						});
 
@@ -192,6 +228,9 @@ var Prism = (function (_self) {
 			 * @returns {string}
 			 */
 			getLanguage: function (element) {
+				/// <summary>
+				/// </summary>
+				/// <param name="element">The element.</param>
 				while (element && !lang.test(element.className)) {
 					element = element.parentElement;
 				}
@@ -209,6 +248,8 @@ var Prism = (function (_self) {
 			 * @returns {HTMLScriptElement | null}
 			 */
 			currentScript: function () {
+				/// <summary>
+				/// </summary>
 				if (typeof document === 'undefined') {
 					return null;
 				}
@@ -263,6 +304,11 @@ var Prism = (function (_self) {
 			 * @returns {boolean}
 			 */
 			isActive: function (element, className, defaultActivation) {
+				/// <summary>
+				/// </summary>
+				/// <param name="element">The element.</param>
+				/// <param name="className">Name of the class.</param>
+				/// <param name="defaultActivation">The default activation.</param>
 				var no = 'no-' + className;
 
 				while (element) {
@@ -324,6 +370,10 @@ var Prism = (function (_self) {
 			 * });
 			 */
 			extend: function (id, redef) {
+				/// <summary>
+				/// </summary>
+				/// <param name="id">The identifier.</param>
+				/// <param name="redef">The redef.</param>
 				var lang = _.util.clone(_.languages[id]);
 
 				for (var key in redef) {
@@ -409,6 +459,12 @@ var Prism = (function (_self) {
 			 * @public
 			 */
 			insertBefore: function (inside, before, insert, root) {
+				/// <summary>
+				/// </summary>
+				/// <param name="inside">The inside.</param>
+				/// <param name="before">The before.</param>
+				/// <param name="insert">The insert.</param>
+				/// <param name="root">The root.</param>
 				root = root || /** @type {any} */ (_.languages);
 				var grammar = root[inside];
 				/** @type {Grammar} */
@@ -437,6 +493,10 @@ var Prism = (function (_self) {
 
 				// Update references in other language definitions
 				_.languages.DFS(_.languages, function (key, value) {
+					/// <summary>
+					/// </summary>
+					/// <param name="key">The key.</param>
+					/// <param name="value">The value.</param>
 					if (value === old && key != inside) {
 						this[key] = ret;
 					}
@@ -447,6 +507,13 @@ var Prism = (function (_self) {
 
 			// Traverse a language definition with Depth First Search
 			DFS: function DFS(o, callback, type, visited) {
+				/// <summary>
+				/// DFSs the specified o.
+				/// </summary>
+				/// <param name="o">The o.</param>
+				/// <param name="callback">The callback.</param>
+				/// <param name="type">The type.</param>
+				/// <param name="visited">The visited.</param>
 				visited = visited || {};
 
 				var objId = _.util.objId;
@@ -485,6 +552,10 @@ var Prism = (function (_self) {
 		 * @public
 		 */
 		highlightAll: function (async, callback) {
+			/// <summary>
+			/// </summary>
+			/// <param name="async">The asynchronous.</param>
+			/// <param name="callback">The callback.</param>
 			_.highlightAllUnder(document, async, callback);
 		},
 
@@ -504,6 +575,11 @@ var Prism = (function (_self) {
 		 * @public
 		 */
 		highlightAllUnder: function (container, async, callback) {
+			/// <summary>
+			/// </summary>
+			/// <param name="container">The container.</param>
+			/// <param name="async">The asynchronous.</param>
+			/// <param name="callback">The callback.</param>
 			var env = {
 				callback: callback,
 				container: container,
@@ -551,6 +627,11 @@ var Prism = (function (_self) {
 		 */
 		highlightElement: function (element, async, callback) {
 			// Find language
+			/// <summary>
+			/// </summary>
+			/// <param name="element">The element.</param>
+			/// <param name="async">The asynchronous.</param>
+			/// <param name="callback">The callback.</param>
 			var language = _.util.getLanguage(element);
 			var grammar = _.languages[language];
 
@@ -573,6 +654,10 @@ var Prism = (function (_self) {
 			};
 
 			function insertHighlightedCode(highlightedCode) {
+				/// <summary>
+				/// Inserts the highlighted code.
+				/// </summary>
+				/// <param name="highlightedCode">The highlighted code.</param>
 				env.highlightedCode = highlightedCode;
 
 				_.hooks.run('before-insert', env);
@@ -609,6 +694,9 @@ var Prism = (function (_self) {
 				var worker = new Worker(_.filename);
 
 				worker.onmessage = function (evt) {
+					/// <summary>
+					/// </summary>
+					/// <param name="evt">The evt.</param>
 					insertHighlightedCode(evt.data);
 				};
 
@@ -643,6 +731,11 @@ var Prism = (function (_self) {
 		 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
 		 */
 		highlight: function (text, grammar, language) {
+			/// <summary>
+			/// </summary>
+			/// <param name="text">The text.</param>
+			/// <param name="grammar">The grammar.</param>
+			/// <param name="language">The language.</param>
 			var env = {
 				code: text,
 				grammar: grammar,
@@ -679,6 +772,10 @@ var Prism = (function (_self) {
 		 * });
 		 */
 		tokenize: function (text, grammar) {
+			/// <summary>
+			/// </summary>
+			/// <param name="text">The text.</param>
+			/// <param name="grammar">The grammar.</param>
 			var rest = grammar.rest;
 			if (rest) {
 				for (var token in rest) {
@@ -717,6 +814,10 @@ var Prism = (function (_self) {
 			 * @public
 			 */
 			add: function (name, callback) {
+				/// <summary>
+				/// </summary>
+				/// <param name="name">The name.</param>
+				/// <param name="callback">The callback.</param>
 				var hooks = _.hooks.all;
 
 				hooks[name] = hooks[name] || [];
@@ -734,6 +835,10 @@ var Prism = (function (_self) {
 			 * @public
 			 */
 			run: function (name, env) {
+				/// <summary>
+				/// </summary>
+				/// <param name="name">The name.</param>
+				/// <param name="env">The env.</param>
 				var callbacks = _.hooks.all[name];
 
 				if (!callbacks || !callbacks.length) {
@@ -777,6 +882,13 @@ var Prism = (function (_self) {
 		 * @see GrammarToken
 		 * @public
 		 */
+		/// <summary>
+		/// Tokens the specified type.
+		/// </summary>
+		/// <param name="type">The type.</param>
+		/// <param name="content">The content.</param>
+		/// <param name="alias">The alias.</param>
+		/// <param name="matchedStr">The matched string.</param>
 		this.type = type;
 		/**
 		 * The strings or tokens contained by this token.
@@ -828,12 +940,20 @@ var Prism = (function (_self) {
 	 * @static
 	 */
 	Token.stringify = function stringify(o, language) {
+		/// <summary>
+		/// Stringifies the specified o.
+		/// </summary>
+		/// <param name="o">The o.</param>
+		/// <param name="language">The language.</param>
 		if (typeof o == 'string') {
 			return o;
 		}
 		if (Array.isArray(o)) {
 			var s = '';
 			o.forEach(function (e) {
+				/// <summary>
+				/// </summary>
+				/// <param name="e">The e.</param>
 				s += stringify(e, language);
 			});
 			return s;
@@ -875,6 +995,13 @@ var Prism = (function (_self) {
 	 * @returns {RegExpExecArray | null}
 	 */
 	function matchPattern(pattern, pos, text, lookbehind) {
+		/// <summary>
+		/// Matches the pattern.
+		/// </summary>
+		/// <param name="pattern">The pattern.</param>
+		/// <param name="pos">The position.</param>
+		/// <param name="text">The text.</param>
+		/// <param name="lookbehind">The lookbehind.</param>
 		pattern.lastIndex = pos;
 		var match = pattern.exec(text);
 		if (match && lookbehind && match[1]) {
@@ -901,6 +1028,15 @@ var Prism = (function (_self) {
 	 * @property {number} reach
 	 */
 	function matchGrammar(text, tokenList, grammar, startNode, startPos, rematch) {
+		/// <summary>
+		/// Matches the grammar.
+		/// </summary>
+		/// <param name="text">The text.</param>
+		/// <param name="tokenList">The token list.</param>
+		/// <param name="grammar">The grammar.</param>
+		/// <param name="startNode">The start node.</param>
+		/// <param name="startPos">The start position.</param>
+		/// <param name="rematch">The rematch.</param>
 		for (var token in grammar) {
 			if (!grammar.hasOwnProperty(token) || !grammar[token]) {
 				continue;
@@ -1062,6 +1198,9 @@ var Prism = (function (_self) {
 	 */
 	function LinkedList() {
 		/** @type {LinkedListNode<T>} */
+		/// <summary>
+		/// Linkeds the list.
+		/// </summary>
 		var head = { value: null, prev: null, next: null };
 		/** @type {LinkedListNode<T>} */
 		var tail = { value: null, prev: head, next: null };
@@ -1085,6 +1224,12 @@ var Prism = (function (_self) {
 	 */
 	function addAfter(list, node, value) {
 		// assumes that node != list.tail && values.length >= 0
+		/// <summary>
+		/// Adds the after.
+		/// </summary>
+		/// <param name="list">The list.</param>
+		/// <param name="node">The node.</param>
+		/// <param name="value">The value.</param>
 		var next = node.next;
 
 		var newNode = { value: value, prev: node, next: next };
@@ -1103,6 +1248,12 @@ var Prism = (function (_self) {
 	 * @template T
 	 */
 	function removeRange(list, node, count) {
+		/// <summary>
+		/// Removes the range.
+		/// </summary>
+		/// <param name="list">The list.</param>
+		/// <param name="node">The node.</param>
+		/// <param name="count">The count.</param>
 		var next = node.next;
 		for (var i = 0; i < count && next !== list.tail; i++) {
 			next = next.next;
@@ -1117,6 +1268,10 @@ var Prism = (function (_self) {
 	 * @template T
 	 */
 	function toArray(list) {
+		/// <summary>
+		/// To the array.
+		/// </summary>
+		/// <param name="list">The list.</param>
 		var array = [];
 		var node = list.head.next;
 		while (node !== list.tail) {
@@ -1136,6 +1291,9 @@ var Prism = (function (_self) {
 		if (!_.disableWorkerMessageHandler) {
 			// In worker
 			_self.addEventListener('message', function (evt) {
+				/// <summary>
+				/// </summary>
+				/// <param name="evt">The evt.</param>
 				var message = JSON.parse(evt.data);
 				var lang = message.language;
 				var code = message.code;
@@ -1152,6 +1310,7 @@ var Prism = (function (_self) {
 	}
 
 	// Get current script and highlight
+	/// <var>The script</var>
 	var script = _.util.currentScript();
 
 	if (script) {
@@ -1163,6 +1322,9 @@ var Prism = (function (_self) {
 	}
 
 	function highlightAutomaticallyCallback() {
+		/// <summary>
+		/// Highlights the automatically callback.
+		/// </summary>
 		if (!_.manual) {
 			_.highlightAll();
 		}
@@ -1175,6 +1337,7 @@ var Prism = (function (_self) {
 		// might take longer one animation frame to execute which can create a race condition where only some plugins have
 		// been loaded when Prism.highlightAll() is executed, depending on how fast resources are loaded.
 		// See https://github.com/PrismJS/prism/issues/2102
+		/// <var>The ready state</var>
 		var readyState = document.readyState;
 		if (readyState === 'loading' || readyState === 'interactive' && script && script.defer) {
 			document.addEventListener('DOMContentLoaded', highlightAutomaticallyCallback);
@@ -1332,6 +1495,9 @@ Prism.languages.markup['doctype'].inside['internal-subset'].inside = Prism.langu
 // Plugin to make entity title show the real entity, idea by Roman Komarov
 Prism.hooks.add('wrap', function (env) {
 
+	/// <summary>
+	/// </summary>
+	/// <param name="env">The env.</param>
 	if (env.type === 'entity') {
 		env.attributes['title'] = env.content.replace(/&amp;/, '&');
 	}
@@ -1350,6 +1516,11 @@ Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
 	 * addInlined('style', 'css');
 	 */
 	value: function addInlined(tagName, lang) {
+		/// <summary>
+		/// Adds the inlined.
+		/// </summary>
+		/// <param name="tagName">Name of the tag.</param>
+		/// <param name="lang">The language.</param>
 		var includedCdataInside = {};
 		includedCdataInside['language-' + lang] = {
 			pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
@@ -1371,6 +1542,8 @@ Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
 
 		var def = {};
 		def[tagName] = {
+			/// <summary>
+			/// </summary>
 			pattern: RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () { return tagName; }), 'i'),
 			lookbehind: true,
 			greedy: true,
@@ -1393,6 +1566,10 @@ Object.defineProperty(Prism.languages.markup.tag, 'addAttribute', {
 	 * addAttribute('style', 'css');
 	 */
 	value: function (attrName, lang) {
+		/// <summary>
+		/// </summary>
+		/// <param name="attrName">Name of the attribute.</param>
+		/// <param name="lang">The language.</param>
 		Prism.languages.markup.tag.inside['special-attr'].push({
 			pattern: RegExp(
 				/(^|["'\s])/.source + '(?:' + attrName + ')' + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source,
@@ -1435,6 +1612,9 @@ Prism.languages.rss = Prism.languages.xml;
 
 (function (Prism) {
 
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	var string = /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
 
 	Prism.languages.css = {
@@ -1699,8 +1879,20 @@ Prism.languages.js = Prism.languages.javascript;
 	 * @returns {string} the pattern with all placeholders replaced with their corresponding replacements.
 	 * @example replace(/a<<0>>a/.source, [/b+/.source]) === /a(?:b+)a/.source
 	 */
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	function replace(pattern, replacements) {
+		/// <summary>
+		/// Replaces the specified pattern.
+		/// </summary>
+		/// <param name="pattern">The pattern.</param>
+		/// <param name="replacements">The replacements.</param>
 		return pattern.replace(/<<(\d+)>>/g, function (m, index) {
+			/// <summary>
+			/// </summary>
+			/// <param name="m">The m.</param>
+			/// <param name="index">The index.</param>
 			return '(?:' + replacements[+index] + ')';
 		});
 	}
@@ -1711,6 +1903,12 @@ Prism.languages.js = Prism.languages.javascript;
 	 * @returns {RegExp}
 	 */
 	function re(pattern, replacements, flags) {
+		/// <summary>
+		/// Res the specified pattern.
+		/// </summary>
+		/// <param name="pattern">The pattern.</param>
+		/// <param name="replacements">The replacements.</param>
+		/// <param name="flags">The flags.</param>
 		return RegExp(replace(pattern, replacements), flags || '');
 	}
 
@@ -1722,7 +1920,14 @@ Prism.languages.js = Prism.languages.javascript;
 	 * @returns {string}
 	 */
 	function nested(pattern, depthLog2) {
+		/// <summary>
+		/// Nesteds the specified pattern.
+		/// </summary>
+		/// <param name="pattern">The pattern.</param>
+		/// <param name="depthLog2">The depth log2.</param>
 		for (var i = 0; i < depthLog2; i++) {
+			/// <summary>
+			/// </summary>
 			pattern = pattern.replace(/<<self>>/g, function () { return '(?:' + pattern + ')'; });
 		}
 		return pattern.replace(/<<self>>/g, '[^\\s\\S]');
@@ -1743,6 +1948,10 @@ Prism.languages.js = Prism.languages.javascript;
 
 	// keywords
 	function keywordsToPattern(words) {
+		/// <summary>
+		/// Keywordses to pattern.
+		/// </summary>
+		/// <param name="words">The words.</param>
 		return '\\b(?:' + words.trim().replace(/ /g, '|') + ')\\b';
 	}
 	var typeDeclarationKeywords = keywordsToPattern(keywordKinds.typeDeclaration);
@@ -1964,12 +2173,20 @@ Prism.languages.js = Prism.languages.javascript;
 	});
 
 	// attributes
+	/// <var>The regular string or character</var>
 	var regularStringOrCharacter = regularString + '|' + character;
+	/// <var>The regular string character or comment</var>
+	/// <var>The ?</var>
 	var regularStringCharacterOrComment = replace(/\/(?![*/])|\/\/[^\r\n]*[\r\n]|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>/.source, [regularStringOrCharacter]);
+	/// <var>The round expression</var>
+	/// <var>The ?</var>
+	/// <var>The ?</var>
 	var roundExpression = nested(replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [regularStringCharacterOrComment]), 2);
 
 	// https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/#attribute-targets
+	/// <var>The attribute target</var>
 	var attrTarget = /\b(?:assembly|event|field|method|module|param|property|return|type)\b/.source;
+	/// <var>The attribute</var>
 	var attr = replace(/<<0>>(?:\s*\(<<1>>*\))?/.source, [identifier, roundExpression]);
 
 	Prism.languages.insertBefore('csharp', 'class-name', {
@@ -2001,15 +2218,29 @@ Prism.languages.js = Prism.languages.javascript;
 
 
 	// string interpolation
+	/// <var>The format string</var>
 	var formatString = /:[^}\r\n]+/.source;
 	// multi line
+	/// <var>The m interpolation round</var>
+	/// <var>The ?</var>
+	/// <var>The ?</var>
 	var mInterpolationRound = nested(replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [regularStringCharacterOrComment]), 2);
+	/// <var>The m interpolation</var>
 	var mInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [mInterpolationRound, formatString]);
 	// single line
+	/// <var>The s interpolation round</var>
+	/// <var>The ?</var>
+	/// <var>The ?</var>
 	var sInterpolationRound = nested(replace(/[^"'/()]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>|\(<<self>>*\)/.source, [regularStringOrCharacter]), 2);
+	/// <var>The s interpolation</var>
 	var sInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [sInterpolationRound, formatString]);
 
 	function createInterpolationInside(interpolation, interpolationRound) {
+		/// <summary>
+		/// Creates the interpolation inside.
+		/// </summary>
+		/// <param name="interpolation">The interpolation.</param>
+		/// <param name="interpolationRound">The interpolation round.</param>
 		return {
 			'interpolation': {
 				pattern: re(/((?:^|[^{])(?:\{\{)*)<<0>>/.source, [interpolation]),
@@ -2170,13 +2401,20 @@ delete Prism.languages.c['boolean'];
 
 (function (Prism) {
 
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	var keyword = /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
+	/// <summary>
+	/// </summary>
 	var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(/<keyword>/g, function () { return keyword.source; });
 
 	Prism.languages.cpp = Prism.languages.extend('c', {
 		'class-name': [
 			{
 				pattern: RegExp(/(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source
+					/// <summary>
+					/// </summary>
 					.replace(/<keyword>/g, function () { return keyword.source; })),
 				lookbehind: true
 			},
@@ -2211,6 +2449,8 @@ delete Prism.languages.c['boolean'];
 				/"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
 				'|' +
 				// module name or partition or both
+				/// <summary>
+				/// </summary>
 				/<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(/<mod-name>/g, function () { return modName; }) +
 				')'
 			),
@@ -2270,6 +2510,9 @@ delete Prism.languages.c['boolean'];
 
 (function (Prism) {
 
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	var keywords = /\b(?:abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|exports|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|module|native|new|non-sealed|null|open|opens|package|permits|private|protected|provides|public|record|requires|return|sealed|short|static|strictfp|super|switch|synchronized|this|throw|throws|to|transient|transitive|try|uses|var|void|volatile|while|with|yield)\b/;
 
 	// full package (optional) + parent classes (optional)
@@ -2343,6 +2586,8 @@ delete Prism.languages.c['boolean'];
 		'namespace': {
 			pattern: RegExp(
 				/(\b(?:exports|import(?:\s+static)?|module|open|opens|package|provides|requires|to|transitive|uses|with)\s+)(?!<keyword>)[a-z]\w*(?:\.[a-z]\w*)*\.?/
+					/// <summary>
+					/// </summary>
 					.source.replace(/<keyword>/g, function () { return keywords.source; })),
 			lookbehind: true,
 			inside: {
@@ -2389,7 +2634,15 @@ Prism.languages.webmanifest = Prism.languages.json;
 	 * @param {string|number} index
 	 * @returns {string}
 	 */
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	function getPlaceholder(language, index) {
+		/// <summary>
+		/// Gets the placeholder.
+		/// </summary>
+		/// <param name="language">The language.</param>
+		/// <param name="index">The index.</param>
 		return '___' + language.toUpperCase() + index + '___';
 	}
 
@@ -2407,6 +2660,12 @@ Prism.languages.webmanifest = Prism.languages.json;
 			 * @param {(match: string) => boolean} [replaceFilter]
 			 */
 			value: function (env, language, placeholderPattern, replaceFilter) {
+				/// <summary>
+				/// </summary>
+				/// <param name="env">The env.</param>
+				/// <param name="language">The language.</param>
+				/// <param name="placeholderPattern">The placeholder pattern.</param>
+				/// <param name="replaceFilter">The replace filter.</param>
 				if (env.language !== language) {
 					return;
 				}
@@ -2414,6 +2673,9 @@ Prism.languages.webmanifest = Prism.languages.json;
 				var tokenStack = env.tokenStack = [];
 
 				env.code = env.code.replace(placeholderPattern, function (match) {
+					/// <summary>
+					/// </summary>
+					/// <param name="match">The match.</param>
 					if (typeof replaceFilter === 'function' && !replaceFilter(match)) {
 						return match;
 					}
@@ -2443,6 +2705,10 @@ Prism.languages.webmanifest = Prism.languages.json;
 			 * @param {string} language The language id.
 			 */
 			value: function (env, language) {
+				/// <summary>
+				/// </summary>
+				/// <param name="env">The env.</param>
+				/// <param name="language">The language.</param>
 				if (env.language !== language || !env.tokenStack) {
 					return;
 				}
@@ -2454,6 +2720,10 @@ Prism.languages.webmanifest = Prism.languages.json;
 				var keys = Object.keys(env.tokenStack);
 
 				function walkTokens(tokens) {
+					/// <summary>
+					/// Walks the tokens.
+					/// </summary>
+					/// <param name="tokens">The tokens.</param>
 					for (var i = 0; i < tokens.length; i++) {
 						// all placeholders are replaced already
 						if (j >= keys.length) {
@@ -2705,6 +2975,9 @@ Prism.languages.perl = {
  * Supports PHP 5.3 - 8.0
  */
 (function (Prism) {
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	var comment = /\/\*[\s\S]*?\*\/|\/\/.*|#(?!\[).*/;
 	var constant = [
 		{
@@ -3026,6 +3299,9 @@ Prism.languages.perl = {
 	});
 
 	Prism.hooks.add('before-tokenize', function (env) {
+		/// <summary>
+		/// </summary>
+		/// <param name="env">The env.</param>
 		if (!/<\?/.test(env.code)) {
 			return;
 		}
@@ -3035,6 +3311,9 @@ Prism.languages.perl = {
 	});
 
 	Prism.hooks.add('after-tokenize', function (env) {
+		/// <summary>
+		/// </summary>
+		/// <param name="env">The env.</param>
 		Prism.languages['markup-templating'].tokenizePlaceholders(env, 'php');
 	});
 
@@ -3042,6 +3321,9 @@ Prism.languages.perl = {
 
 (function (Prism) {
 
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	var powershell = Prism.languages.powershell = {
 		'comment': [
 			{
@@ -3107,6 +3389,9 @@ Prism.languages.perl = {
 
 (function (Prism) {
 
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	var commentLike = /\/(?![/*])|\/\/.*[\r\n]|\/\*[^*]*(?:\*(?!\/)[^*]*)*\*\//.source;
 	var stringLike =
 		/@(?!")|"(?:[^\r\n\\"]|\\.)*"|@"(?:[^\\"]|""|\\[\s\S])*"(?!")/.source +
@@ -3121,7 +3406,14 @@ Prism.languages.perl = {
 	 * @returns {string}
 	 */
 	function nested(pattern, depthLog2) {
+		/// <summary>
+		/// Nesteds the specified pattern.
+		/// </summary>
+		/// <param name="pattern">The pattern.</param>
+		/// <param name="depthLog2">The depth log2.</param>
 		for (var i = 0; i < depthLog2; i++) {
+			/// <summary>
+			/// </summary>
 			pattern = pattern.replace(/<self>/g, function () { return '(?:' + pattern + ')'; });
 		}
 		return pattern
@@ -3358,7 +3650,15 @@ Prism.languages.wasm = {
 	 * @param {string} lang
 	 * @param {any} docComment
 	 */
+	/// <summary>
+	/// </summary>
+	/// <param name="Prism">The prism.</param>
 	function insertDocComment(lang, docComment) {
+		/// <summary>
+		/// Inserts the document comment.
+		/// </summary>
+		/// <param name="lang">The language.</param>
+		/// <param name="docComment">The document comment.</param>
 		if (Prism.languages[lang]) {
 			Prism.languages.insertBefore(lang, 'comment', {
 				'doc-comment': docComment

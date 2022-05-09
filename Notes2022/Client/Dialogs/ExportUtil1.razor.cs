@@ -1,4 +1,17 @@
-﻿using Blazored.Modal;
+﻿// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-03-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-08-2022
+// ***********************************************************************
+// <copyright file="ExportUtil1.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Blazored.Modal;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Notes2022.Proto;
@@ -8,19 +21,58 @@ using System.Text;
 
 namespace Notes2022.Client.Dialogs
 {
+    /// <summary>
+    /// Class ExportUtil1.
+    /// Implements the <see cref="ComponentBase" />
+    /// Implements the <see cref="System.IAsyncDisposable" />
+    /// </summary>
+    /// <seealso cref="ComponentBase" />
+    /// <seealso cref="System.IAsyncDisposable" />
     public partial class ExportUtil1
     {
+        /// <summary>
+        /// Gets or sets the modal instance.
+        /// </summary>
+        /// <value>The modal instance.</value>
         [CascadingParameter] public BlazoredModalInstance ModalInstance { get; set; }
 #pragma warning disable IDE1006 // Naming Styles
+        /// <summary>
+        /// Gets or sets the model.
+        /// </summary>
+        /// <value>The model.</value>
         [Parameter] public ExportViewModel model { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the file.
+        /// </summary>
+        /// <value>The name of the file.</value>
         [Parameter] public string FileName { get; set; }
 
+        /// <summary>
+        /// The module
+        /// </summary>
         private IJSObjectReference? module;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="ExportUtil1"/> is marked.
+        /// </summary>
+        /// <value><c>true</c> if marked; otherwise, <c>false</c>.</value>
         private bool marked { get; set; }
+        /// <summary>
+        /// The message
+        /// </summary>
         private string message = "Getting ready...";
 #pragma warning restore IDE1006 // Naming Styles
 
+        /// <summary>
+        /// On after render as an asynchronous operation.
+        /// </summary>
+        /// <param name="firstRender">Set to <c>true</c> if this is the first time <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)" /> has been invoked
+        /// on this component instance; otherwise <c>false</c>.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        /// <remarks>The <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender(System.Boolean)" /> and <see cref="M:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync(System.Boolean)" /> lifecycle methods
+        /// are useful for performing interop, or interacting with values received from <c>@ref</c>.
+        /// Use the <paramref name="firstRender" /> parameter to ensure that initialization work is only performed
+        /// once.</remarks>
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -35,6 +87,10 @@ namespace Notes2022.Client.Dialogs
         //        await module.InvokeAsync<string>("showPrompt", message) : null;
 
 #pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
+        /// </summary>
+        /// <returns>A task that represents the asynchronous dispose operation.</returns>
         async ValueTask IAsyncDisposable.DisposeAsync()
 #pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {
@@ -43,6 +99,10 @@ namespace Notes2022.Client.Dialogs
                 await module.DisposeAsync();
             }
         }
+        /// <summary>
+        /// On initialized as an asynchronous operation.
+        /// </summary>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected async override Task OnInitializedAsync()
         {
             if (model.Marks is not null && model.Marks.Count > 0)
@@ -87,6 +147,10 @@ namespace Notes2022.Client.Dialogs
             await ModalInstance.CancelAsync();
         }
 
+        /// <summary>
+        /// Does the export.
+        /// </summary>
+        /// <returns>MemoryStream.</returns>
         private async Task<MemoryStream> DoExport()
         {
             bool isHtml = model.isHtml;
@@ -251,6 +315,17 @@ namespace Notes2022.Client.Dialogs
         }
 
 
+        /// <summary>
+        /// Writes the note.
+        /// </summary>
+        /// <param name="sw">The sw.</param>
+        /// <param name="bnh">The BNH.</param>
+        /// <param name="nh">The nh.</param>
+        /// <param name="nc">The nc.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
+        /// <param name="isResponse">if set to <c>true</c> [is response].</param>
+        /// <param name="tags">The tags.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private static async Task<bool> WriteNote(StreamWriter sw, GNoteHeader bnh, GNoteHeader nh, GNoteContent nc, bool isHtml, bool isResponse, List<GTags> tags)
         {
             //StringBuilder sb;
@@ -330,6 +405,11 @@ namespace Notes2022.Client.Dialogs
         }
 
 
+        /// <summary>
+        /// Saves as.
+        /// </summary>
+        /// <param name="filename">The filename.</param>
+        /// <param name="data">The data.</param>
         public async Task SaveAs(string filename, byte[] data)
         {
 #pragma warning disable CS8604 // Possible null reference argument.
@@ -337,6 +417,9 @@ namespace Notes2022.Client.Dialogs
 #pragma warning restore CS8604 // Possible null reference argument.
         }
 
+        /// <summary>
+        /// Cancels this instance.
+        /// </summary>
         private void Cancel()
         {
             ModalInstance.CancelAsync();

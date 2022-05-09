@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : sinde
+// Created          : 05-08-2022
+//
+// Last Modified By : sinde
+// Last Modified On : 05-09-2022
+// ***********************************************************************
+// <copyright file="App.razor.cs" company="Notes2022.Client">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Microsoft.JSInterop;
 using Notes2022.Proto;
 using Syncfusion.Licensing;
@@ -6,13 +19,30 @@ using System.Text.Json;
 
 namespace Notes2022.Client
 {
+    /// <summary>
+    /// Class App.
+    /// Implements the <see cref="Microsoft.AspNetCore.Components.ComponentBase" />
+    /// Implements the <see cref="System.IAsyncDisposable" />
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Components.ComponentBase" />
+    /// <seealso cref="System.IAsyncDisposable" />
     public partial class App
     {
+        /// <summary>
+        /// The saved login value
+        /// </summary>
         private LoginReply? savedLoginValue;        // used while updating cookies
 
+        /// <summary>
+        /// The module
+        /// </summary>
         private IJSObjectReference? module;         // for calling javascript
 
 #pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
+        /// </summary>
+        /// <returns>A task that represents the asynchronous dispose operation.</returns>
         async ValueTask IAsyncDisposable.DisposeAsync()
 #pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {
@@ -23,6 +53,10 @@ namespace Notes2022.Client
             }
         }
 
+        /// <summary>
+        /// On parameters set as an asynchronous operation.
+        /// </summary>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         protected override async Task OnParametersSetAsync()
         {
             AString key = await Client.GetTextFileAsync(new AString()
@@ -57,7 +91,7 @@ namespace Notes2022.Client
         /// <summary>
         /// Try to get login cookie
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task GetLoginReplyAsync()
         {
             try
@@ -112,7 +146,6 @@ namespace Notes2022.Client
         /// <param name="cookieName">Name of the cookie</param>
         /// <param name="newCookie">Serialized cookie</param>
         /// <param name="hours">expiry</param>
-        /// <returns></returns>
         public async Task WriteCookie(string cookieName, string newCookie, int hours)
         {
             if (module is not null)
@@ -128,15 +161,16 @@ namespace Notes2022.Client
         }
 
         /// <summary>
-        /// /////////////////////////////////////////////////////////////////////////////////////////
-        /// 
         /// Dealing with login related info
-        /// 
-        /// ////////////////////////////////////////////////////////////////////////////////////////
+        /// /
         /// </summary>
 
         private LoginReply? savedLogin;
 
+        /// <summary>
+        /// Gets or sets the login reply.
+        /// </summary>
+        /// <value>The login reply.</value>
         public LoginReply? LoginReply
         {
             get
@@ -162,8 +196,14 @@ namespace Notes2022.Client
             }
         }
 
+        /// <summary>
+        /// Occurs when [on change].
+        /// </summary>
         public event System.Action? OnChange;
 
+        /// <summary>
+        /// Notifies the state changed.
+        /// </summary>
         private void NotifyStateChanged()
         {
             OnChange?.Invoke();
@@ -172,6 +212,7 @@ namespace Notes2022.Client
         /// <summary>
         /// Check if user is authenticated - Login replay is not null and status == 200
         /// </summary>
+        /// <value><c>true</c> if this instance is authenticated; otherwise, <c>false</c>.</value>
         public bool IsAuthenticated
         {
             get
@@ -183,6 +224,7 @@ namespace Notes2022.Client
         /// <summary>
         /// Is user in Admin role
         /// </summary>
+        /// <value><c>true</c> if this instance is admin; otherwise, <c>false</c>.</value>
         public bool IsAdmin
         {
             get
@@ -196,6 +238,7 @@ namespace Notes2022.Client
         /// <summary>
         /// Is user in User role
         /// </summary>
+        /// <value><c>true</c> if this instance is user; otherwise, <c>false</c>.</value>
         public bool IsUser
         {
             get
@@ -209,6 +252,7 @@ namespace Notes2022.Client
         /// <summary>
         /// Get a Metadata/header for authetication to server in gRPC calls
         /// </summary>
+        /// <value>The authentication header.</value>
         public Metadata AuthHeader
         {
             get
@@ -223,6 +267,7 @@ namespace Notes2022.Client
         /// <summary>
         /// Get the decoded user info
         /// </summary>
+        /// <value>The user information.</value>
         public UserInfo? UserInfo
         {
             get
