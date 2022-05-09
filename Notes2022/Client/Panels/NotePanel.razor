@@ -28,7 +28,7 @@
 @implements IAsyncDisposable
 
 <div>
-    @if (model == null)
+    @if (model is null)
     {
         <p class="center"><em>Loading...</em></p>
     }
@@ -63,7 +63,7 @@
         }
         <div class="note-display">
             <div class="@HeaderStyle">
-                @if (!model.Header.IsDeleted)   
+                @if (model is not null && !model.Header.IsDeleted)   
                 {
                     <p>
                         <span class="keep-right">Note: @model.Header.NoteOrdinal @respX&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -98,7 +98,7 @@
             </div>
             <div>
                 <div class="@BodyStyle">
-                    @if (!model.Header.IsDeleted)
+                    @if (model is not null && !model.Header.IsDeleted)
                     {
                         @((MarkupString)model.Content.NoteBody)
                     }
@@ -110,7 +110,7 @@
                         <SfButton @onclick="OnDone" class="donebutton">Done</SfButton>
                         <SfButton @onclick="OnPrint" class="printbutton">Print</SfButton>
 
-                        @if (model.Header.ResponseOrdinal == 0)
+                        @if (model is not null && model.Header.ResponseOrdinal == 0)
                         {
                             <SfButton @onclick="OnPrintString" class="printbutton">Print String</SfButton>
                         }
@@ -133,12 +133,12 @@
                 ResetShown = false;
                 StateHasChanged();
             }
-            @if (IsRootNote && model.Header.RefId != 0 && !model.Header.IsDeleted)
+            @if (IsRootNote && model is not null &&  model.Header.RefId != 0 && !model.Header.IsDeleted)
             {
                 <span><strong>Show References</strong></span><SfSwitch @bind-Checked="ShowChild" TChecked="bool"></SfSwitch>
             }
 
-            @if (!RespShown && model.Header.ResponseOrdinal == 0 && model.Header.ResponseCount > 0 && !AltStyle && !model.Header.IsDeleted)
+            @if (!RespShown && model is not null &&  model.Header.ResponseOrdinal == 0 && model.Header.ResponseCount > 0 && !AltStyle && !model.Header.IsDeleted)
             {
                 <span><strong>Show Responses</strong></span><SfSwitch @bind-Checked="RespShown" ValueChange="ShowRespChange" TChecked="bool"></SfSwitch>
             }
@@ -160,6 +160,7 @@
             {
                 <div class="arrow2">
                     <div>
+                        @{model = model is not null ? model : new();}
                     Navigate: <strong>@model.Header.NoteOrdinal@respY</strong>
                     <SfTextBox @ref="@sfTextBox" ShowClearButton="true" Placeholder="b#.r# | (+/-)b# | (+/-).r#"
                        @bind-Value="@NavString" Input="@NavInputHandler" @onkeyup="@KeyUpHandler"></SfTextBox>

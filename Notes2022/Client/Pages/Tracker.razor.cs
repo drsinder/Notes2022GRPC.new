@@ -31,11 +31,13 @@ namespace Notes2022.Client.Pages
 {
     public partial class Tracker
     {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         private List<GNotefile> stuff { get; set; }
 
         private List<GNotefile> files { get; set; }
 
         private List<GSequencer> trackers { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
         protected override async Task OnParametersSetAsync()
         {
@@ -56,7 +58,9 @@ namespace Notes2022.Client.Pages
                 trackers = trackers.OrderBy(p => p.Ordinal).ToList();
                 foreach (var tracker in trackers)
                 {
+#pragma warning disable CS8604 // Possible null reference argument.
                     files.Add(stuff.Find(p => p.Id == tracker.NoteFileId));
+#pragma warning restore CS8604 // Possible null reference argument.
                 }
             }
             foreach (var s in stuff)
@@ -67,7 +71,7 @@ namespace Notes2022.Client.Pages
             StateHasChanged();
         }
 
-        private async Task Cancel()
+        private void Cancel()
         {
             NavMan.NavigateTo("");
         }

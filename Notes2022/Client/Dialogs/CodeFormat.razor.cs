@@ -14,11 +14,13 @@ namespace Notes2022.Client.Dialogs
     public partial class CodeFormat
     {
         [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+#pragma warning disable IDE1006 // Naming Styles
         [Parameter] public string stuff { get; set; }
         [Parameter] public SfRichTextEditor EditObj { get; set; }
 
         protected SfTextBox TextObj { get; set; }
         protected string message { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
         protected bool IsEditing { get; set; } = false;
         public string DropVal;
 
@@ -28,7 +30,7 @@ namespace Notes2022.Client.Dialogs
             public string Code { get; set; }
         }
 
-        public List<CFormat> CFormats = new List<CFormat>
+        public List<CFormat> CFormats = new()
         {
             new CFormat() { Name = "None",  Code = "none" },
             new CFormat() { Name = "C#",    Code = "csharp" },
@@ -46,7 +48,7 @@ namespace Notes2022.Client.Dialogs
             new CFormat() { Name = "PowerShell", Code = "powershell" }
         };
 
-        protected async override Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
             message = stuff;
             IsEditing = !string.IsNullOrEmpty(stuff);   // not yet permitted at higher levels
@@ -57,7 +59,9 @@ namespace Notes2022.Client.Dialogs
             string code;
 
             if (DropVal is not null && !string.IsNullOrEmpty(DropVal))
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 code = CFormats.Find(p => p.Name == DropVal).Code;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             else
                 code = "none";
 
@@ -83,9 +87,9 @@ namespace Notes2022.Client.Dialogs
         /// <param name="stuff2"></param>
         /// <param name="codeType"></param>
         /// <returns></returns>
-        private string MakeCode(string stuff2, string codeType)
+        private static string MakeCode(string stuff2, string codeType)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             sb.Append("<pre><code class=\"language-");
             sb.Append(codeType);

@@ -13,7 +13,7 @@ namespace Notes2022.Client.Pages
 
         private GNotefile dummyFile = new GNotefile { Id = 0, NoteFileName = " ", NoteFileTitle = " " };
 
-        private GNotefile item;
+        private GNotefile item { get; set; }
 
 
         private List<GNotefile> fileList { get; set; }
@@ -42,16 +42,20 @@ namespace Notes2022.Client.Pages
         [Inject] NavigationManager Navigation { get; set; }
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public Index()  // Needed for above Injection
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
         }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        protected override void OnAfterRender(bool firstRender)
         {
             if (firstRender)
             {
                 timer2 = new System.Timers.Timer(1000);
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 timer2.Elapsed += TimerTick2;
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 timer2.Enabled = true;
 
                 myState.OnChange += OnParametersSet; // get notified of login status changes

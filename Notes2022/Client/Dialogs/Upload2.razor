@@ -29,18 +29,4 @@
     <h3>Importing @UploadFile to @NoteFile.  Please wait...</h3>
 </div>
 
-@code {
-    [CascadingParameter] public BlazoredModalInstance ModalInstance { get; set; }
-    [Parameter] public string NoteFile { get; set; }
-    [Parameter] public string UploadFile { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await Client.ImportAsync(new ImportRequest() { NoteFile = NoteFile, UploadFile = UploadFile }, myState.AuthHeader, deadline: DateTime.UtcNow.AddMinutes(10));
-
-            await ModalInstance.CancelAsync();
-        }
-    }
-}

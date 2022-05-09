@@ -96,6 +96,7 @@ namespace Notes2022.Client.Panels
         /// <summary>
         /// List of responses
         /// </summary>
+#pragma warning disable IDE1006 // Naming Styles
         protected List<GNoteHeader> respHeaders { get; set; }
 
         /// <summary>
@@ -163,7 +164,7 @@ namespace Notes2022.Client.Panels
         [Inject] NavigationManager Navigation { get; set; }
         [Inject] IJSRuntime JS { get; set; }    // enables calling javascript
         [Inject] Blazored.SessionStorage.ISessionStorageService sessionStorage { get; set; }
-
+#pragma warning restore IDE1006 // Naming Styles
         /// <summary>
         /// Initialize defaults for a "root" note - not showing children
         /// </summary>
@@ -219,6 +220,8 @@ namespace Notes2022.Client.Panels
             // we already have the header in the container (index)
             model = await Client.GetNoteContentAsync(new DisplayModelRequest() { Vers = Vers, NoteId = NoteId }, myState.AuthHeader);
 
+            model = model is not null ? model : new();
+
             // set text to be displayed re responses
             respX = respY = "";
             if (model.Header.ResponseCount > 0)
@@ -265,7 +268,9 @@ namespace Notes2022.Client.Panels
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         private async Task ShowRespChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             if (RespShown)
             {
@@ -327,20 +332,24 @@ namespace Notes2022.Client.Panels
             string respX = string.Empty;
 
             // keep track of base note
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             GNoteHeader baseHeader = Model.AllNotes.List.SingleOrDefault(p => p.Id == model.Header.Id);
 
             GNoteHeader currentHeader = baseHeader;
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new ();
 
             sb.Append("<h4 class=\"text-center\">" + Model.NoteFile.NoteFileTitle + "</h4>");
 
         reloop: // come back here to do another note
             respX = "";
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (currentHeader.ResponseCount > 0)
                 respX = " - " + currentHeader.ResponseCount + " Responses ";
             else if (currentHeader.ResponseOrdinal > 0)
                 respX = " Response " + currentHeader.ResponseOrdinal;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             sb.Append("<div class=\"noteheader\"><p> <span class=\"keep-right\">Note: ");
             sb.Append(currentHeader.NoteOrdinal + " " + respX);
@@ -371,14 +380,18 @@ namespace Notes2022.Client.Panels
             sb.Append(currentContent.NoteBody);
             sb.Append("</div>");
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (wholeString && currentHeader.ResponseOrdinal < baseHeader.ResponseCount) // more responses in string
             {
                 currentHeader = Model.AllNotes.List.Single(p => p.NoteOrdinal == currentHeader.NoteOrdinal && p.ResponseOrdinal == currentHeader.ResponseOrdinal + 1);
 
                 goto reloop;        // print another note
             }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             currentHeader = baseHeader; // set back to base note
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             string stuff = sb.ToString();           // turn accumulated output into a string
 
@@ -404,7 +417,7 @@ namespace Notes2022.Client.Panels
         /// <returns></returns>
         private async Task ClearNav()
         {
-            NavString = null;
+            NavString = string.Empty;
             await Task.CompletedTask;
         }
 
@@ -635,8 +648,7 @@ namespace Notes2022.Client.Panels
                         ShowMessage("Could not parse : " + parts[0]);
                         EatEnter = true;
                     }
-                    int noteRespOrd;
-                    if (!int.TryParse(parts[1], out noteRespOrd))
+                    if (!int.TryParse(parts[1], out int noteRespOrd))
                     {
                         ShowMessage("Could not parse : " + parts[1]);
                         EatEnter = true;
@@ -803,7 +815,9 @@ namespace Notes2022.Client.Panels
             }
         }
 
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
         async ValueTask IAsyncDisposable.DisposeAsync()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {
             if (module is not null)
             {

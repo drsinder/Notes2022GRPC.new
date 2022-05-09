@@ -75,7 +75,9 @@ namespace Notes2022.Client.Dialogs
 
         public async Task SaveAs(string filename, byte[] data)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             await module.InvokeVoidAsync("saveAsFile", filename, Convert.ToBase64String(data));
+#pragma warning restore CS8604 // Possible null reference argument.
         }
 
 

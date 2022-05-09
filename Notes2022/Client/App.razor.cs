@@ -12,7 +12,9 @@ namespace Notes2022.Client
 
         private IJSObjectReference? module;         // for calling javascript
 
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
         async ValueTask IAsyncDisposable.DisposeAsync()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {
             if (module is not null)
             {
@@ -47,7 +49,7 @@ namespace Notes2022.Client
             {
                 await GetLoginReplyAsync();   // try to get a cookie to authenticate
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -63,7 +65,7 @@ namespace Notes2022.Client
                 if (module is null)
                     module = await JS.InvokeAsync<IJSObjectReference>("import", "./cookies.js");
 
-                string cookie = await ReadCookie(Globals.Cookie);
+                string? cookie = await ReadCookie(Globals.Cookie);
                 if (!string.IsNullOrEmpty(cookie))
                 {
                     // found a cookie!
@@ -79,9 +81,8 @@ namespace Notes2022.Client
                     NotifyStateChanged();           // notify subscribers
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                string x = ex.Message;
             }
         }
 
@@ -90,14 +91,17 @@ namespace Notes2022.Client
         /// </summary>
         /// <param name="cookieName">cookie name</param>
         /// <returns>needs to be deserialized)</returns>
-        public async Task<string> ReadCookie(string cookieName)
+        public async Task<string?> ReadCookie(string cookieName)
         {
-            try
+            if (module is not null)
             {
-                return Globals.Base64Decode(await module.InvokeAsync<string>("ReadCookie", cookieName));
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                    return Globals.Base64Decode(await module.InvokeAsync<string>("ReadCookie", cookieName));
+                }
+                catch (Exception)
+                {
+                }
             }
             return null;
         }
@@ -111,12 +115,15 @@ namespace Notes2022.Client
         /// <returns></returns>
         public async Task WriteCookie(string cookieName, string newCookie, int hours)
         {
-            try
+            if (module is not null)
             {
-                await module.InvokeAsync<string>("CreateCookie", cookieName, Globals.Base64Encode(newCookie), hours);
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                    await module.InvokeAsync<string>("CreateCookie", cookieName, Globals.Base64Encode(newCookie), hours);
+                }
+                catch (Exception)
+                {
+                }
             }
         }
 
@@ -182,7 +189,7 @@ namespace Notes2022.Client
             {
                 if (LoginReply is null || LoginReply.Status != 200)
                     return false;
-                return UserInfo.IsAdmin;
+                return UserInfo is not null && UserInfo.IsAdmin;
             }
         }
 
@@ -195,7 +202,7 @@ namespace Notes2022.Client
             {
                 if (LoginReply is null || LoginReply.Status != 200)
                     return false;
-                return UserInfo.IsUser;
+                return UserInfo is not null && UserInfo.IsUser;
             }
         }
 

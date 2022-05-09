@@ -14,10 +14,11 @@ namespace Notes2022.Client.Dialogs
     {
         [CascadingParameter] public IModalService Modal { get; set; }
         [CascadingParameter] public BlazoredModalInstance ModalInstance { get; set; }
-        
+
         /// <summary>
         /// File Id we are working on
         /// </summary>
+#pragma warning disable IDE1006 // Naming Styles
         [Parameter] public int fileId { get; set; }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace Notes2022.Client.Dialogs
         /// <summary>
         /// Temp list of tokens
         /// </summary>
-        private List<GNoteAccess> temp { get; set; }
+        //private List<GNoteAccess> temp { get; set; }
 
         /// <summary>
         /// List of all users
@@ -53,6 +54,9 @@ namespace Notes2022.Client.Dialogs
 
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
         [Inject] Blazored.SessionStorage.ISessionStorageService sessionStorage { get; set; }
+
+#pragma warning restore IDE1006 // Naming Styles
+
         public AccessList()
         {
         }

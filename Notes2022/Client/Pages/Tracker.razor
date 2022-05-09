@@ -58,7 +58,7 @@ else
                 <tbody>
                     @foreach (GNotefile file in files)
                     {
-                        GSequencer CurrentTracker = trackers.SingleOrDefault(p => p.NoteFileId == file.Id);
+                        GSequencer CurrentTracker = trackers.Single(p => p.NoteFileId == file.Id);
                         bool current = CurrentTracker != null;
                         <tr>
                             <td>

@@ -74,6 +74,7 @@ namespace Notes2022.Server
 
             StringBuilder sb = new();
             long baseNoteHeaderId = 0;
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             NoteContent newContent = null;
             NoteHeader makeHeader = null;
             int basenotes = 0;
@@ -113,8 +114,9 @@ namespace Notes2022.Server
                             await file.ReadLineAsync();
                             line = await file.ReadLineAsync();
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                             string[] splits = platoLine5.Split(spaceTrim);
-                            platoBaseYear = splits[splits.Length - 1];
+                            platoBaseYear = splits[^1];
 
                         }   // else we assume it's novanet format = 0
                     }
@@ -122,10 +124,11 @@ namespace Notes2022.Server
                     if (filetype == 0)  // Process for NovaNET output
                     {
 
+#pragma warning disable CS8604 // Possible null reference argument.
                         line = await CheckFf(line, file);
                         if (line.Length > 52)  // Possible Note Header
                         {
-                            string head = line.Substring(46);
+                            string head = line[46..];
                             if (head.StartsWith("  Note ")) //new note found
                             {
                                 if (newContent is not null)  // have a note to write
@@ -171,7 +174,7 @@ namespace Notes2022.Server
                                 makeHeader = new NoteHeader { NoteFileId = noteFile.Id };
 
                                 // get title at start of line
-                                var title = line.Substring(0, 40).TrimEnd(spaceTrim);
+                                var title = line[..40].TrimEnd(spaceTrim);
                                 makeHeader.NoteSubject = title;
                                 isResp = head.Contains("Response");  // is this a response?
 
@@ -179,7 +182,7 @@ namespace Notes2022.Server
                                 line = await CheckFf(line, file);
                                 if (isResp && line.StartsWith("----")) // perhaps a response title
                                 {
-                                    title = line.Substring(4, line.Length - 4).TrimEnd(spaceTrim);
+                                    title = line[4..].TrimEnd(spaceTrim);
                                     makeHeader.NoteSubject = title;
                                     line = await file.ReadLineAsync();  // skip line
                                     await CheckFf(line, file);
@@ -206,7 +209,7 @@ namespace Notes2022.Server
 
                                 // get date, time, author
                                 // first date
-                                string date = line.Substring(0, 10).TrimEnd(spaceTrim);
+                                string date = line[..10].TrimEnd(spaceTrim);
                                 string[] x = date.Split(slash);
 
                                 string prefix = "/20";
@@ -227,8 +230,10 @@ namespace Notes2022.Server
 
                                 string[] y = time.Split(colon);
                                 int hour = int.Parse(y[0]);
-                                if (line.Substring(0, 23).Contains("pm") && hour < 12)
+                                if (line[..23].Contains("pm") && hour < 12)
+                                {
                                     hour += 12;
+                                }
 
                                 datetime += " " + ((hour < 10) ? "0" + hour.ToString() : hour.ToString()) + ":" + y[1];
 
@@ -238,7 +243,7 @@ namespace Notes2022.Server
                                 //nc.LastEdited = tzone.Universal(nc.LastEdited);
 
                                 // author
-                                makeHeader.AuthorName = line.Substring(25).Trim(spaceTrim);
+                                makeHeader.AuthorName = line[25..].Trim(spaceTrim);
                                 makeHeader.AuthorID = Globals.ImportedAuthorId;   //"imported";
                                 line = await file.ReadLineAsync();  // skip line
                                 line = await CheckFf(line, file);
@@ -308,7 +313,7 @@ namespace Notes2022.Server
                                 if (part.StartsWith(" Subject: "))
                                 {
                                     if (parts.Length == 5)
-                                        makeHeader.NoteSubject = part.Substring(9, part.Length - 9).Trim() + " ";  //only works if no - in subject grrr
+                                        makeHeader.NoteSubject = part[9..].Trim() + " ";  //only works if no - in subject grrr
                                     else
                                     {
                                         int subjectindx = line.IndexOf(" - Subject: ", StringComparison.Ordinal);
@@ -319,10 +324,10 @@ namespace Notes2022.Server
                                     }
                                 }
                                 // get author
-                                part = parts[parts.Length - 3];
+                                part = parts[^3];
                                 if (part.StartsWith(" Author: "))
                                 {
-                                    makeHeader.AuthorName = part.Substring(8, part.Length - 8).Trim();
+                                    makeHeader.AuthorName = part[8..].Trim();
                                     makeHeader.AuthorID = Globals.ImportedAuthorId;
                                 }
                                 else
@@ -330,7 +335,7 @@ namespace Notes2022.Server
                                     makeHeader.AuthorName = "** Author Parse Error **";
                                     makeHeader.AuthorID = Globals.ImportedAuthorId;
                                 }
-                                part = parts[parts.Length - 2].Trim();
+                                part = parts[^2].Trim();
                                 makeHeader.LastEdited = DateTime.Parse(part);
                                 // skip resp
 
@@ -338,7 +343,7 @@ namespace Notes2022.Server
                                 if (line.StartsWith("Tags -"))
                                 {
                                     isResp = false;
-                                    makeHeader.DirectorMessage = line.Substring(6, line.Length - 6).Trim();
+                                    makeHeader.DirectorMessage = line[6..].Trim();
                                 }
                                 else if (line.StartsWith("Base Note Subject: "))
                                 {
@@ -346,7 +351,7 @@ namespace Notes2022.Server
                                     line = await file.ReadLineAsync();  // Should be Tag
                                     if (line.StartsWith("Tags -"))
                                     {
-                                        makeHeader.DirectorMessage = line.Substring(6, line.Length - 6).Trim();
+                                        makeHeader.DirectorMessage = line[6..].Trim();
                                     }
                                 }
                                 await file.ReadLineAsync();  //skip a line
@@ -417,9 +422,9 @@ namespace Notes2022.Server
                             {
                                 // mark we have a base note / get title
 
-                                line = line.Substring(16);
+                                line = line[16..];
                                 string[] splitsx = line.Split(spaceTrim);
-                                makeHeader.NoteSubject = line.Substring(splitsx[0].Length).Trim(spaceTrim);
+                                makeHeader.NoteSubject = line[splitsx[0].Length..].Trim(spaceTrim);
 
                                 isResp = false;
                             }
@@ -464,7 +469,7 @@ namespace Notes2022.Server
                             }
                             makeHeader.LastEdited = DateTime.Parse(date);
 
-                            string group = " " + splits[splits.Length - 1];
+                            string group = " " + splits[^1];
                             string name = "";
                             for (int i = 4 + cnt; i < splits.Length - 1; i++)
                             {
@@ -529,9 +534,11 @@ namespace Notes2022.Server
                         {
                             //basenotes++;
                             // ReSharper disable once RedundantAssignment
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
                             newHeader = await NoteDataManager.CreateNote(_db, makeHeader, newContent.NoteBody, string.Empty, makeHeader.DirectorMessage, false, false);
-                            //NoteHeader baseNoteHeader = await GetBaseNoteHeader(newHeader);
-                            //baseNoteHeaderId = baseNoteHeader.BaseNoteId;
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
+                               //NoteHeader baseNoteHeader = await GetBaseNoteHeader(newHeader);
+                               //baseNoteHeaderId = baseNoteHeader.BaseNoteId;
 
                             //baseNoteHeader.CreateDate = newHeader.LastEdited;
                             //baseNoteHeader.ThreadLastEdited = newHeader.LastEdited;
@@ -559,9 +566,11 @@ namespace Notes2022.Server
                         {
                             //basenotes++;
                             // ReSharper disable once RedundantAssignment
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
                             newHeader = await NoteDataManager.CreateNote(_db, makeHeader, newContent.NoteBody, string.Empty, makeHeader.DirectorMessage, false, false);
-                            //NoteHeader baseNoteHeader = await GetBaseNoteHeader(newHeader);
-                            //baseNoteHeaderId = baseNoteHeader.BaseNoteId;
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
+                               //NoteHeader baseNoteHeader = await GetBaseNoteHeader(newHeader);
+                               //baseNoteHeaderId = baseNoteHeader.BaseNoteId;
 
                             //baseNoteHeader.CreateDate = newHeader.LastEdited;
                             //baseNoteHeader.ThreadLastEdited = newHeader.LastEdited;
@@ -654,6 +663,9 @@ namespace Notes2022.Server
         }
     }
 
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
 
 }

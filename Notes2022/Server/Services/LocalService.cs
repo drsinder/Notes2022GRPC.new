@@ -40,13 +40,15 @@ namespace Notes2022.Server.Services
 
             if (!fv.Hasstring || !fv.Wholestring)
             {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 return "Forwarded by Notes 2022 - User: " + email + " / " + name
                     + "<p>File: " + NoteFile.NoteFileName + " - File Title: " + NoteFile.NoteFileTitle + "</p><hr/>"
                     + "<p>Author: " + nc.AuthorName + "  - Director Message: " + nc.DirectorMessage + "</p><p>"
                     + "<p>Subject: " + nc.NoteSubject + "</p>"
                     + nc.LastEdited.ToShortDateString() + " " + nc.LastEdited.ToShortTimeString() + " UTC" + "</p>"
                     + nc.NoteContent.NoteBody;
-                    //+ "<hr/>" + "<a href=\"" + Globals.ProductionUrl + "/notedisplay/" + fv.NoteID + "\" >Link to note</a>";   // TODO
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                              //+ "<hr/>" + "<a href=\"" + Globals.ProductionUrl + "/notedisplay/" + fv.NoteID + "\" >Link to note</a>";   // TODO
             }
             else
             {
@@ -77,10 +79,12 @@ namespace Notes2022.Server.Services
                     sb.Append("<p>Author: " + notes[i].AuthorName + "  - Director Message: " + notes[i].DirectorMessage + "</p>");
                     sb.Append("<p>Subject: " + notes[i].NoteSubject + "</p>");
                     sb.Append("<p>" + notes[i].LastEdited.ToShortDateString() + " " + notes[i].LastEdited.ToShortTimeString() + " UTC" + " </p>");
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     sb.Append(notes[i].NoteContent.NoteBody);
-                    //sb.Append("<hr/>");
-                    //sb.Append("<a href=\"");
-                    //sb.Append(Globals.ProductionUrl + "/notedisplay/" + notes[i].Id + "\" >Link to note</a>");  // TODO
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                              //sb.Append("<hr/>");
+                              //sb.Append("<a href=\"");
+                              //sb.Append(Globals.ProductionUrl + "/notedisplay/" + notes[i].Id + "\" >Link to note</a>");  // TODO
                 }
 
                 return sb.ToString();

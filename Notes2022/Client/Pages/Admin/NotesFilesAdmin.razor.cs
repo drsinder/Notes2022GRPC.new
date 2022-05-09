@@ -10,16 +10,21 @@ namespace Notes2022.Client.Pages.Admin
 {
     public partial class NotesFilesAdmin
     {
+#pragma warning disable IDE1006 // Naming Styles
         private List<string> todo { get; set; }
         private GNotefileList files { get; set; }
-        private string? message;
+
+
         private HomePageModel model { get; set; }
         private List<GAppUser> uList { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
         [Inject] NavigationManager Navigation { get; set; }
         [Inject] IModalService Modal { get; set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public NotesFilesAdmin()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
         }
 
@@ -39,6 +44,7 @@ namespace Notes2022.Client.Pages.Admin
             model = await Client.GetAdminPageModelAsync(new NoRequest(), myState.AuthHeader);
 
             uList = GetApplicationUsers(model.UserDataList);
+            uList = uList is not null ? uList : new();
 
             todo = new List<string> { "announce", "pbnotes", "noteshelp", "pad", "homepagemessages" };
 
@@ -119,12 +125,16 @@ namespace Notes2022.Client.Pages.Admin
 
         async void DeleteNoteFile(int Id)
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             GNotefile file = files.Notefiles.ToList().Find(x => x.Id == Id);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             StateHasChanged();
             var parameters = new ModalParameters();
             parameters.Add("FileId", Id);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             parameters.Add("FileName", file.NoteFileName);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             parameters.Add("FileTitle", file.NoteFileTitle);
             var xModal = Modal.Show<Dialogs.DeleteNoteFile>("Delete", parameters);
             var result = await xModal.Result;
@@ -138,26 +148,34 @@ namespace Notes2022.Client.Pages.Admin
 
         async void NoteFileDetails(int Id)
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             GNotefile file = files.Notefiles.ToList().Find(x => x.Id == Id);
 
             var parameters = new ModalParameters();
             parameters.Add("FileId", Id);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             parameters.Add("FileName", file.NoteFileName);
             parameters.Add("FileTitle", file.NoteFileTitle);
             parameters.Add("LastEdited", file.LastEdited);
             parameters.Add("NumberArchives", file.NumberArchives);
             parameters.Add("Owner", model.UserDataList.List.ToList().Find(p => p.Id == file.OwnerId).DisplayName);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             var xModal = Modal.Show<Dialogs.NoteFileDetails>("Details", parameters);
             await xModal.Result;
         }
 
         async void EditNoteFile(int Id)
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             GNotefile file = files.Notefiles.ToList().Find(x => x.Id == Id);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             var parameters = new ModalParameters();
             parameters.Add("FileId", Id);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             parameters.Add("FileName", file.NoteFileName);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             parameters.Add("FileTitle", file.NoteFileTitle);
             parameters.Add("LastEdited", file.LastEdited);
             parameters.Add("NumberArchives", file.NumberArchives);
@@ -182,12 +200,16 @@ namespace Notes2022.Client.Pages.Admin
             }
             else
             {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 GNotefile file = files.Notefiles.ToList().Find(x => x.Id == Id);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
                 string filename = (string)result.Data;
                 parameters = new ModalParameters();
                 parameters.Add("UploadFile", filename);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 parameters.Add("NoteFile", file.NoteFileName);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
                 var yModal = Modal.Show<Dialogs.Upload2>("Upload2", parameters);
                 await yModal.Result;

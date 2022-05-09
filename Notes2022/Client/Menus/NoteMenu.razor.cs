@@ -55,12 +55,14 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Menu structure
         /// </summary>
+#pragma warning disable IDE1006 // Naming Styles
         private static List<MenuItem> menuItems { get; set; }
 
         /// <summary>
         /// Top level menu instance
         /// </summary>
         protected SfMenu<MenuItem> topMenu { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
 
         private bool HamburgerMode { get; set; } = false;
 
@@ -77,6 +79,7 @@ namespace Notes2022.Client.Menus
         {
             menuItems = new List<MenuItem>();
 
+#pragma warning disable BL0005 // Component parameter should not be set outside of its component.
             MenuItem item = new() { Id = "ListNotes", Text = "Listing" };
             menuItems.Add(item);
 
@@ -94,8 +97,11 @@ namespace Notes2022.Client.Menus
 
             if (Model.Access.ReadAccess)
             {
-                MenuItem item2 = new() { Id = "OutPutMenu", Text = "Output" };
-                item2.Items = new List<MenuItem>
+                MenuItem item2 = new()
+                {
+                    Id = "OutPutMenu",
+                    Text = "Output",
+                    Items = new List<MenuItem>
                 {
                     new() { Id = "Forward", Text = "Forward" },
                     new() { Id = "Copy", Text = "Copy" },
@@ -103,6 +109,7 @@ namespace Notes2022.Client.Menus
                     //item2.Items.Add(new MenuItem() { Id = "Mark", Text = "Mark for output" });
                     new() { Id = "Html", Text = "Html (expandable)" },
                     new() { Id = "html", Text = "html (flat)" }
+                }
                 };
                 menuItems.Add(item2);
 
@@ -130,7 +137,7 @@ namespace Notes2022.Client.Menus
 
             return Task.CompletedTask;
         }
-
+#pragma warning restore BL0005 // Component parameter should not be set outside of its component.
         /// <summary>
         /// Menu item invoked
         /// </summary>
@@ -254,13 +261,15 @@ namespace Notes2022.Client.Menus
         protected void Forward()
         {
             var parameters = new ModalParameters();
-            ForwardViewModel fv = new();
-            fv.NoteID = Model.Header.Id;
-            fv.FileID = Model.Header.NoteFileId;
-            fv.ArcID = Model.Header.ArchiveId;
-            fv.NoteOrdinal = Model.Header.NoteOrdinal;
-            fv.NoteSubject = Model.Header.NoteSubject;
-            fv.NoteFile = Model.NoteFile;
+            ForwardViewModel fv = new()
+            {
+                NoteID = Model.Header.Id,
+                FileID = Model.Header.NoteFileId,
+                ArcID = Model.Header.ArchiveId,
+                NoteOrdinal = Model.Header.NoteOrdinal,
+                NoteSubject = Model.Header.NoteSubject,
+                NoteFile = Model.NoteFile
+            };
 
             if (Model.Header.ResponseCount > 0 || Model.Header.BaseNoteId > 0)
                 fv.Hasstring = true;
@@ -277,18 +286,20 @@ namespace Notes2022.Client.Menus
         /// <param name="isCollapsible"></param>
         /// <param name="isEmail"></param>
         /// <param name="emailaddr"></param>
-        private void DoExport(bool isHtml, bool isCollapsible, bool isEmail = false, string emailaddr = null)
+        private void DoExport(bool isHtml, bool isCollapsible, bool isEmail = false, string emailaddr = "")
         {
             var parameters = new ModalParameters();
 
-            ExportViewModel vm = new();
-            vm.ArchiveNumber = Model.Header.ArchiveId;
-            vm.isCollapsible = isCollapsible;
-            vm.isDirectOutput = !isEmail;
-            vm.isHtml = isHtml;
-            vm.NoteFile = Model.NoteFile;
-            vm.NoteOrdinal = Model.Header.NoteOrdinal;
-            vm.Email = emailaddr;
+            ExportViewModel vm = new()
+            {
+                ArchiveNumber = Model.Header.ArchiveId,
+                isCollapsible = isCollapsible,
+                isDirectOutput = !isEmail,
+                isHtml = isHtml,
+                NoteFile = Model.NoteFile,
+                NoteOrdinal = Model.Header.NoteOrdinal,
+                Email = emailaddr
+            };
             //vm.myMenu = this;
 
             parameters.Add("Model", vm);

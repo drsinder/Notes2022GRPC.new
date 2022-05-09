@@ -63,11 +63,13 @@ namespace Notes2022.Server
                 db.NoteFile.Add(noteFile);
                 await db.SaveChangesAsync();
 
-                NoteFile nf = await db.NoteFile
+                NoteFile? nf = await db.NoteFile
                     .Where(p => p.NoteFileName == noteFile.NoteFileName)
                     .FirstOrDefaultAsync();
 
-                await AccessManager.CreateBaseEntries(db, userManager, userId, nf.Id);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                _ = await AccessManager.CreateBaseEntries(db, userManager, userId, nf.Id);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
                 NoteAccess access;
                 int padid;
@@ -263,11 +265,13 @@ namespace Notes2022.Server
                 nh.ThreadLastEdited = nh.CreateDate;
             }
 
-            NoteFile nf = await db.NoteFile
+            NoteFile? nf = await db.NoteFile
                 .Where(p => p.Id == nh.NoteFileId)
                 .FirstOrDefaultAsync();
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             nf.LastEdited = nh.CreateDate;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             db.Entry(nf).State = EntityState.Modified;
             db.NoteHeader.Add(nh);
             await db.SaveChangesAsync();
@@ -294,11 +298,13 @@ namespace Notes2022.Server
             }
             else    // response
             {
-                NoteHeader baseNote = await db.NoteHeader
+                NoteHeader? baseNote = await db.NoteHeader
                     .Where(p => p.NoteFileId == newHeader.NoteFileId && p.ArchiveId == newHeader.ArchiveId && p.NoteOrdinal == newHeader.NoteOrdinal && p.ResponseOrdinal == 0)
                     .FirstOrDefaultAsync();
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 newHeader.BaseNoteId = baseNote.Id;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 db.Entry(newHeader).State = EntityState.Modified;
                 await db.SaveChangesAsync();
 
@@ -494,7 +500,9 @@ namespace Notes2022.Server
 
             // then create new note
 
+#pragma warning disable CS8604 // Possible null reference argument.
             return await CreateNote(db, dh, nc.NoteBody, tags, nh.DirectorMessage, true, false, true);
+#pragma warning restore CS8604 // Possible null reference argument.
 
             // below is for the old replacing edited notes
 
@@ -592,7 +600,9 @@ namespace Notes2022.Server
             UserData aux = new();
 
             aux.UserId = user.Id;
+#pragma warning disable CS8601 // Possible null reference assignment.
             aux.DisplayName = user.DisplayName;
+#pragma warning restore CS8601 // Possible null reference assignment.
             aux.Email = user.Email;
             aux.TimeZoneID = user.TimeZoneID;
 
@@ -715,9 +725,11 @@ namespace Notes2022.Server
         /// <returns></returns>
         public static async Task<NoteFile> GetFileByName(NotesDbContext db, string fname)
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return await db.NoteFile
                 .Where(p => p.NoteFileName == fname)
                 .FirstOrDefaultAsync();
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         //public static async Task<List<NoteFile>> GetNoteFilesOrderedByNameWithOwner(NotesDbContext db)
@@ -792,9 +804,11 @@ namespace Notes2022.Server
         /// <returns></returns>
         public static async Task<NoteFile> GetFileById(NotesDbContext db, int id)
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return await db.NoteFile
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync();
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         //public static async Task<NoteHeader> GetNoteHeader(NotesDbContext db, long id)
@@ -830,6 +844,7 @@ namespace Notes2022.Server
         /// <returns></returns>
         public static async Task<NoteHeader> GetNoteByIdWithFile(NotesDbContext db, long noteid)
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return await db.NoteHeader
                 .Include("NoteContent")
                 //.Include("NoteFile")
@@ -837,6 +852,7 @@ namespace Notes2022.Server
                 .Where(p => p.Id == noteid)
                 .OrderBy((x => x.NoteOrdinal))
                 .FirstOrDefaultAsync();
+#pragma warning restore CS8603 // Possible null reference return.
 
         }
 
@@ -848,13 +864,19 @@ namespace Notes2022.Server
         /// <returns></returns>
         public static async Task<NoteHeader> GetBaseNoteHeader(NotesDbContext db, long id)
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             NoteHeader nh = await db.NoteHeader
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
+#pragma warning disable CS8603 // Possible null reference return.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return await db.NoteHeader
                 .Where(p => p.Id == nh.BaseNoteId)
                 .FirstOrDefaultAsync();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         //public static async Task<List<NoteHeader>> GetBaseNoteAndResponsesHeaders(NotesDbContext db, int nfid, int arcId, int noteord)
@@ -1015,9 +1037,11 @@ namespace Notes2022.Server
         /// <returns></returns>
         public static async Task<NoteHeader> GetBaseNoteHeader(NotesDbContext db, int fileId, int arcId, int noteOrd)
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return await db.NoteHeader
                                 .Where(p => p.NoteFileId == fileId && p.ArchiveId == arcId && p.NoteOrdinal == noteOrd && p.ResponseOrdinal == 0)
                                 .FirstOrDefaultAsync();
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         /// <summary>
@@ -1151,9 +1175,11 @@ namespace Notes2022.Server
         
         public static async Task<NoteHeader> GetBaseNoteHeaderById(NotesDbContext db, long id)
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return await db.NoteHeader
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync();
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         //public static async Task<List<NoteFile>> GetNoteFilesOrderedByName(NotesDbContext db)

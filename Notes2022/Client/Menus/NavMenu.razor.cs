@@ -43,7 +43,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// The list of menu bar items (structure of the menu)
         /// </summary>
-        protected static List<MenuItem> menuItemsTop { get; set; }
+        protected static List<MenuItem>? menuItemsTop { get; set; }
 
         /// <summary>
         /// Root menu item
@@ -72,7 +72,9 @@ namespace Notes2022.Client.Menus
         [Inject] NavigationManager Navigation { get; set; }
         [Inject] Blazored.SessionStorage.ISessionStorageService sessionStorage { get; set; }
         [Inject] Notes2022Server.Notes2022ServerClient Client { get; set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public NavMenu()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
         }
 
@@ -90,7 +92,9 @@ namespace Notes2022.Client.Menus
             if (firstRender)
             {
                 timer2 = new System.Timers.Timer(1000);
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 timer2.Elapsed += TimerTick2;
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 timer2.Enabled = true;
 
                 myState.OnChange += StateHasChanged;
@@ -102,7 +106,7 @@ namespace Notes2022.Client.Menus
         /// </summary>
         /// <param name="source"></param>
         /// <param name="e"></param>
-        protected void TimerTick2(Object source, ElapsedEventArgs e)
+        protected void TimerTick2(object source, ElapsedEventArgs e)
         {
             //mytime = DateTime.Now.ToShortTimeString();
             //if (mytime != mytime2) // do we need to re-render?
@@ -134,7 +138,9 @@ namespace Notes2022.Client.Menus
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         private async Task ExecMenu(string id)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             try
             {
@@ -185,9 +191,8 @@ namespace Notes2022.Client.Menus
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-
             }
         }
 
@@ -203,11 +208,15 @@ namespace Notes2022.Client.Menus
             await UpdateMenu();
         }
 
+
         /// <summary>
         /// Enable only items available to logged in user
         /// </summary>
         /// <returns></returns>
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.", Justification = "<Pending>")]
         public async Task UpdateMenu()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             try
             {
@@ -270,7 +279,7 @@ namespace Notes2022.Client.Menus
                     menuItemsTop.RemoveAt(0);
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }

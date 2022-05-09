@@ -126,7 +126,7 @@ namespace Notes2022.Server
         public static async Task<NoteAccess> GetAccess(NotesDbContext db, string userId, int fileId, int arcId)
         {
             // Next we check for this user specifically
-            NoteAccess na = await db.NoteAccess
+            NoteAccess? na = await db.NoteAccess
                 .Where(p => p.UserID == userId && p.NoteFileId == fileId && p.ArchiveId == arcId).FirstOrDefaultAsync();
 
             if (na is not null)
@@ -142,12 +142,12 @@ namespace Notes2022.Server
             na = await db.NoteAccess
                 .Where(p => p.UserID == Globals.AccessOtherId && p.NoteFileId == fileId && p.ArchiveId == arcId).FirstOrDefaultAsync();
 
-            if (userId == Globals.GuestId)
-            {
-                na.EditAccess = na.DeleteEdit = na.Respond = na.Write = false;
-            }
+            //if (userId == Globals.GuestId)
+            //{
+            //    na.EditAccess = na.DeleteEdit = na.Respond = na.Write = false;
+            //}
 
-            return na;
+            return na is null ? new() : na;
         }
 
         /// <summary>
@@ -159,9 +159,9 @@ namespace Notes2022.Server
         /// <returns>NoteAcess Object</returns>
         public static async Task<NoteAccess> GetOneAccess(NotesDbContext db, string userId, int fileId, int arcId)
         {
-            NoteAccess na = await db.NoteAccess
+            NoteAccess? na = await db.NoteAccess
                 .Where(p => p.UserID == userId && p.NoteFileId == fileId && p.ArchiveId == arcId).FirstOrDefaultAsync();
-            return na;
+            return na is null ? new() : na;
         }
 
         public static async Task<List<NoteAccess>> GetAccessListForFile(NotesDbContext db, int fileId, int arcId)

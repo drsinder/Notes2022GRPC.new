@@ -81,7 +81,7 @@ namespace Notes2022.Server.Entities
 
         public static List<Tags> StringToList(string s)
         {
-            List<Tags> list = new List<Tags>();
+            List<Tags> list = new();
 
             if (string.IsNullOrEmpty(s) || s.Length < 1)
                 return list;
@@ -102,7 +102,7 @@ namespace Notes2022.Server.Entities
 
         public static List<Tags> StringToList(string s, long hId, int fId, int arcId)
         {
-            List<Tags> list = new List<Tags>();
+            List<Tags> list = new();
 
             if (string.IsNullOrEmpty(s) || s.Length < 1)
                 return list;
@@ -124,9 +124,11 @@ namespace Notes2022.Server.Entities
         public static List<Tags> CloneForLink(List<Tags> inp)
         {
             if (inp is null)
+#pragma warning disable CS8603 // Possible null reference return.
                 return null;
+#pragma warning restore CS8603 // Possible null reference return.
 
-            List<Tags> outp = new List<Tags>();
+            List<Tags> outp = new();
 
             if (inp.Count == 0)
                 return outp;
@@ -144,28 +146,32 @@ namespace Notes2022.Server.Entities
         //
         public static Tags GetTags(GTags other)
         {
-            Tags t = new Tags();
-            t.NoteFileId = other.NoteFileId;
-            t.ArchiveId = other.ArchiveId;
-            t.NoteHeaderId = other.NoteHeaderId;
-            t.Tag = other.Tag;
+            Tags t = new()
+            {
+                NoteFileId = other.NoteFileId,
+                ArchiveId = other.ArchiveId,
+                NoteHeaderId = other.NoteHeaderId,
+                Tag = other.Tag
+            };
 
             return t;
         }
 
         public GTags GetGTags()
         {
-            GTags t = new GTags();
-            t.NoteFileId = this.NoteFileId;
-            t.NoteHeaderId= this.NoteHeaderId;
-            t.ArchiveId= this.ArchiveId;
-            t.Tag= this.Tag;
+            GTags t = new()
+            {
+                NoteFileId = this.NoteFileId,
+                NoteHeaderId = this.NoteHeaderId,
+                ArchiveId = this.ArchiveId,
+                Tag = this.Tag
+            };
             return t;
         }
 
         public static List<Tags> GetTagsList(GTagsList other)
         {
-            List<Tags> list = new List<Tags>();
+            List<Tags> list = new();
             foreach (GTags t in other.List)
             {
                 list.Add(GetTags(t));
@@ -175,7 +181,7 @@ namespace Notes2022.Server.Entities
 
         public static GTagsList GetGTagsList(List<Tags> other)
         {
-            GTagsList list = new GTagsList();
+            GTagsList list = new();
             foreach (Tags t in other)
             {
                 list.List.Add(t.GetGTags());

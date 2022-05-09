@@ -58,7 +58,9 @@ namespace Notes2022.Client.Dialogs
 
                 delay = new(250);       // allow time for server to respond
                 delay.Enabled = true;
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 delay.Elapsed += Done;  // then close the dialog automatically
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
 
                 return;
             }

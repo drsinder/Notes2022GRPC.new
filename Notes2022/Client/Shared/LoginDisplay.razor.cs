@@ -4,7 +4,7 @@ namespace Notes2022.Client.Shared
 {
     public partial class LoginDisplay
     {
-        private async Task BeginSignOut()
+        private void BeginSignOut()
         {
             Navigation.NavigateTo("authentication/logout");
         }
@@ -29,7 +29,7 @@ namespace Notes2022.Client.Shared
             Navigation.NavigateTo("");
         }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             Globals.LoginDisplay = this;
         }

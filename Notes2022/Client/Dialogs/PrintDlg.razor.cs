@@ -20,12 +20,15 @@ namespace Notes2022.Client.Dialogs
         [Parameter]
         public string PrintStuff { get; set; }
 
+#pragma warning disable IDE1006 // Naming Styles
         private bool readonlyPrint { get; set; }
 
         SfRichTextEditor RteObj;
         private System.Timers.Timer timer2 { get; set; }
-
+#pragma warning restore IDE1006 // Naming Styles
+#pragma warning disable IDE1006 // Naming Styles
         private void onPrint()
+#pragma warning restore IDE1006 // Naming Styles
         {
             RteObj.Print();
         }
@@ -35,7 +38,9 @@ namespace Notes2022.Client.Dialogs
             if (firstRender)
             {
                 timer2 = new System.Timers.Timer(500);
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 timer2.Elapsed += TimerTick2;
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
                 timer2.Enabled = true;
             }
         }

@@ -18,24 +18,5 @@
         Copyright &copy; 2022 Dale Sinder
     </div>
 
-@code {
-    private AboutModel model { get; set; }
-    private TimeSpan upTime { get; set; }
-    private string text = string.Empty;
 
-    /// <summary>
-    /// Get some simple stuff from server
-    /// </summary>
-    /// <returns></returns>
-    protected override async Task OnInitializedAsync()
-    {
-        text = (await Client.GetTextFileAsync(new AString() { Val = "about.html" })).Val;
-
-        try
-        {
-            model = await Client.GetAboutAsync(new NoRequest());
-        }
-        finally { }
-    }
-}
 

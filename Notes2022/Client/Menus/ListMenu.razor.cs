@@ -57,7 +57,7 @@ namespace Notes2022.Client.Menus
         /// <summary>
         /// Menu items/structure
         /// </summary>
-        private static List<MenuItem> menuItems { get; set; }
+        private static List<MenuItem>? menuItems { get; set; }
 
         /// <summary>
         /// Top menu item instance
@@ -89,15 +89,19 @@ namespace Notes2022.Client.Menus
         protected int currNote { get; set; }
 
         [Inject] NavigationManager Navigation { get; set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public ListMenu()   // needed for injection above...
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
         }
+
 
         /// <summary>
         /// Initializations
         /// </summary>
         /// <returns></returns>
-        protected override async Task OnParametersSetAsync()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "BL0005:Component parameter should not be set outside of its component.", Justification = "<Pending>")]
+        protected override void OnParametersSet()
         {
             baseNotes = Model.Notes.List.Count;
             //sliderValueText = "1/" + baseNotes;
@@ -329,7 +333,7 @@ namespace Notes2022.Client.Menus
 
             currentHeader = baseHeader; // set back to base note
 
-            GNoteHeader next = Model.Notes.List.SingleOrDefault(p => p.NoteOrdinal == currentHeader.NoteOrdinal + 1);
+            GNoteHeader? next = Model.Notes.List.SingleOrDefault(p => p.NoteOrdinal == currentHeader.NoteOrdinal + 1);
             if (next is not null)       // still base notes left to print
             {
                 currentHeader = next;   // set current note and base note
@@ -357,7 +361,7 @@ namespace Notes2022.Client.Menus
         /// <param name="isCollapsible">collapsible/expandable html?</param>
         /// <param name="isEmail">Should we mail it?</param>
         /// <param name="emailaddr">Where to mail it</param>
-        private void DoExport(bool isHtml, bool isCollapsible, bool isEmail = false, string emailaddr = null)
+        private void DoExport(bool isHtml, bool isCollapsible, bool isEmail = false, string emailaddr = "")
         {
             var parameters = new ModalParameters();
 

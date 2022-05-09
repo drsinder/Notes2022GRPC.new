@@ -8,19 +8,4 @@
 </div>
 
 
-@code {
-    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
-    [Parameter] public string MessageInput { get; set; }
 
-    private void Cancel()
-    {
-        ModalInstance.CancelAsync();
-
-    }
-        
-    private void Ok()
-    {
-        ModalInstance.CloseAsync(ModalResult.Ok("Yes"));
-    }
-
-}

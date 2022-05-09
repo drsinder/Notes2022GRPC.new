@@ -15,6 +15,7 @@ namespace Notes2022.Client.Comp
         /// <summary>
         /// Who are we
         /// </summary>
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         [Parameter] public GSequencer CurrentTracker { get; set; }
 
         /// <summary>
@@ -46,9 +47,10 @@ namespace Notes2022.Client.Comp
         /// Item just after me
         /// </summary>
         GSequencer after { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
             // find before and after items
             if (CurrentTracker is not null)

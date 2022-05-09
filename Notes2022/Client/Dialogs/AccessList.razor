@@ -44,11 +44,11 @@ else
                                 <Template>
                                     @{
                                         var current = (context as GNoteAccess);
-                                        string userName = current.UserID;
+                                        string userName = current is not null ? current.UserID : "";
                                         if (userName != Globals.AccessOtherId)
                                         {
-                                            GAppUser temp = userList.Find(p => p.Id == userName);
-                                            if (temp != null)
+                                            GAppUser? temp = userList.Find(p => p.Id == userName);
+                                            if (temp is not null)
                                             {
                                                 userName = temp.DisplayName;
                                             }
@@ -61,8 +61,9 @@ else
                             </GridColumn>
                             <GridColumn HeaderText="Read" TextAlign="TextAlign.Center">
                                 <Template>
-                                    @{
+                                @{
                                         var item = (context as GNoteAccess);
+                                        item = item is not null ? item : new GNoteAccess();
                                         AccessItem read = new AccessItem { isChecked = item.ReadAccess, which = AccessX.ReadAccess, Item = item, canEdit = myAccess.EditAccess };
                                         <AccessCheckBox Model="@read" />
                                     }
@@ -72,6 +73,7 @@ else
                                 <Template>
                                     @{
                                         var item = (context as GNoteAccess);
+                                        item = item is not null ? item : new GNoteAccess();
                                         AccessItem write = new AccessItem { isChecked = item.Write, which = AccessX.Write, Item = item, canEdit = myAccess.EditAccess };
                                         <AccessCheckBox Model="@write" />
                                     }
@@ -81,6 +83,7 @@ else
                                 <Template>
                                     @{
                                         var item = (context as GNoteAccess);
+                                        item = item is not null ? item : new GNoteAccess();
                                         AccessItem resp = new AccessItem { isChecked = item.Respond, which = AccessX.Respond, Item = item, canEdit = myAccess.EditAccess };
                                         <AccessCheckBox Model="@resp" />
                                     }
@@ -90,6 +93,7 @@ else
                                 <Template>
                                     @{
                                         var item = (context as GNoteAccess);
+                                        item = item is not null ? item : new GNoteAccess();
                                         AccessItem settag = new AccessItem { isChecked = item.SetTag, which = AccessX.SetTag, Item = item, canEdit = myAccess.EditAccess };
                                         <AccessCheckBox Model="@settag" />
                                     }
@@ -99,6 +103,7 @@ else
                                 <Template>
                                     @{
                                         var item = (context as GNoteAccess);
+                                        item = item is not null ? item : new GNoteAccess();
                                         AccessItem settag = new AccessItem { isChecked = item.DeleteEdit, which = AccessX.DeleteEdit, Item = item, canEdit = myAccess.EditAccess };
                                         <AccessCheckBox Model="@settag" />
                                     }
@@ -108,6 +113,7 @@ else
                                 <Template>
                                     @{
                                         var item = (context as GNoteAccess);
+                                        item = item is not null ? item : new GNoteAccess();
                                         AccessItem settag = new AccessItem { isChecked = item.ViewAccess, which = AccessX.ViewAccess, Item = item, canEdit = myAccess.EditAccess };
                                         <AccessCheckBox Model="@settag" />
                                     }
@@ -117,6 +123,7 @@ else
                                 <Template>
                                     @{
                                         var item = (context as GNoteAccess);
+                                        item = item is not null ? item : new GNoteAccess();
                                         AccessItem settag = new AccessItem { isChecked = item.EditAccess, which = AccessX.EditAccess, Item = item, canEdit = myAccess.EditAccess };
                                         <AccessCheckBox Model="@settag" />
                                     }
@@ -128,6 +135,7 @@ else
                                         if (myAccess.EditAccess)
                                         {
                                             var item = (context as GNoteAccess);
+                                            item = item is not null ? item : new GNoteAccess();
                                             if (item.UserID == Globals.AccessOtherId)
                                             {
                                             }

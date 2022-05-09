@@ -49,31 +49,4 @@ else
 
 
 
-@code {
-    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 
-    [Parameter] public int FileId { get; set; }
-
-    public CreateFileModel dummyFile = new CreateFileModel();
-
-    private async Task HandleValidSubmit()
-    {
-        await Client.CreateNoteFileAsync(new GNotefile() { NoteFileName = dummyFile.NoteFileName, NoteFileTitle = dummyFile.NoteFileTitle }, myState.AuthHeader);
-        await ModalInstance.CloseAsync();
-    }
-
-    private void Cancel()
-    {
-        ModalInstance.CancelAsync();
-    }
-
-    public class CreateFileModel
-    {
-        [Required]
-        public string NoteFileName { get; set; }
-        [Required]
-        public string NoteFileTitle { get; set; }
-
-    }
-
-}

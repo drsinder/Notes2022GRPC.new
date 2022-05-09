@@ -14,7 +14,6 @@
 }
 else
 {
-            @message
             <p>
                 <button @onclick="@(() => CreateNoteFile(0))" class="btn-file">Create Note File</button>
                 @if (todo.Contains("announce"))
@@ -75,7 +74,7 @@ else
                                 @Globals.LocalTimeBlazor(file.LastEdited.ToDateTime()).ToShortTimeString() @Globals.LocalTimeBlazor(file.LastEdited.ToDateTime()).ToShortDateString()
                             </td>
                             <td>
-                                @uList.Find(p => p.Id == file.OwnerId).DisplayName
+                                @(uList is not null ? uList : new()).Find(p => p.Id == file.OwnerId).DisplayName
                             </td>
                             <td>
                                 @file.Id

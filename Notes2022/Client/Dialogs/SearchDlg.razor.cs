@@ -8,6 +8,7 @@ namespace Notes2022.Client.Dialogs
 {
     public partial class SearchDlg
     {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 
         //[Parameter] public TZone zone { get; set; }
@@ -18,8 +19,9 @@ namespace Notes2022.Client.Dialogs
         private int option { get; set; }
         private string text { get; set; }
         private DateTime theTime { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
             option = 0;
             theTime = DateTime.UtcNow;

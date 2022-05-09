@@ -36,18 +36,4 @@
 
 
 
-@code {
 
-    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
-    [Parameter] public int FileId { get; set; }
-    [Parameter] public string FileName { get; set; }
-    [Parameter] public string FileTitle { get; set; }
-    [Parameter] public DateTime LastEdited { get; set; }
-    [Parameter] public int NumberArchives { get; set; }
-    [Parameter] public string Owner { get; set; }
-
-    private void Cancel()
-    {
-        ModalInstance.CancelAsync();
-    }
-}

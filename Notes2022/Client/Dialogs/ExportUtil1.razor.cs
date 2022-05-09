@@ -11,6 +11,7 @@ namespace Notes2022.Client.Dialogs
     public partial class ExportUtil1
     {
         [CascadingParameter] public BlazoredModalInstance ModalInstance { get; set; }
+#pragma warning disable IDE1006 // Naming Styles
         [Parameter] public ExportViewModel model { get; set; }
         [Parameter] public string FileName { get; set; }
 
@@ -18,6 +19,7 @@ namespace Notes2022.Client.Dialogs
 
         private bool marked { get; set; }
         private string message = "Getting ready...";
+#pragma warning restore IDE1006 // Naming Styles
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -32,7 +34,9 @@ namespace Notes2022.Client.Dialogs
         //    module is not null ?
         //        await module.InvokeAsync<string>("showPrompt", message) : null;
 
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
         async ValueTask IAsyncDisposable.DisposeAsync()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {
             if (module is not null)
             {
@@ -68,10 +72,12 @@ namespace Notes2022.Client.Dialogs
                 System.Text.Encoding enc = System.Text.Encoding.ASCII;
                 string email = enc.GetString(bytes);
 
-                GEmail stuff = new GEmail();
-                stuff.Address = model.Email;
-                stuff.Subject = "Notes 2022 - " + model.NoteFile.NoteFileTitle;
-                stuff.Body = email;
+                GEmail stuff = new()
+                {
+                    Address = model.Email,
+                    Subject = "Notes 2022 - " + model.NoteFile.NoteFileTitle,
+                    Body = email
+                };
 
                 await Client.SendEmailAuthAsync(stuff, myState.AuthHeader);
             }
@@ -95,11 +101,11 @@ namespace Notes2022.Client.Dialogs
             GNotefile nf = model.NoteFile;
             int nfid = nf.Id;
 
-            MemoryStream ms = new MemoryStream();
-            StreamWriter sw = new StreamWriter(ms);
-            StringBuilder sb = new StringBuilder();
+            MemoryStream ms = new();
+            StreamWriter sw = new(ms);
+            StringBuilder sb = new();
 
-            List<GTags> tags = new List<GTags>(); //await Http.GetFromJsonAsync<List<Tags>>("api/Tags/" + nfid);
+            List<GTags> tags = new(); //await Http.GetFromJsonAsync<List<Tags>>("api/Tags/" + nfid);
 
             if (isHtml)
             {
@@ -146,7 +152,7 @@ namespace Notes2022.Client.Dialogs
             await sw.WriteLineAsync();
 
             // get ordered list of basenoteheaders to start process
-            GNoteHeaderList bnhl = null;
+            GNoteHeaderList? bnhl = null;
             //string req;
             int NoteOrd = 0;
             if (model.NoteOrdinal == 0)
@@ -171,7 +177,7 @@ namespace Notes2022.Client.Dialogs
                     continue;
 
                 // get content for base note
-                GNoteContent nc = null;
+                GNoteContent? nc = null;
                 //req = bnh.Id.ToString();
                 nc = await Client.GetExport2Async(new NoteId() { Id = bnh.Id }, myState.AuthHeader);
                 // format it and write it
@@ -191,8 +197,10 @@ namespace Notes2022.Client.Dialogs
 
                 for (int rnum = 1; rnum <= bnh.ResponseCount; rnum++)
                 {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                     GNoteHeader nh = null;
                     GNoteContent ncr = null;
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
                     //req = "" + nfid + "." + model.ArchiveNumber + "." + bnh.NoteOrdinal + "." + rnum;
                     GNoteHeaderList zz1 = await Client.GetExportAsync(new ExportRequest()
@@ -243,7 +251,7 @@ namespace Notes2022.Client.Dialogs
         }
 
 
-        private async Task<bool> WriteNote(StreamWriter sw, GNoteHeader bnh, GNoteHeader nh, GNoteContent nc, bool isHtml, bool isResponse, List<GTags> tags)
+        private static async Task<bool> WriteNote(StreamWriter sw, GNoteHeader bnh, GNoteHeader nh, GNoteContent nc, bool isHtml, bool isResponse, List<GTags> tags)
         {
             //StringBuilder sb;
             if (isHtml)
@@ -324,7 +332,9 @@ namespace Notes2022.Client.Dialogs
 
         public async Task SaveAs(string filename, byte[] data)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             await module.InvokeVoidAsync("saveAsFile", filename, Convert.ToBase64String(data));
+#pragma warning restore CS8604 // Possible null reference argument.
         }
 
         private void Cancel()

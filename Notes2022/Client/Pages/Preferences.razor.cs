@@ -5,6 +5,7 @@ namespace Notes2022.Client.Pages
 {
     public partial class Preferences
     {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         private GAppUser UserData { get; set; }
 
         private string currentText { get; set; }
@@ -12,6 +13,7 @@ namespace Notes2022.Client.Pages
         private List<LocalModel2> MySizes { get; set; }
 
         private string pageSize { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
         protected override async Task OnInitializedAsync()
         {
@@ -28,7 +30,7 @@ namespace Notes2022.Client.Pages
             Navigation.NavigateTo("");
         }
 
-        private async Task Cancel()
+        private void Cancel()
         {
             Navigation.NavigateTo("");
         }

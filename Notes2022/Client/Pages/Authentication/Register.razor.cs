@@ -23,7 +23,7 @@ namespace Notes2022.Client.Pages.Authentication
             public string Password2 { get; set; }
         }
 
-        protected InputModel Input = new InputModel{Email = string.Empty, UserName = string.Empty, Password = string.Empty, Password2 = string.Empty};
+        protected InputModel Input = new() { Email = string.Empty, UserName = string.Empty, Password = string.Empty, Password2 = string.Empty};
         protected string Message = string.Empty;
 
         private async Task GotoRegister()
@@ -34,7 +34,7 @@ namespace Notes2022.Client.Pages.Authentication
                 return;
             }
 
-            RegisterRequest regreq = new RegisterRequest() { Email = Input.Email, Password = Input.Password, Username = Input.UserName };
+            RegisterRequest regreq = new() { Email = Input.Email, Password = Input.Password, Username = Input.UserName };
 
             AuthReply ar = await AuthClient.RegisterAsync(regreq);
 
@@ -44,7 +44,9 @@ namespace Notes2022.Client.Pages.Authentication
                 return;
             }
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             Globals.LoginDisplay.Reload();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             Navigation.NavigateTo("");
         }
 

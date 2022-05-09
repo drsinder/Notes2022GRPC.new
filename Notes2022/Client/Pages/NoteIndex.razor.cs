@@ -248,6 +248,7 @@ namespace Notes2022.Client.Pages
         public long GetNextBaseNote(GNoteHeader oh)
         {
             long newId = 0;
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             GNoteHeader nh =Model.Notes.List.SingleOrDefault(p => p.NoteOrdinal == oh.NoteOrdinal + 1 && p.ResponseOrdinal == 0 && p.Version == 0);
             if (nh is not null)
                 newId = nh.Id;
@@ -413,7 +414,9 @@ namespace Notes2022.Client.Pages
             //message = "Searching... Please Wait...";
             //StateHasChanged();
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             target.Text = target.Text.ToLower();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             switch (target.Option)
             {
@@ -450,6 +453,7 @@ namespace Notes2022.Client.Pages
                 return;
             }
 
+#pragma warning disable CS8604 // Possible null reference argument.
             List<GTags> tags = Model.Tags.List.Where(p => p.Tag.ToLower().Contains(target.Text)).ToList();
             if (tags == null || tags.Count == 0)
             {
@@ -575,6 +579,7 @@ namespace Notes2022.Client.Pages
             CurrentNoteId = mode;
             StateHasChanged();
         }
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
         protected async Task StartSeq()
         {
@@ -805,7 +810,9 @@ namespace Notes2022.Client.Pages
         /// <returns></returns>
         private async Task ClearNav()
         {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
             NavString = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
             await Task.CompletedTask;
         }
@@ -837,6 +844,7 @@ namespace Notes2022.Client.Pages
             parameters.Add("MessageInput", message);
             Modal.Show<MessageBox>("", parameters);
         }
+#pragma warning restore CS8604 // Possible null reference argument.
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {

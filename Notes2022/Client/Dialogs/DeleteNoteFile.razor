@@ -37,33 +37,3 @@
             </EditForm>
         </div>
 
-@code {
-
-    public CreateFileModel dummyFile = new CreateFileModel();
-
-    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
-    [Parameter] public int FileId { get; set; }
-    [Parameter] public string FileName { get; set; }
-    [Parameter] public string FileTitle { get; set; }
-
-    private async Task HandleValidSubmit()
-    {
-        await Client.DeleteNoteFileAsync(new GNotefile() { Id = FileId }, myState.AuthHeader);
-        await ModalInstance.CloseAsync(ModalResult.Ok($"Delete was submitted successfully."));
-    }
-
-    private void Cancel()
-    {
-        ModalInstance.CancelAsync();
-    }
-
-    public class CreateFileModel
-    {
-        [Required]
-        public string NoteFileName { get; set; }
-        [Required]
-        public string NoteFileTitle { get; set; }
-
-    }
-
-}

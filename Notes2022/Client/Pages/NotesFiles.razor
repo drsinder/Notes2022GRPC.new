@@ -46,9 +46,10 @@ else
             <GridColumn Field=@nameof(GNotefile.NoteFileName) HeaderText="NoteFile Name" TextAlign="TextAlign.Left" Width="80" IsPrimaryKey="true"></GridColumn>
             <GridColumn HeaderText="Date/Time" TextAlign="TextAlign.Left" Width="60">
                 <Template Context="inner">
-                @{
-                    var itemx = (inner as GNotefile);
-                    DateTime curTimex = Globals.LocalTimeBlazor(itemx.LastEdited.ToDateTime());
+                    @{
+                        var itemx = (inner as GNotefile);
+                        itemx = itemx is not null ? itemx : new();
+                        DateTime curTimex = Globals.LocalTimeBlazor(itemx.LastEdited.ToDateTime());
                     string tellx = curTimex.ToShortDateString() + " " + curTimex.ToShortTimeString();
                     <span>@tellx</span>
                  }

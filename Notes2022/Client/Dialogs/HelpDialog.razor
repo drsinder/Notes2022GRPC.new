@@ -30,23 +30,5 @@
     <button type="button" @onclick="Cancel" class="btn btn-info btn-sm">Close</button>
 
 </div>
-@code {
-    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
-    
-    private string text = string.Empty;
 
-    /// <summary>
-    /// Get some simple stuff from server
-    /// </summary>
-    /// <returns></returns>
-    protected override async Task OnInitializedAsync()
-    {
-        text = (await Client.GetTextFileAsync(new AString() { Val = "helpdialog.html" })).Val;
-    }
-
-    private void Cancel()
-    {
-        ModalInstance.CancelAsync();
-    }
-}
 

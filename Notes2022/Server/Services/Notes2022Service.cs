@@ -124,7 +124,7 @@ namespace Notes2022.Server.Services
             }
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            ConfirmEmailRequest mess = new ConfirmEmailRequest() { UserId = user.Id, Code = code };
+            ConfirmEmailRequest mess = new () { UserId = user.Id, Code = code };
             string payload = Globals.Base64Encode(JsonSerializer.Serialize(mess));
 
             string target = _configuration["AppUrl"] + "/authentication/confirmemail/" + payload;
@@ -136,8 +136,10 @@ namespace Notes2022.Server.Services
 
         public override async Task<AuthReply> ConfirmEmail(ConfirmEmailRequest request, ServerCallContext context)
         {
-            AuthReply ret = new AuthReply();
-            ret.Status = StatusCodes.Status500InternalServerError;
+            AuthReply ret = new()
+            {
+                Status = StatusCodes.Status500InternalServerError
+            };
 
             if (request.Code is null || request.UserId is null)
             {
@@ -201,7 +203,7 @@ namespace Notes2022.Server.Services
                     new Claim(JwtRegisteredClaimNames.Email, user.Email)
                 };
 
-                List<string> roles = new List<string>();
+                List<string> roles = new();
                 foreach (var userRole in userRoles)
                 {
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
@@ -210,10 +212,10 @@ namespace Notes2022.Server.Services
 
                 var token = GetToken(authClaims, request.Hours);
 
-                JwtSecurityTokenHandler hand = new JwtSecurityTokenHandler();
+                JwtSecurityTokenHandler hand = new();
                 string stoken = hand.WriteToken(token);
 
-                UserInfo userInfo = new UserInfo() { Displayname = user.DisplayName, Email = user.Email, Subject = user.Id,
+                UserInfo userInfo = new() { Displayname = user.DisplayName, Email = user.Email, Subject = user.Id,
                 IsAdmin = roles.Contains("Admin"), IsUser = roles.Contains("User")};
 
                 return new LoginReply() { Status = StatusCodes.Status200OK, Message = "Login successful.", Info = userInfo, Jwt = stoken };
@@ -255,15 +257,17 @@ namespace Notes2022.Server.Services
         [Authorize (Roles = "Admin")]
         public override async Task<GAppUserList> GetUserList(NoRequest request, ServerCallContext context)
         {
-            List<ApplicationUser> list = _userManager.Users.ToList();
+            List<ApplicationUser> list = await _userManager.Users.ToListAsync();
             return Notes2022.Server.Entities.ApplicationUser.GetGAppUserList(list);
         }
 
         [Authorize(Roles = "Admin")]
         public override async Task<EditUserViewModel> GetUserRoles(AppUserRequest request, ServerCallContext context)
         {
-            EditUserViewModel model = new EditUserViewModel();
-            model.RolesList = new CheckedUserList();
+            EditUserViewModel model = new()
+            {
+                RolesList = new CheckedUserList()
+            };
             string Id = request.Subject;
             ApplicationUser user = await _userManager.FindByIdAsync(Id);
 
@@ -275,8 +279,10 @@ namespace Notes2022.Server.Services
 
             foreach (var role in allRoles)
             {
-                CheckedUser cu = new CheckedUser();
-                cu.TheRole = new UserRole();
+                CheckedUser cu = new()
+                {
+                    TheRole = new()
+                };
                 cu.TheRole.RoleId = role.Id;
                 cu.TheRole.RoleName = role.Name;
                 cu.IsMember = await _userManager.IsInRoleAsync(user, role.Name);
@@ -318,16 +324,26 @@ namespace Notes2022.Server.Services
         //    return NoteFile.GetGNotefileList(x);
         //}
 
+
+        private async Task<ApplicationUser> GetAppUser(ServerCallContext context)
+        {
+            var user = context.GetHttpContext().User;
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+            return appUser;
+        }
+
+
         [Authorize(Roles = "Admin")]
         public override async Task<GNotefile?> CreateNoteFile(GNotefile request, ServerCallContext context)
         { 
-            var user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
 
             await NoteDataManager.CreateNoteFile(_db, _userManager, appUser.Id, request.NoteFileName, request.NoteFileTitle);
 
             List<NoteFile> x =_db.NoteFile.OrderBy(x => x.Id).ToList();
-            NoteFile newfile = x[x.Count - 1];
+            NoteFile newfile = x[^1];
             return newfile.GetGNotefile();
         }
 
@@ -363,15 +379,17 @@ namespace Notes2022.Server.Services
 
         private async Task<HomePageModel> GetBaseHomePageModelAsync(NoRequest request, ServerCallContext context)
         {
-            HomePageModel homepageModel = new HomePageModel();
+            HomePageModel homepageModel = new();
 
-            NoteFile hpmf = _db.NoteFile.Where(p => p.NoteFileName == "homepagemessages").FirstOrDefault();
+            NoteFile? hpmf = _db.NoteFile.Where(p => p.NoteFileName == "homepagemessages").FirstOrDefault();
             if (hpmf is not null)
             {
-                NoteHeader hpmh = _db.NoteHeader.Where(p => p.NoteFileId == hpmf.Id && !p.IsDeleted).OrderByDescending(p => p.CreateDate).FirstOrDefault();
+                NoteHeader? hpmh = _db.NoteHeader.Where(p => p.NoteFileId == hpmf.Id && !p.IsDeleted).OrderByDescending(p => p.CreateDate).FirstOrDefault();
                 if (hpmh is not null)
                 {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     homepageModel.Message = _db.NoteContent.Where(p => p.NoteHeaderId == hpmh.Id).FirstOrDefault().NoteBody;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
             }
 
@@ -380,16 +398,17 @@ namespace Notes2022.Server.Services
                 try
                 {
                     ClaimsPrincipal user = context.GetHttpContext().User;
-                    if (user.FindFirst(ClaimTypes.NameIdentifier) != null && user.FindFirst(ClaimTypes.NameIdentifier).Value != null)
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                    if (user.FindFirst(ClaimTypes.NameIdentifier) is not null && user.FindFirst(ClaimTypes.NameIdentifier).Value != null)
                     {
-                        ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+                        ApplicationUser appUser = await GetAppUser(context);
                         homepageModel.UserData = appUser.GetGAppUser();
 
                         List<NoteFile> allFiles = _db.NoteFile.ToList().OrderBy(p => p.NoteFileTitle).ToList();
                         List<NoteAccess> myAccesses = _db.NoteAccess.Where(p => p.UserID == appUser.Id).ToList();
                         List<NoteAccess> otherAccesses = _db.NoteAccess.Where(p => p.UserID == Globals.AccessOtherId).ToList();
 
-                        List<NoteFile> myNoteFiles = new List<NoteFile>();
+                        List<NoteFile> myNoteFiles = new();
 
                         bool isAdmin = await _userManager.IsInRoleAsync(appUser, UserRoles.Admin);
                         foreach (NoteFile file in allFiles)
@@ -406,8 +425,9 @@ namespace Notes2022.Server.Services
 
                         homepageModel.NoteFiles = NoteFile.GetGNotefileList(myNoteFiles);
                     }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                 }
             }
@@ -459,7 +479,7 @@ namespace Notes2022.Server.Services
         [Authorize(Roles = "Admin")]
         public override async Task<NoRequest> Import(ImportRequest request, ServerCallContext context)
         {
-            Importer imp = new Importer();
+            Importer imp = new();
             await imp.Import(_db, Globals.ImportRoot + request.UploadFile, request.NoteFile);
             return new NoRequest();
         }
@@ -469,7 +489,7 @@ namespace Notes2022.Server.Services
         {
             ClaimsPrincipal user;
             ApplicationUser appUser;
-            NoteDisplayIndexModel idxModel = new NoteDisplayIndexModel();
+            NoteDisplayIndexModel idxModel = new();
             bool isAdmin;
             bool isUser;
 
@@ -478,11 +498,12 @@ namespace Notes2022.Server.Services
             user = context.GetHttpContext().User;
             try
             {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 if (user.FindFirst(ClaimTypes.NameIdentifier) != null && user.FindFirst(ClaimTypes.NameIdentifier).Value != null)
                 {
                     try
                     {
-                        appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+                        appUser = await GetAppUser(context);
 
                         isAdmin = await _userManager.IsInRoleAsync(appUser, "Admin");
                         isUser = await _userManager.IsInRoleAsync(appUser, "User");
@@ -532,6 +553,7 @@ namespace Notes2022.Server.Services
 
                     }
                 }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             }
             catch (Exception ex)
             {
@@ -544,8 +566,7 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<DisplayModel> GetNoteContent(DisplayModelRequest request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
 
             bool isAdmin = await _userManager.IsInRoleAsync(appUser, "Admin");
 
@@ -564,7 +585,7 @@ namespace Notes2022.Server.Services
             if (!na.ReadAccess)
                 return new DisplayModel();
 
-            DisplayModel model = new DisplayModel()
+            DisplayModel model = new()
             {
                 Header = nh.GetGNoteHeader(),
                 Content = c.GetGNoteContent(),
@@ -581,17 +602,18 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GNoteAccessList> GetAccessList(AccessAndUserListRequest request, ServerCallContext context)
         {
-            return NoteAccess.GetGNoteAccessList(_db.NoteAccess.Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId).ToList());
+            return NoteAccess.GetGNoteAccessList(await _db.NoteAccess.Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId).ToListAsync());
         }
 
         [Authorize]
         public override async Task<AccessAndUserList> GetAccessAndUserList(AccessAndUserListRequest request, ServerCallContext context)
         {
-            AccessAndUserList accessAndUserList = new AccessAndUserList();
-
-            accessAndUserList.AccessList = NoteAccess.GetGNoteAccessList(_db.NoteAccess.Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId).ToList());
-            accessAndUserList.AppUsers = ApplicationUser.GetGAppUserList((await _userManager.GetUsersInRoleAsync("User")).ToList());
-            accessAndUserList.UserAccess = (await AccessManager.GetAccess(_db, request.UserId, request.FileId, request.ArcId)).GetGNoteAccess();
+            AccessAndUserList accessAndUserList = new()
+            {
+                AccessList = NoteAccess.GetGNoteAccessList(_db.NoteAccess.Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId).ToList()),
+                AppUsers = ApplicationUser.GetGAppUserList((await _userManager.GetUsersInRoleAsync("User")).ToList()),
+                UserAccess = (await AccessManager.GetAccess(_db, request.UserId, request.FileId, request.ArcId)).GetGNoteAccess()
+            };
 
             return accessAndUserList;
         }
@@ -600,8 +622,7 @@ namespace Notes2022.Server.Services
         public override async Task<GNoteAccess> UpdateAccessItem(GNoteAccess request, ServerCallContext context)
         {
             NoteAccess access = NoteAccess.GetNoteAccess(request);
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, access.NoteFileId, access.ArchiveId);
             if (na.EditAccess)
             {
@@ -616,8 +637,7 @@ namespace Notes2022.Server.Services
         public override async Task<NoRequest> DeleteAccessItem(GNoteAccess request, ServerCallContext context)
         {
             NoteAccess access = NoteAccess.GetNoteAccess(request);
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, access.NoteFileId, access.ArchiveId);
             if (na.EditAccess)
             {
@@ -631,8 +651,7 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GNoteAccess> AddAccessItem(GNoteAccess request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, request.ArchiveId);
             if (na.EditAccess)
             {
@@ -646,8 +665,7 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GAppUser> GetUserData(NoRequest request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             return appUser.GetGAppUser();
         }
 
@@ -655,8 +673,7 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GAppUser> UpdateUserData(GAppUser request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
 
             if (appUser.Id != request.Id)   // can onlt update self
                 return request;
@@ -672,8 +689,7 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GNoteHeaderList> GetVersions(GetVersionsRequest request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
 
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.FileId, request.ArcId);
             if (!na.ReadAccess)
@@ -692,8 +708,7 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GSequencerList> GetSequencer(NoRequest request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
 
             // My list
             List<Sequencer> mine = await _db.Sequencer.Where(p => p.UserId == appUser.Id).OrderBy(p => p.Ordinal).ThenBy(p => p.LastTime).ToListAsync();
@@ -701,7 +716,7 @@ namespace Notes2022.Server.Services
             if (mine is null)
                 mine = new List<Sequencer>();
 
-            List<Sequencer> avail = new List<Sequencer>();
+            List<Sequencer> avail = new();
 
             foreach (Sequencer m in mine)
             {
@@ -715,8 +730,7 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<NoRequest> CreateSequencer(SCheckModel request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
 
             List<Sequencer> mine = await _db.Sequencer.Where(p => p.UserId == appUser.Id).OrderByDescending(p => p.Ordinal).ToListAsync();
 
@@ -730,7 +744,7 @@ namespace Notes2022.Server.Services
                 ord = mine[0].Ordinal + 1;
             }
 
-            Sequencer tracker = new Sequencer   // make a starting entry
+            Sequencer tracker = new()   // make a starting entry
             {
                 Active = true,
                 NoteFileId = request.FileId,
@@ -749,10 +763,11 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<NoRequest> DeleteSequencer(SCheckModel request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
 
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             Sequencer mine = await _db.Sequencer.SingleOrDefaultAsync(p => p.UserId == appUser.Id && p.NoteFileId == request.FileId);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             if (mine is null)
                 return new NoRequest();
 
@@ -800,11 +815,10 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GNotefile> GetNoteFile(NoteIndexRequest request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, 0);
             if (na.Write )
-                ;
+            { }
             else
                 return new GNotefile();
 
@@ -818,15 +832,14 @@ namespace Notes2022.Server.Services
             if (tvm.MyNote is null || tvm.MySubject is null)
                 return new GNoteHeader();
 
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             bool test = await _userManager.IsInRoleAsync(appUser, "User");
             if (!test)  // Must be in a User Role
                 return new GNoteHeader();
 
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, tvm.NoteFileID, 0);
             if (na.Write || na.Respond)
-                ;
+            { }
             else
                 return new GNoteHeader();
 
@@ -883,8 +896,7 @@ namespace Notes2022.Server.Services
 
             NoteHeader nheader = await NoteDataManager.GetBaseNoteHeaderById(_db, tvm.NoteID);
 
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             bool isAdmin = await _userManager.IsInRoleAsync(appUser, "Admin");
             bool canEdit = isAdmin;         // admins can always edit a note
             if (appUser.Id == nheader.AuthorID)  // otherwise only the author can edit
@@ -916,14 +928,13 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GNoteHeader> GetHeaderForNoteId(NoteId request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             bool isAdmin = await _userManager.IsInRoleAsync(appUser, "Admin");
             
             GNoteHeader gnh = (await _db.NoteHeader.SingleAsync(p => p.Id == request.Id)).GetGNoteHeader();
 
             if (isAdmin)
-                ;
+            { }
             else
             {
                 NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, gnh.NoteFileId, gnh.ArchiveId);
@@ -936,7 +947,9 @@ namespace Notes2022.Server.Services
             return gnh;
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public override async Task<AboutModel> GetAbout(NoRequest request, ServerCallContext context)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return new AboutModel()
             {
@@ -952,10 +965,9 @@ namespace Notes2022.Server.Services
         {
             try
             {
-                ClaimsPrincipal user = context.GetHttpContext().User;
-                ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+                ApplicationUser appUser = await GetAppUser(context);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // was not authenticated - slow them up
 
@@ -997,8 +1009,7 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GNoteHeaderList> GetExport(ExportRequest request, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.FileId, request.ArcId);
             if (!na.ReadAccess)
                 return new GNoteHeaderList();
@@ -1033,26 +1044,28 @@ namespace Notes2022.Server.Services
                 .Where(p => p.Id == request.Id)
                 .FirstOrDefaultAsync();
 
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, nh.NoteFileId, nh.ArchiveId);
             if (!na.ReadAccess)
                 return new GNoteContent();
 
 
             return nc.GetGNoteContent();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
 
         [Authorize]
         public override async Task<NoRequest> DoForward(ForwardViewModel fv, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, fv.FileID, fv.ArcID);
             if (!na.ReadAccess)
                 return new NoRequest();
 
+#pragma warning disable CS8604 // Possible null reference argument.
             string myEmail = await LocalService.MakeNoteForEmail(fv, fv.NoteFile, _db, appUser.Email, appUser.DisplayName);
+#pragma warning restore CS8604 // Possible null reference argument.
 
             await _emailSender.SendEmailAsync(appUser.Email, fv.NoteSubject, myEmail);
             return new NoRequest();
@@ -1061,15 +1074,14 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<GNotefileList> GetNoteFilesOrderedByName(NoRequest request, ServerCallContext context)
         {
-            List<NoteFile> noteFiles = _db.NoteFile.OrderBy(p => p.NoteFileName).ToList();
+            List<NoteFile> noteFiles = await _db.NoteFile.OrderBy(p => p.NoteFileName).ToListAsync();
             return NoteFile.GetGNotefileList(noteFiles);
         }
 
         [Authorize]
         public override async Task<NoRequest> CopyNote(CopyModel Model, ServerCallContext context)
         {
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
 
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, Model.Note.NoteFileId, Model.Note.ArchiveId);
             if (!na.ReadAccess)
@@ -1114,9 +1126,10 @@ namespace Notes2022.Server.Services
 
                 Header.CreateDate = Header.ThreadLastEdited = Header.LastEdited = DateTime.Now.ToUniversalTime();
 
-                await NoteDataManager.CreateNote(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
+#pragma warning disable CS8604 // Possible null reference argument.
+                _ = await NoteDataManager.CreateNote(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
+#pragma warning restore CS8604 // Possible null reference argument.
 
-                new NoRequest();
             }
             else    // whole note string
             {
@@ -1152,7 +1165,9 @@ namespace Notes2022.Server.Services
 
                 Header.NoteContent = null;
 
+#pragma warning disable CS8604 // Possible null reference argument.
                 NoteHeader NewHeader = await NoteDataManager.CreateNote(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
+#pragma warning restore CS8604 // Possible null reference argument.
 
                 // now deal with any responses
                 for (int i = 1; i <= BaseHeader.ResponseCount; i++)
@@ -1185,7 +1200,9 @@ namespace Notes2022.Server.Services
 
                     Header.CreateDate = Header.ThreadLastEdited = Header.LastEdited = DateTime.Now.ToUniversalTime();
 
-                    await NoteDataManager.CreateResponse(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
+#pragma warning disable CS8604 // Possible null reference argument.
+                    _ = await NoteDataManager.CreateResponse(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
+#pragma warning restore CS8604 // Possible null reference argument.
                 }
 
             }
@@ -1193,7 +1210,7 @@ namespace Notes2022.Server.Services
         }
 
         // Utility method - makes a viewable header for the copied note
-        private string MakeHeader(NoteHeader header, NoteFile noteFile)
+        private static string MakeHeader(NoteHeader header, NoteFile noteFile)
         {
             StringBuilder sb = new();
 
@@ -1214,17 +1231,16 @@ namespace Notes2022.Server.Services
         {
             NoteHeader note = await NoteDataManager.GetNoteByIdWithFile(_db, request.Id);
 
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, note.NoteFileId, note.ArchiveId);
             if (!na.DeleteEdit)
             {
-                new NoRequest();
+                return new();
             }
 
             await NoteDataManager.DeleteNote(_db, note);
 
-            return new NoRequest();
+            return new();
         }
 
         //[Authorize]
@@ -1263,12 +1279,12 @@ namespace Notes2022.Server.Services
         [Authorize]
         public override async Task<JsonExport> GetExportJson(ExportRequest request, ServerCallContext context)
         {
-            JsonExport stuff = new JsonExport();
+            JsonExport stuff = new()
+            {
+                NoteFile = _db.NoteFile.Single(p => p.Id == request.FileId).GetGNotefile()
+            };
 
-            stuff.NoteFile = _db.NoteFile.Single(p => p.Id == request.FileId).GetGNotefile();
-
-            ClaimsPrincipal user = context.GetHttpContext().User;
-            ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
+            ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, stuff.NoteFile.Id, 0);
             if (!na.ReadAccess)
                 return new JsonExport();
@@ -1305,8 +1321,10 @@ namespace Notes2022.Server.Services
 
         public override async Task<AString> GetTextFile(AString request, ServerCallContext context)
         {
-            AString stuff = new AString();
-            stuff.Val = String.Empty;
+            AString stuff = new()
+            {
+                Val = string.Empty
+            };
 
             if (request.Val == "syncfusionkey.rsghjjsrsrj43632353")
             {
@@ -1326,8 +1344,8 @@ namespace Notes2022.Server.Services
                 return stuff;
             }
             
-            StringBuilder sb = new StringBuilder();
-            string line;
+            StringBuilder sb = new();
+            string? line;
             while ((line = await file.ReadLineAsync()) is not null)
             {
                 sb.AppendLine(line);

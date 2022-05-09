@@ -45,6 +45,7 @@ else
                     @if (ShowContentR)
                     {
                         var current2 = (context as GNoteHeader);
+                        current2 = current2 is not null ? current2 : new();
                         <NotePanel NoteId="@current2.Id" ShowChild="false" IsRootNote="false" IsMini="true"></NotePanel>
                     }
                 </DetailTemplate>
@@ -55,9 +56,10 @@ else
                 <GridColumn Field=@nameof(GNoteHeader.AuthorName) HeaderText="Writer" TextAlign="TextAlign.Left" Width="80"></GridColumn>
                 <GridColumn Field=@nameof(GNoteHeader.CreateDate) HeaderText="Date/Time" TextAlign="TextAlign.Left" Width="60">
                     <Template Context="inner">
-                        @{
+                @{
                             var itemx = (inner as GNoteHeader);
-                            <span>@Globals.LocalTimeBlazor(itemx.CreateDate.ToDateTime())</span>
+                            itemx = itemx is not null ? itemx : new();
+                    <span>@Globals.LocalTimeBlazor(itemx.CreateDate.ToDateTime())</span>
                         }
                     </Template>
                 </GridColumn>
