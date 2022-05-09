@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Remove="Comp\CookieStateAgent.razor.cs" />
+    <Compile Remove="Shared\MainLayout.razor.cs" />
     <Compile Remove="StateContainer.cs" />
   </ItemGroup>
 

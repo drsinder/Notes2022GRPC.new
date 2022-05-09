@@ -10,9 +10,7 @@ namespace Notes2022.Client
     {
         private LoginReply? savedLoginValue;        // used while updating cookies
 
-        private IJSObjectReference? module;
-
-        //private static bool Preloaded { get; set; } = false;
+        private IJSObjectReference? module;         // for calling javascript
 
         async ValueTask IAsyncDisposable.DisposeAsync()
         {
@@ -122,9 +120,6 @@ namespace Notes2022.Client
             }
         }
 
-        // Globals.Base64Encode(JsonSerializer.Serialize(ar))
-        // JsonSerializer.Deserialize<LoginReply>(cookie)
-
         /// <summary>
         /// /////////////////////////////////////////////////////////////////////////////////////////
         /// 
@@ -174,7 +169,7 @@ namespace Notes2022.Client
         {
             get
             {
-                return LoginReply != null && LoginReply.Status == 200;
+                return (LoginReply is not null) && LoginReply.Status == 200;
             }
         }
 
@@ -185,7 +180,7 @@ namespace Notes2022.Client
         {
             get
             {
-                if (LoginReply == null || LoginReply.Status != 200)
+                if (LoginReply is null || LoginReply.Status != 200)
                     return false;
                 return UserInfo.IsAdmin;
             }
@@ -198,7 +193,7 @@ namespace Notes2022.Client
         {
             get
             {
-                if (LoginReply == null || LoginReply.Status != 200)
+                if (LoginReply is null || LoginReply.Status != 200)
                     return false;
                 return UserInfo.IsUser;
             }
@@ -212,7 +207,7 @@ namespace Notes2022.Client
             get
             {
                 var headers = new Metadata();
-                if (LoginReply != null && LoginReply.Status == 200)
+                if (LoginReply is not null && LoginReply.Status == 200)
                     headers.Add("Authorization", $"Bearer {LoginReply.Jwt}");
                 return headers;
             }
@@ -225,7 +220,7 @@ namespace Notes2022.Client
         {
             get
             {
-                if (LoginReply != null && LoginReply.Status == 200)
+                if (LoginReply is not null && LoginReply.Status == 200)
                 {
 
                     return LoginReply.Info;
