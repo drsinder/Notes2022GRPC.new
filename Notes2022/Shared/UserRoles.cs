@@ -25,11 +25,11 @@ namespace Notes2022.Shared
     public static class UserRoles
     {
         /// <summary>
-        /// The admin
+        /// The admin role name
         /// </summary>
         public const string Admin = "Admin";
         /// <summary>
-        /// The user
+        /// The user role name
         /// </summary>
         public const string User = "User";
     }
