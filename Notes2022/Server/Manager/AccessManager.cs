@@ -196,25 +196,6 @@ namespace Notes2022.Server
                 .ToListAsync();
         }
 
-        //public static async Task<bool> Audit(NotesDbContext db, string eventType, string userName, string userId,
-        //    string Event   /*, TelemetryClient telemetry*/)
-        //{
-        //    Audit na = new Audit();
-
-        //    var usr = await db.Users.SingleAsync(p => p.UserName == userName);
-
-        //    na.UserID = usr.Id;
-        //    na.UserName = userName;
-        //    na.EventType = eventType;
-        //    na.Event = Event;
-        //    na.EventTime = System.DateTime.Now.ToUniversalTime();
-
-        //    //telemetry.TrackEvent("Audit - " + userName + " - " + eventType + " - " + Event);
-
-        //    db.Audit.Add(na);
-        //    return (await db.SaveChangesAsync()) == 1;
-        //}
-
         /// <summary>
         /// Tests the link access.
         /// </summary>

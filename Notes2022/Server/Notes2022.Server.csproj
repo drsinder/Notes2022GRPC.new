@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f8ad2ff7-6f61-49db-b112-d00b2bb67d10</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/9053a6c5-d700-4ec6-b089-a511c8f8be48/resourceGroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/Notes2022ServerGRPC</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.45.0" />
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.45.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.4" />
