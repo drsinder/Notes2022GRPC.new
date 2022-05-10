@@ -713,6 +713,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// holds login information
+  /// </summary>
   public sealed partial class LoginRequest : pb::IMessage<LoginRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -789,6 +792,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "hours" field.</summary>
     public const int HoursFieldNumber = 3;
     private int hours_;
+    /// <summary>
+    /// number of hours to keep user logged in via cookies
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Hours {
@@ -979,6 +985,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// vital info about user
+  /// </summary>
   public sealed partial class UserInfo : pb::IMessage<UserInfo>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1322,6 +1331,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used to return status during accout operations
+  /// </summary>
   public sealed partial class AuthReply : pb::IMessage<AuthReply>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1548,6 +1560,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// reply for a login attempt
+  /// </summary>
   public sealed partial class LoginReply : pb::IMessage<LoginReply>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1599,6 +1614,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 1;
     private int status_;
+    /// <summary>
+    /// 200 if Ok
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Status {
@@ -1611,6 +1629,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "message" field.</summary>
     public const int MessageFieldNumber = 2;
     private string message_ = "";
+    /// <summary>
+    /// text message
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Message {
@@ -1623,6 +1644,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "info" field.</summary>
     public const int InfoFieldNumber = 3;
     private global::Notes2022.Proto.UserInfo info_;
+    /// <summary>
+    /// vital info about user
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.UserInfo Info {
@@ -1635,6 +1659,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "jwt" field.</summary>
     public const int JwtFieldNumber = 4;
     private string jwt_ = "";
+    /// <summary>
+    /// JWT for cookie and credentials for authenticated gRPC calls
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Jwt {
@@ -1647,6 +1674,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "hours" field.</summary>
     public const int HoursFieldNumber = 5;
     private int hours_;
+    /// <summary>
+    /// hours for keep user logged in
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Hours {
@@ -1897,7 +1927,7 @@ namespace Notes2022.Proto {
   /// <summary>
   //////////////////////////////////////////////////
   ///
-  /// For Role editing
+  /// For Role editing - represents a user role item
   /// </summary>
   public sealed partial class UserRole : pb::IMessage<UserRole>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -2125,6 +2155,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// a user role and membership flag
+  /// </summary>
   public sealed partial class CheckedUser : pb::IMessage<CheckedUser>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2360,6 +2393,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// list of role/mambership items
+  /// </summary>
   public sealed partial class CheckedUserList : pb::IMessage<CheckedUserList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2538,6 +2574,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used while editing role memberships
+  /// </summary>
   public sealed partial class EditUserViewModel : pb::IMessage<EditUserViewModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2586,6 +2625,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "userData" field.</summary>
     public const int UserDataFieldNumber = 1;
     private global::Notes2022.Proto.GAppUser userData_;
+    /// <summary>
+    /// a representation of the user
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GAppUser UserData {
@@ -2598,6 +2640,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "rolesList" field.</summary>
     public const int RolesListFieldNumber = 2;
     private global::Notes2022.Proto.CheckedUserList rolesList_;
+    /// <summary>
+    /// their role/memberships
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.CheckedUserList RolesList {
@@ -2783,11 +2828,7 @@ namespace Notes2022.Proto {
   }
 
   /// <summary>
-  ////////////////////////////////////////////////
-  ///
-  /// Database entity related stuff
-  ///
-  /// gRPC representation of database tables/rows prefixed with "G"
+  /// used to request user data
   /// </summary>
   public sealed partial class AppUserRequest : pb::IMessage<AppUserRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -2836,6 +2877,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "subject" field.</summary>
     public const int SubjectFieldNumber = 1;
     private string subject_ = "";
+    /// <summary>
+    /// user Id - subject in JWT terms
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Subject {
@@ -3065,6 +3109,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "displayName" field.</summary>
     public const int DisplayNameFieldNumber = 2;
     private string displayName_ = "";
+    /// <summary>
+    /// users name for display
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string DisplayName {
@@ -3117,7 +3164,7 @@ namespace Notes2022.Proto {
     public const int Ipref2FieldNumber = 6;
     private int ipref2_;
     /// <summary>
-    /// page size
+    /// page size for note file index
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4005,6 +4052,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// list of app users
+  /// </summary>
   public sealed partial class GAppUserList : pb::IMessage<GAppUserList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -4183,6 +4233,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// data for a note file
+  /// </summary>
   public sealed partial class GNotefile : pb::IMessage<GNotefile>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -4235,6 +4288,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "id" field.</summary>
     public const int IdFieldNumber = 1;
     private int id_;
+    /// <summary>
+    /// file Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Id {
@@ -4247,6 +4303,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "numberArchives" field.</summary>
     public const int NumberArchivesFieldNumber = 2;
     private int numberArchives_;
+    /// <summary>
+    /// number of archives it has
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NumberArchives {
@@ -4259,6 +4318,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "ownerId" field.</summary>
     public const int OwnerIdFieldNumber = 3;
     private string ownerId_ = "";
+    /// <summary>
+    /// owner id/subject
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string OwnerId {
@@ -4271,6 +4333,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFileName" field.</summary>
     public const int NoteFileNameFieldNumber = 4;
     private string noteFileName_ = "";
+    /// <summary>
+    /// name of the file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string NoteFileName {
@@ -4283,6 +4348,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFileTitle" field.</summary>
     public const int NoteFileTitleFieldNumber = 5;
     private string noteFileTitle_ = "";
+    /// <summary>
+    /// title of the file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string NoteFileTitle {
@@ -4295,6 +4363,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "lastEdited" field.</summary>
     public const int LastEditedFieldNumber = 6;
     private global::Google.Protobuf.WellKnownTypes.Timestamp lastEdited_;
+    /// <summary>
+    /// when was the file last edited	
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Google.Protobuf.WellKnownTypes.Timestamp LastEdited {
@@ -4566,6 +4637,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// list of note files
+  /// </summary>
   public sealed partial class GNotefileList : pb::IMessage<GNotefileList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -4744,6 +4818,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// header for a note
+  /// </summary>
   public sealed partial class GNoteHeader : pb::IMessage<GNoteHeader>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -4810,6 +4887,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "id" field.</summary>
     public const int IdFieldNumber = 1;
     private long id_;
+    /// <summary>
+    /// note Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Id {
@@ -4822,6 +4902,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFileId" field.</summary>
     public const int NoteFileIdFieldNumber = 2;
     private int noteFileId_;
+    /// <summary>
+    /// Id of file to which it belongs
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteFileId {
@@ -4834,6 +4917,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "archiveId" field.</summary>
     public const int ArchiveIdFieldNumber = 3;
     private int archiveId_;
+    /// <summary>
+    /// archive number
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ArchiveId {
@@ -4846,6 +4932,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "baseNoteId" field.</summary>
     public const int BaseNoteIdFieldNumber = 4;
     private long baseNoteId_;
+    /// <summary>
+    /// Id of this notes base note
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long BaseNoteId {
@@ -4858,6 +4947,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteOrdinal" field.</summary>
     public const int NoteOrdinalFieldNumber = 5;
     private int noteOrdinal_;
+    /// <summary>
+    /// display order of the note - Note number
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteOrdinal {
@@ -4870,6 +4962,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "responseOrdinal" field.</summary>
     public const int ResponseOrdinalFieldNumber = 6;
     private int responseOrdinal_;
+    /// <summary>
+    /// response number - 0 for a base note
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ResponseOrdinal {
@@ -4882,6 +4977,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteSubject" field.</summary>
     public const int NoteSubjectFieldNumber = 7;
     private string noteSubject_ = "";
+    /// <summary>
+    /// subject of the note
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string NoteSubject {
@@ -4894,6 +4992,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "lastEdited" field.</summary>
     public const int LastEditedFieldNumber = 8;
     private global::Google.Protobuf.WellKnownTypes.Timestamp lastEdited_;
+    /// <summary>
+    /// when was it last edited
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Google.Protobuf.WellKnownTypes.Timestamp LastEdited {
@@ -4906,6 +5007,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "threadLastEdited" field.</summary>
     public const int ThreadLastEditedFieldNumber = 9;
     private global::Google.Protobuf.WellKnownTypes.Timestamp threadLastEdited_;
+    /// <summary>
+    /// when was any not in the thread last edited
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Google.Protobuf.WellKnownTypes.Timestamp ThreadLastEdited {
@@ -4918,6 +5022,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "createDate" field.</summary>
     public const int CreateDateFieldNumber = 10;
     private global::Google.Protobuf.WellKnownTypes.Timestamp createDate_;
+    /// <summary>
+    /// when wsa it create
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Google.Protobuf.WellKnownTypes.Timestamp CreateDate {
@@ -4930,6 +5037,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "responseCount" field.</summary>
     public const int ResponseCountFieldNumber = 11;
     private int responseCount_;
+    /// <summary>
+    /// for a base note, the number of responses in the thread
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ResponseCount {
@@ -4942,6 +5052,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "authorID" field.</summary>
     public const int AuthorIDFieldNumber = 12;
     private string authorID_ = "";
+    /// <summary>
+    /// Id / subject of the author
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string AuthorID {
@@ -4954,6 +5067,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "authorName" field.</summary>
     public const int AuthorNameFieldNumber = 13;
     private string authorName_ = "";
+    /// <summary>
+    /// display name of the author
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string AuthorName {
@@ -4966,6 +5082,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "linkGuid" field.</summary>
     public const int LinkGuidFieldNumber = 14;
     private string linkGuid_ = "";
+    /// <summary>
+    /// used to keep track of linked Notes
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LinkGuid {
@@ -4978,6 +5097,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "refId" field.</summary>
     public const int RefIdFieldNumber = 15;
     private long refId_;
+    /// <summary>
+    /// Id of note being responded to
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long RefId {
@@ -4990,6 +5112,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "isDeleted" field.</summary>
     public const int IsDeletedFieldNumber = 16;
     private bool isDeleted_;
+    /// <summary>
+    /// has this note been deleted - invisible	
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsDeleted {
@@ -5002,6 +5127,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "version" field.</summary>
     public const int VersionFieldNumber = 17;
     private int version_;
+    /// <summary>
+    /// version of the note - used when reediting a note
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Version {
@@ -5014,6 +5142,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "directorMessage" field.</summary>
     public const int DirectorMessageFieldNumber = 18;
     private string directorMessage_ = "";
+    /// <summary>
+    /// director message
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string DirectorMessage {
@@ -5687,6 +5818,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// list of note headers
+  /// </summary>
   public sealed partial class GNoteHeaderList : pb::IMessage<GNoteHeaderList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -5865,6 +5999,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// note content
+  /// </summary>
   public sealed partial class GNoteContent : pb::IMessage<GNoteContent>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -6091,6 +6228,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// list of note content
+  /// </summary>
   public sealed partial class GNoteContentList : pb::IMessage<GNoteContentList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -6269,6 +6409,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// access item/token for a user
+  /// </summary>
   public sealed partial class GNoteAccess : pb::IMessage<GNoteAccess>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -6325,6 +6468,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "userID" field.</summary>
     public const int UserIDFieldNumber = 1;
     private string userID_ = "";
+    /// <summary>
+    /// Id / subject
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string UserID {
@@ -6337,6 +6483,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFileId" field.</summary>
     public const int NoteFileIdFieldNumber = 2;
     private int noteFileId_;
+    /// <summary>
+    /// file Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteFileId {
@@ -6349,6 +6498,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "archiveId" field.</summary>
     public const int ArchiveIdFieldNumber = 3;
     private int archiveId_;
+    /// <summary>
+    /// archive id/number
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ArchiveId {
@@ -6361,6 +6513,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "readAccess" field.</summary>
     public const int ReadAccessFieldNumber = 4;
     private bool readAccess_;
+    /// <summary>
+    /// is permitted to read the file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool ReadAccess {
@@ -6373,6 +6528,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "respond" field.</summary>
     public const int RespondFieldNumber = 5;
     private bool respond_;
+    /// <summary>
+    /// is permitted to responsd to a note
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Respond {
@@ -6385,6 +6543,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "write" field.</summary>
     public const int WriteFieldNumber = 6;
     private bool write_;
+    /// <summary>
+    /// is permitted to write notes - base notes or respond
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Write {
@@ -6397,6 +6558,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "setTag" field.</summary>
     public const int SetTagFieldNumber = 7;
     private bool setTag_;
+    /// <summary>
+    /// is permitted to set tags and director message
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool SetTag {
@@ -6409,6 +6573,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "deleteEdit" field.</summary>
     public const int DeleteEditFieldNumber = 8;
     private bool deleteEdit_;
+    /// <summary>
+    /// is permitted to delete and edit notes
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool DeleteEdit {
@@ -6421,6 +6588,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "viewAccess" field.</summary>
     public const int ViewAccessFieldNumber = 9;
     private bool viewAccess_;
+    /// <summary>
+    /// is permitted to view the access controls for a file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool ViewAccess {
@@ -6433,6 +6603,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "editAccess" field.</summary>
     public const int EditAccessFieldNumber = 10;
     private bool editAccess_;
+    /// <summary>
+    /// is permitted to view and edit access controls for a file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool EditAccess {
@@ -6791,6 +6964,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// list of access tokens
+  /// </summary>
   public sealed partial class GNoteAccessList : pb::IMessage<GNoteAccessList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -6969,6 +7145,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// tag for a note
+  /// </summary>
   public sealed partial class GTags : pb::IMessage<GTags>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -7019,6 +7198,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFileId" field.</summary>
     public const int NoteFileIdFieldNumber = 1;
     private int noteFileId_;
+    /// <summary>
+    /// file Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteFileId {
@@ -7031,6 +7213,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "archiveId" field.</summary>
     public const int ArchiveIdFieldNumber = 2;
     private int archiveId_;
+    /// <summary>
+    /// archive Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ArchiveId {
@@ -7043,6 +7228,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteHeaderId" field.</summary>
     public const int NoteHeaderIdFieldNumber = 3;
     private long noteHeaderId_;
+    /// <summary>
+    /// header Id - what note is this for
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long NoteHeaderId {
@@ -7055,6 +7243,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "Tag" field.</summary>
     public const int TagFieldNumber = 4;
     private string tag_ = "";
+    /// <summary>
+    /// text of tag
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Tag {
@@ -7269,6 +7460,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// list of tags
+  /// </summary>
   public sealed partial class GTagsList : pb::IMessage<GTagsList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -7447,6 +7641,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// sequencer item
+  /// </summary>
   public sealed partial class GSequencer : pb::IMessage<GSequencer>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -7499,6 +7696,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "userId" field.</summary>
     public const int UserIdFieldNumber = 1;
     private string userId_ = "";
+    /// <summary>
+    /// user Id / subject
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string UserId {
@@ -7511,6 +7711,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFileId" field.</summary>
     public const int NoteFileIdFieldNumber = 2;
     private int noteFileId_;
+    /// <summary>
+    /// note file Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteFileId {
@@ -7523,6 +7726,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "ordinal" field.</summary>
     public const int OrdinalFieldNumber = 3;
     private int ordinal_;
+    /// <summary>
+    /// oder in which to use
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Ordinal {
@@ -7535,6 +7741,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "lastTime" field.</summary>
     public const int LastTimeFieldNumber = 4;
     private global::Google.Protobuf.WellKnownTypes.Timestamp lastTime_;
+    /// <summary>
+    /// when did this file last get sequenced
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Google.Protobuf.WellKnownTypes.Timestamp LastTime {
@@ -7547,6 +7756,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "startTime" field.</summary>
     public const int StartTimeFieldNumber = 5;
     private global::Google.Protobuf.WellKnownTypes.Timestamp startTime_;
+    /// <summary>
+    /// when did this file get started sequencing on this run
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Google.Protobuf.WellKnownTypes.Timestamp StartTime {
@@ -7559,6 +7771,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "active" field.</summary>
     public const int ActiveFieldNumber = 6;
     private bool active_;
+    /// <summary>
+    /// is it currently the active sequencer item for user
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Active {
@@ -7839,6 +8054,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// list of sequencer items
+  /// </summary>
   public sealed partial class GSequencerList : pb::IMessage<GSequencerList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -9720,9 +9938,7 @@ namespace Notes2022.Proto {
   }
 
   /// <summary>
-  ////////////////////////////////////////////////
-  ///
-  /// Not Entites directly - Models for transfer of info to pages
+  /// data needed for home page
   /// </summary>
   public sealed partial class HomePageModel : pb::IMessage<HomePageModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -9775,6 +9991,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFiles" field.</summary>
     public const int NoteFilesFieldNumber = 1;
     private global::Notes2022.Proto.GNotefileList noteFiles_;
+    /// <summary>
+    /// list of files available to user
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNotefileList NoteFiles {
@@ -9787,6 +10006,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteAccesses" field.</summary>
     public const int NoteAccessesFieldNumber = 2;
     private global::Notes2022.Proto.GNoteAccessList noteAccesses_;
+    /// <summary>
+    /// access items for the files
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteAccessList NoteAccesses {
@@ -9799,6 +10021,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "message" field.</summary>
     public const int MessageFieldNumber = 3;
     private string message_ = "";
+    /// <summary>
+    /// banner message text to display
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Message {
@@ -9811,6 +10036,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "userData" field.</summary>
     public const int UserDataFieldNumber = 4;
     private global::Notes2022.Proto.GAppUser userData_;
+    /// <summary>
+    /// user data
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GAppUser UserData {
@@ -9823,6 +10051,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "userDataList" field.</summary>
     public const int UserDataListFieldNumber = 5;
     private global::Notes2022.Proto.GAppUserList userDataList_;
+    /// <summary>
+    /// list of all users
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GAppUserList UserDataList {
@@ -10097,6 +10328,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// request to import a file
+  /// </summary>
   public sealed partial class ImportRequest : pb::IMessage<ImportRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -10145,6 +10379,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFile" field.</summary>
     public const int NoteFileFieldNumber = 1;
     private string noteFile_ = "";
+    /// <summary>
+    /// file name to import to
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string NoteFile {
@@ -10157,6 +10394,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "uploadFile" field.</summary>
     public const int UploadFileFieldNumber = 2;
     private string uploadFile_ = "";
+    /// <summary>
+    /// source file to import
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string UploadFile {
@@ -10323,6 +10563,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used to display the note file index
+  /// </summary>
   public sealed partial class NoteDisplayIndexModel : pb::IMessage<NoteDisplayIndexModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -10382,6 +10625,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFile" field.</summary>
     public const int NoteFileFieldNumber = 1;
     private global::Notes2022.Proto.GNotefile noteFile_;
+    /// <summary>
+    /// the note file to display
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNotefile NoteFile {
@@ -10394,6 +10640,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "arcId" field.</summary>
     public const int ArcIdFieldNumber = 2;
     private int arcId_;
+    /// <summary>
+    /// which archive - usually 0
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ArcId {
@@ -10406,6 +10655,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "myAccess" field.</summary>
     public const int MyAccessFieldNumber = 3;
     private global::Notes2022.Proto.GNoteAccess myAccess_;
+    /// <summary>
+    /// users access item/token
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteAccess MyAccess {
@@ -10418,6 +10670,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "isMarked" field.</summary>
     public const int IsMarkedFieldNumber = 4;
     private bool isMarked_;
+    /// <summary>
+    /// are there marked notes
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsMarked {
@@ -10466,6 +10721,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "notes" field.</summary>
     public const int NotesFieldNumber = 8;
     private global::Notes2022.Proto.GNoteHeaderList notes_;
+    /// <summary>
+    /// list of base notes
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteHeaderList Notes {
@@ -10478,6 +10736,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "allNotes" field.</summary>
     public const int AllNotesFieldNumber = 9;
     private global::Notes2022.Proto.GNoteHeaderList allNotes_;
+    /// <summary>
+    /// list of all notes
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteHeaderList AllNotes {
@@ -10490,6 +10751,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "linkedText" field.</summary>
     public const int LinkedTextFieldNumber = 10;
     private string linkedText_ = "";
+    /// <summary>
+    /// extra text to be displayed for a linked file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LinkedText {
@@ -10514,6 +10778,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "userData" field.</summary>
     public const int UserDataFieldNumber = 12;
     private global::Notes2022.Proto.GAppUser userData_;
+    /// <summary>
+    /// user data
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GAppUser UserData {
@@ -10526,6 +10793,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "tags" field.</summary>
     public const int TagsFieldNumber = 13;
     private global::Notes2022.Proto.GTagsList tags_;
+    /// <summary>
+    /// all tags for file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GTagsList Tags {
@@ -11010,6 +11280,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used to requst a NoteDisplayIndexModel
+  /// </summary>
   public sealed partial class NoteIndexRequest : pb::IMessage<NoteIndexRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -11199,6 +11472,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used to display a note
+  /// </summary>
   public sealed partial class DisplayModel : pb::IMessage<DisplayModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -11252,6 +11528,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFile" field.</summary>
     public const int NoteFileFieldNumber = 1;
     private global::Notes2022.Proto.GNotefile noteFile_;
+    /// <summary>
+    /// the note file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNotefile NoteFile {
@@ -11264,6 +11543,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "header" field.</summary>
     public const int HeaderFieldNumber = 2;
     private global::Notes2022.Proto.GNoteHeader header_;
+    /// <summary>
+    /// the note header
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteHeader Header {
@@ -11276,6 +11558,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "content" field.</summary>
     public const int ContentFieldNumber = 3;
     private global::Notes2022.Proto.GNoteContent content_;
+    /// <summary>
+    /// note body
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteContent Content {
@@ -11288,6 +11573,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "tags" field.</summary>
     public const int TagsFieldNumber = 4;
     private global::Notes2022.Proto.GTagsList tags_;
+    /// <summary>
+    /// tags for this note
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GTagsList Tags {
@@ -11300,6 +11588,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "access" field.</summary>
     public const int AccessFieldNumber = 5;
     private global::Notes2022.Proto.GNoteAccess access_;
+    /// <summary>
+    /// access item/token for file/user
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteAccess Access {
@@ -11312,6 +11603,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "canEdit" field.</summary>
     public const int CanEditFieldNumber = 6;
     private bool canEdit_;
+    /// <summary>
+    /// can user edit the note
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool CanEdit {
@@ -11324,6 +11618,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "isAdmin" field.</summary>
     public const int IsAdminFieldNumber = 7;
     private bool isAdmin_;
+    /// <summary>
+    /// is user an admin
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsAdmin {
@@ -11655,6 +11952,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// request a DisplayModel
+  /// </summary>
   public sealed partial class DisplayModelRequest : pb::IMessage<DisplayModelRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -11881,6 +12181,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// request use list and access list
+  /// </summary>
   public sealed partial class AccessAndUserListRequest : pb::IMessage<AccessAndUserListRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -12144,6 +12447,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// user list, access list, and users access token/item
+  /// </summary>
   public sealed partial class AccessAndUserList : pb::IMessage<AccessAndUserList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -12434,6 +12740,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// get versions for a note 
+  /// </summary>
   public sealed partial class GetVersionsRequest : pb::IMessage<GetVersionsRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -12484,6 +12793,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "fileId" field.</summary>
     public const int FileIdFieldNumber = 1;
     private int fileId_;
+    /// <summary>
+    /// file id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int FileId {
@@ -12496,6 +12808,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteOrdinal" field.</summary>
     public const int NoteOrdinalFieldNumber = 2;
     private int noteOrdinal_;
+    /// <summary>
+    /// note ordinal
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteOrdinal {
@@ -12508,6 +12823,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "responseOrdinal" field.</summary>
     public const int ResponseOrdinalFieldNumber = 3;
     private int responseOrdinal_;
+    /// <summary>
+    /// response ordinal
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ResponseOrdinal {
@@ -12520,6 +12838,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "arcId" field.</summary>
     public const int ArcIdFieldNumber = 4;
     private int arcId_;
+    /// <summary>
+    /// archive id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ArcId {
@@ -12960,6 +13281,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used for creating and editing notes
+  /// </summary>
   public sealed partial class TextViewModel : pb::IMessage<TextViewModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -13014,6 +13338,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "myNote" field.</summary>
     public const int MyNoteFieldNumber = 1;
     private string myNote_ = "";
+    /// <summary>
+    /// note body
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string MyNote {
@@ -13026,6 +13353,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "mySubject" field.</summary>
     public const int MySubjectFieldNumber = 2;
     private string mySubject_ = "";
+    /// <summary>
+    /// note subject
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string MySubject {
@@ -13038,6 +13368,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteFileID" field.</summary>
     public const int NoteFileIDFieldNumber = 3;
     private int noteFileID_;
+    /// <summary>
+    /// file Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteFileID {
@@ -13050,6 +13383,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "baseNoteHeaderID" field.</summary>
     public const int BaseNoteHeaderIDFieldNumber = 4;
     private long baseNoteHeaderID_;
+    /// <summary>
+    /// 0 for a base note - Id of the base note header for a response
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long BaseNoteHeaderID {
@@ -13062,6 +13398,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteID" field.</summary>
     public const int NoteIDFieldNumber = 5;
     private long noteID_;
+    /// <summary>
+    /// note Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long NoteID {
@@ -13074,6 +13413,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "tagLine" field.</summary>
     public const int TagLineFieldNumber = 6;
     private string tagLine_ = "";
+    /// <summary>
+    /// string of tags  to parse to a list of tag objects
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string TagLine {
@@ -13086,6 +13428,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "directorMessage" field.</summary>
     public const int DirectorMessageFieldNumber = 7;
     private string directorMessage_ = "";
+    /// <summary>
+    /// director message
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string DirectorMessage {
@@ -13098,6 +13443,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "refId" field.</summary>
     public const int RefIdFieldNumber = 8;
     private long refId_;
+    /// <summary>
+    /// Id of note header we are responding to
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long RefId {
@@ -13408,6 +13756,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// encapsulates a note id
+  /// </summary>
   public sealed partial class NoteId : pb::IMessage<NoteId>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -13597,6 +13948,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// configurable data for about page
+  /// </summary>
   public sealed partial class AboutModel : pb::IMessage<AboutModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -13823,6 +14177,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// container for an email
+  /// </summary>
   public sealed partial class GEmail : pb::IMessage<GEmail>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -13872,6 +14229,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "address" field.</summary>
     public const int AddressFieldNumber = 1;
     private string address_ = "";
+    /// <summary>
+    /// send to
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Address {
@@ -14086,6 +14446,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used when user confirms email
+  /// </summary>
   public sealed partial class ConfirmEmailRequest : pb::IMessage<ConfirmEmailRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -14312,6 +14675,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// Request export data
+  /// </summary>
   public sealed partial class ExportRequest : pb::IMessage<ExportRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -14362,6 +14728,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "fileId" field.</summary>
     public const int FileIdFieldNumber = 1;
     private int fileId_;
+    /// <summary>
+    /// file id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int FileId {
@@ -14374,6 +14743,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "arcId" field.</summary>
     public const int ArcIdFieldNumber = 2;
     private int arcId_;
+    /// <summary>
+    /// archive id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ArcId {
@@ -14386,6 +14758,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "noteOrdinal" field.</summary>
     public const int NoteOrdinalFieldNumber = 3;
     private int noteOrdinal_;
+    /// <summary>
+    /// note ordinal
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteOrdinal {
@@ -14398,6 +14773,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "responseOrdinal" field.</summary>
     public const int ResponseOrdinalFieldNumber = 4;
     private int responseOrdinal_;
+    /// <summary>
+    /// response ordinal
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ResponseOrdinal {
@@ -14612,6 +14990,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used to forward note(s) to an email address
+  /// </summary>
   public sealed partial class ForwardViewModel : pb::IMessage<ForwardViewModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -14669,6 +15050,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "NoteFile" field.</summary>
     public const int NoteFileFieldNumber = 1;
     private global::Notes2022.Proto.GNotefile noteFile_;
+    /// <summary>
+    /// Note file
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNotefile NoteFile {
@@ -14681,6 +15065,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "NoteID" field.</summary>
     public const int NoteIDFieldNumber = 2;
     private long noteID_;
+    /// <summary>
+    /// note Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long NoteID {
@@ -14693,6 +15080,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "FileID" field.</summary>
     public const int FileIDFieldNumber = 3;
     private int fileID_;
+    /// <summary>
+    /// file Id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int FileID {
@@ -14705,6 +15095,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "ArcID" field.</summary>
     public const int ArcIDFieldNumber = 4;
     private int arcID_;
+    /// <summary>
+    /// archive id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ArcID {
@@ -14717,6 +15110,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "NoteOrdinal" field.</summary>
     public const int NoteOrdinalFieldNumber = 5;
     private int noteOrdinal_;
+    /// <summary>
+    /// note ordinal
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NoteOrdinal {
@@ -14729,6 +15125,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "NoteSubject" field.</summary>
     public const int NoteSubjectFieldNumber = 6;
     private string noteSubject_ = "";
+    /// <summary>
+    /// note subject
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string NoteSubject {
@@ -14741,6 +15140,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "wholestring" field.</summary>
     public const int WholestringFieldNumber = 7;
     private bool wholestring_;
+    /// <summary>
+    /// include note an responses
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Wholestring {
@@ -14753,6 +15155,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "hasstring" field.</summary>
     public const int HasstringFieldNumber = 8;
     private bool hasstring_;
+    /// <summary>
+    /// is part of a string of notes
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Hasstring {
@@ -14765,6 +15170,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "IsAdmin" field.</summary>
     public const int IsAdminFieldNumber = 9;
     private bool isAdmin_;
+    /// <summary>
+    /// is user an admin
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsAdmin {
@@ -14777,6 +15185,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "toAllUsers" field.</summary>
     public const int ToAllUsersFieldNumber = 10;
     private bool toAllUsers_;
+    /// <summary>
+    /// send to all users
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool ToAllUsers {
@@ -14789,6 +15200,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "ToEmail" field.</summary>
     public const int ToEmailFieldNumber = 11;
     private string toEmail_ = "";
+    /// <summary>
+    /// email addess to send to
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string ToEmail {
@@ -15180,6 +15594,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// used to copy note(s) to another file
+  /// </summary>
   public sealed partial class CopyModel : pb::IMessage<CopyModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -15229,6 +15646,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "Note" field.</summary>
     public const int NoteFieldNumber = 1;
     private global::Notes2022.Proto.GNoteHeader note_;
+    /// <summary>
+    /// note header to copy
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteHeader Note {
@@ -15241,6 +15661,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "FileId" field.</summary>
     public const int FileIdFieldNumber = 2;
     private int fileId_;
+    /// <summary>
+    /// file id to copy to
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int FileId {
@@ -15253,6 +15676,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "WholeString" field.</summary>
     public const int WholeStringFieldNumber = 3;
     private bool wholeString_;
+    /// <summary>
+    /// base note an responses
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool WholeString {
@@ -15452,6 +15878,9 @@ namespace Notes2022.Proto {
 
   }
 
+  /// <summary>
+  /// Used to get a representation of the whole file - to be serialized as json
+  /// </summary>
   public sealed partial class JsonExport : pb::IMessage<JsonExport>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -15500,6 +15929,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "NoteFile" field.</summary>
     public const int NoteFileFieldNumber = 1;
     private global::Notes2022.Proto.GNotefile noteFile_;
+    /// <summary>
+    /// notefile to export
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNotefile NoteFile {
@@ -15512,6 +15944,9 @@ namespace Notes2022.Proto {
     /// <summary>Field number for the "NoteHeaders" field.</summary>
     public const int NoteHeadersFieldNumber = 2;
     private global::Notes2022.Proto.GNoteHeaderList noteHeaders_;
+    /// <summary>
+    /// list of headers - includes Content and Tags!
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Notes2022.Proto.GNoteHeaderList NoteHeaders {
