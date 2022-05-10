@@ -1,9 +1,9 @@
 ﻿// ***********************************************************************
 // Assembly         : Notes2022.Server
-// Author           : sinde
+// Author           : Dale Sinder
 // Created          : 04-19-2022
 //
-// Last Modified By : sinde
+// Last Modified By : Dale Sinder
 // Last Modified On : 04-19-2022
 // ***********************************************************************
 // <copyright file="NotesDbContextModelSnapshot.cs" company="Notes2022.Server">

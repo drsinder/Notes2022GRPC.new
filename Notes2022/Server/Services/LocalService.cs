@@ -1,9 +1,9 @@
 ﻿// ***********************************************************************
 // Assembly         : Notes2022.Server
-// Author           : sinde
+// Author           : Dale Sinder
 // Created          : 05-03-2022
 //
-// Last Modified By : sinde
+// Last Modified By : Dale Sinder
 // Last Modified On : 05-08-2022
 // ***********************************************************************
 // <copyright file="LocalService.cs" company="Notes2022.Server">

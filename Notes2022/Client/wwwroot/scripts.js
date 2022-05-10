@@ -1,9 +1,9 @@
 ﻿// ***********************************************************************
 // Assembly         : Notes2022.Client
-// Author           : sinde
+// Author           : Dale Sinder
 // Created          : 04-20-2022
 //
-// Last Modified By : sinde
+// Last Modified By : Dale Sinder
 // Last Modified On : 10-31-2021
 // ***********************************************************************
 // <copyright file="scripts.js" company="Notes2022.Client">

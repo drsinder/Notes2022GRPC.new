@@ -1,9 +1,9 @@
 ﻿// ***********************************************************************
 // Assembly         : Notes2022.Client
-// Author           : sinde
+// Author           : Dale Sinder
 // Created          : 04-29-2022
 //
-// Last Modified By : sinde
+// Last Modified By : Dale Sinder
 // Last Modified On : 05-08-2022
 // ***********************************************************************
 // <copyright file="NewNote.razor.cs" company="Notes2022.Client">
