@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f8ad2ff7-6f61-49db-b112-d00b2bb67d10</UserSecretsId>
     <ApplicationInsightsResourceId>/subscriptions/9053a6c5-d700-4ec6-b089-a511c8f8be48/resourceGroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/Notes2022ServerGRPC</ApplicationInsightsResourceId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -43,6 +44,10 @@
 
   <ItemGroup>
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 

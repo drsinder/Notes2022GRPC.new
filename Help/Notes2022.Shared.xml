@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Notes2022.Shared</name>
+  </assembly>
+  <members>
+    <member name="T:Notes2022.Shared.UserRoles">
+      <summary>
+   Class UserRoles.
+   </summary>
+    </member>
+    <member name="F:Notes2022.Shared.UserRoles.Admin">
+      <summary>
+   The admin role name
+   </summary>
+    </member>
+    <member name="F:Notes2022.Shared.UserRoles.User">
+      <summary>
+   The user role name
+   </summary>
+    </member>
+  </members>
+</doc>

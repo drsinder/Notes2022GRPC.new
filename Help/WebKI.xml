@@ -483,21 +483,21 @@
   </HelpKINode>
   <HelpKINode Title="FileButton.FileButton constructor" Url="html/M-Notes2022.Client.Comp.FileButton.-ctor.htm" />
   <HelpKINode Title="FileButton.NoteFile property" Url="html/P-Notes2022.Client.Comp.FileButton.NoteFile.htm" />
+  <HelpKINode Title="fileId property" Url="html/P-Notes2022.Client.Comp.SCheckBox.fileId.htm" />
   <HelpKINode Title="FileId property" Url="html/P-Notes2022.Client.Dialogs.CreateNoteFile.FileId.htm" />
   <HelpKINode Title="FileId property" Url="html/P-Notes2022.Client.Dialogs.DeleteNoteFile.FileId.htm" />
-  <HelpKINode Title="FileId property" Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.FileId.htm" />
-  <HelpKINode Title="fileId property" Url="html/P-Notes2022.Client.Comp.SCheckBox.fileId.htm" />
   <HelpKINode Title="FileId property" Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.FileId.htm" />
+  <HelpKINode Title="FileId property" Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.FileId.htm" />
   <HelpKINode Title="FileId property" Url="html/P-Notes2022.Client.Pages.ShowNote.FileId.htm" />
+  <HelpKINode Title="fileId property" Url="html/P-Notes2022.Client.Dialogs.AccessList.fileId.htm" />
   <HelpKINode Title="FileId property" Url="html/P-Notes2022.Client.Panels.Versions.FileId.htm" />
   <HelpKINode Title="FileId property" Url="html/P-Notes2022.Server.Entities.SQLFile.FileId.htm" />
-  <HelpKINode Title="fileId property" Url="html/P-Notes2022.Client.Dialogs.AccessList.fileId.htm" />
+  <HelpKINode Title="filename property" Url="html/P-Notes2022.Client.Dialogs.Upload1.filename.htm" />
   <HelpKINode Title="FileName property" Url="html/P-Notes2022.Client.Dialogs.DeleteNoteFile.FileName.htm" />
   <HelpKINode Title="FileName property" Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.FileName.htm" />
   <HelpKINode Title="FileName property" Url="html/P-Notes2022.Client.Dialogs.ExportUtil1.FileName.htm" />
   <HelpKINode Title="FileName property" Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.FileName.htm" />
   <HelpKINode Title="FileName property" Url="html/P-Notes2022.Server.Entities.SQLFile.FileName.htm" />
-  <HelpKINode Title="filename property" Url="html/P-Notes2022.Client.Dialogs.Upload1.filename.htm" />
   <HelpKINode Title="FileTitle property" Url="html/P-Notes2022.Client.Dialogs.DeleteNoteFile.FileTitle.htm" />
   <HelpKINode Title="FileTitle property" Url="html/P-Notes2022.Client.Dialogs.EditNoteFile.FileTitle.htm" />
   <HelpKINode Title="FileTitle property" Url="html/P-Notes2022.Client.Dialogs.NoteFileDetails.FileTitle.htm" />
@@ -520,7 +520,6 @@
   <HelpKINode Title="GetAccessList method" Url="html/M-Notes2022.Server.Services.Notes2022Service.GetAccessList.htm" />
   <HelpKINode Title="GetAccessListForFile method" Url="html/M-Notes2022.Server.AccessManager.GetAccessListForFile.htm" />
   <HelpKINode Title="GetAdminPageModel method" Url="html/M-Notes2022.Server.Services.Notes2022Service.GetAdminPageModel.htm" />
-  <HelpKINode Title="GetAllHeaders method" Url="html/M-Notes2022.Server.NoteDataManager.GetAllHeaders.htm" />
   <HelpKINode Title="GetApplicationUser method" Url="html/M-Notes2022.Server.Entities.ApplicationUser.GetApplicationUser.htm" />
   <HelpKINode Title="GetApplicationUsers method" Url="html/M-Notes2022.Server.Entities.ApplicationUser.GetApplicationUsers.htm" />
   <HelpKINode Title="GetBaseNoteHeader method" Url="html/M-Notes2022.Server.Importer.GetBaseNoteHeader.htm" />
@@ -587,11 +586,9 @@
   <HelpKINode Title="GetTags method" Url="html/M-Notes2022.Server.Entities.Tags.GetTags.htm" />
   <HelpKINode Title="GetTagsList method" Url="html/M-Notes2022.Server.Entities.Tags.GetTagsList.htm" />
   <HelpKINode Title="GetTextFile method" Url="html/M-Notes2022.Server.Services.Notes2022Service.GetTextFile.htm" />
-  <HelpKINode Title="GetUserData method" Url="html/M-Notes2022.Server.NoteDataManager.GetUserData.htm" />
   <HelpKINode Title="GetUserData method" Url="html/M-Notes2022.Server.Services.Notes2022Service.GetUserData.htm" />
   <HelpKINode Title="GetUserList method" Url="html/M-Notes2022.Server.Services.Notes2022Service.GetUserList.htm" />
   <HelpKINode Title="GetUserRoles method" Url="html/M-Notes2022.Server.Services.Notes2022Service.GetUserRoles.htm" />
-  <HelpKINode Title="GetUserTimeZone method" Url="html/M-Notes2022.Server.LocalManager.GetUserTimeZone.htm" />
   <HelpKINode Title="GetVersions method" Url="html/M-Notes2022.Server.Services.Notes2022Service.GetVersions.htm" />
   <HelpKINode Title="Globals class" Url="html/AllMembers.T-Notes2022.Client.Globals.htm" />
   <HelpKINode Title="Globals class" Url="html/AllMembers.T-Notes2022.Server.Globals.htm" />
@@ -820,14 +817,6 @@
   <HelpKINode Title="ListMenu.Replot method" Url="html/M-Notes2022.Client.Menus.ListMenu.Replot.htm" />
   <HelpKINode Title="ListToString method" Url="html/M-Notes2022.Server.Entities.Tags.ListToString.htm" />
   <HelpKINode Title="Local method" Url="html/M-Notes2022.Server.Entities.TZone.Local.htm" />
-  <HelpKINode Title="LocalManager class" Url="html/AllMembers.T-Notes2022.Server.LocalManager.htm" />
-  <HelpKINode Title="LocalManager class" Url="html/T-Notes2022.Server.LocalManager.htm" />
-  <HelpKINode Title="LocalManager class">
-    <HelpKINode Title="about LocalManager class" Url="html/T-Notes2022.Server.LocalManager.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-Notes2022.Server.LocalManager.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-Notes2022.Server.LocalManager.htm" />
-  </HelpKINode>
-  <HelpKINode Title="LocalManager.GetUserTimeZone method" Url="html/M-Notes2022.Server.LocalManager.GetUserTimeZone.htm" />
   <HelpKINode Title="LocalModel2 class">
     <HelpKINode Title="constructor" Url="html/Overload-Notes2022.Client.Pages.Preferences.LocalModel2.-ctor.htm" />
   </HelpKINode>
@@ -932,20 +921,20 @@
   <HelpKINode Title="ModalInstance property" Url="html/P-Notes2022.Client.Dialogs.Upload1.ModalInstance.htm" />
   <HelpKINode Title="ModalInstance property" Url="html/P-Notes2022.Client.Dialogs.Upload2.ModalInstance.htm" />
   <HelpKINode Title="ModalInstance property" Url="html/P-Notes2022.Client.Dialogs.UserEdit.ModalInstance.htm" />
+  <HelpKINode Title="Model property" Url="html/P-Notes2022.Client.Comp.SCheckBox.Model.htm" />
+  <HelpKINode Title="model property" Url="html/P-Notes2022.Client.Dialogs.ExportJson.model.htm" />
   <HelpKINode Title="Model property" Url="html/P-Notes2022.Client.Dialogs.AccessCheckBox.Model.htm" />
   <HelpKINode Title="model property" Url="html/P-Notes2022.Client.Dialogs.ExportUtil1.model.htm" />
-  <HelpKINode Title="Model property" Url="html/P-Notes2022.Client.Comp.SCheckBox.Model.htm" />
-  <HelpKINode Title="Model property" Url="html/P-Notes2022.Client.Menus.NoteMenu.Model.htm" />
-  <HelpKINode Title="model property" Url="html/P-Notes2022.Client.Dialogs.ExportJson.model.htm" />
   <HelpKINode Title="Model property" Url="html/P-Notes2022.Client.Menus.ListMenu.Model.htm" />
+  <HelpKINode Title="Model property" Url="html/P-Notes2022.Client.Menus.NoteMenu.Model.htm" />
   <HelpKINode Title="Model property" Url="html/P-Notes2022.Client.Pages.NoteIndex.Model.htm" />
   <HelpKINode Title="Model property" Url="html/P-Notes2022.Client.Panels.NoteEditor.Model.htm" />
   <HelpKINode Title="myCookieValue property" Url="html/P-Notes2022.Client.Pages.Authentication.Login.myCookieValue.htm" />
   <HelpKINode Title="myGauge property" Url="html/P-Notes2022.Client.Menus.ListMenu.myGauge.htm" />
   <HelpKINode Title="MyGuid property" Url="html/P-Notes2022.Server.Entities.ApplicationUser.MyGuid.htm" />
   <HelpKINode Title="MyGuid property" Url="html/P-Notes2022.Shared.UserData.MyGuid.htm" />
-  <HelpKINode Title="MyMenu property" Url="html/P-Notes2022.Client.Panels.NotePanel.MyMenu.htm" />
   <HelpKINode Title="myMenu property" Url="html/P-Notes2022.Client.Dialogs.ExportViewModel.myMenu.htm" />
+  <HelpKINode Title="MyMenu property" Url="html/P-Notes2022.Client.Panels.NotePanel.MyMenu.htm" />
   <HelpKINode Title="MyNoteIndex property" Url="html/P-Notes2022.Client.Menus.NoteMenu.MyNoteIndex.htm" />
   <HelpKINode Title="MyNoteIndex property" Url="html/P-Notes2022.Client.Panels.NotePanel.MyNoteIndex.htm" />
   <HelpKINode Title="Name property" Url="html/P-Notes2022.Client.Dialogs.CodeFormat.CFormat.Name.htm" />
@@ -1036,15 +1025,12 @@
   <HelpKINode Title="NoteDataManager.CreateResponse method" Url="html/M-Notes2022.Server.NoteDataManager.CreateResponse.htm" />
   <HelpKINode Title="NoteDataManager.DeleteNote method" Url="html/M-Notes2022.Server.NoteDataManager.DeleteNote.htm" />
   <HelpKINode Title="NoteDataManager.EditNote method" Url="html/M-Notes2022.Server.NoteDataManager.EditNote.htm" />
-  <HelpKINode Title="NoteDataManager.GetAllHeaders method" Url="html/M-Notes2022.Server.NoteDataManager.GetAllHeaders.htm" />
   <HelpKINode Title="NoteDataManager.GetBaseNoteHeader method" Url="html/Overload-Notes2022.Server.NoteDataManager.GetBaseNoteHeader.htm" />
   <HelpKINode Title="NoteDataManager.GetBaseNoteHeaderById method" Url="html/M-Notes2022.Server.NoteDataManager.GetBaseNoteHeaderById.htm" />
   <HelpKINode Title="NoteDataManager.GetFileById method" Url="html/M-Notes2022.Server.NoteDataManager.GetFileById.htm" />
   <HelpKINode Title="NoteDataManager.GetFileByName method" Url="html/M-Notes2022.Server.NoteDataManager.GetFileByName.htm" />
   <HelpKINode Title="NoteDataManager.GetNoteByIdWithFile method" Url="html/M-Notes2022.Server.NoteDataManager.GetNoteByIdWithFile.htm" />
-  <HelpKINode Title="NoteDataManager.GetUserData method" Url="html/M-Notes2022.Server.NoteDataManager.GetUserData.htm" />
   <HelpKINode Title="NoteDataManager.NextBaseNoteOrdinal method" Url="html/M-Notes2022.Server.NoteDataManager.NextBaseNoteOrdinal.htm" />
-  <HelpKINode Title="NoteDataManager.PutUserData method" Url="html/M-Notes2022.Server.NoteDataManager.PutUserData.htm" />
   <HelpKINode Title="NoteEditor class" Url="html/AllMembers.T-Notes2022.Client.Panels.NoteEditor.htm" />
   <HelpKINode Title="NoteEditor class" Url="html/T-Notes2022.Client.Panels.NoteEditor.htm" />
   <HelpKINode Title="NoteEditor class">
@@ -1154,11 +1140,11 @@
   <HelpKINode Title="NoteHeaderId property" Url="html/P-Notes2022.Server.Entities.Mark.NoteHeaderId.htm" />
   <HelpKINode Title="NoteHeaderId property" Url="html/P-Notes2022.Server.Entities.NoteContent.NoteHeaderId.htm" />
   <HelpKINode Title="NoteHeaderId property" Url="html/P-Notes2022.Server.Entities.Tags.NoteHeaderId.htm" />
-  <HelpKINode Title="NoteId property" Url="html/P-Notes2022.Client.Pages.ShowNote.NoteId.htm" />
   <HelpKINode Title="NoteId property" Url="html/P-Notes2022.Client.Pages.EditNote.NoteId.htm" />
-  <HelpKINode Title="NoteID property" Url="html/P-Notes2022.Server.Entities.Search.NoteID.htm" />
-  <HelpKINode Title="NoteId property" Url="html/P-Notes2022.Client.Panels.NotePanel.NoteId.htm" />
   <HelpKINode Title="NoteID property" Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.NoteID.htm" />
+  <HelpKINode Title="NoteId property" Url="html/P-Notes2022.Client.Pages.ShowNote.NoteId.htm" />
+  <HelpKINode Title="NoteId property" Url="html/P-Notes2022.Client.Panels.NotePanel.NoteId.htm" />
+  <HelpKINode Title="NoteID property" Url="html/P-Notes2022.Server.Entities.Search.NoteID.htm" />
   <HelpKINode Title="NoteIndex class" Url="html/AllMembers.T-Notes2022.Client.Pages.NoteIndex.htm" />
   <HelpKINode Title="NoteIndex class" Url="html/T-Notes2022.Client.Pages.NoteIndex.htm" />
   <HelpKINode Title="NoteIndex class">
@@ -1416,8 +1402,6 @@
   <HelpKINode Title="Notes2022.Server.Globals class" Url="html/T-Notes2022.Server.Globals.htm" />
   <HelpKINode Title="Notes2022.Server.Importer class" Url="html/AllMembers.T-Notes2022.Server.Importer.htm" />
   <HelpKINode Title="Notes2022.Server.Importer class" Url="html/T-Notes2022.Server.Importer.htm" />
-  <HelpKINode Title="Notes2022.Server.LocalManager class" Url="html/AllMembers.T-Notes2022.Server.LocalManager.htm" />
-  <HelpKINode Title="Notes2022.Server.LocalManager class" Url="html/T-Notes2022.Server.LocalManager.htm" />
   <HelpKINode Title="Notes2022.Server.Migrations namespace" Url="html/N-Notes2022.Server.Migrations.htm" />
   <HelpKINode Title="Notes2022.Server.Migrations.first class" Url="html/T-Notes2022.Server.Migrations.first.htm" />
   <HelpKINode Title="Notes2022.Server.NoteDataManager class" Url="html/AllMembers.T-Notes2022.Server.NoteDataManager.htm" />
@@ -1601,7 +1585,6 @@
   <HelpKINode Title="PrintDlg.PrintStuff property" Url="html/P-Notes2022.Client.Dialogs.PrintDlg.PrintStuff.htm" />
   <HelpKINode Title="PrintStuff property" Url="html/P-Notes2022.Client.Dialogs.PrintDlg.PrintStuff.htm" />
   <HelpKINode Title="Psize property" Url="html/P-Notes2022.Client.Pages.Preferences.LocalModel2.Psize.htm" />
-  <HelpKINode Title="PutUserData method" Url="html/M-Notes2022.Server.NoteDataManager.PutUserData.htm" />
   <HelpKINode Title="ReadAccess enumeration member" Url="html/T-Notes2022.Client.Dialogs.AccessX.htm" />
   <HelpKINode Title="ReadAccess field" Url="html/F-Notes2022.Client.Dialogs.AccessX.ReadAccess.htm" />
   <HelpKINode Title="ReadAccess property" Url="html/P-Notes2022.Server.Entities.NoteAccess.ReadAccess.htm" />
@@ -1654,8 +1637,8 @@
   <HelpKINode Title="Responses.ShowContentR property" Url="html/P-Notes2022.Client.Panels.Responses.ShowContentR.htm" />
   <HelpKINode Title="respX property" Url="html/P-Notes2022.Client.Panels.NotePanel.respX.htm" />
   <HelpKINode Title="respY property" Url="html/P-Notes2022.Client.Panels.NotePanel.respY.htm" />
-  <HelpKINode Title="returnUrl property" Url="html/P-Notes2022.Client.Globals.returnUrl.htm" />
   <HelpKINode Title="returnURL property" Url="html/P-Notes2022.Client.Pages.Authentication.Login.returnURL.htm" />
+  <HelpKINode Title="returnUrl property" Url="html/P-Notes2022.Client.Globals.returnUrl.htm" />
   <HelpKINode Title="SaveAs method" Url="html/M-Notes2022.Client.Dialogs.ExportJson.SaveAs.htm" />
   <HelpKINode Title="SaveAs method" Url="html/M-Notes2022.Client.Dialogs.ExportUtil1.SaveAs.htm" />
   <HelpKINode Title="SCheckBox class" Url="html/AllMembers.T-Notes2022.Client.Comp.SCheckBox.htm" />
@@ -1985,15 +1968,15 @@
   <HelpKINode Title="UserEdit.ModalInstance property" Url="html/P-Notes2022.Client.Dialogs.UserEdit.ModalInstance.htm" />
   <HelpKINode Title="UserEdit.UserEdit constructor" Url="html/M-Notes2022.Client.Dialogs.UserEdit.-ctor.htm" />
   <HelpKINode Title="UserEdit.UserId property" Url="html/P-Notes2022.Client.Dialogs.UserEdit.UserId.htm" />
-  <HelpKINode Title="UserId property" Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.UserId.htm" />
-  <HelpKINode Title="UserId property" Url="html/P-Notes2022.Server.Entities.Search.UserId.htm" />
-  <HelpKINode Title="UserID property" Url="html/P-Notes2022.Server.Entities.Audit.UserID.htm" />
+  <HelpKINode Title="UserID property" Url="html/P-Notes2022.Server.Entities.NoteAccess.UserID.htm" />
   <HelpKINode Title="UserId property" Url="html/P-Notes2022.Client.Dialogs.Mark.UserId.htm" />
+  <HelpKINode Title="UserID property" Url="html/P-Notes2022.Server.Entities.Audit.UserID.htm" />
+  <HelpKINode Title="UserId property" Url="html/P-Notes2022.Server.Entities.Search.UserId.htm" />
+  <HelpKINode Title="UserId property" Url="html/P-Notes2022.Server.Entities.Sequencer.UserId.htm" />
   <HelpKINode Title="UserId property" Url="html/P-Notes2022.Client.Dialogs.UserEdit.UserId.htm" />
+  <HelpKINode Title="UserId property" Url="html/P-Notes2022.Client.Pages.NoteIndex.Search.UserId.htm" />
   <HelpKINode Title="UserId property" Url="html/P-Notes2022.Server.Entities.Mark.UserId.htm" />
   <HelpKINode Title="UserId property" Url="html/P-Notes2022.Shared.UserData.UserId.htm" />
-  <HelpKINode Title="UserID property" Url="html/P-Notes2022.Server.Entities.NoteAccess.UserID.htm" />
-  <HelpKINode Title="UserId property" Url="html/P-Notes2022.Server.Entities.Sequencer.UserId.htm" />
   <HelpKINode Title="UserInfo property" Url="html/P-Notes2022.Client.App.UserInfo.htm" />
   <HelpKINode Title="UserList class" Url="html/AllMembers.T-Notes2022.Client.Pages.Admin.UserList.htm" />
   <HelpKINode Title="UserList class" Url="html/T-Notes2022.Client.Pages.Admin.UserList.htm" />

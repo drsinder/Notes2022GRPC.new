@@ -4,38 +4,33 @@
 // Created          : 04-26-2022
 //
 // Last Modified By : Dale Sinder
-// Last Modified On : 05-08-2022
+// Last Modified On : 05-10-2022
+//
+// Copyright © 2022, Dale Sinder
+//
+// Name: NoteDataManager.cs
+//
+// Description:
+//      TODO
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License version 3 as
+// published by the Free Software Foundation.   
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+// GNU General Public License version 3 for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  version 3 along with this program in file "license-gpl-3.0.txt".
+//  If not, see<http://www.gnu.org/licenses/gpl-3.0.txt>.
 // ***********************************************************************
 // <copyright file="NoteDataManager.cs" company="Notes2022.Server">
-//     Copyright (c) 2022 Dale Sinder. All rights reserved.
+//     Copyright (c) Dale Sinder. All rights reserved.
 // </copyright>
-// <summary></summary>
 // ***********************************************************************
-/*--------------------------------------------------------------------------
-    **
-    ** Copyright © 2022, Dale Sinder
-    **
-    ** Name: NoteDataManager.cs
-    **
-    ** Description:
-    **     Lots of methods for dealing with the database
-    **
-    ** This program is free software: you can redistribute it and/or modify
-    ** it under the terms of the GNU General Public License version 3 as
-    ** published by the Free Software Foundation.   
-    **
-    ** This program is distributed in the hope that it will be useful,
-    ** but WITHOUT ANY WARRANTY; without even the implied warranty of
-    ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-    ** GNU General Public License version 3 for more details.
-    **
-    **  You should have received a copy of the GNU General Public License
-    **  version 3 along with this program in file "license-gpl-3.0.txt".
-    **  If not, see<http://www.gnu.org/licenses/gpl-3.0.txt>.
-    **
-    **--------------------------------------------------------------------------*/
-
-
+// <summary></summary>
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -56,13 +51,11 @@ namespace Notes2022.Server
         /// Create a NoteFile
         /// </summary>
         /// <param name="db">NotesDbContext</param>
-        /// <param name="userManager">UserManager</param>
         /// <param name="userId">UserID of creator</param>
         /// <param name="name">NoteFile name</param>
         /// <param name="title">NoteFile title</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static async Task<bool> CreateNoteFile(NotesDbContext db,
-            UserManager<ApplicationUser> userManager,
             string userId, string name, string title)
         {
             var query = db.NoteFile.Where(p => p.NoteFileName == name);
@@ -84,7 +77,7 @@ namespace Notes2022.Server
                     .FirstOrDefaultAsync();
 
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-                _ = await AccessManager.CreateBaseEntries(db, userManager, userId, nf.Id);
+                _ = await AccessManager.CreateBaseEntries(db, userId, nf.Id);
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 
                 NoteAccess access;
@@ -568,93 +561,9 @@ namespace Notes2022.Server
         /// <summary>
         /// Copy user prefs from ApplicationUser to UserData entity
         /// </summary>
-        /// <param name="user">The user.</param>
-        /// <returns>UserData.</returns>
-//        public static UserData GetUserData(ApplicationUser user)
-//        {
-//            UserData aux = new();
-
-//            aux.UserId = user.Id;
-//#pragma warning disable CS8601 // Possible null reference assignment.
-//            aux.DisplayName = user.DisplayName;
-//#pragma warning restore CS8601 // Possible null reference assignment.
-//            aux.Email = user.Email;
-//            aux.TimeZoneID = user.TimeZoneID;
-
-//            aux.Ipref0 = user.Ipref0;
-//            aux.Ipref1 = user.Ipref1;
-//            aux.Ipref2 = user.Ipref2;
-//            aux.Ipref3 = user.Ipref3;
-//            aux.Ipref4 = user.Ipref4;
-//            aux.Ipref5 = user.Ipref5;
-//            aux.Ipref6 = user.Ipref6;
-//            aux.Ipref7 = user.Ipref7;
-//            aux.Ipref8 = user.Ipref8;
-//            aux.Ipref9 = user.Ipref9;
-
-//            aux.Pref0 = user.Pref0;
-//            aux.Pref1 = user.Pref1;
-//            aux.Pref2 = user.Pref2;
-//            aux.Pref3 = user.Pref3;
-//            aux.Pref4 = user.Pref4;
-//            aux.Pref5 = user.Pref5;
-//            aux.Pref6 = user.Pref6;
-//            aux.Pref7 = user.Pref7;
-//            aux.Pref8 = user.Pref8;
-//            aux.Pref9 = user.Pref9;
-
-//            aux.MyGuid = user.MyGuid;
-
-//            return aux;
-//        }
-
-        /// <summary>
-        /// Put user data from UserData into ApplicationUser Entity
-        /// </summary>
-        /// <param name="aux">The aux.</param>
-        /// <param name="user">The user.</param>
-        /// <returns>ApplicationUser.</returns>
-        //public static ApplicationUser PutUserData(ApplicationUser aux, UserData user)
-        //{
-
-        //    aux.Id = user.UserId;
-        //    //aux.DisplayName = user.DisplayName;
-        //    //aux.Email = user.Email;
-        //    aux.TimeZoneID = user.TimeZoneID;
-
-        //    aux.Ipref0 = user.Ipref0;
-        //    aux.Ipref1 = user.Ipref1;
-        //    aux.Ipref2 = user.Ipref2;
-        //    aux.Ipref3 = user.Ipref3;
-        //    aux.Ipref4 = user.Ipref4;
-        //    aux.Ipref5 = user.Ipref5;
-        //    aux.Ipref6 = user.Ipref6;
-        //    aux.Ipref7 = user.Ipref7;
-        //    aux.Ipref8 = user.Ipref8;
-        //    aux.Ipref9 = user.Ipref9;
-
-        //    aux.Pref0 = user.Pref0;
-        //    aux.Pref1 = user.Pref1;
-        //    aux.Pref2 = user.Pref2;
-        //    aux.Pref3 = user.Pref3;
-        //    aux.Pref4 = user.Pref4;
-        //    aux.Pref5 = user.Pref5;
-        //    aux.Pref6 = user.Pref6;
-        //    aux.Pref7 = user.Pref7;
-        //    aux.Pref8 = user.Pref8;
-        //    aux.Pref9 = user.Pref9;
-
-        //    aux.MyGuid = user.MyGuid;
-
-        //    return aux;
-        //}
-
-        /// <summary>
-        /// Write user data to Db
-        /// </summary>
         /// <param name="db">The database.</param>
         /// <param name="fname">The fname.</param>
-        /// <returns>NoteFile.</returns>
+        /// <returns>UserData.</returns>
         public static async Task<NoteFile> GetFileByName(NotesDbContext db, string fname)
         {
 #pragma warning disable CS8603 // Possible null reference return.
@@ -904,42 +813,10 @@ namespace Notes2022.Server
         /// Get the BaseNoteHeader for a Note
         /// </summary>
         /// <param name="db">NotesDbContext</param>
-        /// <param name="id">The identifier.</param>
-        /// <param name="arcId">The arc identifier.</param>
-        /// <returns>List&lt;NoteHeader&gt;.</returns>
-        //public static async Task<long?> FindResponseId(NotesDbContext db, NoteHeader nc, int resp)
-        //{
-        //    NoteHeader content = await db.NoteHeader
-        //        .Where(p => p.NoteFileId == nc.NoteFileId && p.ArchiveId == nc.ArchiveId && p.NoteOrdinal == nc.NoteOrdinal && p.ResponseOrdinal == resp)
-        //        .FirstOrDefaultAsync();
-
-        //    return content?.Id;
-        //}
-
-        //public static async Task<NoteFile> GetFileByIdWithHeaders(NotesDbContext db, int id, int arcId)
-        //{
-        //    NoteFile nf = await db.NoteFile
-        //        .Where(p => p.Id == id)
-        //        .FirstOrDefaultAsync();
-
-        //    //nf.NoteHeaders = await db.NoteHeader.Where(p => p.NoteFileId == id && p.ArchiveId == arcId).ToListAsync();
-
-        //    return nf;
-        //}
-                
-        //public static async Task<List<NoteHeader>> GetAllHeaders(NotesDbContext db, int id, int arcId)
-        //{
-        //    return await db.NoteHeader.Where(p => p.NoteFileId == id && p.ArchiveId == arcId).ToListAsync();
-        //}
-
-        /// <summary>
-        /// Get the BaseNoteHeader in a given file with given ordinal
-        /// </summary>
-        /// <param name="db">NotesDbContext</param>
         /// <param name="fileId">fileid</param>
         /// <param name="arcId">The arc identifier.</param>
         /// <param name="noteOrd">noteordinal</param>
-        /// <returns>NoteHeader.</returns>
+        /// <returns>List&lt;NoteHeader&gt;.</returns>
         public static async Task<NoteHeader> GetBaseNoteHeader(NotesDbContext db, int fileId, int arcId, int noteOrd)
         {
 #pragma warning disable CS8603 // Possible null reference return.
@@ -981,7 +858,7 @@ namespace Notes2022.Server
         //        .Where(p => p.NoteFileId == mark.NoteFileId && p.ArchiveId == mark.ArchiveId && p.NoteOrdinal == mark.NoteOrdinal && p.ResponseOrdinal == mark.ResponseOrdinal)
         //        .FirstAsync();
         //}
-                
+
         public static async Task<NoteHeader> GetBaseNoteHeaderById(NotesDbContext db, long id)
         {
 #pragma warning disable CS8603 // Possible null reference return.

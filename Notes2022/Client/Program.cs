@@ -40,7 +40,7 @@ builder.Services.AddSyncfusionBlazor();   // options => { options.IgnoreScriptIs
 // Add my gRPC service so it can be injected.
 builder.Services.AddSingleton(services =>
 {
-	HttpClient? httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
+	HttpClient? httpClient = new (new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
 	var baseUri = services.GetRequiredService<NavigationManager>().BaseUri;
 	var channel = GrpcChannel.ForAddress(baseUri, new GrpcChannelOptions { HttpClient = httpClient });
 	return new Notes2022Server.Notes2022ServerClient(channel);

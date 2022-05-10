@@ -4,36 +4,33 @@
 // Created          : 04-20-2022
 //
 // Last Modified By : Dale Sinder
-// Last Modified On : 05-08-2022
+// Last Modified On : 05-10-2022
+//
+// Copyright © 2022, Dale Sinder
+//
+// Name: Notes2022Service.cs
+//
+// Description:
+//      TODO
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License version 3 as
+// published by the Free Software Foundation.   
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+// GNU General Public License version 3 for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  version 3 along with this program in file "license-gpl-3.0.txt".
+//  If not, see<http://www.gnu.org/licenses/gpl-3.0.txt>.
 // ***********************************************************************
 // <copyright file="Notes2022Service.cs" company="Notes2022.Server">
-//     Copyright (c) 2022 Dale Sinder. All rights reserved.
+//     Copyright (c) Dale Sinder. All rights reserved.
 // </copyright>
-// <summary></summary>
 // ***********************************************************************
-/*--------------------------------------------------------------------------
-    **
-    ** Copyright © 2022, Dale Sinder
-    **
-    ** Name: Notes2022Service.cs
-    **
-    ** Description:
-    **      Service implementation for gRPC protocol for app
-    **
-    ** This program is free software: you can redistribute it and/or modify
-    ** it under the terms of the GNU General Public License version 3 as
-    ** published by the Free Software Foundation.   
-    **
-    ** This program is distributed in the hope that it will be useful,
-    ** but WITHOUT ANY WARRANTY; without even the implied warranty of
-    ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-    ** GNU General Public License version 3 for more details.
-    **
-    **  You should have received a copy of the GNU General Public License
-    **  version 3 along with this program in file "license-gpl-3.0.txt".
-    **  If not, see<http://www.gnu.org/licenses/gpl-3.0.txt>.
-    **
-    **--------------------------------------------------------------------------*/
+// <summary></summary>
 
 
 using Microsoft.AspNetCore.Identity;
@@ -91,7 +88,7 @@ namespace Notes2022.Server.Services
         private readonly IEmailSender _emailSender;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Notes2022Service"/> class.
+        /// Initializes a new instance of the <see cref="Notes2022Service" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="db">The database.</param>
@@ -448,7 +445,7 @@ namespace Notes2022.Server.Services
         { 
             ApplicationUser appUser = await GetAppUser(context);
 
-            await NoteDataManager.CreateNoteFile(_db, _userManager, appUser.Id, request.NoteFileName, request.NoteFileTitle);
+            await NoteDataManager.CreateNoteFile(_db, appUser.Id, request.NoteFileName, request.NoteFileTitle);
 
             List<NoteFile> x =_db.NoteFile.OrderBy(x => x.Id).ToList();
             NoteFile newfile = x[^1];
@@ -1232,7 +1229,7 @@ namespace Notes2022.Server.Services
         private static DateTime? TimeOfThrottle = null;
 
         /// <summary>
-        /// Send an email. 
+        /// Send an email.
         /// unauthenticated - slower - use it too much and it really hurts you!
         /// </summary>
         /// <param name="request">The request received from the client.</param>

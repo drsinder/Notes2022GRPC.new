@@ -27,7 +27,7 @@
       <MSHelp:Attr Name="Locale" Value="en-us" />
       <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
       <MSHelp:Attr Name="TopicType" Value="apiref" />
-      <MSHelp:Attr Name="Abstract" Value="Write user data to Db" />
+      <MSHelp:Attr Name="Abstract" Value="Copy user prefs from ApplicationUser to UserData entity" />
       <MSHelp:Attr Name="AssemblyVersion" Value="" />
     </xml>
   <link rel="stylesheet" href="../TOC.css"><script type="text/javascript" src="../TOC.js"></script></head>
@@ -450,11 +450,6 @@
 </div>
 </div>
 <div class="TreeNode">
-<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-Notes2022.Server.LocalManager.htm" target="_self">LocalManager Class</a>
-<div class="Hidden">
-</div>
-</div>
-<div class="TreeNode">
 <img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-Notes2022.Server.NoteDataManager.htm" target="_self">NoteDataManager Class</a>
 <div class="Hidden">
 <div class="TreeItem">
@@ -478,9 +473,6 @@
 <div class="TreeItem">
 <img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.EditNote.htm" target="_self">EditNote Method </a>
 </div>
-<div class="TreeItem">
-<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.GetAllHeaders.htm" target="_self">GetAllHeaders Method </a>
-</div>
 <div class="TreeNode">
 <img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-Notes2022.Server.NoteDataManager.GetBaseNoteHeader.htm" target="_self">GetBaseNoteHeader Method </a>
 <div class="Hidden">
@@ -499,13 +491,7 @@
 <img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.GetNoteByIdWithFile.htm" target="_self">GetNoteByIdWithFile Method </a>
 </div>
 <div class="TreeItem">
-<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.GetUserData.htm" target="_self">GetUserData Method </a>
-</div>
-<div class="TreeItem">
 <img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.NextBaseNoteOrdinal.htm" target="_self">NextBaseNoteOrdinal Method </a>
-</div>
-<div class="TreeItem">
-<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.PutUserData.htm" target="_self">PutUserData Method </a>
 </div>
 </div>
 </div>
@@ -706,7 +692,7 @@
             <div id="mainSection">
               <div id="mainBody">
                 <div class="summary">
-   Write user data to Db
+   Copy user prefs from ApplicationUser to UserData entity
    </div>
                 <p />
     <b>Namespace:</b> 
@@ -722,7 +708,7 @@
 <span class="keyword">static</span> <span class="nolink">Task</span>&lt;<a href="T-Notes2022.Server.Entities.NoteFile.htm">NoteFile</a>^&gt;^ <span class="identifier">GetFileByName</span>(
 	<a href="T-Notes2022.Server.Data.NotesDbContext.htm">NotesDbContext</a>^ <span class="parameter">db</span>, 
 	<a href="https://docs.microsoft.com/en-us/dotnet/api/system.string" target="_blank">String</a>^ <span class="parameter">fname</span>
-)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="db"><dt><span class="parameterItalic">db</span></dt><dd>Type: <a href="T-Notes2022.Server.Data.NotesDbContext.htm">Notes2022.Server.Data<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>NotesDbContext</a><br />The database.</dd></dl><dl paramName="fname"><dt><span class="parameterItalic">fname</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string" target="_blank">String</a><br />The fname.</dd></dl></div><h4 class="subHeading">Return Value</h4>NoteFile.</div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-Notes2022.Server.NoteDataManager.htm">NoteDataManager Class</a></div><div class="seeAlsoStyle"><a href="N-Notes2022.Server.htm">Notes2022.Server Namespace</a></div></div></div>
+)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="db"><dt><span class="parameterItalic">db</span></dt><dd>Type: <a href="T-Notes2022.Server.Data.NotesDbContext.htm">Notes2022.Server.Data<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>NotesDbContext</a><br />The database.</dd></dl><dl paramName="fname"><dt><span class="parameterItalic">fname</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string" target="_blank">String</a><br />The fname.</dd></dl></div><h4 class="subHeading">Return Value</h4>UserData.</div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-Notes2022.Server.NoteDataManager.htm">NoteDataManager Class</a></div><div class="seeAlsoStyle"><a href="N-Notes2022.Server.htm">Notes2022.Server Namespace</a></div></div></div>
             </div>
           </div>
         </div>

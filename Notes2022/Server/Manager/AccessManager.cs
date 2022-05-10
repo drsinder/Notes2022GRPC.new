@@ -4,40 +4,33 @@
 // Created          : 04-26-2022
 //
 // Last Modified By : Dale Sinder
-// Last Modified On : 05-09-2022
+// Last Modified On : 05-10-2022
+//
+// Copyright © 2022, Dale Sinder
+//
+// Name: AccessManager.cs
+//
+// Description:
+//      TODO
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License version 3 as
+// published by the Free Software Foundation.   
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+// GNU General Public License version 3 for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  version 3 along with this program in file "license-gpl-3.0.txt".
+//  If not, see<http://www.gnu.org/licenses/gpl-3.0.txt>.
 // ***********************************************************************
 // <copyright file="AccessManager.cs" company="Notes2022.Server">
 //     Copyright (c) Dale Sinder. All rights reserved.
 // </copyright>
-// <summary></summary>
 // ***********************************************************************
-
-/*-------------------------------------------------------------------------- 
-**
-**  Copyright © 2022, Dale Sinder
-**
-**  Name: AccessManager.cs
-**
-**  Description:
-**      Access Manager Data Model
-**
-**  This program is free software: you can redistribute it and/or modify
-**  it under the terms of the GNU General Public License version 3 as
-**  published by the Free Software Foundation.
-**  
-**  This program is distributed in the hope that it will be useful,
-**  but WITHOUT ANY WARRANTY; without even the implied warranty of
-**  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-**  GNU General Public License version 3 for more details.
-**  
-**  You should have received a copy of the GNU General Public License
-**  version 3 along with this program in file "license-gpl-3.0.txt".
-**  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
-**
-**--------------------------------------------------------------------------
-*/
-
-//using Microsoft.AspNetCore.Http;
+// <summary></summary>
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Notes2022.Server.Data;
@@ -68,7 +61,7 @@ namespace Notes2022.Server
         private static async Task<bool> Create(NotesDbContext db, string userId, int noteFileId, bool read, bool respond,
             bool write, bool setTag, bool deleteEdit, bool director, bool editAccess)
         {
-            NoteAccess na = new NoteAccess()
+            NoteAccess na = new ()
             {
                 UserID = userId,
                 NoteFileId = noteFileId,
@@ -95,7 +88,7 @@ namespace Notes2022.Server
         /// <param name="userId">The user identifier.</param>
         /// <param name="fileId">The file identifier.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public static async Task<bool> CreateBaseEntries(NotesDbContext db, UserManager<ApplicationUser> userManager, string userId, int fileId)
+        public static async Task<bool> CreateBaseEntries(NotesDbContext db, string userId, int fileId)
         {
             if (true)
             {
@@ -133,7 +126,7 @@ namespace Notes2022.Server
         }
 
         /// <summary>
-        /// All access checks call this. 
+        /// All access checks call this.
         /// </summary>
         /// <param name="db">NotesDbContext</param>
         /// <param name="userId">ID of logged in user</param>

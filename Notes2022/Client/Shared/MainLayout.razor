@@ -1,13 +1,4 @@
 ﻿@inherits LayoutComponentBase
-
-@*@using Grpc.Core
-@using Notes2022.Proto
-
-@implements IAsyncDisposable
-
-@inject IJSRuntime JS;
-@inject Notes2022Server.Notes2022ServerClient Client
-*@
 <div class="page">
     <main>
         <div class="top-row px-4 auth" style="background-color: #555;">

@@ -11,10 +11,10 @@
     <meta name="file" content="M-Notes2022.Server.AccessManager.CreateBaseEntries" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
     <meta name="guid" content="M-Notes2022.Server.AccessManager.CreateBaseEntries" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
     <xml xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
-      <MSHelp:Attr Name="AssetID" Value="M:Notes2022.Server.AccessManager.CreateBaseEntries(NotesDbContext,UserManager{ApplicationUser},System.String,System.Int32)" />
+      <MSHelp:Attr Name="AssetID" Value="M:Notes2022.Server.AccessManager.CreateBaseEntries(NotesDbContext,System.String,System.Int32)" />
       <MSHelp:TOCTitle Title="CreateBaseEntries Method " />
       <MSHelp:RLTitle Title="AccessManager.CreateBaseEntries Method  (Notes2022.Server)" />
-      <MSHelp:Keyword Index="A" Term="M:Notes2022.Server.AccessManager.CreateBaseEntries(NotesDbContext,UserManager{ApplicationUser},System.String,System.Int32)" />
+      <MSHelp:Keyword Index="A" Term="M:Notes2022.Server.AccessManager.CreateBaseEntries(NotesDbContext,System.String,System.Int32)" />
       <MSHelp:Keyword Index="A" Term="frlrfNotes2022ServerAccessManagerClassCreateBaseEntriesTopic" />
       <MSHelp:Keyword Index="K" Term="CreateBaseEntries method" />
       <MSHelp:Keyword Index="K" Term="AccessManager.CreateBaseEntries method" />
@@ -27,7 +27,7 @@
       <MSHelp:Attr Name="Locale" Value="en-us" />
       <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
       <MSHelp:Attr Name="TopicType" Value="apiref" />
-      <MSHelp:Attr Name="Abstract" Value="Create standard starting entires for a access controls for a new file. &quot;Other&quot; -- no access creating user (Admin) -- Full Access readonly@example.com if it exists -- no access" />
+      <MSHelp:Attr Name="Abstract" Value="Create standard starting entires for a access controls for a new file. &quot;Other&quot; -- no access creating user (Admin) -- Full Access" />
       <MSHelp:Attr Name="AssemblyVersion" Value="" />
     </xml>
   <link rel="stylesheet" href="../TOC.css"><script type="text/javascript" src="../TOC.js"></script></head>
@@ -473,11 +473,6 @@
 </div>
 </div>
 <div class="TreeNode">
-<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-Notes2022.Server.LocalManager.htm" target="_self">LocalManager Class</a>
-<div class="Hidden">
-</div>
-</div>
-<div class="TreeNode">
 <img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-Notes2022.Server.NoteDataManager.htm" target="_self">NoteDataManager Class</a>
 <div class="Hidden">
 </div>
@@ -680,7 +675,6 @@
    Create standard starting entires for a access controls for a new file.
    "Other" -- no access
    creating user (Admin) -- Full Access
-   readonly@example.com if it exists -- no access
    </div>
                 <p />
     <b>Namespace:</b> 
@@ -688,21 +682,18 @@
     <b>Assembly:</b>
    <span sdata="assembly">Notes2022.Server</span> (in Notes2022.Server.exe)<div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">Syntax</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="syntaxSection"><!----></a><div class="CodeSnippetContainer"><div class="CodeSnippetContainerTabs"><div class="CodeSnippetContainerTabLeft"><!----></div><div class="CodeSnippetContainerTabFirst CSharpTab" id="CSharpTabId" style="background:white;border-bottom-color:white"><a href="javascript:setActiveTab('CodeSnippetContainerCode','CSharpCode','CSharpTabId');" title="C#">C#</a></div><div class="CodeSnippetContainerTab VisualBasicTab" id="VisualBasicTabId"><a href="javascript:setActiveTab('CodeSnippetContainerCode','VisualBasicCode','VisualBasicTabId');" title="Visual Basic">VB</a></div><div class="CodeSnippetContainerTab ManagedCPlusPlusTab" id="ManagedCPlusPlusTabId"><a href="javascript:setActiveTab('CodeSnippetContainerCode','ManagedCPlusPlusCode','ManagedCPlusPlusTabId');" title="Visual C++">C++</a></div><div class="CodeSnippetContainerTabRight"><!----></div></div><div class="CodeSnippetContainerCodeCollection"><div class="CodeSnippetToolBar"><div class="CodeSnippetToolBarText" /></div><div class="CodeSnippetContainerCode CSharpCode"><pre xml:space="preserve" class="libCScode"><span class="keyword">public</span> <span class="keyword">static</span> <span class="nolink">Task</span>&lt;<a href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean" target="_blank">bool</a>&gt; <span class="identifier">CreateBaseEntries</span>(
 	<a href="T-Notes2022.Server.Data.NotesDbContext.htm">NotesDbContext</a> <span class="parameter">db</span>,
-	<span class="nolink">UserManager</span>&lt;<a href="T-Notes2022.Server.Entities.ApplicationUser.htm">ApplicationUser</a>&gt; <span class="parameter">userManager</span>,
 	<a href="https://docs.microsoft.com/en-us/dotnet/api/system.string" target="_blank">string</a> <span class="parameter">userId</span>,
 	<a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">int</a> <span class="parameter">fileId</span>
 )</pre></div><div class="CodeSnippetContainerCode VisualBasicCode"><pre xml:space="preserve" class="libCScode"><span class="keyword">Public</span> <span class="keyword">Shared</span> <span class="keyword">Function</span> <span class="identifier">CreateBaseEntries</span> ( _
 	<span class="parameter">db</span> <span class="keyword">As</span> <a href="T-Notes2022.Server.Data.NotesDbContext.htm">NotesDbContext</a>, _
-	<span class="parameter">userManager</span> <span class="keyword">As</span> <span class="nolink">UserManager</span>(<span class="keyword">Of</span> <a href="T-Notes2022.Server.Entities.ApplicationUser.htm">ApplicationUser</a>), _
 	<span class="parameter">userId</span> <span class="keyword">As</span> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string" target="_blank">String</a>, _
 	<span class="parameter">fileId</span> <span class="keyword">As</span> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Integer</a> _
 ) <span class="keyword">As</span> <span class="nolink">Task</span>(<span class="keyword">Of</span> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean" target="_blank">Boolean</a>)</pre></div><div class="CodeSnippetContainerCode ManagedCPlusPlusCode"><pre xml:space="preserve" class="libCScode"><span class="keyword">public</span>:
 <span class="keyword">static</span> <span class="nolink">Task</span>&lt;<a href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean" target="_blank">bool</a>^&gt;^ <span class="identifier">CreateBaseEntries</span>(
 	<a href="T-Notes2022.Server.Data.NotesDbContext.htm">NotesDbContext</a>^ <span class="parameter">db</span>, 
-	<span class="nolink">UserManager</span>&lt;<a href="T-Notes2022.Server.Entities.ApplicationUser.htm">ApplicationUser</a>^&gt;^ <span class="parameter">userManager</span>, 
 	<a href="https://docs.microsoft.com/en-us/dotnet/api/system.string" target="_blank">String</a>^ <span class="parameter">userId</span>, 
 	<a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">int</a>^ <span class="parameter">fileId</span>
-)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="db"><dt><span class="parameterItalic">db</span></dt><dd>Type: <a href="T-Notes2022.Server.Data.NotesDbContext.htm">Notes2022.Server.Data<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>NotesDbContext</a><br />The database.</dd></dl><dl paramName="userManager"><dt><span class="parameterItalic">userManager</span></dt><dd>Type: <span class="nolink">UserManager</span><span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="nu">(</span><span class="fs">&lt;'</span></span><a href="T-Notes2022.Server.Entities.ApplicationUser.htm">ApplicationUser</a><span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="nu">)</span><span class="fs">&gt;</span></span><br />The user manager.</dd></dl><dl paramName="userId"><dt><span class="parameterItalic">userId</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string" target="_blank">String</a><br />The user identifier.</dd></dl><dl paramName="fileId"><dt><span class="parameterItalic">fileId</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Int32</a><br />The file identifier.</dd></dl></div><h4 class="subHeading">Return Value</h4><span class="code">true</span> if XXXX, <span class="code">false</span> otherwise.</div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-Notes2022.Server.AccessManager.htm">AccessManager Class</a></div><div class="seeAlsoStyle"><a href="N-Notes2022.Server.htm">Notes2022.Server Namespace</a></div></div></div>
+)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="db"><dt><span class="parameterItalic">db</span></dt><dd>Type: <a href="T-Notes2022.Server.Data.NotesDbContext.htm">Notes2022.Server.Data<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>NotesDbContext</a><br />The database.</dd></dl><dl paramName="userId"><dt><span class="parameterItalic">userId</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string" target="_blank">String</a><br />The user identifier.</dd></dl><dl paramName="fileId"><dt><span class="parameterItalic">fileId</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Int32</a><br />The file identifier.</dd></dl></div><h4 class="subHeading">Return Value</h4><span class="code">true</span> if XXXX, <span class="code">false</span> otherwise.</div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-Notes2022.Server.AccessManager.htm">AccessManager Class</a></div><div class="seeAlsoStyle"><a href="N-Notes2022.Server.htm">Notes2022.Server Namespace</a></div></div></div>
             </div>
           </div>
         </div>

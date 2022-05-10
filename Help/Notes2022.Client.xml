@@ -1,0 +1,1650 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Notes2022.Client</name>
+  </assembly>
+  <members>
+    <member name="T:Notes2022.Client.Comp.Clock">
+      <summary> Class Clock. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Comp.Clock.Interval">
+      <summary>
+   Gets or sets the interval.
+   </summary>
+      <value>The interval.</value>
+    </member>
+    <member name="T:Notes2022.Client.Comp.FileButton">
+      <summary> Class FileButton. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Comp.FileButton.NoteFile">
+      <summary>
+   Gets or sets the note file.
+   </summary>
+      <value>The note file.</value>
+    </member>
+    <member name="M:Notes2022.Client.Comp.FileButton.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Comp.FileButton" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Comp.SCheckBox">
+      <summary> Class SCheckBox. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Comp.SCheckBox.Tracker">
+      <summary>
+   Gets or sets the tracker.
+   </summary>
+      <value>The tracker.</value>
+    </member>
+    <member name="P:Notes2022.Client.Comp.SCheckBox.fileId">
+      <summary>
+   Gets or sets the file identifier.
+   </summary>
+      <value>The file identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Comp.SCheckBox.isChecked">
+      <summary>
+   Gets or sets a value indicating whether this instance is checked.
+   </summary>
+      <value>
+        <c>true</c> if this instance is checked; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Comp.SCheckBox.Model">
+      <summary>
+   Gets or sets the model.
+   </summary>
+      <value>The model.</value>
+    </member>
+    <member name="M:Notes2022.Client.Comp.SCheckBox.OnClick">
+      <summary>
+   Called when [click].
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Comp.TrackerMover">
+      <summary> Moves traker items (Sequencer items) up or down... </summary>
+    </member>
+    <member name="P:Notes2022.Client.Comp.TrackerMover.CurrentTracker">
+      <summary>
+   Who are we
+   </summary>
+      <value>The current tracker.</value>
+    </member>
+    <member name="P:Notes2022.Client.Comp.TrackerMover.Trackers">
+      <summary>
+   List of trackers
+   </summary>
+      <value>The trackers.</value>
+    </member>
+    <member name="P:Notes2022.Client.Comp.TrackerMover.Tracker">
+      <summary>
+   Our container/caller
+   </summary>
+      <value>The tracker.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.AccessCheckBox">
+      <summary> Encapsulates a single checkbox for access editor </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessCheckBox.Model">
+      <summary>
+   The item and its full toekn
+   </summary>
+      <value>The model.</value>
+    </member>
+    <member name="M:Notes2022.Client.Dialogs.AccessCheckBox.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Dialogs.AccessCheckBox" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.AccessDeleteButton">
+      <summary> Class AccessDeleteButton. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessDeleteButton.noteAccess">
+      <summary>
+   Gets or sets the note access.
+   </summary>
+      <value>The note access.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessDeleteButton.OnClick">
+      <summary>
+   Gets or sets the on click.
+   </summary>
+      <value>The on click.</value>
+    </member>
+    <member name="M:Notes2022.Client.Dialogs.AccessDeleteButton.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Dialogs.AccessDeleteButton" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.AccessX">
+      <summary>
+   Enum AccessX
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.AccessItem">
+      <summary>
+   Used for editing an access token segment (one flag)
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.AccessX.ReadAccess">
+      <summary>
+   The read access
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.AccessX.Respond">
+      <summary>
+   The respond
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.AccessX.Write">
+      <summary>
+   The write
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.AccessX.SetTag">
+      <summary>
+   The set tag
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.AccessX.DeleteEdit">
+      <summary>
+   The delete edit
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.AccessX.ViewAccess">
+      <summary>
+   The view access
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.AccessX.EditAccess">
+      <summary>
+   The edit access
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessItem.Item">
+      <summary>
+   The whole token
+   </summary>
+      <value>The item.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessItem.which">
+      <summary>
+   Indicates which segment we are dealing with
+   </summary>
+      <value>The which.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessItem.isChecked">
+      <summary>
+   Is it currently checked?
+   </summary>
+      <value>
+        <c>true</c> if this instance is checked; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessItem.canEdit">
+      <summary>
+   Can current user change it?
+   </summary>
+      <value>
+        <c>true</c> if this instance can edit; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.AccessList">
+      <summary> Access editor for a files access tokens </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessList.Modal">
+      <summary>
+   Gets or sets the modal.
+   </summary>
+      <value>The modal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessList.ModalInstance">
+      <summary>
+   Gets or sets the modal instance.
+   </summary>
+      <value>The modal instance.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AccessList.fileId">
+      <summary>
+   File Id we are working on
+   </summary>
+      <value>The file identifier.</value>
+    </member>
+    <member name="M:Notes2022.Client.Dialogs.AccessList.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Dialogs.AccessList" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.AddAccessDlg">
+      <summary> Add a user to the access list </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AddAccessDlg.ModalInstance">
+      <summary>
+   Gets or sets the modal instance.
+   </summary>
+      <value>The modal instance.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AddAccessDlg.userList">
+      <summary>
+   Gets or sets the user list.
+   </summary>
+      <value>The user list.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.AddAccessDlg.NoteFileId">
+      <summary>
+   Gets or sets the note file identifier.
+   </summary>
+      <value>The note file identifier.</value>
+    </member>
+    <member name="M:Notes2022.Client.Dialogs.AddAccessDlg.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Dialogs.AddAccessDlg" /> class.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Dialogs.AddAccessDlg.Done(Object,ElapsedEventArgs)">
+      <summary>
+   Dones the specified source.
+   </summary>
+      <param name="source">The source.</param>
+      <param name="e">The <see cref="ElapsedEventArgs" /> instance containing the event data.</param>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.CodeFormat">
+      <summary> Prepare a block of code for insertion </summary>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.CodeFormat.CFormat">
+      <summary>
+   Class CFormat.
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.CodeFormat.stuff">
+      <summary>
+   Gets or sets the stuff.
+   </summary>
+      <value>The stuff.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.CodeFormat.EditObj">
+      <summary>
+   Gets or sets the edit object.
+   </summary>
+      <value>The edit object.</value>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.CodeFormat.DropVal">
+      <summary>
+   The drop value
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.CodeFormat.CFormat.Name">
+      <summary>
+   Gets or sets the name.
+   </summary>
+      <value>The name.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.CodeFormat.CFormat.Code">
+      <summary>
+   Gets or sets the code.
+   </summary>
+      <value>The code.</value>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.CodeFormat.CFormats">
+      <summary>
+   The c formats
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.Copy">
+      <summary> Class Copy. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Copy.Note">
+      <summary>
+   Gets or sets the note.
+   </summary>
+      <value>The note.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.CreateNoteFile">
+      <summary> Class CreateNoteFile. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.CreateNoteFile.CreateFileModel">
+      <summary>
+   Class CreateFileModel.
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.CreateNoteFile.FileId">
+      <summary>
+   Gets or sets the file identifier.
+   </summary>
+      <value>The file identifier.</value>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.CreateNoteFile.dummyFile">
+      <summary>
+   The dummy file
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.CreateNoteFile.CreateFileModel.NoteFileName">
+      <summary>
+   Gets or sets the name of the note file.
+   </summary>
+      <value>The name of the note file.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.CreateNoteFile.CreateFileModel.NoteFileTitle">
+      <summary>
+   Gets or sets the note file title.
+   </summary>
+      <value>The note file title.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.DeleteNoteFile">
+      <summary> Class DeleteNoteFile. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.DeleteNoteFile.CreateFileModel">
+      <summary>
+   Class CreateFileModel.
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.DeleteNoteFile.dummyFile">
+      <summary>
+   The dummy file
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.DeleteNoteFile.FileId">
+      <summary>
+   Gets or sets the file identifier.
+   </summary>
+      <value>The file identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.DeleteNoteFile.FileName">
+      <summary>
+   Gets or sets the name of the file.
+   </summary>
+      <value>The name of the file.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.DeleteNoteFile.FileTitle">
+      <summary>
+   Gets or sets the file title.
+   </summary>
+      <value>The file title.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.DeleteNoteFile.CreateFileModel.NoteFileName">
+      <summary>
+   Gets or sets the name of the note file.
+   </summary>
+      <value>The name of the note file.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.DeleteNoteFile.CreateFileModel.NoteFileTitle">
+      <summary>
+   Gets or sets the note file title.
+   </summary>
+      <value>The note file title.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.EditNoteFile">
+      <summary> Class EditNoteFile. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.EditNoteFile.CreateFileModel">
+      <summary>
+   Class CreateFileModel.
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Dialogs.EditNoteFile.dummyFile">
+      <summary>
+   The dummy file
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.EditNoteFile.FileId">
+      <summary>
+   Gets or sets the file identifier.
+   </summary>
+      <value>The file identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.EditNoteFile.FileName">
+      <summary>
+   Gets or sets the name of the file.
+   </summary>
+      <value>The name of the file.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.EditNoteFile.FileTitle">
+      <summary>
+   Gets or sets the file title.
+   </summary>
+      <value>The file title.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.EditNoteFile.LastEdited">
+      <summary>
+   Gets or sets the last edited.
+   </summary>
+      <value>The last edited.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.EditNoteFile.NumberArchives">
+      <summary>
+   Gets or sets the number archives.
+   </summary>
+      <value>The number archives.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.EditNoteFile.Owner">
+      <summary>
+   Gets or sets the owner.
+   </summary>
+      <value>The owner.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.EditNoteFile.CreateFileModel.NoteFileName">
+      <summary>
+   Gets or sets the name of the note file.
+   </summary>
+      <value>The name of the note file.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.EditNoteFile.CreateFileModel.NoteFileTitle">
+      <summary>
+   Gets or sets the note file title.
+   </summary>
+      <value>The note file title.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.Email">
+      <summary> Class Email. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Email.ModalInstance">
+      <summary>
+   Gets or sets the modal instance.
+   </summary>
+      <value>The modal instance.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Email.emailaddr">
+      <summary>
+   Gets or sets the emailaddr.
+   </summary>
+      <value>The emailaddr.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.ExportJson">
+      <summary> Class ExportJson. Implements the <see cref="ComponentBase" /> Implements the <see cref="System.IAsyncDisposable" /></summary>
+      <seealso cref="ComponentBase" />
+      <seealso cref="System.IAsyncDisposable" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportJson.ModalInstance">
+      <summary>
+   Gets or sets the modal instance.
+   </summary>
+      <value>The modal instance.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportJson.model">
+      <summary>
+   Gets or sets the model.
+   </summary>
+      <value>The model.</value>
+    </member>
+    <member name="M:Notes2022.Client.Dialogs.ExportJson.SaveAs(System.String,System.Byte[])">
+      <summary>
+   Saves as.
+   </summary>
+      <param name="filename">The filename.</param>
+      <param name="data">The data.</param>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.ExportUtil1">
+      <summary> Class ExportUtil1. Implements the <see cref="ComponentBase" /> Implements the <see cref="System.IAsyncDisposable" /></summary>
+      <seealso cref="ComponentBase" />
+      <seealso cref="System.IAsyncDisposable" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportUtil1.ModalInstance">
+      <summary>
+   Gets or sets the modal instance.
+   </summary>
+      <value>The modal instance.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportUtil1.model">
+      <summary>
+   Gets or sets the model.
+   </summary>
+      <value>The model.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportUtil1.FileName">
+      <summary>
+   Gets or sets the name of the file.
+   </summary>
+      <value>The name of the file.</value>
+    </member>
+    <member name="M:Notes2022.Client.Dialogs.ExportUtil1.SaveAs(System.String,System.Byte[])">
+      <summary>
+   Saves as.
+   </summary>
+      <param name="filename">The filename.</param>
+      <param name="data">The data.</param>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.ExportViewModel">
+      <summary>
+   Class ExportViewModel.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.Mark">
+      <summary>
+   Class Mark.
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.NoteFile">
+      <summary>
+   Notefile we are exporting from
+   </summary>
+      <value>The note file.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.ArchiveNumber">
+      <summary>
+   Possible non 0 archive
+   </summary>
+      <value>The archive number.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.isHtml">
+      <summary>
+   Is it to be in html format?
+   </summary>
+      <value>
+        <c>true</c> if this instance is HTML; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.isCollapsible">
+      <summary>
+   Collapsible or "flat"
+   </summary>
+      <value>
+        <c>true</c> if this instance is collapsible; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.isDirectOutput">
+      <summary>
+   Direct output or destination collected via a dailog?
+   </summary>
+      <value>
+        <c>true</c> if this instance is direct output; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.NoteOrdinal">
+      <summary>
+   NoteOrdinal to export - 0 for all notes
+   </summary>
+      <value>The note ordinal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.Marks">
+      <summary>
+   "Marks" to limit scope of notes exportes the a specific set
+   selected by user "Marked"
+   </summary>
+      <value>The marks.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.Email">
+      <summary>
+   Email address if being mailed to someone
+   </summary>
+      <value>The email.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.ExportViewModel.myMenu">
+      <summary>
+   Gets or sets my menu.
+   </summary>
+      <value>My menu.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Mark.UserId">
+      <summary>
+   Gets or sets the user identifier.
+   </summary>
+      <value>The user identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Mark.NoteFileId">
+      <summary>
+   Gets or sets the note file identifier.
+   </summary>
+      <value>The note file identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Mark.ArchiveId">
+      <summary>
+   Gets or sets the archive identifier.
+   </summary>
+      <value>The archive identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Mark.MarkOrdinal">
+      <summary>
+   Gets or sets the mark ordinal.
+   </summary>
+      <value>The mark ordinal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Mark.NoteOrdinal">
+      <summary>
+   Gets or sets the note ordinal.
+   </summary>
+      <value>The note ordinal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Mark.NoteHeaderId">
+      <summary>
+   Gets or sets the note header identifier.
+   </summary>
+      <value>The note header identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Mark.ResponseOrdinal">
+      <summary>
+   Gets or sets the response ordinal.
+   </summary>
+      <value>The response ordinal.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.Forward">
+      <summary> Class Forward. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Forward.ForwardView">
+      <summary>
+   Gets or sets the forward view.
+   </summary>
+      <value>The forward view.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.HelpDialog">
+      <summary> Class HelpDialog. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.HelpDialog2">
+      <summary> Class HelpDialog2. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.MessageBox">
+      <summary> Class MessageBox. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.MessageBox.MessageInput">
+      <summary>
+   Gets or sets the message input.
+   </summary>
+      <value>The message input.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.NoteFileDetails">
+      <summary> Class NoteFileDetails. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.NoteFileDetails.FileId">
+      <summary>
+   Gets or sets the file identifier.
+   </summary>
+      <value>The file identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.NoteFileDetails.FileName">
+      <summary>
+   Gets or sets the name of the file.
+   </summary>
+      <value>The name of the file.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.NoteFileDetails.FileTitle">
+      <summary>
+   Gets or sets the file title.
+   </summary>
+      <value>The file title.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.NoteFileDetails.LastEdited">
+      <summary>
+   Gets or sets the last edited.
+   </summary>
+      <value>The last edited.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.NoteFileDetails.NumberArchives">
+      <summary>
+   Gets or sets the number archives.
+   </summary>
+      <value>The number archives.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.NoteFileDetails.Owner">
+      <summary>
+   Gets or sets the owner.
+   </summary>
+      <value>The owner.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.PrintDlg">
+      <summary> This takes the provided PrintStuff string and puts it in a Syncfusion editor component for the user to see.  It then allows the user to press a button to print.  TO do the printing the built in print function of the Sysncfusion editor is used so printing does not have to be separately implemented. </summary>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.PrintDlg.PrintStuff">
+      <summary>
+   Gets or sets the print stuff.
+   </summary>
+      <value>The print stuff.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.SearchDlg">
+      <summary> Class SearchDlg. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.SearchDlg.searchtype">
+      <summary>
+   Gets or sets the searchtype.
+   </summary>
+      <value>The searchtype.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.Upload1">
+      <summary> Class Upload1. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Upload1.ModalInstance">
+      <summary>
+   Gets or sets the modal instance.
+   </summary>
+      <value>The modal instance.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Upload1.filename">
+      <summary>
+   Gets or sets the filename.
+   </summary>
+      <value>The filename.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.Upload2">
+      <summary> Class Upload2. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Upload2.ModalInstance">
+      <summary>
+   Gets or sets the modal instance.
+   </summary>
+      <value>The modal instance.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Upload2.NoteFile">
+      <summary>
+   Gets or sets the note file.
+   </summary>
+      <value>The note file.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.Upload2.UploadFile">
+      <summary>
+   Gets or sets the upload file.
+   </summary>
+      <value>The upload file.</value>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.UserEdit">
+      <summary> Class UserEdit. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.UserEdit.ModalInstance">
+      <summary>
+   Gets or sets the modal instance.
+   </summary>
+      <value>The modal instance.</value>
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.UserEdit.UserId">
+      <summary>
+   Gets or sets the user identifier.
+   </summary>
+      <value>The user identifier.</value>
+    </member>
+    <member name="M:Notes2022.Client.Dialogs.UserEdit.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Dialogs.UserEdit" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Dialogs.YesNo">
+      <summary> Class YesNo. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Dialogs.YesNo.MessageInput">
+      <summary>
+   Gets or sets the message input.
+   </summary>
+      <value>The message input.</value>
+    </member>
+    <member name="T:Notes2022.Client.Menus.ListMenu">
+      <summary> Menu at top of noteindex listing </summary>
+    </member>
+    <member name="P:Notes2022.Client.Menus.ListMenu.Modal">
+      <summary>
+   for showing dialogs
+   </summary>
+      <value>The modal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Menus.ListMenu.Model">
+      <summary>
+   reference to data model for index display
+   </summary>
+      <value>The model.</value>
+    </member>
+    <member name="P:Notes2022.Client.Menus.ListMenu.Caller">
+      <summary>
+   reference to the caller/container
+   </summary>
+      <value>The caller.</value>
+    </member>
+    <member name="P:Notes2022.Client.Menus.ListMenu.myGauge">
+      <summary>
+   Gets or sets my gauge.
+   </summary>
+      <value>My gauge.</value>
+    </member>
+    <member name="P:Notes2022.Client.Menus.ListMenu.IsPrinting">
+      <summary>
+   Are we printing?
+   </summary>
+      <value>
+        <c>true</c> if this instance is printing; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="M:Notes2022.Client.Menus.ListMenu.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Menus.ListMenu" /> class.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Menus.ListMenu.ExecMenu(System.String)">
+      <summary>
+   The container has a refernce to "this" and can call this method...
+   </summary>
+      <param name="id">The identifier.</param>
+    </member>
+    <member name="M:Notes2022.Client.Menus.ListMenu.Replot">
+      <summary>
+   Replots this instance.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Menus.NavMenu">
+      <summary> Class NavMenu. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Menus.NavMenu.Modal">
+      <summary>
+   For display of error message during initialization
+   </summary>
+      <value>The modal.</value>
+    </member>
+    <member name="M:Notes2022.Client.Menus.NavMenu.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Menus.NavMenu" /> class.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Menus.NavMenu.OnSelect(MenuEventArgs{MenuItem})">
+      <summary>
+   Invoked when an Item is selected
+   </summary>
+      <param name="e">The e.</param>
+    </member>
+    <member name="M:Notes2022.Client.Menus.NavMenu.Reload">
+      <summary>
+   Reloads this instance.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Menus.NavMenu.UpdateMenu">
+      <summary>
+   Enable only items available to logged in user
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Menus.NoteMenu">
+      <summary> Menu for top of a Note </summary>
+    </member>
+    <member name="P:Notes2022.Client.Menus.NoteMenu.Modal">
+      <summary>
+   For dialogs
+   </summary>
+      <value>The modal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Menus.NoteMenu.Model">
+      <summary>
+   Model data reference from container
+   </summary>
+      <value>The model.</value>
+    </member>
+    <member name="P:Notes2022.Client.Menus.NoteMenu.MyNoteIndex">
+      <summary>
+   Reference to our caller/container so we can call back into it.
+   </summary>
+      <value>The index of my note.</value>
+    </member>
+    <member name="M:Notes2022.Client.Menus.NoteMenu.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Menus.NoteMenu" /> class.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Menus.NoteMenu.OnSelect(MenuEventArgs{MenuItem})">
+      <summary>
+   Menu item invoked
+   </summary>
+      <param name="e">The e.</param>
+    </member>
+    <member name="M:Notes2022.Client.Menus.NoteMenu.ExecMenu(System.String)">
+      <summary>
+   This can be called not only from above but also by the container
+   that shares the same model
+   </summary>
+      <param name="id">The identifier.</param>
+    </member>
+    <member name="T:Notes2022.Client.Pages.Admin.NotesFilesAdmin">
+      <summary> Class NotesFilesAdmin. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="M:Notes2022.Client.Pages.Admin.NotesFilesAdmin.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.Admin.NotesFilesAdmin" /> class.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Pages.Admin.NotesFilesAdmin.Reload">
+      <summary>
+   Reloads this instance.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.Admin.UserList">
+      <summary> Class UserList. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Pages.Admin.UserList.Modal">
+      <summary>
+   Gets or sets the modal.
+   </summary>
+      <value>The modal.</value>
+    </member>
+    <member name="M:Notes2022.Client.Pages.Admin.UserList.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.Admin.UserList" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.Authentication.ConfirmEmail">
+      <summary> Class ConfirmEmail. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.ConfirmEmail.payload">
+      <summary>
+   Gets or sets the payload.
+   </summary>
+      <value>The payload.</value>
+    </member>
+    <member name="T:Notes2022.Client.Pages.Authentication.Login">
+      <summary> Class Login. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Pages.Authentication.Login.InputModel">
+      <summary>
+   Class InputModel.
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Login.InputModel.Email">
+      <summary>
+   This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+   directly from your code. This API may change or be removed in future releases.
+   </summary>
+      <value>The email.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Login.InputModel.Password">
+      <summary>
+   This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+   directly from your code. This API may change or be removed in future releases.
+   </summary>
+      <value>The password.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Login.InputModel.RememberHours">
+      <summary>
+   Gets or sets the remember hours.
+   </summary>
+      <value>The remember hours.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Login.returnURL">
+      <summary>
+   Gets or sets the return URL.
+   </summary>
+      <value>The return URL.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Login.myCookieValue">
+      <summary>
+   Gets or sets my cookie value.
+   </summary>
+      <value>My cookie value.</value>
+    </member>
+    <member name="T:Notes2022.Client.Pages.Authentication.Register">
+      <summary> Class Register. Implements the <see cref="Microsoft.AspNetCore.Components.ComponentBase" /></summary>
+      <seealso cref="Microsoft.AspNetCore.Components.ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Pages.Authentication.Register.InputModel">
+      <summary>
+   Class InputModel.
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Register.InputModel.Email">
+      <summary>
+   Gets or sets the email.
+   </summary>
+      <value>The email.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Register.InputModel.UserName">
+      <summary>
+   Gets or sets the name of the user.
+   </summary>
+      <value>The name of the user.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Register.InputModel.Password">
+      <summary>
+   Gets or sets the password.
+   </summary>
+      <value>The password.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Authentication.Register.InputModel.Password2">
+      <summary>
+   Gets or sets the password2.
+   </summary>
+      <value>The password2.</value>
+    </member>
+    <member name="T:Notes2022.Client.Pages.About2">
+      <summary> Class About2. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Pages.EditNote">
+      <summary> Setup for calling note editor panel to edit an existing note </summary>
+    </member>
+    <member name="P:Notes2022.Client.Pages.EditNote.NoteId">
+      <summary>
+   Gets or sets the note identifier.
+   </summary>
+      <value>The note identifier.</value>
+    </member>
+    <member name="M:Notes2022.Client.Pages.EditNote.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.EditNote" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.Index">
+      <summary> Class Index. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="M:Notes2022.Client.Pages.Index.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.Index" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.NewNote">
+      <summary> FOr creating a new note </summary>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NewNote.NotesfileId">
+      <summary>
+   Gets or sets the notesfile identifier.
+   </summary>
+      <value>The notesfile identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NewNote.BaseNoteHeaderId">
+      <summary>
+   Gets or sets the base note header identifier.
+   </summary>
+      <value>The base note header identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NewNote.RefId">
+      <summary>
+   Gets or sets the reference identifier.
+   </summary>
+      <value>The reference identifier.</value>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NewNote.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.NewNote" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.NoteIndex">
+      <summary> Index/Listing for a NoteFile.  Has an embeded NotePanel that can be displayed in place of the index when the user selects a note to view. </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.NoteIndex.SearchOption">
+      <summary>
+   Enum SearchOption
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.NoteIndex.Search">
+      <summary>
+   Class Search.
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Modal">
+      <summary>
+   For dialogs
+   </summary>
+      <value>The modal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.NotesfileId">
+      <summary>
+   The NoteFileId we are using
+   </summary>
+      <value>The notesfile identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.CurrentNoteId">
+      <summary>
+   Non zero when viewing a note
+   </summary>
+      <value>The current note identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.NavString">
+      <summary>
+   Accumulator for the navigation string
+   </summary>
+      <value>The nav string.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.sfGrid1">
+      <summary>
+   Our index grid
+   </summary>
+      <value>The sf grid1.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Model">
+      <summary>
+   Model for the index data
+   </summary>
+      <value>The model.</value>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.NoteIndex" /> class.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.GotoNote(System.Int64)">
+      <summary>
+   Goto a specific note
+   </summary>
+      <param name="Id">The identifier.</param>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.Listing">
+      <summary>
+   Goto the listing mode from note display mode
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.GetNextBaseNote(GNoteHeader)">
+      <summary>
+   Get the next base note header given the current one
+   </summary>
+      <param name="oh">The oh.</param>
+      <returns>System.Int64.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.GetNextNote(GNoteHeader)">
+      <summary>
+   Get the nest note given the current one
+   </summary>
+      <param name="oh">The oh.</param>
+      <returns>System.Int64.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.GetPreviousBaseNote(GNoteHeader)">
+      <summary>
+   Get the previous base note
+   </summary>
+      <param name="oh">The oh.</param>
+      <returns>System.Int64.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.GetPreviousNote(GNoteHeader)">
+      <summary>
+   Get the previous note
+   </summary>
+      <param name="oh">The oh.</param>
+      <returns>System.Int64.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.GetResponseHeaders(System.Int64)">
+      <summary>
+   Get just the response headers for the given noteid
+   </summary>
+      <param name="headerId">The header identifier.</param>
+      <returns>List&lt;GNoteHeader&gt;.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.GetModel">
+      <summary>
+   Get the Index model - used by the NotePanel
+   </summary>
+      <returns>NoteDisplayIndexModel.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.GetNoteHeaderId(System.Int32,System.Int32)">
+      <summary>
+   Get note header Id given note ordinal and response ordinal
+   </summary>
+      <param name="noteOrd">The note ord.</param>
+      <param name="respOrd">The resp ord.</param>
+      <returns>System.Int64.</returns>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.UserId">
+      <summary>
+   Gets or sets the user identifier.
+   </summary>
+      <value>The user identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.Option">
+      <summary>
+   Gets or sets the option.
+   </summary>
+      <value>The option.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.Text">
+      <summary>
+   Gets or sets the text.
+   </summary>
+      <value>The text.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.Time">
+      <summary>
+   Gets or sets the time.
+   </summary>
+      <value>The time.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.NoteFileId">
+      <summary>
+   Gets or sets the note file identifier.
+   </summary>
+      <value>The note file identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.ArchiveId">
+      <summary>
+   Gets or sets the archive identifier.
+   </summary>
+      <value>The archive identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.BaseOrdinal">
+      <summary>
+   Gets or sets the base ordinal.
+   </summary>
+      <value>The base ordinal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.ResponseOrdinal">
+      <summary>
+   Gets or sets the response ordinal.
+   </summary>
+      <value>The response ordinal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.NoteIndex.Search.NoteID">
+      <summary>
+   Gets or sets the note identifier.
+   </summary>
+      <value>The note identifier.</value>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.StartSearch(Search)">
+      <summary>
+   Starts the search.
+   </summary>
+      <param name="target">The target.</param>
+    </member>
+    <member name="M:Notes2022.Client.Pages.NoteIndex.ActionCompleteHandler(ActionEventArgs{GNoteHeader})">
+      <summary>
+   Actions the complete handler.
+   </summary>
+      <param name="args">The arguments.</param>
+    </member>
+    <member name="T:Notes2022.Client.Pages.NotesFiles">
+      <summary> Display list of notefiles </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.Preferences">
+      <summary> Class Preferences. Implements the <see cref="Microsoft.AspNetCore.Components.ComponentBase" /></summary>
+      <seealso cref="Microsoft.AspNetCore.Components.ComponentBase" />
+    </member>
+    <member name="T:Notes2022.Client.Pages.Preferences.LocalModel2">
+      <summary>
+   Class LocalModel2.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Pages.Preferences.LocalModel2.#ctor(System.String)">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.Preferences.LocalModel2" /> class.
+   </summary>
+      <param name="psize">The psize.</param>
+    </member>
+    <member name="M:Notes2022.Client.Pages.Preferences.LocalModel2.#ctor(System.String,System.String)">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.Preferences.LocalModel2" /> class.
+   </summary>
+      <param name="psize">The psize.</param>
+      <param name="name">The name.</param>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Preferences.LocalModel2.Psize">
+      <summary>
+   Gets or sets the psize.
+   </summary>
+      <value>The psize.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.Preferences.LocalModel2.Name">
+      <summary>
+   Gets or sets the name.
+   </summary>
+      <value>The name.</value>
+    </member>
+    <member name="T:Notes2022.Client.Pages.ShowNote">
+      <summary> Class ShowNote. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="P:Notes2022.Client.Pages.ShowNote.NoteId">
+      <summary>
+   Gets or sets the note identifier.
+   </summary>
+      <value>The note identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Pages.ShowNote.FileId">
+      <summary>
+   Gets or sets the file identifier.
+   </summary>
+      <value>The file identifier.</value>
+    </member>
+    <member name="M:Notes2022.Client.Pages.ShowNote.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Pages.ShowNote" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Pages.Tracker">
+      <summary> Class Tracker. Implements the <see cref="Microsoft.AspNetCore.Components.ComponentBase" /></summary>
+      <seealso cref="Microsoft.AspNetCore.Components.ComponentBase" />
+    </member>
+    <member name="M:Notes2022.Client.Pages.Tracker.Shuffle">
+      <summary>
+   Shuffles this instance.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Panels.NoteEditor">
+      <summary> Editor for notes Has a fields for: Subject, Tags, Director Message, and the Note Body </summary>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NoteEditor.Modal">
+      <summary>
+   For dialogs
+   </summary>
+      <value>The modal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NoteEditor.Model">
+      <summary>
+   The data model used
+   </summary>
+      <value>The model.</value>
+    </member>
+    <member name="M:Notes2022.Client.Panels.NoteEditor.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Panels.NoteEditor" /> class.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Panels.NoteEditor.InsertCode1">
+      <summary>
+   Prepare code for insertion - collect the text
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Panels.NoteEditor.InsertCode2">
+      <summary>
+   Insert the previously prepared code.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Panels.NotePanel">
+      <summary> This panel is an optionally hidden panel that resides inside the note index. The index replaces itself with this panel when the user selects a note to view.  This allows the index and note panel to share data and communicate with each other more readily. </summary>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.Modal">
+      <summary>
+   For Dialogs
+   </summary>
+      <value>The modal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.NoteId">
+      <summary>
+   Our current NoteId
+   </summary>
+      <value>The note identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.ShowChild">
+      <summary>
+   Whether or not child windows should be shown.  These might include
+   Responses, versions, references.
+   </summary>
+      <value>
+        <c>true</c> if [show child]; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.IsRootNote">
+      <summary>
+   Is this at the "root" of something
+   </summary>
+      <value>
+        <c>true</c> if this instance is root note; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.ShowButtons">
+      <summary>
+   Should optional buttons be shown
+   </summary>
+      <value>
+        <c>true</c> if [show buttons]; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.AltStyle">
+      <summary>
+   Is this panel to be shown in the alternate style?
+   </summary>
+      <value>
+        <c>true</c> if [alt style]; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.IsMini">
+      <summary>
+   Should certain functions be suppressed at head and tail of panel
+   </summary>
+      <value>
+        <c>true</c> if this instance is mini; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.Vers">
+      <summary>
+   Are we showing history versions
+   </summary>
+      <value>The vers.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.MyNoteIndex">
+      <summary>
+   Who is my container
+   </summary>
+      <value>The index of my note.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.MyMenu">
+      <summary>
+   Reference to our menu so we can talk to it
+   </summary>
+      <value>My menu.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.NavString">
+      <summary>
+   Accumulator for the typin nav box
+   </summary>
+      <value>The nav string.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.respX">
+      <summary>
+   Gets or sets the resp x.
+   </summary>
+      <value>The resp x.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.NotePanel.respY">
+      <summary>
+   Gets or sets the resp y.
+   </summary>
+      <value>The resp y.</value>
+    </member>
+    <member name="M:Notes2022.Client.Panels.NotePanel.#ctor">
+      <summary>
+   Initialize defaults for a "root" note - not showing children
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Panels.Responses">
+      <summary> Shows note responses </summary>
+    </member>
+    <member name="P:Notes2022.Client.Panels.Responses.Headers">
+      <summary>
+   List of response headers
+   </summary>
+      <value>The headers.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.Responses.ShowContentR">
+      <summary>
+   Show content for responses
+   </summary>
+      <value>
+        <c>true</c> if [show content r]; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.Responses.ExpandAllR">
+      <summary>
+   Expand all rows
+   </summary>
+      <value>
+        <c>true</c> if [expand all r]; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="M:Notes2022.Client.Panels.Responses.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Panels.Responses" /> class.
+   </summary>
+    </member>
+    <member name="M:Notes2022.Client.Panels.Responses.DataBoundHandler">
+      <summary>
+   Copy parameter to local copy
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Panels.Versions">
+      <summary> Displays versions for edited notes </summary>
+    </member>
+    <member name="P:Notes2022.Client.Panels.Versions.FileId">
+      <summary>
+   These four parameters identify the note
+   </summary>
+      <value>The file identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.Versions.NoteOrdinal">
+      <summary>
+   Gets or sets the note ordinal.
+   </summary>
+      <value>The note ordinal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.Versions.ResponseOrdinal">
+      <summary>
+   Gets or sets the response ordinal.
+   </summary>
+      <value>The response ordinal.</value>
+    </member>
+    <member name="P:Notes2022.Client.Panels.Versions.ArcId">
+      <summary>
+   Gets or sets the arc identifier.
+   </summary>
+      <value>The arc identifier.</value>
+    </member>
+    <member name="M:Notes2022.Client.Panels.Versions.#ctor">
+      <summary>
+   Initializes a new instance of the <see cref="T:Notes2022.Client.Panels.Versions" /> class.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.Shared.LoginDisplay">
+      <summary> Class LoginDisplay. Implements the <see cref="ComponentBase" /></summary>
+      <seealso cref="ComponentBase" />
+    </member>
+    <member name="M:Notes2022.Client.Shared.LoginDisplay.Reload">
+      <summary>
+   Reloads this instance.
+   </summary>
+    </member>
+    <member name="T:Notes2022.Client.App">
+      <summary> Class App. Root of the application.  This extention to the normal "codeless" App provides login/cookie managment. Implements the <see cref="Microsoft.AspNetCore.Components.ComponentBase" /> Implements the <see cref="System.IAsyncDisposable" /></summary>
+      <seealso cref="Microsoft.AspNetCore.Components.ComponentBase" />
+      <seealso cref="System.IAsyncDisposable" />
+    </member>
+    <member name="M:Notes2022.Client.App.GetLoginReplyAsync">
+      <summary>
+   Try to get login cookie
+   </summary>
+      <returns>A Task representing the asynchronous operation.</returns>
+    </member>
+    <member name="M:Notes2022.Client.App.ReadCookie(System.String)">
+      <summary>
+   Read a cookie
+   </summary>
+      <param name="cookieName">cookie name</param>
+      <returns>needs to be deserialized)</returns>
+    </member>
+    <member name="M:Notes2022.Client.App.WriteCookie(System.String,System.String,System.Int32)">
+      <summary>
+   Write a Cookie
+   </summary>
+      <param name="cookieName">Name of the cookie</param>
+      <param name="newCookie">Serialized cookie</param>
+      <param name="hours">expiry</param>
+    </member>
+    <member name="P:Notes2022.Client.App.LoginReply">
+      <summary>
+   Gets or sets the login reply.
+   </summary>
+      <value>The login reply.</value>
+    </member>
+    <member name="E:Notes2022.Client.App.OnChange">
+      <summary>
+   Occurs when [on change].
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.App.IsAuthenticated">
+      <summary>
+   Check if user is authenticated - Login reply is not null and status == 200
+   </summary>
+      <value>
+        <c>true</c> if this instance is authenticated; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.App.IsAdmin">
+      <summary>
+   Is user in Admin role
+   </summary>
+      <value>
+        <c>true</c> if this instance is admin; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.App.IsUser">
+      <summary>
+   Is user in User role
+   </summary>
+      <value>
+        <c>true</c> if this instance is user; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:Notes2022.Client.App.AuthHeader">
+      <summary>
+   Get a Metadata/header for authetication to server in gRPC calls
+   </summary>
+      <value>The authentication header.</value>
+    </member>
+    <member name="P:Notes2022.Client.App.UserInfo">
+      <summary>
+   Get the decoded user info
+   </summary>
+      <value>The user information.</value>
+    </member>
+    <member name="T:Notes2022.Client.Globals">
+      <summary>
+   Class Globals.
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Globals.LoginDisplay">
+      <summary>
+   The login display object
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Globals.NavMenu">
+      <summary>
+   The nav menu object
+   </summary>
+    </member>
+    <member name="F:Notes2022.Client.Globals.NotesFilesAdmin">
+      <summary>
+   The notes files admin object
+   </summary>
+    </member>
+    <member name="P:Notes2022.Client.Globals.AccessOtherId">
+      <summary>
+   Gets the access other identifier.
+   </summary>
+      <value>The access other identifier.</value>
+    </member>
+    <member name="P:Notes2022.Client.Globals.Cookie">
+      <summary>
+   Gets the cookie name.
+   </summary>
+      <value>The cookie.</value>
+    </member>
+    <member name="P:Notes2022.Client.Globals.returnUrl">
+      <summary>
+   Gets or sets the return URL.
+   </summary>
+      <value>The return URL.</value>
+    </member>
+    <member name="P:Notes2022.Client.Globals.GotoNote">
+      <summary>
+   Gets or sets the goto note.
+   </summary>
+      <value>The goto note.</value>
+    </member>
+    <member name="M:Notes2022.Client.Globals.LocalTimeBlazor(DateTime)">
+      <summary>
+   GMT to Local.
+   </summary>
+      <param name="dt">The dt.</param>
+      <returns>DateTime.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Globals.UTimeBlazor(DateTime)">
+      <summary>
+   Converts to a Universal time
+   </summary>
+      <param name="dt">The dt.</param>
+      <returns>DateTime.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Globals.Base64Encode(System.String)">
+      <summary>
+   Base64 Encodes the plain text.
+   </summary>
+      <param name="plainText">The plain text.</param>
+      <returns>System.String.</returns>
+    </member>
+    <member name="M:Notes2022.Client.Globals.Base64Decode(System.String)">
+      <summary>
+   Base64s decodes the encoded string.
+   </summary>
+      <param name="encodedString">The encoded string.</param>
+      <returns>System.String.</returns>
+    </member>
+  </members>
+</doc>

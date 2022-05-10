@@ -23,7 +23,7 @@
       <MSHelp:Attr Name="Locale" Value="en-us" />
       <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
       <MSHelp:Attr Name="TopicType" Value="apiref" />
-      <MSHelp:Attr Name="Abstract" Value="Get the BaseNoteHeader in a given file with given ordinal" />
+      <MSHelp:Attr Name="Abstract" Value="Get the BaseNoteHeader for a Note" />
       <MSHelp:Attr Name="AssemblyVersion" Value="" />
     </xml>
   <link rel="stylesheet" href="../TOC.css"><script type="text/javascript" src="../TOC.js"></script></head>
@@ -446,11 +446,6 @@
 </div>
 </div>
 <div class="TreeNode">
-<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-Notes2022.Server.LocalManager.htm" target="_self">LocalManager Class</a>
-<div class="Hidden">
-</div>
-</div>
-<div class="TreeNode">
 <img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-Notes2022.Server.NoteDataManager.htm" target="_self">NoteDataManager Class</a>
 <div class="Hidden">
 <div class="TreeItem">
@@ -473,9 +468,6 @@
 </div>
 <div class="TreeItem">
 <img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.EditNote.htm" target="_self">EditNote Method </a>
-</div>
-<div class="TreeItem">
-<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.GetAllHeaders.htm" target="_self">GetAllHeaders Method </a>
 </div>
 <div class="TreeNode">
 <img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-Notes2022.Server.NoteDataManager.GetBaseNoteHeader.htm" target="_self">GetBaseNoteHeader Method </a>
@@ -501,13 +493,7 @@
 <img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.GetNoteByIdWithFile.htm" target="_self">GetNoteByIdWithFile Method </a>
 </div>
 <div class="TreeItem">
-<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.GetUserData.htm" target="_self">GetUserData Method </a>
-</div>
-<div class="TreeItem">
 <img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.NextBaseNoteOrdinal.htm" target="_self">NextBaseNoteOrdinal Method </a>
-</div>
-<div class="TreeItem">
-<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-Notes2022.Server.NoteDataManager.PutUserData.htm" target="_self">PutUserData Method </a>
 </div>
 </div>
 </div>
@@ -708,7 +694,7 @@
             <div id="mainSection">
               <div id="mainBody">
                 <div class="summary">
-   Get the BaseNoteHeader in a given file with given ordinal
+   Get the BaseNoteHeader for a Note
    </div>
                 <p />
     <b>Namespace:</b> 
@@ -730,7 +716,7 @@
 	<a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">int</a>^ <span class="parameter">fileId</span>, 
 	<a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">int</a>^ <span class="parameter">arcId</span>, 
 	<a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">int</a>^ <span class="parameter">noteOrd</span>
-)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="db"><dt><span class="parameterItalic">db</span></dt><dd>Type: <a href="T-Notes2022.Server.Data.NotesDbContext.htm">Notes2022.Server.Data<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>NotesDbContext</a><br />NotesDbContext</dd></dl><dl paramName="fileId"><dt><span class="parameterItalic">fileId</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Int32</a><br />fileid</dd></dl><dl paramName="arcId"><dt><span class="parameterItalic">arcId</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Int32</a><br />The arc identifier.</dd></dl><dl paramName="noteOrd"><dt><span class="parameterItalic">noteOrd</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Int32</a><br />noteordinal</dd></dl></div><h4 class="subHeading">Return Value</h4>NoteHeader.</div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-Notes2022.Server.NoteDataManager.htm">NoteDataManager Class</a></div><div class="seeAlsoStyle"><a href="Overload-Notes2022.Server.NoteDataManager.GetBaseNoteHeader.htm">GetBaseNoteHeader Overload</a></div><div class="seeAlsoStyle"><a href="N-Notes2022.Server.htm">Notes2022.Server Namespace</a></div></div></div>
+)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="db"><dt><span class="parameterItalic">db</span></dt><dd>Type: <a href="T-Notes2022.Server.Data.NotesDbContext.htm">Notes2022.Server.Data<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>NotesDbContext</a><br />NotesDbContext</dd></dl><dl paramName="fileId"><dt><span class="parameterItalic">fileId</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Int32</a><br />fileid</dd></dl><dl paramName="arcId"><dt><span class="parameterItalic">arcId</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Int32</a><br />The arc identifier.</dd></dl><dl paramName="noteOrd"><dt><span class="parameterItalic">noteOrd</span></dt><dd>Type: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32" target="_blank">Int32</a><br />noteordinal</dd></dl></div><h4 class="subHeading">Return Value</h4>List&lt;NoteHeader&gt;.</div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-Notes2022.Server.NoteDataManager.htm">NoteDataManager Class</a></div><div class="seeAlsoStyle"><a href="Overload-Notes2022.Server.NoteDataManager.GetBaseNoteHeader.htm">GetBaseNoteHeader Overload</a></div><div class="seeAlsoStyle"><a href="N-Notes2022.Server.htm">Notes2022.Server Namespace</a></div></div></div>
             </div>
           </div>
         </div>
