@@ -7,7 +7,7 @@
 // Last Modified On : 05-09-2022
 // ***********************************************************************
 // <copyright file="SCheckBox.razor.cs" company="Notes2022.Client">
-//     Copyright (c) . All rights reserved.
+//     Copyright (c) 2022 Dale Sinder. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

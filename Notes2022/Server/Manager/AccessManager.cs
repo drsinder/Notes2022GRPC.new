@@ -1,16 +1,17 @@
 ﻿// ***********************************************************************
 // Assembly         : Notes2022.Server
-// Author           : sinde
+// Author           : Dale Sinder
 // Created          : 04-26-2022
 //
-// Last Modified By : sinde
-// Last Modified On : 05-08-2022
+// Last Modified By : Dale Sinder
+// Last Modified On : 05-09-2022
 // ***********************************************************************
 // <copyright file="AccessManager.cs" company="Notes2022.Server">
-//     Copyright (c) . All rights reserved.
+//     Copyright (c) Dale Sinder. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 /*-------------------------------------------------------------------------- 
 **
 **  Copyright © 2022, Dale Sinder

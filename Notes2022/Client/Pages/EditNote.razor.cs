@@ -7,7 +7,7 @@
 // Last Modified On : 04-30-2022
 // ***********************************************************************
 // <copyright file="EditNote.razor.cs" company="Notes2022.Client">
-//     Copyright (c) . All rights reserved.
+//     Copyright (c) 2022 Dale Sinder. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

@@ -7,7 +7,7 @@
 // Last Modified On : 04-16-2022
 // ***********************************************************************
 // <copyright file="UserRoles.cs" company="Notes2022.Shared">
-//     Copyright (c) . All rights reserved.
+//     Copyright (c) 2022 Dale Sinder. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

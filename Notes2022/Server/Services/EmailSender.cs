@@ -7,7 +7,7 @@
 // Last Modified On : 11-14-2021
 // ***********************************************************************
 // <copyright file="EmailSender.cs" company="Notes2022.Server">
-//     Copyright (c) . All rights reserved.
+//     Copyright (c) 2022 Dale Sinder. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

@@ -7,7 +7,7 @@
 // Last Modified On : 11-20-2021
 // ***********************************************************************
 // <copyright file="prism.js" company="Notes2022.Client">
-//     Copyright (c) . All rights reserved.
+//     Copyright (c) 2022 Dale Sinder. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

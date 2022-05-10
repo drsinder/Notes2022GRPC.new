@@ -7,7 +7,7 @@
 // Last Modified On : 04-19-2022
 // ***********************************************************************
 // <copyright file="Error.cshtml.cs" company="Notes2022.Server">
-//     Copyright (c) . All rights reserved.
+//     Copyright (c) 2022 Dale Sinder. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
