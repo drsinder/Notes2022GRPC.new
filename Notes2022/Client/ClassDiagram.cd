@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Notes2022.Client.Pages.Index">
+    <Position X="1" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQQAAIABAgAABAAAAAYAAAQIAAQAAAAKgAIAAAgAQAQ=</HashCode>
+      <FileName>Pages\Index.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Pages.NoteIndex">
+    <Position X="3.5" Y="0.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Notes2022.Client.Pages.NoteIndex.SearchOption">
+        <TypeIdentifier>
+          <NewMemberFileName>Pages\NoteIndex.razor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="Notes2022.Client.Pages.NoteIndex.Search">
+        <TypeIdentifier>
+          <NewMemberFileName>Pages\NoteIndex.razor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BEAIKAgQAACKCMCQCAAESsASAAaACQgKgAgAkAQASAQ=</HashCode>
+      <FileName>Pages\NoteIndex.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Panels.NotePanel">
+    <Position X="6.25" Y="0.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAKBkQUAgCCAAUKAAAQMAQACeoAAGCgCQGEAAIQiw=</HashCode>
+      <FileName>Panels\NotePanel.razor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Notes2022.Client.Panels.NoteEditor">
+    <Position X="9.75" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAgAACAAAAAAAAAAIAAAAAQAAAAAwAgEEAChQgQ=</HashCode>
+      <FileName>Panels\NoteEditor.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Panels.Responses">
+    <Position X="9.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAACACACAAAAAAAABAgQAA=</HashCode>
+      <FileName>Panels\Responses.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Panels.Versions">
+    <Position X="9.75" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAgAAAgCAQAAAAAAAAAAAIAAAQ=</HashCode>
+      <FileName>Panels\Versions.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Menus.NavMenu">
+    <Position X="12.25" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQwwAAgAAgAAAQAYCAAAAAAAAAQABAAIyAAAAAAAYAQ=</HashCode>
+      <FileName>Menus\NavMenu.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Menus.ListMenu">
+    <Position X="14.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AggQAIgAAgQAAgAgAAAQAAAAIAAgACACwIgAAAAAYAA=</HashCode>
+      <FileName>Menus\ListMenu.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Menus.NoteMenu">
+    <Position X="17" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAgAAAAAAgAAAAAQAAAAAAQAAACCyIgAAAAAYAI=</HashCode>
+      <FileName>Menus\NoteMenu.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Pages.NotesFiles">
+    <Position X="1" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQACAAAAAAAAAAIAIA=</HashCode>
+      <FileName>Pages\NotesFiles.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Pages.Preferences">
+    <Position X="1" Y="9" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Notes2022.Client.Pages.Preferences.LocalModel2">
+        <TypeIdentifier>
+          <NewMemberFileName>Pages\Preferences.razor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAIAAAAAAAAAAAAAAAAAAAACAAABAAAIAJA=</HashCode>
+      <FileName>Pages\Preferences.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Pages.Tracker">
+    <Position X="12.25" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIQAAAAAAAAAAAIAAAAAQAAAAAAAAAgAAAEAA=</HashCode>
+      <FileName>Pages\Tracker.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notes2022.Client.Pages.EditNote">
+    <Position X="14.75" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQIAAAACQAAAAAAAgAAAAAAAQ=</HashCode>
+      <FileName>Pages\EditNote.razor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
