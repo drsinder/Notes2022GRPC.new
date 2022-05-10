@@ -20,7 +20,8 @@ using System.Text.Json;
 namespace Notes2022.Client
 {
     /// <summary>
-    /// Class App.
+    /// Class App. Root of the application.  This extention to the normal "codeless" App
+    /// provides login/cookie managment.
     /// Implements the <see cref="Microsoft.AspNetCore.Components.ComponentBase" />
     /// Implements the <see cref="System.IAsyncDisposable" />
     /// </summary>
@@ -29,12 +30,12 @@ namespace Notes2022.Client
     public partial class App
     {
         /// <summary>
-        /// The saved login value
+        /// The saved login value used while updating cookies
         /// </summary>
         private LoginReply? savedLoginValue;        // used while updating cookies
-
+        
         /// <summary>
-        /// The module
+        /// The module for calling javascript
         /// </summary>
         private IJSObjectReference? module;         // for calling javascript
 
@@ -202,7 +203,7 @@ namespace Notes2022.Client
         public event System.Action? OnChange;
 
         /// <summary>
-        /// Notifies the state changed.
+        /// Notifies subscribers of login state change.
         /// </summary>
         private void NotifyStateChanged()
         {
@@ -210,7 +211,7 @@ namespace Notes2022.Client
         }
 
         /// <summary>
-        /// Check if user is authenticated - Login replay is not null and status == 200
+        /// Check if user is authenticated - Login reply is not null and status == 200
         /// </summary>
         /// <value><c>true</c> if this instance is authenticated; otherwise, <c>false</c>.</value>
         public bool IsAuthenticated

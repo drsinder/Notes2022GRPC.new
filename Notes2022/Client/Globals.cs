@@ -27,15 +27,15 @@ namespace Notes2022.Client
     public static class Globals
     {
         /// <summary>
-        /// The login display
+        /// The login display object
         /// </summary>
         public static LoginDisplay? LoginDisplay = null;
         /// <summary>
-        /// The nav menu
+        /// The nav menu object
         /// </summary>
         public static NavMenu? NavMenu = null;
         /// <summary>
-        /// The notes files admin
+        /// The notes files admin object
         /// </summary>
         public static NotesFilesAdmin? NotesFilesAdmin = null;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Notes2022.Client
         public static string AccessOtherId { get; } = "Other";
 
         /// <summary>
-        /// Gets the cookie.
+        /// Gets the cookie name.
         /// </summary>
         /// <value>The cookie.</value>
         public static string Cookie { get; } = "notes2022login";
@@ -90,7 +90,7 @@ namespace Notes2022.Client
 
 
         /// <summary>
-        /// Base64s the encode.
+        /// Base64 Encodes the plain text.
         /// </summary>
         /// <param name="plainText">The plain text.</param>
         /// <returns>System.String.</returns>
@@ -101,7 +101,7 @@ namespace Notes2022.Client
         }
 
         /// <summary>
-        /// Base64s the decode.
+        /// Base64s decodes the encoded string.
         /// </summary>
         /// <param name="encodedString">The encoded string.</param>
         /// <returns>System.String.</returns>

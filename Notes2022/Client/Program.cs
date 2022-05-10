@@ -21,7 +21,6 @@ using Blazored.Modal;
 using Blazored.SessionStorage;
 using Notes2022.Client;
 using Notes2022.Proto;
-using Notes2022.Client.Shared;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -38,6 +37,7 @@ builder.Services.AddSyncfusionBlazor();   // options => { options.IgnoreScriptIs
 
 //var handler = new SubdirectoryHandler(new HttpClientHandler(), "/Notes2022GRCP");
 
+// Add my gRPC service so it can be injected.
 builder.Services.AddSingleton(services =>
 {
 	HttpClient? httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));

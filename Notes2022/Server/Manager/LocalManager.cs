@@ -56,24 +56,24 @@ namespace Notes2022.Server
         /// <param name="applicationUser">The application user.</param>
         /// <param name="db">The database.</param>
         /// <returns>TZone.</returns>
-        public static async Task<TZone> GetUserTimeZone(ApplicationUser applicationUser, NotesDbContext db)
-        {
-            int tzid = Globals.TimeZoneDefaultID;
-            try
-            {
-                tzid = NoteDataManager.GetUserData(applicationUser).TimeZoneID;  // get users timezoneid
-            }
-            catch
-            {
-                // ignored
-            }
-            if (tzid < 1)
-                tzid = Globals.TimeZoneDefaultID;
+        //public static async Task<TZone> GetUserTimeZone(ApplicationUser applicationUser, NotesDbContext db)
+        //{
+        //    int tzid = Globals.TimeZoneDefaultID;
+        //    try
+        //    {
+        //        tzid = NoteDataManager.GetUserData(applicationUser).TimeZoneID;  // get users timezoneid
+        //    }
+        //    catch
+        //    {
+        //        // ignored
+        //    }
+        //    if (tzid < 1)
+        //        tzid = Globals.TimeZoneDefaultID;
 
-            var tz2 = await db.TZone.SingleAsync(p => p.Id == tzid);
+        //    var tz2 = await db.TZone.SingleAsync(p => p.Id == tzid);
 
-            return tz2;
-        }
+        //    return tz2;
+        //}
 
         //public static UserData GetUserData(ApplicationUser applicationUser)
         //{

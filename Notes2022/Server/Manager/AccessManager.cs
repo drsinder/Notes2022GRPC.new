@@ -89,7 +89,6 @@ namespace Notes2022.Server
         /// Create standard starting entires for a access controls for a new file.
         /// "Other" -- no access
         /// creating user (Admin) -- Full Access
-        /// readonly@example.com if it exists -- no access
         /// </summary>
         /// <param name="db">The database.</param>
         /// <param name="userManager">The user manager.</param>
@@ -134,7 +133,7 @@ namespace Notes2022.Server
         }
 
         /// <summary>
-        /// All access checks call this
+        /// All access checks call this. 
         /// </summary>
         /// <param name="db">NotesDbContext</param>
         /// <param name="userId">ID of logged in user</param>
@@ -143,7 +142,7 @@ namespace Notes2022.Server
         /// <returns>NoteAcess Object</returns>
         public static async Task<NoteAccess> GetAccess(NotesDbContext db, string userId, int fileId, int arcId)
         {
-            // Next we check for this user specifically
+            // First we check for this user specifically
             NoteAccess? na = await db.NoteAccess
                 .Where(p => p.UserID == userId && p.NoteFileId == fileId && p.ArchiveId == arcId).FirstOrDefaultAsync();
 

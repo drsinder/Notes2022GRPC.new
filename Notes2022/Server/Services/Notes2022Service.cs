@@ -54,7 +54,7 @@ using System.Text.Json;
 namespace Notes2022.Server.Services
 {
     /// <summary>
-    /// Class Notes2022Service.
+    /// Class Notes2022Service.  Contaims all the Notes2022 gRPC service methods/handlers.
     /// Implements the <see cref="Notes2022.Proto.Notes2022Server.Notes2022ServerBase" />
     /// </summary>
     /// <seealso cref="Notes2022.Proto.Notes2022Server.Notes2022ServerBase" />
@@ -124,7 +124,7 @@ namespace Notes2022.Server.Services
         //}
 
         /// <summary>
-        /// Registers the specified request.
+        /// Registers the specified User.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -190,7 +190,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Confirms the email.
+        /// Confirms the email account of the user.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -229,7 +229,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Logins the specified request.
+        /// Logins the specified User.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -292,7 +292,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Logouts the specified request.
+        /// Logouts the current User.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -304,7 +304,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Gets the token.
+        /// Gets the JWT token.
         /// </summary>
         /// <param name="authClaims">The authentication claims.</param>
         /// <param name="hours">The hours.</param>
@@ -334,7 +334,7 @@ namespace Notes2022.Server.Services
         //}
 
         /// <summary>
-        /// Gets the user list.
+        /// Gets the list of all Users
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -423,7 +423,7 @@ namespace Notes2022.Server.Services
 
 
         /// <summary>
-        /// Gets the application user.
+        /// Gets the application User.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>ApplicationUser.</returns>
@@ -438,7 +438,7 @@ namespace Notes2022.Server.Services
 
 
         /// <summary>
-        /// Creates the note file.
+        /// Creates a note file.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -684,7 +684,7 @@ namespace Notes2022.Server.Services
                         if (linklist is not null && linklist.Count > 0)
                             idxModel.LinkedText = " (Linked)";
 
-                        List<NoteHeader> allhead = await NoteDataManager.GetAllHeaders(_db, request.NoteFileId, arcId);
+                        List<NoteHeader> allhead = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == arcId).ToListAsync(); // await NoteDataManager.GetAllHeaders(_db, request.NoteFileId, arcId);
                         idxModel.AllNotes = NoteHeader.GetGNoteHeaderList(allhead);
 
                         List<NoteHeader> notes = allhead.FindAll(p => p.ResponseOrdinal == 0).OrderBy(p => p.NoteOrdinal).ToList();
@@ -829,7 +829,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Adds the access item.
+        /// Adds an access item.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -910,7 +910,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Gets the sequencer.
+        /// Gets the sequencer list.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -938,7 +938,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Creates the sequencer.
+        /// Creates the sequencer item.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -977,7 +977,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Deletes the sequencer.
+        /// Deletes the sequencer item.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -1000,7 +1000,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Updates the sequencer ordinal.
+        /// Updates the sequencer item ordinal.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -1020,7 +1020,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Updates the sequencer.
+        /// Updates the sequencer item.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -1232,6 +1232,7 @@ namespace Notes2022.Server.Services
         private static DateTime? TimeOfThrottle = null;
 
         /// <summary>
+        /// Send an email. 
         /// unauthenticated - slower - use it too much and it really hurts you!
         /// </summary>
         /// <param name="request">The request received from the client.</param>
@@ -1276,7 +1277,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// authenticated
+        /// Send email authenticated.
         /// </summary>
         /// <param name="request">The request received from the client.</param>
         /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1289,7 +1290,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Gets the export.
+        /// Gets the export info for phase 1.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -1322,7 +1323,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Gets the export2.
+        /// Gets the export info for phase 2. (note content)
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -1350,7 +1351,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Does the forward.
+        /// Does the forward of note(s) to an email address.
         /// </summary>
         /// <param name="fv">The fv.</param>
         /// <param name="context">The context.</param>
@@ -1372,7 +1373,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Gets the name of the note files ordered by.
+        /// Gets the note files ordered by name.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -1385,7 +1386,7 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Copies the note.
+        /// Copies note(s) from one file to another
         /// </summary>
         /// <param name="Model">The model.</param>
         /// <param name="context">The context.</param>
@@ -1650,6 +1651,7 @@ namespace Notes2022.Server.Services
 
 
         /// <summary>
+        /// Gets text from server for display in client.
         /// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
         /// </summary>
         /// <param name="request">The request received from the client.</param>

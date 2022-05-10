@@ -570,43 +570,43 @@ namespace Notes2022.Server
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns>UserData.</returns>
-        public static UserData GetUserData(ApplicationUser user)
-        {
-            UserData aux = new();
+//        public static UserData GetUserData(ApplicationUser user)
+//        {
+//            UserData aux = new();
 
-            aux.UserId = user.Id;
-#pragma warning disable CS8601 // Possible null reference assignment.
-            aux.DisplayName = user.DisplayName;
-#pragma warning restore CS8601 // Possible null reference assignment.
-            aux.Email = user.Email;
-            aux.TimeZoneID = user.TimeZoneID;
+//            aux.UserId = user.Id;
+//#pragma warning disable CS8601 // Possible null reference assignment.
+//            aux.DisplayName = user.DisplayName;
+//#pragma warning restore CS8601 // Possible null reference assignment.
+//            aux.Email = user.Email;
+//            aux.TimeZoneID = user.TimeZoneID;
 
-            aux.Ipref0 = user.Ipref0;
-            aux.Ipref1 = user.Ipref1;
-            aux.Ipref2 = user.Ipref2;
-            aux.Ipref3 = user.Ipref3;
-            aux.Ipref4 = user.Ipref4;
-            aux.Ipref5 = user.Ipref5;
-            aux.Ipref6 = user.Ipref6;
-            aux.Ipref7 = user.Ipref7;
-            aux.Ipref8 = user.Ipref8;
-            aux.Ipref9 = user.Ipref9;
+//            aux.Ipref0 = user.Ipref0;
+//            aux.Ipref1 = user.Ipref1;
+//            aux.Ipref2 = user.Ipref2;
+//            aux.Ipref3 = user.Ipref3;
+//            aux.Ipref4 = user.Ipref4;
+//            aux.Ipref5 = user.Ipref5;
+//            aux.Ipref6 = user.Ipref6;
+//            aux.Ipref7 = user.Ipref7;
+//            aux.Ipref8 = user.Ipref8;
+//            aux.Ipref9 = user.Ipref9;
 
-            aux.Pref0 = user.Pref0;
-            aux.Pref1 = user.Pref1;
-            aux.Pref2 = user.Pref2;
-            aux.Pref3 = user.Pref3;
-            aux.Pref4 = user.Pref4;
-            aux.Pref5 = user.Pref5;
-            aux.Pref6 = user.Pref6;
-            aux.Pref7 = user.Pref7;
-            aux.Pref8 = user.Pref8;
-            aux.Pref9 = user.Pref9;
+//            aux.Pref0 = user.Pref0;
+//            aux.Pref1 = user.Pref1;
+//            aux.Pref2 = user.Pref2;
+//            aux.Pref3 = user.Pref3;
+//            aux.Pref4 = user.Pref4;
+//            aux.Pref5 = user.Pref5;
+//            aux.Pref6 = user.Pref6;
+//            aux.Pref7 = user.Pref7;
+//            aux.Pref8 = user.Pref8;
+//            aux.Pref9 = user.Pref9;
 
-            aux.MyGuid = user.MyGuid;
+//            aux.MyGuid = user.MyGuid;
 
-            return aux;
-        }
+//            return aux;
+//        }
 
         /// <summary>
         /// Put user data from UserData into ApplicationUser Entity
@@ -614,40 +614,40 @@ namespace Notes2022.Server
         /// <param name="aux">The aux.</param>
         /// <param name="user">The user.</param>
         /// <returns>ApplicationUser.</returns>
-        public static ApplicationUser PutUserData(ApplicationUser aux, UserData user)
-        {
+        //public static ApplicationUser PutUserData(ApplicationUser aux, UserData user)
+        //{
 
-            aux.Id = user.UserId;
-            //aux.DisplayName = user.DisplayName;
-            //aux.Email = user.Email;
-            aux.TimeZoneID = user.TimeZoneID;
+        //    aux.Id = user.UserId;
+        //    //aux.DisplayName = user.DisplayName;
+        //    //aux.Email = user.Email;
+        //    aux.TimeZoneID = user.TimeZoneID;
 
-            aux.Ipref0 = user.Ipref0;
-            aux.Ipref1 = user.Ipref1;
-            aux.Ipref2 = user.Ipref2;
-            aux.Ipref3 = user.Ipref3;
-            aux.Ipref4 = user.Ipref4;
-            aux.Ipref5 = user.Ipref5;
-            aux.Ipref6 = user.Ipref6;
-            aux.Ipref7 = user.Ipref7;
-            aux.Ipref8 = user.Ipref8;
-            aux.Ipref9 = user.Ipref9;
+        //    aux.Ipref0 = user.Ipref0;
+        //    aux.Ipref1 = user.Ipref1;
+        //    aux.Ipref2 = user.Ipref2;
+        //    aux.Ipref3 = user.Ipref3;
+        //    aux.Ipref4 = user.Ipref4;
+        //    aux.Ipref5 = user.Ipref5;
+        //    aux.Ipref6 = user.Ipref6;
+        //    aux.Ipref7 = user.Ipref7;
+        //    aux.Ipref8 = user.Ipref8;
+        //    aux.Ipref9 = user.Ipref9;
 
-            aux.Pref0 = user.Pref0;
-            aux.Pref1 = user.Pref1;
-            aux.Pref2 = user.Pref2;
-            aux.Pref3 = user.Pref3;
-            aux.Pref4 = user.Pref4;
-            aux.Pref5 = user.Pref5;
-            aux.Pref6 = user.Pref6;
-            aux.Pref7 = user.Pref7;
-            aux.Pref8 = user.Pref8;
-            aux.Pref9 = user.Pref9;
+        //    aux.Pref0 = user.Pref0;
+        //    aux.Pref1 = user.Pref1;
+        //    aux.Pref2 = user.Pref2;
+        //    aux.Pref3 = user.Pref3;
+        //    aux.Pref4 = user.Pref4;
+        //    aux.Pref5 = user.Pref5;
+        //    aux.Pref6 = user.Pref6;
+        //    aux.Pref7 = user.Pref7;
+        //    aux.Pref8 = user.Pref8;
+        //    aux.Pref9 = user.Pref9;
 
-            aux.MyGuid = user.MyGuid;
+        //    aux.MyGuid = user.MyGuid;
 
-            return aux;
-        }
+        //    return aux;
+        //}
 
         /// <summary>
         /// Write user data to Db
@@ -926,12 +926,11 @@ namespace Notes2022.Server
 
         //    return nf;
         //}
-
-
-        public static async Task<List<NoteHeader>> GetAllHeaders(NotesDbContext db, int id, int arcId)
-        {
-            return await db.NoteHeader.Where(p => p.NoteFileId == id && p.ArchiveId == arcId).ToListAsync();
-        }
+                
+        //public static async Task<List<NoteHeader>> GetAllHeaders(NotesDbContext db, int id, int arcId)
+        //{
+        //    return await db.NoteHeader.Where(p => p.NoteFileId == id && p.ArchiveId == arcId).ToListAsync();
+        //}
 
         /// <summary>
         /// Get the BaseNoteHeader in a given file with given ordinal
@@ -982,8 +981,7 @@ namespace Notes2022.Server
         //        .Where(p => p.NoteFileId == mark.NoteFileId && p.ArchiveId == mark.ArchiveId && p.NoteOrdinal == mark.NoteOrdinal && p.ResponseOrdinal == mark.ResponseOrdinal)
         //        .FirstAsync();
         //}
-
-
+                
         public static async Task<NoteHeader> GetBaseNoteHeaderById(NotesDbContext db, long id)
         {
 #pragma warning disable CS8603 // Possible null reference return.

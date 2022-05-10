@@ -14,7 +14,6 @@
 using Blazored.Modal;
 using Microsoft.AspNetCore.Components;
 using Notes2022.Proto;
-using Notes2022.Shared;
 
 namespace Notes2022.Client.Dialogs
 {
