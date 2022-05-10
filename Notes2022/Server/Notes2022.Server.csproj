@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Remove="Controllers\WeatherForecastController.cs" />
     <Compile Remove="Entities\ExternalNote.cs" />
+    <Compile Remove="Manager\LocalManager.cs" />
     <Compile Remove="Services\AuthService.cs" />
     <Compile Remove="Services\WeatherService.cs" />
   </ItemGroup>
