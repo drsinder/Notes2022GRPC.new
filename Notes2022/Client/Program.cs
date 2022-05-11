@@ -27,15 +27,11 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) }); // not needed when using grpc and no controllers at server.
-
 builder.Services.AddBlazoredModal();
 builder.Services.AddBlazoredSessionStorage();
 builder.Services.AddSingleton<App>();   // for login state mgt = "myState" injection in _imports.razor
 
 builder.Services.AddSyncfusionBlazor();   // options => { options.IgnoreScriptIsolation = true; });
-
-//var handler = new SubdirectoryHandler(new HttpClientHandler(), "/Notes2022GRCP");
 
 // Add my gRPC service so it can be injected.
 builder.Services.AddSingleton(services =>
@@ -47,6 +43,14 @@ builder.Services.AddSingleton(services =>
 });
 
 await builder.Build().RunAsync();
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) }); // not needed when using grpc and no controllers at server.
+
+
+//var handler = new SubdirectoryHandler(new HttpClientHandler(), "/Notes2022GRCP");
 
 
 

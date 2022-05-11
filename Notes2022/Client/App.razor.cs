@@ -11,7 +11,8 @@
 // Name: App.razor.cs
 //
 // Description:
-//      TODO
+//      The root of the application - provides routing in .razor file and
+//      login/cookie managment for app
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License version 3 as
