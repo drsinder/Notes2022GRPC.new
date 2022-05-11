@@ -11,7 +11,7 @@
 // Name: Notes2022Service.cs
 //
 // Description:
-//      TODO
+//      gRPC service implementation for the app
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License version 3 as
@@ -51,7 +51,7 @@ using System.Text.Json;
 namespace Notes2022.Server.Services
 {
     /// <summary>
-    /// Class Notes2022Service.  Contaims all the Notes2022 gRPC service methods/handlers.
+    /// Class Notes2022Service.  Contains all the Notes2022 gRPC service methods/handlers.
     /// Implements the <see cref="Notes2022.Proto.Notes2022Server.Notes2022ServerBase" />
     /// </summary>
     /// <seealso cref="Notes2022.Proto.Notes2022Server.Notes2022ServerBase" />
@@ -61,7 +61,7 @@ namespace Notes2022.Server.Services
         /// <summary>
         /// The logger
         /// </summary>
-        private readonly ILogger<Notes2022Service> _logger;
+        private readonly ILogger<Notes2022Service> _logger; // not currently used - here if/when needed
         /// <summary>
         /// The database
         /// </summary>
@@ -115,11 +115,6 @@ namespace Notes2022.Server.Services
             _emailSender = emailSender;
         }
 
-        //public override async Task<NoRequest> SpinUp(NoRequest request, ServerCallContext context)
-        //{
-        //    return new NoRequest();
-        //}
-
         /// <summary>
         /// Registers the specified User.
         /// </summary>
@@ -157,16 +152,19 @@ namespace Notes2022.Server.Services
 
             }
 
+            // add roles if they do not exist
             if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
                 await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
             if (!await _roleManager.RoleExistsAsync(UserRoles.User))
                 await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
+            // everyone is a user
             if (await _roleManager.RoleExistsAsync(UserRoles.User))
             {
                 await _userManager.AddToRoleAsync(user, UserRoles.User);
             }
 
+            // first user to register is assumed to be the starting admin
             if (_userManager.Users.Count() == 1)        // first user is Admin
             {
                 if (await _roleManager.RoleExistsAsync(UserRoles.Admin))
@@ -175,6 +173,7 @@ namespace Notes2022.Server.Services
                 }
             }
 
+            // send email for user to confirm email address - not not log in until they do
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             ConfirmEmailRequest mess = new () { UserId = user.Id, Code = code };
             string payload = Globals.Base64Encode(JsonSerializer.Serialize(mess));
@@ -246,12 +245,8 @@ namespace Notes2022.Server.Services
                 if (!(result.Succeeded))
                 {
                     await _userManager.AccessFailedAsync(user);
-                    //if ( user.AccessFailedCount > _signInManager.Options.Lockout.MaxFailedAccessAttempts )
-                    //{
-                    //    user.LockoutEnabled = true;
-                    //}
                     await _userManager.UpdateAsync(user);
-                    return new LoginReply() { Status = StatusCodes.Status500InternalServerError, Message = "User Login failed! Please check user details and try again." };
+                    return new LoginReply() { Status = StatusCodes.Status500InternalServerError, Message = "User Login failed! Please check user details and try again later." };
                 }
 
                 var userRoles = await _userManager.GetRolesAsync(user);
@@ -1054,7 +1049,7 @@ namespace Notes2022.Server.Services
         {
             ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, 0);
-            if (na.Write )
+            if (na.Write || na.ReadAccess || na.EditAccess || na.Respond )      // TODO is this right??
             { }
             else
                 return new GNotefile();
@@ -1067,9 +1062,10 @@ namespace Notes2022.Server.Services
         /// <summary>
         /// Creates the new note.
         /// </summary>
-        /// <param name="tvm">The TVM.</param>
+        /// <param name="TextViewModel">The TVM.</param>
         /// <param name="context">The context.</param>
         /// <returns>GNoteHeader.</returns>
+        [Authorize]
         public override async Task<GNoteHeader> CreateNewNote(TextViewModel tvm, ServerCallContext context)
         {
             if (tvm.MyNote is null || tvm.MySubject is null)
@@ -1123,13 +1119,6 @@ namespace Notes2022.Server.Services
 
             return created.GetGNoteHeader();
         }
-
-        //[Authorize]
-        //public override async Task<GNoteHeader> GetNewestNote(NoRequest request, ServerCallContext context)
-        //{
-        //    NoteHeader nh = _db.NoteHeader.OrderByDescending(p => p.Id).FirstOrDefault();
-        //    return nh.GetGNoteHeader();
-        //}
 
         /// <summary>
         /// Updates the note.
@@ -1224,7 +1213,7 @@ namespace Notes2022.Server.Services
         /// </summary>
         private static int throttle = 0;
         /// <summary>
-        /// The time of throttle
+        /// The time of throttle set
         /// </summary>
         private static DateTime? TimeOfThrottle = null;
 
@@ -1564,39 +1553,6 @@ namespace Notes2022.Server.Services
 
             return new();
         }
-
-        //[Authorize]
-        //public override async Task<JsonExport> GetExportJson(ExportRequest request, ServerCallContext context)
-        //{
-        //    JsonExport stuff = new JsonExport();
-
-        //    stuff.NoteFile = _db.NoteFile.Single(p => p.Id == request.FileId).GetGNotefile();
-
-        //    ClaimsPrincipal user = context.GetHttpContext().User;
-        //    ApplicationUser appUser = await _userManager.FindByIdAsync(user.FindFirst(ClaimTypes.NameIdentifier).Value);
-        //    NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, stuff.NoteFile.Id, 0);
-        //    if (!na.ReadAccess)
-        //        return new JsonExport();
-
-
-        //    stuff.NoteHeaders = NoteHeader.GetGNoteHeaderList(
-        //        await _db.NoteHeader
-        //            .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && !p.IsDeleted)
-        //            .OrderBy(p => p.NoteOrdinal)
-        //            .ThenBy(p => p.ResponseOrdinal)
-        //            .ToListAsync());
-
-        //    foreach (GNoteHeader item in stuff.NoteHeaders.List)
-        //    {
-        //        item.Content = (await _db.NoteContent
-        //            .SingleAsync(p => p.NoteHeaderId == item.Id)).GetGNoteContent();
-
-        //        var x = await _db.Tags.Where(p => p.NoteHeaderId == item.Id).ToListAsync();
-        //        item.Tags = Tags.GetGTagsList(x);
-        //    }
-
-        //    return stuff;
-        //}
 
         /// <summary>
         /// Gets the export json.

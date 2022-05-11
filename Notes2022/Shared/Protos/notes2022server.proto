@@ -30,6 +30,7 @@ package notes2022server;
 
 import "google/protobuf/timestamp.proto";
 
+// service defintion
 service Notes2022Server {
 // Account Services
 
@@ -80,12 +81,6 @@ service Notes2022Server {
 	rpc GetExportJson(ExportRequest) returns (JsonExport);							// returns data for a json export
 	rpc GetTextFile(AString) returns (AString);	// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
 }
-	//	rpc GetExportJson(ExportRequest) returns (JsonExport);
-	//  no longer used - implementation also commented out
-	//	rpc GetAppUser(AppUserRequest) returns (GAppUser);
-	//	rpc SpinUp(NoRequest) returns (NoRequest);
-	//  rpc GetAllNotefiles(NoRequest) returns (GNotefileList);
-	//	rpc GetNewestNote(NoRequest) returns (GNoteHeader);
 
 // used generically -  used when no data needed for request or response
 message NoRequest {
@@ -95,6 +90,7 @@ message NoRequest {
 //
 // Login, Logout, and Register stuff
 //
+// register a user
 message RegisterRequest {
 	string username = 1;
 	string email = 2;
@@ -136,7 +132,6 @@ message LoginReply {
 /////////////////////////////////////////////////
 //
 // For Role editing - represents a user role item
-//
 message UserRole {
 	string roleName = 1;
 	string roleId = 2;	
