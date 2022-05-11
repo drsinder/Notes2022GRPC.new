@@ -16,7 +16,7 @@
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License version 3 as
-// published by the Free Software Foundation.   
+// published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -32,10 +32,10 @@
 // </copyright>
 // ***********************************************************************
 // <summary></summary>
+using Grpc.Core;
 using Microsoft.JSInterop;
 using Notes2022.Proto;
 using Syncfusion.Licensing;
-using Grpc.Core;
 using System.Text.Json;
 
 namespace Notes2022.Client
@@ -61,6 +61,7 @@ namespace Notes2022.Client
         private IJSObjectReference? module;         // for calling javascript
 
 #pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
+
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
         /// </summary>
@@ -82,7 +83,7 @@ namespace Notes2022.Client
         protected override async Task OnParametersSetAsync()
         {
             AString key = await Client.GetTextFileAsync(new AString()
-            {Val = "syncfusionkey.rsghjjsrsrj43632353"});
+            { Val = "syncfusionkey.rsghjjsrsrj43632353" });
             SyncfusionLicenseProvider.RegisterLicense(key.Val);
 
             // JS injected in .razor file - make sure the cookie.js is loaded
@@ -137,7 +138,7 @@ namespace Notes2022.Client
                     NotifyStateChanged();           // notify subscribers
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
         }
@@ -296,13 +297,11 @@ namespace Notes2022.Client
             {
                 if (LoginReply is not null && LoginReply.Status == 200)
                 {
-
                     return LoginReply.Info;
                 }
 
                 return null;
             }
         }
-
     }
 }

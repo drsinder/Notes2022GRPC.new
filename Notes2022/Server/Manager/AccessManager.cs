@@ -15,7 +15,7 @@
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License version 3 as
-// published by the Free Software Foundation.   
+// published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -59,7 +59,7 @@ namespace Notes2022.Server
         private static async Task<bool> Create(NotesDbContext db, string userId, int noteFileId, bool read, bool respond,
             bool write, bool setTag, bool deleteEdit, bool director, bool editAccess)
         {
-            NoteAccess na = new ()
+            NoteAccess na = new()
             {
                 UserID = userId,
                 NoteFileId = noteFileId,
@@ -91,12 +91,12 @@ namespace Notes2022.Server
             bool flag1 = await Create(db, Globals.AccessOtherId, fileId, false, false, false, false, false, false, false);
             if (!flag1)
                 return false;
-            
+
             flag1 = await Create(db, userId, fileId, true, true, true, true, true, true, true);
             if (!flag1)
                 return false;
-            
-        return true;
+
+            return true;
         }
 
         /// <summary>
@@ -182,6 +182,5 @@ namespace Notes2022.Server
             }
             catch { return false; }
         }
-
     }
 }

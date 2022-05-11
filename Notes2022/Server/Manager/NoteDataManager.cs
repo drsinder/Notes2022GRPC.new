@@ -15,7 +15,7 @@
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License version 3 as
-// published by the Free Software Foundation.   
+// published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -312,7 +312,6 @@ namespace Notes2022.Server
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
                 db.Entry(newHeader).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-
             }
 
             if (editing)
@@ -354,7 +353,6 @@ namespace Notes2022.Server
 
             if (linked || links is null || links.Count < 1)
             {
-
             }
             else
             {
@@ -467,7 +465,6 @@ namespace Notes2022.Server
 #pragma warning disable CS8604 // Possible null reference argument.
             return await CreateNote(db, dh, nc.NoteBody, tags, nh.DirectorMessage, true, false, true);
 #pragma warning restore CS8604 // Possible null reference argument.
-
         }
 
         /// <summary>
@@ -550,7 +547,6 @@ namespace Notes2022.Server
                 .OrderBy((x => x.NoteOrdinal))
                 .FirstOrDefaultAsync();
 #pragma warning restore CS8603 // Possible null reference return.
-
         }
 
         /// <summary>
@@ -593,7 +589,6 @@ namespace Notes2022.Server
 #pragma warning restore CS8603 // Possible null reference return.
         }
 
-
         /// <summary>
         /// Gets a base note header given its headerid
         /// </summary>
@@ -608,8 +603,5 @@ namespace Notes2022.Server
                 .FirstOrDefaultAsync();
 #pragma warning restore CS8603 // Possible null reference return.
         }
-
-
     }
-
 }

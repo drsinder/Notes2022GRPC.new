@@ -15,7 +15,7 @@
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License version 3 as
-// published by the Free Software Foundation.   
+// published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -32,20 +32,19 @@
 // ***********************************************************************
 // <summary></summary>
 
-
+using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Notes2022.Proto;
+using Notes2022.Server.Data;
+using Notes2022.Server.Entities;
+using Notes2022.Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Grpc.Core;
-using Notes2022.Proto;
-using Notes2022.Shared;
-using Notes2022.Server.Data;
-using Notes2022.Server.Entities;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Text.Json;
 
 namespace Notes2022.Server.Services
@@ -57,31 +56,36 @@ namespace Notes2022.Server.Services
     /// <seealso cref="Notes2022.Proto.Notes2022Server.Notes2022ServerBase" />
     public class Notes2022Service : Notes2022Server.Notes2022ServerBase
     {
-
         /// <summary>
         /// The logger
         /// </summary>
         private readonly ILogger<Notes2022Service> _logger; // not currently used - here if/when needed
+
         /// <summary>
         /// The database
         /// </summary>
         private readonly NotesDbContext _db;
+
         /// <summary>
         /// The user manager
         /// </summary>
         private readonly UserManager<ApplicationUser> _userManager;
+
         /// <summary>
         /// The role manager
         /// </summary>
         private readonly RoleManager<IdentityRole> _roleManager;
+
         /// <summary>
         /// The configuration
         /// </summary>
         private readonly IConfiguration _configuration;
+
         /// <summary>
         /// The sign in manager
         /// </summary>
         private readonly SignInManager<ApplicationUser> _signInManager;
+
         /// <summary>
         /// The email sender
         /// </summary>
@@ -137,7 +141,7 @@ namespace Notes2022.Server.Services
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = request.Username.Replace(" ", "_"),
                 DisplayName = request.Username,
-                Ipref2 = 12     // starting note index page size pref.              
+                Ipref2 = 12     // starting note index page size pref.
             };
 
             try
@@ -149,7 +153,6 @@ namespace Notes2022.Server.Services
             catch (Exception ex)
             {
                 return new AuthReply() { Status = StatusCodes.Status500InternalServerError, Message = "User creation failed! Please check user details and try again.  " + ex.InnerException?.Message };
-
             }
 
             // add roles if they do not exist
@@ -175,7 +178,7 @@ namespace Notes2022.Server.Services
 
             // send email for user to confirm email address - not not log in until they do
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            ConfirmEmailRequest mess = new () { UserId = user.Id, Code = code };
+            ConfirmEmailRequest mess = new() { UserId = user.Id, Code = code };
             string payload = Globals.Base64Encode(JsonSerializer.Serialize(mess));
 
             string target = _configuration["AppUrl"] + "/authentication/confirmemail/" + payload;
@@ -212,7 +215,7 @@ namespace Notes2022.Server.Services
             }
 
             var result = await _userManager.ConfirmEmailAsync(user, request.Code);
-            if ( result.Succeeded)
+            if (result.Succeeded)
             {
                 ret.Status = StatusCodes.Status200OK;
                 ret.Message = "Thank you for confirming your email " + user.DisplayName + ".  You may now log in!";
@@ -274,8 +277,14 @@ namespace Notes2022.Server.Services
                 JwtSecurityTokenHandler hand = new();
                 string stoken = hand.WriteToken(token);
 
-                UserInfo userInfo = new() { Displayname = user.DisplayName, Email = user.Email, Subject = user.Id,
-                IsAdmin = roles.Contains("Admin"), IsUser = roles.Contains("User")};
+                UserInfo userInfo = new()
+                {
+                    Displayname = user.DisplayName,
+                    Email = user.Email,
+                    Subject = user.Id,
+                    IsAdmin = roles.Contains("Admin"),
+                    IsUser = roles.Contains("User")
+                };
 
                 return new LoginReply() { Status = StatusCodes.Status200OK, Message = "Login successful.", Info = userInfo, Jwt = stoken };
             }
@@ -316,7 +325,6 @@ namespace Notes2022.Server.Services
             return token;
         }
 
-
         //[Authorize]
         //public override async Task<GAppUser> GetAppUser(AppUserRequest request, ServerCallContext context)
         //{
@@ -331,7 +339,7 @@ namespace Notes2022.Server.Services
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
         /// <returns>GAppUserList.</returns>
-        [Authorize (Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public override async Task<GAppUserList> GetUserList(NoRequest request, ServerCallContext context)
         {
             List<ApplicationUser> list = await _userManager.Users.ToListAsync();
@@ -372,7 +380,6 @@ namespace Notes2022.Server.Services
                 model.RolesList.List.Add(cu);
             }
 
-
             return model;
         }
 
@@ -382,7 +389,7 @@ namespace Notes2022.Server.Services
         /// <param name="model">The model.</param>
         /// <param name="context">The context.</param>
         /// <returns>NoRequest.</returns>
-        [Authorize (Roles="Admin")]
+        [Authorize(Roles = "Admin")]
         public override async Task<NoRequest> UpdateUserRoles(EditUserViewModel model, ServerCallContext context)
         {
             ApplicationUser user = await _userManager.FindByIdAsync(model.UserData.Id);
@@ -399,7 +406,6 @@ namespace Notes2022.Server.Services
                 }
             }
 
-
             return new NoRequest();
         }
 
@@ -412,7 +418,6 @@ namespace Notes2022.Server.Services
 
         //    return NoteFile.GetGNotefileList(x);
         //}
-
 
         /// <summary>
         /// Gets the application User.
@@ -428,7 +433,6 @@ namespace Notes2022.Server.Services
             return appUser;
         }
 
-
         /// <summary>
         /// Creates a note file.
         /// </summary>
@@ -437,12 +441,12 @@ namespace Notes2022.Server.Services
         /// <returns>System.Nullable&lt;GNotefile&gt;.</returns>
         [Authorize(Roles = "Admin")]
         public override async Task<GNotefile?> CreateNoteFile(GNotefile request, ServerCallContext context)
-        { 
+        {
             ApplicationUser appUser = await GetAppUser(context);
 
             await NoteDataManager.CreateNoteFile(_db, appUser.Id, request.NoteFileName, request.NoteFileTitle);
 
-            List<NoteFile> x =_db.NoteFile.OrderBy(x => x.Id).ToList();
+            List<NoteFile> x = _db.NoteFile.OrderBy(x => x.Id).ToList();
             NoteFile newfile = x[^1];
             return newfile.GetGNotefile();
         }
@@ -545,7 +549,7 @@ namespace Notes2022.Server.Services
                     }
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                 }
             }
@@ -586,7 +590,7 @@ namespace Notes2022.Server.Services
             _db.Tags.RemoveRange(tl);
 
             // remove content
-            List <NoteHeader> hl = _db.NoteHeader.Where(p => p.NoteFileId == nf.Id).ToList();
+            List<NoteHeader> hl = _db.NoteHeader.Where(p => p.NoteFileId == nf.Id).ToList();
             foreach (NoteHeader h in hl)
             {
                 NoteContent c = _db.NoteContent.Single(p => p.NoteHeaderId == h.Id);
@@ -692,7 +696,6 @@ namespace Notes2022.Server.Services
                     catch (Exception ex1)
                     {
                         idxModel.Message = ex1.Message;
-
                     }
                 }
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
@@ -853,7 +856,6 @@ namespace Notes2022.Server.Services
             return appUser.GetGAppUser();
         }
 
-
         /// <summary>
         /// Updates the user data.
         /// </summary>
@@ -926,7 +928,7 @@ namespace Notes2022.Server.Services
                 if (na.ReadAccess)
                     avail.Add(m);   // ONLY if you have current read access!!
             }
-            return Sequencer.GetGSequencerList( avail.OrderBy(p => p.Ordinal).ToList());
+            return Sequencer.GetGSequencerList(avail.OrderBy(p => p.Ordinal).ToList());
         }
 
         /// <summary>
@@ -1049,7 +1051,7 @@ namespace Notes2022.Server.Services
         {
             ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, 0);
-            if (na.Write || na.ReadAccess || na.EditAccess || na.Respond )      // TODO is this right??
+            if (na.Write || na.ReadAccess || na.EditAccess || na.Respond)      // TODO is this right??
             { }
             else
                 return new GNotefile();
@@ -1156,7 +1158,7 @@ namespace Notes2022.Server.Services
                 NoteBody = tvm.MyNote
             };
 
-            NoteHeader newheader  = await NoteDataManager.EditNote(_db, _userManager, nheader, nc, tvm.TagLine);
+            NoteHeader newheader = await NoteDataManager.EditNote(_db, _userManager, nheader, nc, tvm.TagLine);
 
             //await ProcessLinkedNotes();
 
@@ -1174,7 +1176,7 @@ namespace Notes2022.Server.Services
         {
             ApplicationUser appUser = await GetAppUser(context);
             bool isAdmin = await _userManager.IsInRoleAsync(appUser, "Admin");
-            
+
             GNoteHeader gnh = (await _db.NoteHeader.SingleAsync(p => p.Id == request.Id)).GetGNoteHeader();
 
             if (isAdmin)
@@ -1192,6 +1194,7 @@ namespace Notes2022.Server.Services
         }
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+
         /// <summary>
         /// Gets the about.
         /// </summary>
@@ -1212,6 +1215,7 @@ namespace Notes2022.Server.Services
         /// The throttle
         /// </summary>
         private static int throttle = 0;
+
         /// <summary>
         /// The time of throttle set
         /// </summary>
@@ -1235,7 +1239,7 @@ namespace Notes2022.Server.Services
                 // was not authenticated - slow them up
 
                 if (throttle++ >= 100)
-                { 
+                {
                     // some real potential abuse??
                     Thread.Sleep(1000 * throttle);
 
@@ -1252,7 +1256,6 @@ namespace Notes2022.Server.Services
                             TimeOfThrottle = null;
                         }
                     }
-
                 }
 
                 Thread.Sleep(1000);
@@ -1330,7 +1333,6 @@ namespace Notes2022.Server.Services
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, nh.NoteFileId, nh.ArchiveId);
             if (!na.ReadAccess)
                 return new GNoteContent();
-
 
             return nc.GetGNoteContent();
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
@@ -1428,7 +1430,6 @@ namespace Notes2022.Server.Services
 #pragma warning disable CS8604 // Possible null reference argument.
                 _ = await NoteDataManager.CreateNote(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
 #pragma warning restore CS8604 // Possible null reference argument.
-
             }
             else    // whole note string
             {
@@ -1503,9 +1504,8 @@ namespace Notes2022.Server.Services
                     _ = await NoteDataManager.CreateResponse(_db, Header, Body, Tags.ListToString(tags), Header.DirectorMessage, true, false);
 #pragma warning restore CS8604 // Possible null reference argument.
                 }
-
             }
-                return new NoRequest();
+            return new NoRequest();
         }
 
         // Utility method - makes a viewable header for the copied note
@@ -1573,7 +1573,6 @@ namespace Notes2022.Server.Services
             if (!na.ReadAccess)
                 return new JsonExport();
 
-
             stuff.NoteHeaders = NoteHeader.GetGNoteHeaderList(
                 await _db.NoteHeader
                     .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && !p.IsDeleted)
@@ -1581,12 +1580,12 @@ namespace Notes2022.Server.Services
                     .ThenBy(p => p.ResponseOrdinal)
                     .ToListAsync());
 
-            long[] items  = _db.NoteHeader
+            long[] items = _db.NoteHeader
                     .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && !p.IsDeleted)
                     .OrderBy(p => p.NoteOrdinal)
                     .ThenBy(p => p.ResponseOrdinal).Select(p => p.Id).ToArray();
 
-            List<NoteContent> cont = await  _db.NoteContent.Where(p => items.Contains(p.NoteHeaderId)).ToListAsync();
+            List<NoteContent> cont = await _db.NoteContent.Where(p => items.Contains(p.NoteHeaderId)).ToListAsync();
 
             List<Tags> tags = await (_db.Tags.Where(p => p.NoteFileId == request.FileId)).ToListAsync();
 
@@ -1601,7 +1600,6 @@ namespace Notes2022.Server.Services
 
             return stuff;
         }
-
 
         /// <summary>
         /// Gets text from server for display in client.
@@ -1634,7 +1632,7 @@ namespace Notes2022.Server.Services
             {
                 return stuff;
             }
-            
+
             StringBuilder sb = new();
             string? line;
             while ((line = await file.ReadLineAsync()) is not null)

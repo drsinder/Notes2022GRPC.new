@@ -11,16 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Blazored.Modal;
+using Blazored.SessionStorage;
 using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Syncfusion.Blazor;
-using Blazored.Modal;
-using Blazored.SessionStorage;
 using Notes2022.Client;
 using Notes2022.Proto;
+using Syncfusion.Blazor;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -36,23 +36,19 @@ builder.Services.AddSyncfusionBlazor();   // options => { options.IgnoreScriptIs
 // Add my gRPC service so it can be injected.
 builder.Services.AddSingleton(services =>
 {
-	HttpClient? httpClient = new (new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
-	var baseUri = services.GetRequiredService<NavigationManager>().BaseUri;
-	var channel = GrpcChannel.ForAddress(baseUri, new GrpcChannelOptions { HttpClient = httpClient });
-	return new Notes2022Server.Notes2022ServerClient(channel);
+    HttpClient? httpClient = new(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
+    var baseUri = services.GetRequiredService<NavigationManager>().BaseUri;
+    var channel = GrpcChannel.ForAddress(baseUri, new GrpcChannelOptions { HttpClient = httpClient });
+    return new Notes2022Server.Notes2022ServerClient(channel);
 });
 
 await builder.Build().RunAsync();
-
 
 /////////////////////////////////////////////////////////////////////////////////
 
 //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) }); // not needed when using grpc and no controllers at server.
 
-
 //var handler = new SubdirectoryHandler(new HttpClientHandler(), "/Notes2022GRCP");
-
-
 
 ///// <summary>
 ///// A delegating handler that adds a subdirectory to the URI of gRPC requests.
