@@ -49,7 +49,7 @@ namespace Notes2022.Server.Entities
     /// This class defines a table in the database.
     /// Objects of this class serve as the highest level
     /// of the hierarchy of the system.  Notes are
-    /// thought the be contained in a file, but are
+    /// thought to be contained in a file, but are
     /// in fact are related to it.  Classes directly
     /// related the a File:
     /// NoteAccess - Access tokens
@@ -71,9 +71,9 @@ namespace Notes2022.Server.Entities
     [DataContract]
     public class NoteFile
     {
-        // Identity of the file
         /// <summary>
         /// Gets or sets the identifier.
+        /// Identity of the file
         /// </summary>
         /// <value>The identifier.</value>
         [Required]
@@ -100,7 +100,6 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 3)]
         public string? OwnerId { get; set; }
 
-        // file name of the file
         /// <summary>
         /// Gets or sets the name of the note file.
         /// </summary>
@@ -111,7 +110,6 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 4)]
         public string? NoteFileName { get; set; }
 
-        // title of the file
         /// <summary>
         /// Gets or sets the note file title.
         /// </summary>
@@ -122,9 +120,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 5)]
         public string? NoteFileTitle { get; set; }
 
-        // when anything in the file was last created or edited
         /// <summary>
         /// Gets or sets the last edited.
+        /// when anything in the file was last created or edited
         /// </summary>
         /// <value>The last edited.</value>
         [Required]
@@ -134,7 +132,7 @@ namespace Notes2022.Server.Entities
 
         //
         // Conversions between Db Entity space and gRPC space.
-        //
+        
         /// <summary>
         /// Gets the note file.
         /// Conversions between Db Entity space and gRPC space.
@@ -187,7 +185,7 @@ namespace Notes2022.Server.Entities
         }
 
         /// <summary>
-        /// Gets the g notefile list.Conversions between Db Entity space and gRPC space.
+        /// Gets the g notefile list.  Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>GNotefileList.</returns>

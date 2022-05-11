@@ -51,9 +51,9 @@ namespace Notes2022.Server.Entities
     [DataContract]
     public class Tags
     {
-        // The fileid the note belongs to
         /// <summary>
         /// Gets or sets the note file identifier.
+        /// The fileid the tag belongs to
         /// </summary>
         /// <value>The note file identifier.</value>
         [Required]
@@ -74,9 +74,6 @@ namespace Notes2022.Server.Entities
         [Required]
         [DataMember(Order = 3)]
         public long NoteHeaderId { get; set; }
-
-        //[ForeignKey("NoteHeaderId")]
-        //public NoteHeader? NoteHeader { get; set; }
 
         /// <summary>
         /// Gets or sets the tag.

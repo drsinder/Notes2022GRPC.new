@@ -54,9 +54,9 @@ namespace Notes2022.Server.Entities
     [DataContract]
     public class Sequencer
     {
-        // ID of the user who owns the item
         /// <summary>
         /// Gets or sets the user identifier.
+        /// ID of the user who owns the item
         /// </summary>
         /// <value>The user identifier.</value>
         [Required]
@@ -65,9 +65,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 1)]
         public string? UserId { get; set; }
 
-        // ID of target notfile
         /// <summary>
         /// Gets or sets the note file identifier.
+        /// ID of target notfile
         /// </summary>
         /// <value>The note file identifier.</value>
         [Required]
@@ -84,18 +84,18 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 3)]
         public int Ordinal { get; set; }
 
-        // Time we last completed a run with this
         /// <summary>
         /// Gets or sets the last time.
+        /// Time we last completed a run with this
         /// </summary>
         /// <value>The last time.</value>
         [Display(Name = "Last Time")]
         [DataMember(Order = 4)]
         public DateTime LastTime { get; set; }
 
-        // Time a run in this file started - will get copied to LastTime when complete
         /// <summary>
         /// Gets or sets the start time.
+        /// Time a run in this file started - will get copied to LastTime when complete
         /// </summary>
         /// <value>The start time.</value>
         [DataMember(Order = 5)]
@@ -109,14 +109,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 6)]
         public bool Active { get; set; }
 
-        //[ForeignKey("NoteFileId")]
-        //public NoteFile? NoteFile { get; set; }
-
-        //
-        // Conversions between Db Entity space and gRPC space.
-        //
         /// <summary>
         /// Gets the sequencer.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>Sequencer.</returns>
@@ -134,6 +129,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the g sequencer.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <returns>GSequencer.</returns>
         public GSequencer GetGSequencer()
@@ -150,6 +146,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the sequencer list.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>List&lt;Sequencer&gt;.</returns>
@@ -165,6 +162,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the g sequencer list.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>GSequencerList.</returns>

@@ -153,11 +153,9 @@ namespace Notes2022.Server.Entities
         public bool EditAccess { get; set; }
 
 
-        //
-        // Conversions between Db Entity space and gRPC space.
-        //
         /// <summary>
         /// Gets the note access.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>NoteAccess.</returns>
@@ -179,6 +177,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the g note access.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <returns>GNoteAccess.</returns>
         public GNoteAccess GetGNoteAccess()
@@ -199,6 +198,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the note accesses.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>List&lt;NoteAccess&gt;.</returns>
@@ -214,6 +214,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the g note access list.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>GNoteAccessList.</returns>

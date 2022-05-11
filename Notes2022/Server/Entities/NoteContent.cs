@@ -60,12 +60,10 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 1)]
         public long NoteHeaderId { get; set; }
 
-        ////[ForeignKey("NoteHeaderId")]
-        //public NoteHeader? NoteHeader { get; set; }
 
-        // The Body or content of the note
         /// <summary>
         /// Gets or sets the note body.
+        /// The Body or content of the note
         /// </summary>
         /// <value>The note body.</value>
         [Required]
@@ -73,11 +71,6 @@ namespace Notes2022.Server.Entities
         [Display(Name = "Note")]
         [DataMember(Order = 2)]
         public string? NoteBody { get; set; }
-
-        // for imported notes compatability
-        //[StringLength(200)]
-        //[Display(Name = "Director Message")]
-        //public string? DirectorMessage { get; set; }
 
         /// <summary>
         /// Clones for link.
@@ -94,11 +87,9 @@ namespace Notes2022.Server.Entities
             return nc;
         }
 
-        //
-        // Conversions between Db Entity space and gRPC space.
-        //
         /// <summary>
         /// Gets the content of the note.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>NoteContent.</returns>
@@ -112,6 +103,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the content of the g note.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <returns>GNoteContent.</returns>
         public GNoteContent GetGNoteContent()
@@ -124,6 +116,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the note contents.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>List&lt;NoteContent&gt;.</returns>
@@ -139,6 +132,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the g note content list.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>GNoteContentList.</returns>

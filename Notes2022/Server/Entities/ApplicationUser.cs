@@ -62,6 +62,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets or sets the ipref2.
+        /// user choosen page size
         /// </summary>
         /// <value>The ipref2.</value>
         [PersonalData]
@@ -111,11 +112,11 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets or sets the ipref9.
+        /// bits extend bool properties
         /// </summary>
         /// <value>The ipref9.</value>
         [PersonalData]
-        public int Ipref9 { get; set; } // bits extend bool properties
-
+        public int Ipref9 { get; set; } 
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref0.
@@ -140,6 +141,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref3.
+        /// show responses by default
         /// </summary>
         /// <value><c>true</c> if pref3; otherwise, <c>false</c>.</value>
         [PersonalData]
@@ -154,10 +156,11 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref5.
+        /// expanded responses
         /// </summary>
         /// <value><c>true</c> if pref5; otherwise, <c>false</c>.</value>
         [PersonalData]
-        public bool Pref5 { get; set; } // expanded responses
+        public bool Pref5 { get; set; } 
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref6.
@@ -168,6 +171,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="ApplicationUser"/> is pref7.
+        /// show content when expanded
         /// </summary>
         /// <value><c>true</c> if pref7; otherwise, <c>false</c>.</value>
         [PersonalData]
@@ -187,12 +191,6 @@ namespace Notes2022.Server.Entities
         [PersonalData]
         public bool Pref9 { get; set; }
 
-
-        //[Display(Name = "Style Preferences")]
-        //[StringLength(7000)]
-        //[PersonalData]
-        //public string? MyStyle { get; set; }
-
         /// <summary>
         /// Gets or sets my unique identifier.
         /// </summary>
@@ -201,11 +199,9 @@ namespace Notes2022.Server.Entities
         [PersonalData]
         public string? MyGuid { get; set; }
 
-        //
-        // Conversions between Db Entity space and gRPC space.
-        //
         /// <summary>
         /// Gets the application user.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>ApplicationUser.</returns>
@@ -277,6 +273,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the g application user.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <returns>GAppUser.</returns>
         public GAppUser GetGAppUser()
@@ -311,6 +308,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the application users.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>List&lt;ApplicationUser&gt;.</returns>
@@ -326,6 +324,7 @@ namespace Notes2022.Server.Entities
 
         /// <summary>
         /// Gets the g application user list.
+        /// Conversions between Db Entity space and gRPC space.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>GAppUserList.</returns>
