@@ -11,7 +11,7 @@
 // Name: AccessManager.cs
 //
 // Description:
-//      TODO
+//      Manages access tokens
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License version 3 as
@@ -31,11 +31,9 @@
 // </copyright>
 // ***********************************************************************
 // <summary></summary>
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Notes2022.Server.Data;
 using Notes2022.Server.Entities;
-using Notes2022.Shared;
 
 namespace Notes2022.Server
 {
@@ -90,39 +88,15 @@ namespace Notes2022.Server
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static async Task<bool> CreateBaseEntries(NotesDbContext db, string userId, int fileId)
         {
-            if (true)
-            {
-                bool flag1 = await Create(db, Globals.AccessOtherId, fileId, false, false, false, false, false, false, false);
-                if (!flag1)
-                    return false;
-            }
-
-            if (true)
-            {
-                bool flag1 = await Create(db, userId, fileId, true, true, true, true, true, true, true);
-                if (!flag1)
-                    return false;
-            }
-
-            //try
-            //{
-            //    var user = await userManager.FindByNameAsync("readonly@example.com");
-            //    if (user is null)
-            //        return true;
-
-            //    string readonlyId = user.Id;
-
-            //    {
-            //        bool flag1 = await Create(db, readonlyId, fileId, false, false, false, false, false, false, false);
-            //        if (!flag1)
-            //            return false;
-            //    }
-            //}
-            //catch
-            //{
-            //    // ignored
-            //}
-            return true;
+            bool flag1 = await Create(db, Globals.AccessOtherId, fileId, false, false, false, false, false, false, false);
+            if (!flag1)
+                return false;
+            
+            flag1 = await Create(db, userId, fileId, true, true, true, true, true, true, true);
+            if (!flag1)
+                return false;
+            
+        return true;
         }
 
         /// <summary>
@@ -139,23 +113,9 @@ namespace Notes2022.Server
             NoteAccess? na = await db.NoteAccess
                 .Where(p => p.UserID == userId && p.NoteFileId == fileId && p.ArchiveId == arcId).FirstOrDefaultAsync();
 
-            if (na is not null)
-            {
-                if (userId == Globals.GuestId)
-                {
-                    na.EditAccess = na.DeleteEdit = na.Respond = na.Write = false;
-                }
-                return na;
-            }
-
             // If specific user not in list use "Other"
             na = await db.NoteAccess
                 .Where(p => p.UserID == Globals.AccessOtherId && p.NoteFileId == fileId && p.ArchiveId == arcId).FirstOrDefaultAsync();
-
-            //if (userId == Globals.GuestId)
-            //{
-            //    na.EditAccess = na.DeleteEdit = na.Respond = na.Write = false;
-            //}
 
             return na is null ? new() : na;
         }
