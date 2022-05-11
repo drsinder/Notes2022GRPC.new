@@ -78,9 +78,9 @@ namespace Notes2022.Server.Entities
     [DataContract]
     public class NoteHeader
     {
-        // Uniquely identifies the note
         /// <summary>
         /// Gets or sets the identifier.
+        /// Uniquely identifies the note
         /// </summary>
         /// <value>The identifier.</value>
         [Required]
@@ -89,9 +89,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 1)]
         public long Id { get; set; }
 
-        // The fileid the note belongs to
         /// <summary>
         /// Gets or sets the note file identifier.
+        /// The fileid the note belongs to
         /// </summary>
         /// <value>The note file identifier.</value>
         [Required]
@@ -113,9 +113,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 4)]
         public long BaseNoteId { get; set; }
 
-        // the ordinal on a Base note and all its responses
         /// <summary>
         /// Gets or sets the note ordinal.
+        /// the ordinal on a Base note and all its responses
         /// </summary>
         /// <value>The note ordinal.</value>
         [Required]
@@ -123,9 +123,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 5)]
         public int NoteOrdinal { get; set; }
 
-        // The ordinal of the response where 0 is a Base Note
         /// <summary>
         /// Gets or sets the response ordinal.
+        /// The ordinal of the response where 0 is a Base Note
         /// </summary>
         /// <value>The response ordinal.</value>
         [Required]
@@ -133,9 +133,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 6)]
         public int ResponseOrdinal { get; set; }
 
-        // Subject/Title of a note
         /// <summary>
         /// Gets or sets the note subject.
+        /// Subject/Title of a note
         /// </summary>
         /// <value>The note subject.</value>
         [Required]
@@ -144,9 +144,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 7)]
         public string? NoteSubject { get; set; }
 
-        // When the note was created or last edited
         /// <summary>
         /// Gets or sets the last edited.
+        /// When the note was created or last edited
         /// </summary>
         /// <value>The last edited.</value>
         [Required]
@@ -154,9 +154,9 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 8)]
         public DateTime LastEdited { get; set; }
 
-        // When the thread was last edited
         /// <summary>
         /// Gets or sets the thread last edited.
+        /// When the thread was last edited
         /// </summary>
         /// <value>The thread last edited.</value>
         [Required]
@@ -173,16 +173,15 @@ namespace Notes2022.Server.Entities
         [DataMember(Order = 10)]
         public DateTime CreateDate { get; set; }
 
-        // Meaningful only if ResponseOrdinal = 0
         /// <summary>
         /// Gets or sets the response count.
+        /// Meaningful only if ResponseOrdinal = 0
         /// </summary>
         /// <value>The response count.</value>
         [Required]
         [DataMember(Order = 11)]
         public int ResponseCount { get; set; }
 
-        // ReSharper disable once InconsistentNaming
         /// <summary>
         /// Gets or sets the author identifier.
         /// </summary>
