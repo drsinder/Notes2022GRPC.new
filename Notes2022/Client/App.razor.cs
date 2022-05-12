@@ -185,15 +185,15 @@ namespace Notes2022.Client
 
         /// <summary>
         /// Dealing with login related info
-        /// /
         /// </summary>
-
         private LoginReply? savedLogin;
 
         /// <summary>
-        /// Gets or sets the login reply.
+        /// Gets or sets the login reply.  Setting also notifies subsrcibers
         /// </summary>
-        /// <value>The login reply.</value>
+        /// <value>
+        /// The LoginReply - the current state of login.
+        /// </value>
         public LoginReply? LoginReply
         {
             get
@@ -220,7 +220,7 @@ namespace Notes2022.Client
         }
 
         /// <summary>
-        /// Occurs when [on change].
+        /// Occurs when Login state changes.
         /// </summary>
         public event System.Action? OnChange;
 
