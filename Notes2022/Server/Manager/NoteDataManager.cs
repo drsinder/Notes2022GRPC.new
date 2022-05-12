@@ -33,17 +33,84 @@
 // <summary></summary>
 
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Notes2022.Server.Data;
 using Notes2022.Server.Entities;
+using Notes2022.Server.Services;
 
 namespace Notes2022.Server
 {
     /// <summary>
-    /// Class NoteDataManager.
+    /// Class NoteDataManager.  
     /// </summary>
-    public static class NoteDataManager
+    public class NoteDataManager
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
+#pragma warning disable IDE0052 // Remove unread private members
+        private readonly ILogger<Notes2022Service> _logger; // not currently used - here if/when needed
+
+        /// <summary>
+        /// The database
+        /// </summary>
+        private readonly NotesDbContext _db;
+
+        /// <summary>
+        /// The user manager
+        /// </summary>
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        /// <summary>
+        /// The role manager
+        /// </summary>
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        /// <summary>
+        /// The configuration
+        /// </summary>
+        private readonly IConfiguration _configuration;
+
+        /// <summary>
+        /// The sign in manager
+        /// </summary>
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        /// <summary>
+        /// The email sender
+        /// </summary>
+        private readonly IEmailSender _emailSender;
+#pragma warning restore IDE0052 // Remove unread private members
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Notes2022Service" /> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="db">The database.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="roleManager">The role manager.</param>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="emailSender">The email sender.</param>
+        /// <param name="userManager">The user manager.</param>
+        public NoteDataManager(ILogger<Notes2022Service> logger,
+            NotesDbContext db,
+            IConfiguration configuration,
+            RoleManager<IdentityRole> roleManager,
+            SignInManager<ApplicationUser> signInManager,
+            IEmailSender emailSender,
+            UserManager<ApplicationUser> userManager
+          )
+        {
+            _logger = logger;
+            _db = db;
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _signInManager = signInManager;
+            _configuration = configuration;
+            _emailSender = emailSender;
+        }
+
         /// <summary>
         /// Create a NoteFile
         /// </summary>
@@ -433,7 +500,7 @@ namespace Notes2022.Server
         }
 
         /// <summary>
-        /// Delete a linked note - NOT called now...
+        /// Edit a note.
         /// </summary>
         /// <param name="db">The database.</param>
         /// <param name="userManager">The user manager.</param>
