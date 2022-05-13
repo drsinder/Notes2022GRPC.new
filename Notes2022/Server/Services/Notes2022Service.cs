@@ -1221,49 +1221,49 @@ namespace Notes2022.Server.Services
         /// </summary>
         private static DateTime? TimeOfThrottle = null;
 
-        /// <summary>
-        /// Send an email.
-        /// unauthenticated - slower - use it too much and it really hurts you!
-        /// </summary>
-        /// <param name="request">The request received from the client.</param>
-        /// <param name="context">The context of the server-side call handler being invoked.</param>
-        /// <returns>The response to send back to the client (wrapped by a task).</returns>
-        public override async Task<NoRequest> SendEmail(GEmail request, ServerCallContext context)
-        {
-            try
-            {
-                ApplicationUser appUser = await GetAppUser(context);
-            }
-            catch (Exception)
-            {
-                // was not authenticated - slow them up
+        ///// <summary>
+        ///// Send an email.
+        ///// unauthenticated - slower - use it too much and it really hurts you!
+        ///// </summary>
+        ///// <param name="request">The request received from the client.</param>
+        ///// <param name="context">The context of the server-side call handler being invoked.</param>
+        ///// <returns>The response to send back to the client (wrapped by a task).</returns>
+        //public override async Task<NoRequest> SendEmail(GEmail request, ServerCallContext context)
+        //{
+        //    try
+        //    {
+        //        ApplicationUser appUser = await GetAppUser(context);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        // was not authenticated - slow them up
 
-                if (throttle++ >= 100)
-                {
-                    // some real potential abuse??
-                    Thread.Sleep(1000 * throttle);
+        //        if (throttle++ >= 100)
+        //        {
+        //            // some real potential abuse??
+        //            Thread.Sleep(1000 * throttle);
 
-                    if (TimeOfThrottle is null)
-                    {
-                        TimeOfThrottle = DateTime.UtcNow;
-                    }
-                    else
-                    {
-                        TimeSpan? diff = DateTime.UtcNow - TimeOfThrottle;
-                        if (diff > new TimeSpan(0, 30, 0)) // backoff in 30 minutes
-                        {
-                            throttle = 0;
-                            TimeOfThrottle = null;
-                        }
-                    }
-                }
+        //            if (TimeOfThrottle is null)
+        //            {
+        //                TimeOfThrottle = DateTime.UtcNow;
+        //            }
+        //            else
+        //            {
+        //                TimeSpan? diff = DateTime.UtcNow - TimeOfThrottle;
+        //                if (diff > new TimeSpan(0, 30, 0)) // backoff in 30 minutes
+        //                {
+        //                    throttle = 0;
+        //                    TimeOfThrottle = null;
+        //                }
+        //            }
+        //        }
 
-                Thread.Sleep(1000);
-            }
+        //        Thread.Sleep(1000);
+        //    }
 
-            await _emailSender.SendEmailAsync(request.Address, request.Subject, request.Body);
-            return new NoRequest();
-        }
+        //    await _emailSender.SendEmailAsync(request.Address, request.Subject, request.Body);
+        //    return new NoRequest();
+        //}
 
         /// <summary>
         /// Send email authenticated.
@@ -1579,28 +1579,16 @@ namespace Notes2022.Server.Services
 
             stuff.NoteAccess = na.GetGNoteAccess();
 
-            stuff.NoteHeaders = NoteHeader.GetGNoteHeaderList(
-                await _db.NoteHeader
-                    .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && !p.IsDeleted)
-                    .OrderBy(p => p.NoteOrdinal)
-                    .ThenBy(p => p.ResponseOrdinal)
-                    .ToListAsync());
+            NoteHeadersRequest request2 = new();
+            request2.NoteFileId = request.FileId;
+            request2.ArcId = request.ArcId;
+            request2.NoteOrdinal = -1;
+            request2.ContentAndTags = true;
+            if (request.NoteOrdinal > 0)
+                request2.NoteOrdinal = request.NoteOrdinal;
 
-            long[] items = _db.NoteHeader
-                    .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && !p.IsDeleted)
-                    .OrderBy(p => p.NoteOrdinal)
-                    .ThenBy(p => p.ResponseOrdinal).Select(p => p.Id).ToArray();
+            stuff.NoteHeaders = await GetNoteHeaders(request2, context);
 
-            List<NoteContent> cont = await _db.NoteContent.Where(p => items.Contains(p.NoteHeaderId)).ToListAsync();
-
-            List<Tags> tags = await (_db.Tags.Where(p => p.NoteFileId == request.FileId)).ToListAsync();
-
-            foreach (GNoteHeader item in stuff.NoteHeaders.List)
-            {
-                item.Content = cont.Single(p => p.NoteHeaderId == item.Id).GetGNoteContent();
-                List<Tags> x = tags.Where(p => p.NoteHeaderId == item.Id).ToList();
-                item.Tags = Tags.GetGTagsList(x);
-            }
             return stuff;
         }
 
@@ -1647,5 +1635,113 @@ namespace Notes2022.Server.Services
 
             return stuff;
         }
+
+        /// <summary>
+        /// Gets the current homepage message if any
+        /// </summary>
+        /// <param name="request">The request received from the client.</param>
+        /// <param name="context">The context of the server-side call handler being invoked.</param>
+        /// <returns>The response to send back to the client (wrapped by a task).</returns>
+        public override async Task<AString> GetHomePageMessage(NoRequest request, ServerCallContext context)
+        {
+            var message = new AString();
+
+            NoteFile? hpmf = _db.NoteFile.Where(p => p.NoteFileName == "homepagemessages").FirstOrDefault();
+            if (hpmf is not null)
+            {
+                NoteHeader? hpmh = _db.NoteHeader.Where(p => p.NoteFileId == hpmf.Id && !p.IsDeleted).OrderByDescending(p => p.CreateDate).FirstOrDefault();
+                if (hpmh is not null)
+                {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                    message.Val = _db.NoteContent.Where(p => p.NoteHeaderId == hpmh.Id).FirstOrDefault().NoteBody;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                }
+            }
+
+            return message;
+        }
+
+        /// <summary>
+        /// Get a list of notes w or wo content and tags as specified by the request.
+        /// Returns the same stuff as a JsonExport but without the Notefile and Access token.
+        /// Also permits filtering to a limted degree.
+        /// </summary>
+        /// <param name="request">The request received from the client.</param>
+        /// <param name="context">The context of the server-side call handler being invoked.</param>
+        /// <returns>The response to send back to the client (wrapped by a task).</returns>
+        [Authorize]
+        public override async Task<GNoteHeaderList> GetNoteHeaders(NoteHeadersRequest request, ServerCallContext context)
+        {
+            ApplicationUser appUser = await GetAppUser(context);
+            NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId,request.ArcId);
+            if (!na.ReadAccess)
+                return new();
+
+            List<NoteHeader> work =  new();
+
+            if (request.NoteOrdinal == -1 && request.MinNote > 0 && request.MaxNote >= request.MinNote)      // base notes and responses
+            {
+                work = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId
+                    && p.NoteOrdinal >= request.MinNote && p.NoteOrdinal <= request.MaxNote
+                    && !p.IsDeleted && p.Version == 0)
+                    .OrderBy(p => p.NoteOrdinal).ThenBy(p => p.ResponseOrdinal).ToListAsync();
+            }
+            else if (request.NoteOrdinal == -1) // base notes and responses
+            {
+                work = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId
+                    && !p.IsDeleted && p.Version == 0)
+                    .OrderBy(p => p.NoteOrdinal).ThenBy(p => p.ResponseOrdinal).ToListAsync();
+            }
+            else if (request.NoteOrdinal == 0 && request.MinNote > 0 && request.MaxNote >= request.MinNote)  // base notes only
+            {
+                work = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId && p.ResponseOrdinal == 0
+                    && p.NoteOrdinal >= request.MinNote && p.NoteOrdinal <= request.MaxNote
+                    && !p.IsDeleted && p.Version == 0)
+                    .OrderBy(p => p.NoteOrdinal).ToListAsync();
+            }
+            else if (request.NoteOrdinal == 0)  // base notes only
+            {
+                work = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId && p.ResponseOrdinal == 0 
+                    && !p.IsDeleted && p.Version == 0)
+                    .OrderBy(p => p.NoteOrdinal).ToListAsync();
+            }
+            else if (request.ResponseOrdinal == -1) // specifc base note plus all responses
+            {
+                work = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId && p.NoteOrdinal == request.NoteOrdinal 
+                    && !p.IsDeleted && p.Version == 0)
+                    .OrderBy(p => p.ResponseOrdinal).ToListAsync();
+            }
+            else if (request.ResponseOrdinal == 0) // specifc base note 
+            {
+                work = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId
+                    && p.ResponseOrdinal == 0  && p.NoteOrdinal == request.NoteOrdinal 
+                    && !p.IsDeleted && p.Version == 0).ToListAsync();
+            }
+            else    // specific response
+            {
+                work = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId  && p.ResponseOrdinal == request.ResponseOrdinal 
+                    && p.NoteOrdinal == request.NoteOrdinal 
+                    && !p.IsDeleted && p.Version == 0).ToListAsync();
+            }
+
+            GNoteHeaderList returnval = NoteHeader.GetGNoteHeaderList(work);
+
+            if (request.ContentAndTags)
+            {
+                long[] items = work.Select(p => p.Id).ToArray();
+                List<NoteContent> cont = await _db.NoteContent.Where(p => items.Contains(p.NoteHeaderId)).ToListAsync();
+                List<Tags> tags = await (_db.Tags.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId)).ToListAsync();
+
+                foreach (GNoteHeader item in returnval.List)
+                {
+                    item.Content = cont.Single(p => p.NoteHeaderId == item.Id).GetGNoteContent();
+                    List<Tags> x = tags.Where(p => p.NoteHeaderId == item.Id).ToList();
+                    item.Tags = Tags.GetGTagsList(x);
+                }
+            }
+
+            return returnval;
+        }
+
     }
 }

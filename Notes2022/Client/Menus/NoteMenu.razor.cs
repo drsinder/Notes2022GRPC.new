@@ -137,7 +137,8 @@ namespace Notes2022.Client.Menus
                     new() { Id = "mail", Text = "mail" },
                     //item2.Items.Add(new MenuItem() { Id = "Mark", Text = "Mark for output" });
                     new() { Id = "Html", Text = "Html (expandable)" },
-                    new() { Id = "html", Text = "html (flat)" }
+                    new() { Id = "html", Text = "html (flat)" },
+                    new() { Id = "Json", Text = "Json" }
                 }
                 };
                 menuItems.Add(item2);
@@ -279,7 +280,28 @@ namespace Notes2022.Client.Menus
                     DoExport(true, false);
                     break;
 
+                case "Json":
+                    DoJson();
+                    break;
             }
+        }
+
+        protected void DoJson()
+        {
+            NoteHeadersRequest request = new()
+            {
+                NoteFileId = Model.NoteFile.Id,
+                ArcId = Model.Header.ArchiveId,
+                NoteOrdinal = Model.Header.NoteOrdinal,
+                ResponseOrdinal = -1,
+                ContentAndTags = true,
+                FileName = Model.NoteFile.NoteFileName + ".note-" + Model.Header.NoteOrdinal + ".json"
+            };
+
+            var parameters = new ModalParameters();
+            parameters.Add("model", request);
+            Modal.Show<ExportJsonString>("", parameters);
+
         }
 
         /// <summary>

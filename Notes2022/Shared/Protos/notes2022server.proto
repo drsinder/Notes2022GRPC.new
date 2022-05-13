@@ -34,51 +34,59 @@ import "google/protobuf/timestamp.proto";
 service Notes2022Server {
 // Account Services
 
-	rpc Register(RegisterRequest) returns (AuthReply);		// register a user - create login
-	rpc Login(LoginRequest) returns (LoginReply);			// log a user in
-	rpc Logout(NoRequest) returns (AuthReply);				// log current user out
-	rpc ConfirmEmail(ConfirmEmailRequest) returns (AuthReply);	// user confirms email - login enabled now
+	rpc Register(RegisterRequest) returns (AuthReply);					// register a user - create login
+	rpc Login(LoginRequest) returns (LoginReply);						// log a user in
+	rpc Logout(NoRequest) returns (AuthReply);							// log current user out
+	rpc ConfirmEmail(ConfirmEmailRequest) returns (AuthReply);			// user confirms email - login enabled now
 
 // Notes Services proper
 
+// These are basic and often deal with a simple datasebase type or list / repeated field
+
+	rpc GetUserData(NoRequest) returns (GAppUser);						// gets data for the current user
 	rpc GetUserList(NoRequest) returns (GAppUserList);					// get list of alll app users/logins
 	rpc GetUserRoles(AppUserRequest) returns (EditUserViewModel);		// used for editing roles users are in
+	rpc GetHeaderForNoteId(NoteId) returns (GNoteHeader);				// gets a note header given its id
+	rpc GetNoteContent(DisplayModelRequest) returns (DisplayModel);		// gets the content of a note
+	rpc GetAccessAndUserList(AccessAndUserListRequest) returns (AccessAndUserList);	// gets access data and user list
+	rpc GetAccessList(AccessAndUserListRequest) returns (GNoteAccessList);			// gets the access list for a file
 	rpc UpdateUserRoles(EditUserViewModel) returns (NoRequest);			// updates roles for a user
 	rpc CreateNoteFile(GNotefile) returns (GNotefile);					// create a note file
-	rpc GetHomePageModel(NoRequest) returns (HomePageModel);			// get data needed for home page
-	rpc GetAdminPageModel(NoRequest) returns (HomePageModel);			// a bit more data than home page
 	rpc UpdateNoteFile(GNotefile) returns (GNotefile);					// updates note file data
 	rpc DeleteNoteFile(GNotefile) returns (NoRequest);					// deletes a note file
 	rpc Import(ImportRequest) returns (NoRequest);						// runs an import
+	rpc UpdateAccessItem(GNoteAccess) returns (GNoteAccess);			// get a single access item
+	rpc DeleteAccessItem(GNoteAccess) returns (NoRequest);				// deletes an access item
+	rpc AddAccessItem(GNoteAccess) returns (GNoteAccess);				// adds an access item
+	rpc UpdateUserData(GAppUser) returns (GAppUser);					// updates user data
+	rpc GetVersions(GetVersionsRequest) returns (GNoteHeaderList);		// gets the non-zero version headers
+	rpc GetSequencer(NoRequest) returns (GSequencerList);				// gets the sequencer list for a user
+	rpc CreateSequencer(SCheckModel) returns (NoRequest);				// creates a sequencer item
+	rpc DeleteSequencer(SCheckModel) returns (NoRequest);				// deletes a sequencer item
+	rpc UpdateSequencer(GSequencer) returns (NoRequest);				// updates a sequencer item - while sequencing
+	rpc UpdateSequencerOrdinal(GSequencer) returns (NoRequest);			// updates a sequencer item ordinal
+	rpc GetNoteFile(NoteIndexRequest) returns (GNotefile);				// get the notefile for the note index
+	rpc CreateNewNote(TextViewModel) returns (GNoteHeader);				// get a note header
+	rpc UpdateNote(TextViewModel) returns (GNoteHeader);				// updates a note header
+	rpc SendEmailAuth(GEmail) returns (NoRequest);						// authenticated
+	rpc GetExport2(NoteId) returns (GNoteContent);						// gets note content during an export
+	rpc DoForward(ForwardViewModel) returns (NoRequest);				// forwards note(s) via email
+	rpc GetNoteFilesOrderedByName(NoRequest) returns (GNotefileList);	// get list of the note files ordered by name
+	rpc CopyNote(CopyModel) returns (NoRequest);						// copies note(s) to another file
+	rpc DeleteNote(NoteId) returns (NoRequest);							// deletes a note
+	rpc GetExportJson(ExportRequest) returns (JsonExport);				// returns data for a json export see GetNoteHeaders for a more flexible way to get filtered data
+	rpc GetNoteHeaders(NoteHeadersRequest) returns (GNoteHeaderList);	// request all or some slice of a note file - headers w or wo content and tags
+	rpc GetHomePageMessage(NoRequest) returns (AString);				// Gets the current homepage message if any
+
+// These are crafted for the specific user interface I've provided and may return more or less than you want.
+// The basics above will permit more targeted access to data but may require more round trips.
+
+	rpc GetHomePageModel(NoRequest) returns (HomePageModel);			// get data needed for home page
+	rpc GetAdminPageModel(NoRequest) returns (HomePageModel);			// a bit more data than home page
 	rpc GetNoteFileIndexData(NoteIndexRequest) returns (NoteDisplayIndexModel);		// get data for the index of a notefile
-	rpc GetNoteContent(DisplayModelRequest) returns (DisplayModel);					// gets the content of a note
-	rpc GetAccessAndUserList(AccessAndUserListRequest) returns (AccessAndUserList);	// gets access data and user list
-	rpc GetAccessList(AccessAndUserListRequest) returns (GNoteAccessList);			// gets the access list for a file
-	rpc UpdateAccessItem(GNoteAccess) returns (GNoteAccess);						// get a single access item
-	rpc DeleteAccessItem(GNoteAccess) returns (NoRequest);							// deletes an access item
-	rpc AddAccessItem(GNoteAccess) returns (GNoteAccess);							// adds an access item
-	rpc GetUserData(NoRequest) returns (GAppUser);									// gets data for the current user
-	rpc UpdateUserData(GAppUser) returns (GAppUser);								// updates user data
-	rpc GetVersions(GetVersionsRequest) returns (GNoteHeaderList);					// gets the non-zero version headers
-	rpc GetSequencer(NoRequest) returns (GSequencerList);							// gets the sequencer list for a user
-	rpc CreateSequencer(SCheckModel) returns (NoRequest);							// creates a sequencer item
-	rpc DeleteSequencer(SCheckModel) returns (NoRequest);							// deletes a sequencer item
-	rpc UpdateSequencer(GSequencer) returns (NoRequest);							// updates a sequencer item - while sequencing
-	rpc UpdateSequencerOrdinal(GSequencer) returns (NoRequest);						// updates a sequencer item ordinal
-	rpc GetNoteFile(NoteIndexRequest) returns (GNotefile);							// get the notefile for the note index
-	rpc CreateNewNote(TextViewModel) returns (GNoteHeader);							// get a note header
-	rpc UpdateNote(TextViewModel) returns (GNoteHeader);							// updates a note header
-	rpc GetHeaderForNoteId(NoteId) returns (GNoteHeader);							// gets a note header given its id
-	rpc GetAbout(NoRequest) returns (AboutModel);									// gets data for the about page
-	rpc SendEmail(GEmail) returns (NoRequest);										// unauthenticated - slower - use it too much and it really hurts you!
-	rpc SendEmailAuth(GEmail) returns (NoRequest);									// authenticated
-//	rpc GetExport(ExportRequest) returns (GNoteHeaderList);							// gets a note header list during an Export
-	rpc GetExport2(NoteId) returns (GNoteContent);									// gets note content during an export
-	rpc DoForward(ForwardViewModel) returns (NoRequest);							// forwards note(s) via email
-	rpc GetNoteFilesOrderedByName(NoRequest) returns (GNotefileList);				// get list of the note files ordered by name
-	rpc CopyNote(CopyModel) returns (NoRequest);									// copies note(s) to another file
-	rpc DeleteNote(NoteId) returns (NoRequest);										// deletes a not
-	rpc GetExportJson(ExportRequest) returns (JsonExport);							// returns data for a json export
+	rpc GetAbout(NoRequest) returns (AboutModel);						// gets data for the about page
+//	rpc SendEmail(GEmail) returns (NoRequest);							// unauthenticated - slower - use it too much and it really hurts you!
+//	rpc GetExport(ExportRequest) returns (GNoteHeaderList);				// gets a note header list during an Export
 	rpc GetTextFile(AString) returns (AString);	// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
 }
 
@@ -234,8 +242,8 @@ message GNoteHeader {
 	bool isDeleted = 16;							// has this note been deleted - invisible	
 	int32 version = 17;								// version of the note - used when reediting a note
 	string directorMessage = 18;					// director message
-	GNoteContent content = 19;						// for JsonExport only
-	GTagsList tags = 20;							// for JsonExport only
+	GNoteContent content = 19;						// for GetNoteHeaders and JsonExport only
+	GTagsList tags = 20;							// for GetNoteHeaders and JsonExport only
 }
 
 // list of note headers
@@ -499,11 +507,25 @@ message CopyModel {
 // Used to get a representation of the whole file - to be serialized as json
 message JsonExport {
 	GNotefile NoteFile = 1;				// notefile to export
-	GNoteHeaderList NoteHeaders = 2;	// list of headers - includes Content and Tags!
-	GNoteAccess NoteAccess = 3;			// access token for requesting user
+	GNoteAccess NoteAccess = 2;			// access token for requesting user
+	GNoteHeaderList NoteHeaders = 3;	// list of headers - includes Content and Tags!
 }
 
 message AString {
 	string val = 1;
 }
 
+message NoteHeadersRequest {
+	int32 noteFileId = 1;
+	int32 noteOrdinal = 2;		// 0 for all base notes, -1 basenotes and resposnses, else specifc noteordinal
+	int32 responseOrdinal = 3;	// -1 for all responses, 0 for base only, else specific response
+	bool contentAndTags = 4;	// include content and tags?
+	int32 arcId = 5;			// archive id
+	int32 minNote = 6;			// min base ordinal to include
+	int32 maxNote = 7;			// max base ordinal to include
+	string fileName = 8;		// used only for export of a note string
+}
+
+//message NoteCount {
+//	int32 Count = 1;
+//}
