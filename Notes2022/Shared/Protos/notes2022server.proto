@@ -500,6 +500,7 @@ message CopyModel {
 message JsonExport {
 	GNotefile NoteFile = 1;				// notefile to export
 	GNoteHeaderList NoteHeaders = 2;	// list of headers - includes Content and Tags!
+	GNoteAccess NoteAccess = 3;			// access token for requesting user
 }
 
 message AString {

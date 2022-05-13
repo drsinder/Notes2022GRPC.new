@@ -1555,7 +1555,11 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
-        /// Gets the export json.
+        /// Gets the export json.  Well it's called json here because it was intended to be used to export a
+        /// file as json.  But the fact is this is a good way to grab every thing the file contains 
+        /// relevant to the requesting user.  In here you have the file object, all headers including their 
+        /// content object and tag objects.  Finally, the users access token.
+        /// Grab this and you have all you need to display a file.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="context">The context.</param>
@@ -1572,6 +1576,8 @@ namespace Notes2022.Server.Services
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, stuff.NoteFile.Id, 0);
             if (!na.ReadAccess)
                 return new JsonExport();
+
+            stuff.NoteAccess = na.GetGNoteAccess();
 
             stuff.NoteHeaders = NoteHeader.GetGNoteHeaderList(
                 await _db.NoteHeader
