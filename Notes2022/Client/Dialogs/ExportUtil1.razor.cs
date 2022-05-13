@@ -402,7 +402,12 @@ namespace Notes2022.Client.Dialogs
 
             List<GNoteHeader> allHeaders = stuff.NoteHeaders.List.ToList();
 
-            List<GNoteHeader> baseNotes = allHeaders.Where(p => p.ResponseOrdinal == 0).ToList();
+
+            List<GNoteHeader> baseNotes;
+            if (NoteOrd == 0)
+                baseNotes = allHeaders.Where(p => p.ResponseOrdinal == 0).ToList();
+            else
+                baseNotes = allHeaders.Where(p => p.NoteOrdinal == NoteOrd && p.ResponseOrdinal == 0).ToList();
 
             //bnhl = await Client.GetExportAsync(new ExportRequest() { FileId = nfid, ArcId = model.ArchiveNumber, NoteOrdinal = NoteOrd, ResponseOrdinal = 0 }, myState.AuthHeader);
 

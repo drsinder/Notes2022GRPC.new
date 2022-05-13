@@ -72,7 +72,7 @@ service Notes2022Server {
 	rpc GetAbout(NoRequest) returns (AboutModel);									// gets data for the about page
 	rpc SendEmail(GEmail) returns (NoRequest);										// unauthenticated - slower - use it too much and it really hurts you!
 	rpc SendEmailAuth(GEmail) returns (NoRequest);									// authenticated
-	rpc GetExport(ExportRequest) returns (GNoteHeaderList);							// gets a note header list during an Export
+//	rpc GetExport(ExportRequest) returns (GNoteHeaderList);							// gets a note header list during an Export
 	rpc GetExport2(NoteId) returns (GNoteContent);									// gets note content during an export
 	rpc DoForward(ForwardViewModel) returns (NoRequest);							// forwards note(s) via email
 	rpc GetNoteFilesOrderedByName(NoRequest) returns (GNotefileList);				// get list of the note files ordered by name

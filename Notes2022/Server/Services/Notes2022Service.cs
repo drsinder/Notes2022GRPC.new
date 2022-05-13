@@ -1278,38 +1278,38 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
-        /// <summary>
-        /// Gets the export info for phase 1.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <param name="context">The context.</param>
-        /// <returns>GNoteHeaderList.</returns>
-        [Authorize]
-        public override async Task<GNoteHeaderList> GetExport(ExportRequest request, ServerCallContext context)
-        {
-            ApplicationUser appUser = await GetAppUser(context);
-            NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.FileId, request.ArcId);
-            if (!na.ReadAccess)
-                return new GNoteHeaderList();
+        ///// <summary>
+        ///// Gets the export info for phase 1.
+        ///// </summary>
+        ///// <param name="request">The request.</param>
+        ///// <param name="context">The context.</param>
+        ///// <returns>GNoteHeaderList.</returns>
+        //[Authorize]
+        //public override async Task<GNoteHeaderList> GetExport(ExportRequest request, ServerCallContext context)
+        //{
+        //    ApplicationUser appUser = await GetAppUser(context);
+        //    NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.FileId, request.ArcId);
+        //    if (!na.ReadAccess)
+        //        return new GNoteHeaderList();
 
-            List<NoteHeader> nhl;
+        //    List<NoteHeader> nhl;
 
-            if (request.NoteOrdinal == 0)   // All base notes
-            {
-                nhl = await _db.NoteHeader
-                    .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && p.ResponseOrdinal == 0)
-                    .OrderBy(p => p.NoteOrdinal)
-                    .ToListAsync();
-            }
-            else                // Just one base note/response
-            {
-                nhl = await _db.NoteHeader
-                    .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && p.NoteOrdinal == request.NoteOrdinal && p.ResponseOrdinal == request.ResponseOrdinal)
-                    .ToListAsync();
-            }
+        //    if (request.NoteOrdinal == 0)   // All base notes
+        //    {
+        //        nhl = await _db.NoteHeader
+        //            .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && p.ResponseOrdinal == 0)
+        //            .OrderBy(p => p.NoteOrdinal)
+        //            .ToListAsync();
+        //    }
+        //    else                // Just one base note/response
+        //    {
+        //        nhl = await _db.NoteHeader
+        //            .Where(p => p.NoteFileId == request.FileId && p.ArchiveId == request.ArcId && p.NoteOrdinal == request.NoteOrdinal && p.ResponseOrdinal == request.ResponseOrdinal)
+        //            .ToListAsync();
+        //    }
 
-            return NoteHeader.GetGNoteHeaderList(nhl);
-        }
+        //    return NoteHeader.GetGNoteHeaderList(nhl);
+        //}
 
         /// <summary>
         /// Gets the export info for phase 2. (note content)

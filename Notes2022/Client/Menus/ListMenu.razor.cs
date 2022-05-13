@@ -308,6 +308,14 @@ namespace Notes2022.Client.Menus
 
             GNoteHeader currentHeader = Model.Notes.List[0];
 
+            ExportRequest exportRequest = new ExportRequest();
+            exportRequest.ArcId = Model.ArcId;
+            exportRequest.FileId = Model.NoteFile.Id;
+            exportRequest.NoteOrdinal = 0;
+
+            JsonExport json = await Client.GetExportJsonAsync(exportRequest, myState.AuthHeader);
+            List<GNoteHeader> allNotes = json.NoteHeaders.List.ToList();
+
             StringBuilder sb = new();
 
             sb.Append("<h4 class=\"text-center\">" + Model.NoteFile.NoteFileTitle + "</h4>");
@@ -329,7 +337,7 @@ namespace Notes2022.Client.Menus
             sb.Append((Globals.LocalTimeBlazor(currentHeader.LastEdited.ToDateTime()).ToLongDateString()) + " " 
                 + (Globals.LocalTimeBlazor(currentHeader.LastEdited.ToDateTime()).ToShortTimeString()));
 
-            GNoteContent currentContent = await Client.GetExport2Async(new NoteId() { Id = currentHeader.Id }, myState.AuthHeader);
+            GNoteContent currentContent = allNotes.Single(p => p.Id == currentHeader.Id).Content;   //await Client.GetExport2Async(new NoteId() { Id = currentHeader.Id }, myState.AuthHeader);
 
             if (!string.IsNullOrEmpty(currentHeader.DirectorMessage))
             {
@@ -373,7 +381,8 @@ namespace Notes2022.Client.Menus
             }
 
             string stuff = sb.ToString();           // turn accumulated output into a string
-
+            sb = null;
+            json = null;
             var parameters = new ModalParameters();
             parameters.Add("PrintStuff", stuff);    // pass string to print dialog
             Modal.Show<PrintDlg>("", parameters);   // invoke print dialog with our output
