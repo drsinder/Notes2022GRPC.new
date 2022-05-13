@@ -138,7 +138,7 @@ namespace Notes2022.Client.Panels
         /// Are responses shown
         /// </summary>
         /// <value><c>true</c> if [resp shown]; otherwise, <c>false</c>.</value>
-        protected bool RespShown { get; set; }
+        public bool RespShown { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [reset shown].

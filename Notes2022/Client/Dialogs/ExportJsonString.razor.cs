@@ -1,9 +1,42 @@
+// ***********************************************************************
+// Assembly         : Notes2022.Client
+// Author           : Dale Sinder
+// Created          : 05-13-2022
+//
+// Last Modified By : Dale Sinder
+// Last Modified On : 05-13-2022
+//
+// Copyright © 2022, Dale Sinder
+//
+// Name: ExportJsonString.razor.cs
+//
+// Description:
+//      Exports a note string as json
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License version 3 as
+// published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+// GNU General Public License version 3 for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  version 3 along with this program in file "license-gpl-3.0.txt".
+//  If not, see<http://www.gnu.org/licenses/gpl-3.0.txt>.
+// ***********************************************************************
+// <copyright file="ExportJsonString.razor.cs" company="Notes2022.Client">
+//     Copyright (c) Dale Sinder. All rights reserved.
+// </copyright>
+// ***********************************************************************
+// <summary></summary>
+using Blazored.Modal;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Notes2022.Proto;
-using Blazored.Modal;
-using System.Text;
 using Newtonsoft.Json;
+using Notes2022.Proto;
+using System.Text;
 
 namespace Notes2022.Client.Dialogs
 {
@@ -15,15 +48,22 @@ namespace Notes2022.Client.Dialogs
         /// <value>The modal instance.</value>
         [CascadingParameter] public BlazoredModalInstance ModalInstance { get; set; }
 
+        /// <summary>
+        /// Gets or sets the model.  Represents what we want to export
+        /// </summary>
+        /// <value>The model.</value>
         [Parameter] public NoteHeadersRequest model { get; set; }
 
+        /// <summary>
+        /// Used to write file
+        /// </summary>
         private IJSObjectReference? module;
 
         /// <summary>
         /// On initialized as an asynchronous operation.
         /// </summary>
         /// <returns>A Task representing the asynchronous operation.</returns>
-        protected async override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             MemoryStream ms2 = await DoExport();
 
@@ -72,7 +112,6 @@ namespace Notes2022.Client.Dialogs
             }
         }
 
-
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
         /// </summary>
@@ -96,8 +135,5 @@ namespace Notes2022.Client.Dialogs
             await module.InvokeVoidAsync("saveAsFile", filename, Convert.ToBase64String(data));
 #pragma warning restore CS8604 // Possible null reference argument.
         }
-
-
-
     }
 }

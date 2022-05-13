@@ -51,6 +51,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 using Google.Protobuf.WellKnownTypes;
+using Notes2022.Client.Panels;
 
 //using SearchOption = Notes2022.Shared.SearchOption;
 
@@ -85,6 +86,8 @@ namespace Notes2022.Client.Pages
         /// </summary>
         /// <value>My menu.</value>
         protected ListMenu MyMenu { get; set; }
+
+        public NotePanel MyNotePanel { get; set; }
 
         /// <summary>
         /// Accumulator for the navigation string
@@ -134,11 +137,11 @@ namespace Notes2022.Client.Pages
         /// <value><c>true</c> if [show content r]; otherwise, <c>false</c>.</value>
         protected bool ShowContentR { get; set; }
 
-        /// <summary>
-        /// If the grid expanded fully expanded
-        /// </summary>
-        /// <value><c>true</c> if [expand all]; otherwise, <c>false</c>.</value>
-        protected bool ExpandAll { get; set; }
+        ///// <summary>
+        ///// If the grid expanded fully expanded
+        ///// </summary>
+        ///// <value><c>true</c> if [expand all]; otherwise, <c>false</c>.</value>
+        //protected bool ExpandAll { get; set; }
 
         /// <summary>
         /// Are we sequencing?
@@ -219,7 +222,7 @@ namespace Notes2022.Client.Pages
                 ShowContent = Model.UserData.Pref7;
                 ShowContentR = Model.UserData.Pref5;
 
-                ExpandAll = false; // Model.UserData.Pref3;
+                //ExpandAll = false; // Model.UserData.Pref3;
 
                 // restore page
                 CurPage = await sessionStorage.GetItemAsync<int>("IndexPage");

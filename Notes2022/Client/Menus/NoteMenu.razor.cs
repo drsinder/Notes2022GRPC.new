@@ -298,6 +298,17 @@ namespace Notes2022.Client.Menus
                 FileName = Model.NoteFile.NoteFileName + ".note-" + Model.Header.NoteOrdinal + ".json"
             };
 
+            if (Model.Header.ResponseOrdinal > 0)
+            { 
+                request.ResponseOrdinal = Model.Header.ResponseOrdinal;
+                request.FileName = Model.NoteFile.NoteFileName + ".note-" + Model.Header.NoteOrdinal + "-response-" + Model.Header.ResponseOrdinal + ".json";
+            }
+            else if (!MyNoteIndex.MyNotePanel.RespShown)
+            {
+                request.ResponseOrdinal = 0;
+            }
+
+
             var parameters = new ModalParameters();
             parameters.Add("model", request);
             Modal.Show<ExportJsonString>("", parameters);

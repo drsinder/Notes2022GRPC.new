@@ -33,7 +33,7 @@
 
 @if (CurrentNoteId > 0) @*    Note display mode *@
 {
-    <NotePanel NoteId="@CurrentNoteId" ShowChild="false" IsRootNote="true" MyNoteIndex="@this"></NotePanel>
+    <NotePanel @ref="@MyNotePanel" NoteId="@CurrentNoteId" ShowChild="false" IsRootNote="true" MyNoteIndex="@this"></NotePanel>
 }
 else                    @*    Index mode        *@
 {
