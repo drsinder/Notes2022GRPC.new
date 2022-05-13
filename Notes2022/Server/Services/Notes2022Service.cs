@@ -1595,9 +1595,6 @@ namespace Notes2022.Server.Services
                 List<Tags> x = tags.Where(p => p.NoteHeaderId == item.Id).ToList();
                 item.Tags = Tags.GetGTagsList(x);
             }
-
-            //stuff.Tags = Tags.GetGTagsList(tags);
-
             return stuff;
         }
 

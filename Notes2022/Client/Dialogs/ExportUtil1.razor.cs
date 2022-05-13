@@ -119,7 +119,7 @@ namespace Notes2022.Client.Dialogs
                 message = "Emailing ... ";
             }
 
-            MemoryStream ms = await DoExport();
+            MemoryStream ms = await DoExportFast();
 
             if (model.isDirectOutput)
             {
@@ -147,11 +147,178 @@ namespace Notes2022.Client.Dialogs
             await ModalInstance.CancelAsync();
         }
 
+//        /// <summary>
+//        /// Does the export.
+//        /// </summary>
+//        /// <returns>MemoryStream.</returns>
+//        private async Task<MemoryStream> DoExport()
+//        {
+//            bool isHtml = model.isHtml;
+//            bool isCollapsible = model.isCollapsible;
+
+//            if (model.myMenu is not null)
+//            {
+//                model.myMenu.IsPrinting = true;
+//                model.myMenu.Replot();
+//            }
+
+//            GNotefile nf = model.NoteFile;
+//            int nfid = nf.Id;
+
+//            MemoryStream ms = new();
+//            StreamWriter sw = new(ms);
+//            StringBuilder sb = new();
+
+//            List<GTags> tags = new(); //await Http.GetFromJsonAsync<List<Tags>>("api/Tags/" + nfid);
+
+//            if (isHtml)
+//            {
+//                // Start the document
+//                sb.AppendLine("<!DOCTYPE html>");
+//                sb.AppendLine("<html>");
+//                sb.AppendLine("<meta charset=\"utf-8\" />");
+//                sb.AppendLine("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+//                sb.AppendLine("<title>" + nf.NoteFileTitle + "</title>");
+
+//                sb.AppendLine("<link rel = \"stylesheet\" href = \"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">");
+//                sb.AppendLine("<link href=\"https://www.drsinder.com/NotesStuff/Notes2022/NotesExport.css\" rel=\"stylesheet\" />");
+//                sb.AppendLine("<link href=\"https://www.drsinder.com/NotesStuff/Notes2022/prism.css\" rel=\"stylesheet\" />");
+
+
+//                sb.AppendLine("<script src = \"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\" ></script >");
+//                sb.AppendLine("<script src = \"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" ></script >");
+//                sb.AppendLine("<script src = \"https://www.drsinder.com/NotesStuff/Notes2022/prism.min.js\" ></script >");
+
+//                sb.AppendLine("</head>");
+//                sb.AppendLine("<body><div>");
+//                await sw.WriteAsync(sb.ToString());
+
+//                // ready to start  writing content of file
+//                sb = new StringBuilder();
+//            }
+//            if (isHtml)
+//                sb.Append("<h2>");
+
+//            // File Header
+//            sb.Append("2022 NoteFile " + nf.NoteFileName + " - " + nf.NoteFileTitle);
+//            sb.Append(" - Created " + DateTime.Now.ToUniversalTime().ToLongDateString() + " " + DateTime.Now.ToUniversalTime().ToShortTimeString());
+//            if (isHtml)
+//            {
+//                sb.Append("</h2>");
+//                //sb.Append("<h4>");
+//                //sb.Append("<a href=\"");
+//                //sb.Append(/*ProdUri + */"/NoteDisplay/Create/" + nf.Id +
+//                //          "\" target=\"_blank\">New Base Note</a>");
+//                //sb.Append("</h4>");
+//            }
+
+//            await sw.WriteLineAsync(sb.ToString());
+//            await sw.WriteLineAsync();
+
+//            // get ordered list of basenoteheaders to start process
+//            GNoteHeaderList? bnhl = null;
+//            //string req;
+//            int NoteOrd = 0;
+//            if (model.NoteOrdinal == 0)
+//            {
+//                //req = "" + nfid + "." + model.ArchiveNumber + ".0.0";
+//            }
+//            else
+//            {
+
+//                //req = "" + nfid + "." + model.ArchiveNumber + "." + model.NoteOrdinal + ".0";
+//                NoteOrd = model.NoteOrdinal;
+//            }
+//            bnhl = await Client.GetExportAsync(new ExportRequest() { FileId = nfid, ArcId = model.ArchiveNumber, NoteOrdinal = NoteOrd, ResponseOrdinal = 0 }, myState.AuthHeader);
+
+//            // loop over each base note in order
+//            foreach (GNoteHeader bnh in bnhl.List)
+//            {
+//                if (bnh.IsDeleted || bnh.Version > 0)
+//                    continue;
+
+//                if (marked && !model.Marks.Where(p => p.NoteOrdinal == bnh.NoteOrdinal).Any())
+//                    continue;
+
+//                // get content for base note
+//                GNoteContent? nc = null;
+//                //req = bnh.Id.ToString();
+//                nc = await Client.GetExport2Async(new NoteId() { Id = bnh.Id }, myState.AuthHeader);
+//                // format it and write it
+//                await WriteNote(sw, bnh, bnh, nc, isHtml, false, tags);
+
+//                await sw.WriteLineAsync();
+
+//                // extra stuff for collapsable responses
+
+//                if (isCollapsible && isHtml && bnh.ResponseCount > 0)
+//                {
+//                    await sw.WriteLineAsync("<div class=\"container\"><div class=\"panel-group\">" +
+//                        "<div class=\"panel panel-default\"><div class=\"panel-heading\"><div class=\"panel-title\"><a data-toggle=\"collapse\" href=\"#collapse" +
+//                        bnh.NoteOrdinal + "\"><h5>Toggle " + bnh.ResponseCount + " Response" + (bnh.ResponseCount > 1 ? "s" : "") + "</h5></a></div></div><div id = \"collapse" + bnh.NoteOrdinal +
+//                        "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">");
+//                }
+
+//                for (int rnum = 1; rnum <= bnh.ResponseCount; rnum++)
+//                {
+//#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+//                    GNoteHeader nh = null;
+//                    GNoteContent ncr = null;
+//#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
+//                    //req = "" + nfid + "." + model.ArchiveNumber + "." + bnh.NoteOrdinal + "." + rnum;
+//                    GNoteHeaderList zz1 = await Client.GetExportAsync(new ExportRequest()
+//                    { FileId = nfid, ArcId = model.ArchiveNumber, NoteOrdinal = bnh.NoteOrdinal, ResponseOrdinal = rnum }, myState.AuthHeader);
+
+
+//                    nh = zz1.List[0];
+
+//                    if (!nh.IsDeleted && nh.Version == 0)
+//                    {
+
+//                        //req = nh.Id.ToString();
+
+//                        ncr = await Client.GetExport2Async(new NoteId() { Id = nh.Id }, myState.AuthHeader);
+
+//                        await WriteNote(sw, bnh, nh, ncr, isHtml, true, tags);
+//                    }
+//                }
+
+//                // extra stuff to terminate collapsable responses
+//                if (isCollapsible && isHtml && bnh.ResponseCount > 0)
+//                {
+//                    await sw.WriteLineAsync("</div></div></div></div></div> ");
+//                }
+
+//                if (model.myMenu is not null)
+//                    model.myMenu.myGauge.SetPointerValue(0, 0, bnh.NoteOrdinal);
+//            }
+
+//            if (isHtml)  // end the html
+//            {
+//                //sb.AppendLine("<script src = \"https://www.drsinder.com/Notes2021/js/prism.min.js\" ></script >");
+
+//                await sw.WriteLineAsync("</div></body></html>");
+//            }
+
+//            // make sure all output is written to stream and rewind it
+//            await sw.FlushAsync();
+//            ms.Seek(0, SeekOrigin.Begin);
+//            // send stream to caller
+//            if (model.myMenu is not null)
+//            {
+//                model.myMenu.IsPrinting = false;
+//                model.myMenu.Replot();
+//            }
+
+//            return ms;
+//        }
+
         /// <summary>
         /// Does the export.
         /// </summary>
         /// <returns>MemoryStream.</returns>
-        private async Task<MemoryStream> DoExport()
+        private async Task<MemoryStream> DoExportFast()
         {
             bool isHtml = model.isHtml;
             bool isCollapsible = model.isCollapsible;
@@ -216,7 +383,7 @@ namespace Notes2022.Client.Dialogs
             await sw.WriteLineAsync();
 
             // get ordered list of basenoteheaders to start process
-            GNoteHeaderList? bnhl = null;
+            //GNoteHeaderList? bnhl = null;
             //string req;
             int NoteOrd = 0;
             if (model.NoteOrdinal == 0)
@@ -229,10 +396,18 @@ namespace Notes2022.Client.Dialogs
                 //req = "" + nfid + "." + model.ArchiveNumber + "." + model.NoteOrdinal + ".0";
                 NoteOrd = model.NoteOrdinal;
             }
-            bnhl = await Client.GetExportAsync(new ExportRequest() { FileId = nfid, ArcId = model.ArchiveNumber, NoteOrdinal = NoteOrd, ResponseOrdinal = 0 }, myState.AuthHeader);
+
+            JsonExport stuff;
+            stuff = await Client.GetExportJsonAsync(new ExportRequest() { FileId = nfid, ArcId = model.ArchiveNumber }, myState.AuthHeader);
+
+            List<GNoteHeader> allHeaders = stuff.NoteHeaders.List.ToList();
+
+            List<GNoteHeader> baseNotes = allHeaders.Where(p => p.ResponseOrdinal == 0).ToList();
+
+            //bnhl = await Client.GetExportAsync(new ExportRequest() { FileId = nfid, ArcId = model.ArchiveNumber, NoteOrdinal = NoteOrd, ResponseOrdinal = 0 }, myState.AuthHeader);
 
             // loop over each base note in order
-            foreach (GNoteHeader bnh in bnhl.List)
+            foreach (GNoteHeader bnh in baseNotes)
             {
                 if (bnh.IsDeleted || bnh.Version > 0)
                     continue;
@@ -243,7 +418,7 @@ namespace Notes2022.Client.Dialogs
                 // get content for base note
                 GNoteContent? nc = null;
                 //req = bnh.Id.ToString();
-                nc = await Client.GetExport2Async(new NoteId() { Id = bnh.Id }, myState.AuthHeader);
+                nc = bnh.Content;
                 // format it and write it
                 await WriteNote(sw, bnh, bnh, nc, isHtml, false, tags);
 
@@ -267,18 +442,20 @@ namespace Notes2022.Client.Dialogs
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
                     //req = "" + nfid + "." + model.ArchiveNumber + "." + bnh.NoteOrdinal + "." + rnum;
-                    GNoteHeaderList zz1 = await Client.GetExportAsync(new ExportRequest()
-                    { FileId = nfid, ArcId = model.ArchiveNumber, NoteOrdinal = bnh.NoteOrdinal, ResponseOrdinal = rnum }, myState.AuthHeader);
+                    //GNoteHeaderList zz1 = await Client.GetExportAsync(new ExportRequest()
+                    //{ FileId = nfid, ArcId = model.ArchiveNumber, NoteOrdinal = bnh.NoteOrdinal, ResponseOrdinal = rnum }, myState.AuthHeader);
+
+                    List<GNoteHeader> zz1 = allHeaders.Where(p => p.NoteOrdinal == bnh.NoteOrdinal && p.ResponseOrdinal != 0).ToList();
 
 
-                    nh = zz1.List[0];
+                    nh = zz1[rnum - 1];
 
                     if (!nh.IsDeleted && nh.Version == 0)
                     {
 
                         //req = nh.Id.ToString();
 
-                        ncr = await Client.GetExport2Async(new NoteId() { Id = nh.Id }, myState.AuthHeader);
+                        ncr = nh.Content;
 
                         await WriteNote(sw, bnh, nh, ncr, isHtml, true, tags);
                     }
@@ -313,6 +490,7 @@ namespace Notes2022.Client.Dialogs
 
             return ms;
         }
+
 
 
         /// <summary>
