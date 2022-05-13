@@ -80,10 +80,12 @@ namespace Notes2022.Client.Dialogs
         private async Task<MemoryStream> DoExport()
         {
             StringContent stringContent;
+            JsonExport wrapper = new JsonExport();
 
-            GNoteHeaderList stuff;
-            stuff = await Client.GetNoteHeadersAsync(model, myState.AuthHeader);
-            stringContent = new StringContent(JsonConvert.SerializeObject(stuff, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8, "application/json");
+            wrapper.NoteFile = await Client.GetNoteFileAsync(new NoteIndexRequest() { NoteFileId = model.NoteFileId }, myState.AuthHeader);
+            wrapper.NoteHeaders = await Client.GetNoteHeadersAsync(model, myState.AuthHeader);
+
+            stringContent = new StringContent(JsonConvert.SerializeObject(wrapper, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8, "application/json");
 
             Stream ms0 = await stringContent.ReadAsStreamAsync();
             MemoryStream ms = new MemoryStream();

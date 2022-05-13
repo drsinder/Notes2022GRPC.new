@@ -639,7 +639,7 @@ namespace Notes2022.Server.Services
             bool isAdmin;
             bool isUser;
 
-            int arcId = 0;
+            int arcId = request.ArcId;
 
             user = context.GetHttpContext().User;
             try
@@ -1739,6 +1739,21 @@ namespace Notes2022.Server.Services
                     item.Tags = Tags.GetGTagsList(x);
                 }
             }
+
+            return returnval;
+        }
+
+        [Authorize]
+        public override async Task<NoteCount> GetNoteCount(NoteIndexRequest request, ServerCallContext context)
+        {
+            ApplicationUser appUser = await GetAppUser(context);
+            NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, request.ArcId);
+            if (!na.ReadAccess)
+                return new();
+
+            NoteCount returnval = new NoteCount();
+            returnval.Count = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId && p.ResponseOrdinal == 0
+                   && !p.IsDeleted && p.Version == 0).CountAsync();
 
             return returnval;
         }

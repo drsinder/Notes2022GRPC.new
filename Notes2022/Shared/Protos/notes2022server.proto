@@ -77,6 +77,7 @@ service Notes2022Server {
 	rpc GetExportJson(ExportRequest) returns (JsonExport);				// returns data for a json export see GetNoteHeaders for a more flexible way to get filtered data
 	rpc GetNoteHeaders(NoteHeadersRequest) returns (GNoteHeaderList);	// request all or some slice of a note file - headers w or wo content and tags
 	rpc GetHomePageMessage(NoRequest) returns (AString);				// Gets the current homepage message if any
+	rpc GetNoteCount(NoteIndexRequest) returns (NoteCount);				// Gets the number of base notes.
 
 // These are crafted for the specific user interface I've provided and may return more or less than you want.
 // The basics above will permit more targeted access to data but may require more round trips.
@@ -388,9 +389,10 @@ message NoteDisplayIndexModel
 	GTagsList tags = 13;			// all tags for file
 }
 
-// used to requst a NoteDisplayIndexModel
+// used to requst a NoteDisplayIndexModel or other items related to a specific file/archive
 message NoteIndexRequest {
 	int32 noteFileId = 1;
+	int32 arcId = 2;
 }
 
 // used to display a note
@@ -526,6 +528,6 @@ message NoteHeadersRequest {
 	string fileName = 8;		// used only for export of a note string
 }
 
-//message NoteCount {
-//	int32 Count = 1;
-//}
+message NoteCount {
+	int32 Count = 1;
+}
