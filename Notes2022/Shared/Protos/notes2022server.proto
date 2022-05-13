@@ -211,7 +211,7 @@ message GNotefile {
 
 // list of note files
 message GNotefileList {
-	repeated GNotefile notefiles = 1;
+	repeated GNotefile list = 1;
 }
 
 // header for a note

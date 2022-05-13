@@ -177,7 +177,7 @@ namespace Notes2022.Server.Entities
         public static List<NoteFile> GetNoteFiles(GNotefileList other)
         {
             List<NoteFile> list = new List<NoteFile>();
-            foreach (GNotefile notefile in other.Notefiles)
+            foreach (GNotefile notefile in other.List)
             {
                 list.Add(GetNoteFile(notefile));
             }
@@ -194,7 +194,7 @@ namespace Notes2022.Server.Entities
             GNotefileList list = new GNotefileList();
             foreach (NoteFile notefile in other)
             {
-                list.Notefiles.Add(notefile.GetGNotefile());
+                list.List.Add(notefile.GetGNotefile());
             }
             return list;
         }

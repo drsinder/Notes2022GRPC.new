@@ -42,7 +42,7 @@ else
         <p>@Note.NoteSubject</p>
 
         <p>Select file name to copy to:</p>
-        <SfDropDownList TItem="GNotefile" TValue="int" @bind-Value="SelectedId" Placeholder="Select a file" DataSource="Files.Notefiles" >
+        <SfDropDownList TItem="GNotefile" TValue="int" @bind-Value="SelectedId" Placeholder="Select a file" DataSource="Files.List" >
             <DropDownListFieldSettings Text="NoteFileName" Value="Id"></DropDownListFieldSettings>
         </SfDropDownList>
 

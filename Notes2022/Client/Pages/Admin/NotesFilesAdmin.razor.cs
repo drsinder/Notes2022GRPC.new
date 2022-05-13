@@ -107,7 +107,7 @@ namespace Notes2022.Client.Pages.Admin
 
             todo = new List<string> { "announce", "pbnotes", "noteshelp", "pad", "homepagemessages" };
 
-            foreach (GNotefile file in model.NoteFiles.Notefiles)
+            foreach (GNotefile file in model.NoteFiles.List)
             {
                 if (file.NoteFileName == "announce")
                     todo.Remove("announce");
@@ -213,7 +213,7 @@ namespace Notes2022.Client.Pages.Admin
         async void DeleteNoteFile(int Id)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-            GNotefile file = files.Notefiles.ToList().Find(x => x.Id == Id);
+            GNotefile file = files.List.ToList().Find(x => x.Id == Id);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             StateHasChanged();
@@ -240,7 +240,7 @@ namespace Notes2022.Client.Pages.Admin
         async void NoteFileDetails(int Id)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-            GNotefile file = files.Notefiles.ToList().Find(x => x.Id == Id);
+            GNotefile file = files.List.ToList().Find(x => x.Id == Id);
 
             var parameters = new ModalParameters();
             parameters.Add("FileId", Id);
@@ -263,7 +263,7 @@ namespace Notes2022.Client.Pages.Admin
         async void EditNoteFile(int Id)
         {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-            GNotefile file = files.Notefiles.ToList().Find(x => x.Id == Id);
+            GNotefile file = files.List.ToList().Find(x => x.Id == Id);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             var parameters = new ModalParameters();
@@ -300,7 +300,7 @@ namespace Notes2022.Client.Pages.Admin
             else
             {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-                GNotefile file = files.Notefiles.ToList().Find(x => x.Id == Id);
+                GNotefile file = files.List.ToList().Find(x => x.Id == Id);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
                 string filename = (string)result.Data;

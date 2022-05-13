@@ -63,7 +63,7 @@ namespace Notes2022.Client.Dialogs
         protected async override Task OnInitializedAsync()
         {
             Files = await Client.GetNoteFilesOrderedByNameAsync(new NoRequest(), myState.AuthHeader);
-            Files.Notefiles.Insert(0, new GNotefile { Id = 0, NoteFileName = "Select a file" });
+            Files.List.Insert(0, new GNotefile { Id = 0, NoteFileName = "Select a file" });
         }
 
         /// <summary>

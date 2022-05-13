@@ -484,7 +484,7 @@ namespace Notes2022.Server.Services
 
             GAppUser user = homepageModel.UserData;
             homepageModel.NoteAccesses = new GNoteAccessList();
-            foreach (GNotefile nf in homepageModel.NoteFiles.Notefiles)
+            foreach (GNotefile nf in homepageModel.NoteFiles.List)
             {
                 NoteAccess na = await AccessManager.GetAccess(_db, user.Id, nf.Id, 0);
                 homepageModel.NoteAccesses.List.Add(na.GetGNoteAccess());

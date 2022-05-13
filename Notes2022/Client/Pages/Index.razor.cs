@@ -166,23 +166,23 @@ namespace Notes2022.Client.Pages
 
                 GNotefileList fileList1 = hpModel.NoteFiles;
                 GNotefileList nameList1 = hpModel.NoteFiles;
-                fileList = fileList1.Notefiles.ToList().OrderBy(p => p.NoteFileName).ToList();
+                fileList = fileList1.List.ToList().OrderBy(p => p.NoteFileName).ToList();
                 nameList = nameList1;
 
-                impfileList.Notefiles.Clear();
-                histfileList.Notefiles.Clear();
+                impfileList.List.Clear();
+                histfileList.List.Clear();
 
-                for (int i = 0; i < fileList1.Notefiles.Count; i++)
+                for (int i = 0; i < fileList1.List.Count; i++)
                 {
-                    GNotefile work = new GNotefile { Id = fileList1.Notefiles[i].Id, NoteFileName = fileList1.Notefiles[i].NoteFileName, NoteFileTitle = fileList1.Notefiles[i].NoteFileTitle };
+                    GNotefile work = new GNotefile { Id = fileList1.List[i].Id, NoteFileName = fileList1.List[i].NoteFileName, NoteFileTitle = fileList1.List[i].NoteFileTitle };
 
                     // handle special important and history files
                     string fname = work.NoteFileName;
                     if (fname == "Opbnotes" || fname == "Gnotes")
-                        histfileList.Notefiles.Add(work);
+                        histfileList.List.Add(work);
 
                     if (fname == "announce" || fname == "pbnotes" || fname == "noteshelp")
-                        impfileList.Notefiles.Add(work);
+                        impfileList.List.Add(work);
                 }
             }
         }

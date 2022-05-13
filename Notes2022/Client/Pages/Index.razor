@@ -85,7 +85,7 @@
                             <p class="center">
                                 Or select a title<br />
                                 <div class="btn btn-title form-control short-input">
-                                <SfDropDownList TValue="int" TItem="GNotefile" Placeholder="Select a Title" DataSource="@nameList.Notefiles" >
+                                <SfDropDownList TValue="int" TItem="GNotefile" Placeholder="Select a Title" DataSource="@nameList.List" >
                                     <DropDownListEvents TItem="GNotefile" TValue="int" ValueChange="@ValueChangeHandler" ></DropDownListEvents>
                                     <DropDownListFieldSettings Value="Id" Text="NoteFileTitle"></DropDownListFieldSettings>
                                 </SfDropDownList>
@@ -105,9 +105,9 @@
                 <div class="col-md-4">
                     <h4>Important Files</h4>
                     <ul>
-                        @for (int i = 0; i < impfileList.Notefiles.Count; i++)
+                        @for (int i = 0; i < impfileList.List.Count; i++)
                         {
-                             item = impfileList.Notefiles[i];
+                             item = impfileList.List[i];
                             <li>
                                <FileButton NoteFile="@item"></FileButton>
                             </li>
@@ -117,10 +117,10 @@
                 <div class="col-md-4">
                     <h4>History Files</h4>
                     <ul>
-                        @for (int i = 0; i < histfileList.Notefiles.Count; i++)
+                        @for (int i = 0; i < histfileList.List.Count; i++)
                         {
-                             item = histfileList.Notefiles[i];
-                            <li>
+                             item = histfileList.List[i];
+                            <li>f
                                <FileButton NoteFile="@item"></FileButton>
                             </li>
                         }

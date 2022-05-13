@@ -78,7 +78,7 @@ namespace Notes2022.Client.Pages
             trackers = (await Client.GetSequencerAsync(new NoRequest(), myState.AuthHeader)).List.ToList();
             HomePageModel model = await Client.GetHomePageModelAsync(new NoRequest(), myState.AuthHeader);
 
-            stuff = model.NoteFiles.Notefiles.OrderBy(p => p.NoteFileName).ToList();
+            stuff = model.NoteFiles.List.OrderBy(p => p.NoteFileName).ToList();
             await Shuffle();
         }
 
