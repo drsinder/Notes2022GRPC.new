@@ -631,7 +631,7 @@ namespace Notes2022.Server.Services
         /// <param name="context">The context.</param>
         /// <returns>NoteDisplayIndexModel.</returns>
         [Authorize]
-        public override async Task<NoteDisplayIndexModel> GetNoteFileIndexData(NoteIndexRequest request, ServerCallContext context)
+        public override async Task<NoteDisplayIndexModel> GetNoteFileIndexData(NoteFileRequest request, ServerCallContext context)
         {
             ClaimsPrincipal user;
             ApplicationUser appUser;
@@ -1047,7 +1047,7 @@ namespace Notes2022.Server.Services
         /// <param name="context">The context.</param>
         /// <returns>GNotefile.</returns>
         [Authorize]
-        public override async Task<GNotefile> GetNoteFile(NoteIndexRequest request, ServerCallContext context)
+        public override async Task<GNotefile> GetNoteFile(NoteFileRequest request, ServerCallContext context)
         {
             ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, 0);
@@ -1744,7 +1744,7 @@ namespace Notes2022.Server.Services
         }
 
         [Authorize]
-        public override async Task<NoteCount> GetNoteCount(NoteIndexRequest request, ServerCallContext context)
+        public override async Task<NoteCount> GetNoteCount(NoteFileRequest request, ServerCallContext context)
         {
             ApplicationUser appUser = await GetAppUser(context);
             NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, request.ArcId);

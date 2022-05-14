@@ -82,7 +82,7 @@ namespace Notes2022.Client.Dialogs
             StringContent stringContent;
             JsonExport wrapper = new JsonExport();
 
-            wrapper.NoteFile = await Client.GetNoteFileAsync(new NoteIndexRequest() { NoteFileId = model.NoteFileId }, myState.AuthHeader);
+            wrapper.NoteFile = await Client.GetNoteFileAsync(new NoteFileRequest() { NoteFileId = model.NoteFileId }, myState.AuthHeader);
             wrapper.NoteHeaders = await Client.GetNoteHeadersAsync(model, myState.AuthHeader);
 
             stringContent = new StringContent(JsonConvert.SerializeObject(wrapper, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8, "application/json");

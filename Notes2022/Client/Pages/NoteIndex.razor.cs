@@ -212,7 +212,7 @@ namespace Notes2022.Client.Pages
                 }
 
                 // Get the notefile data
-                Model = await Client.GetNoteFileIndexDataAsync(new NoteIndexRequest() { NoteFileId = NotesfileId }, myState.AuthHeader);
+                Model = await Client.GetNoteFileIndexDataAsync(new NoteFileRequest() { NoteFileId = NotesfileId }, myState.AuthHeader);
 
                 if (!string.IsNullOrEmpty(Model.Message))
                     return;

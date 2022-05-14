@@ -65,7 +65,7 @@ service Notes2022Server {
 	rpc DeleteSequencer(SCheckModel) returns (NoRequest);				// deletes a sequencer item
 	rpc UpdateSequencer(GSequencer) returns (NoRequest);				// updates a sequencer item - while sequencing
 	rpc UpdateSequencerOrdinal(GSequencer) returns (NoRequest);			// updates a sequencer item ordinal
-	rpc GetNoteFile(NoteIndexRequest) returns (GNotefile);				// get the notefile for the note index
+	rpc GetNoteFile(NoteFileRequest) returns (GNotefile);				// get the notefile for the note index
 	rpc CreateNewNote(TextViewModel) returns (GNoteHeader);				// get a note header
 	rpc UpdateNote(TextViewModel) returns (GNoteHeader);				// updates a note header
 	rpc SendEmailAuth(GEmail) returns (NoRequest);						// authenticated
@@ -77,14 +77,14 @@ service Notes2022Server {
 	rpc GetExportJson(ExportRequest) returns (JsonExport);				// returns data for a json export see GetNoteHeaders for a more flexible way to get filtered data
 	rpc GetNoteHeaders(NoteHeadersRequest) returns (GNoteHeaderList);	// request all or some slice of a note file - headers w or wo content and tags
 	rpc GetHomePageMessage(NoRequest) returns (AString);				// Gets the current homepage message if any
-	rpc GetNoteCount(NoteIndexRequest) returns (NoteCount);				// Gets the number of base notes.
+	rpc GetNoteCount(NoteFileRequest) returns (NoteCount);				// Gets the number of base notes.
 
 // These are crafted for the specific user interface I've provided and may return more or less than you want.
 // The basics above will permit more targeted access to data but may require more round trips.
 
 	rpc GetHomePageModel(NoRequest) returns (HomePageModel);			// get data needed for home page
 	rpc GetAdminPageModel(NoRequest) returns (HomePageModel);			// a bit more data than home page
-	rpc GetNoteFileIndexData(NoteIndexRequest) returns (NoteDisplayIndexModel);		// get data for the index of a notefile
+	rpc GetNoteFileIndexData(NoteFileRequest) returns (NoteDisplayIndexModel);		// get data for the index of a notefile
 	rpc GetAbout(NoRequest) returns (AboutModel);						// gets data for the about page
 //	rpc SendEmail(GEmail) returns (NoRequest);							// unauthenticated - slower - use it too much and it really hurts you!
 //	rpc GetExport(ExportRequest) returns (GNoteHeaderList);				// gets a note header list during an Export
@@ -299,7 +299,7 @@ message GTagsList {
 message GSequencer {
 	string userId = 1;							// user Id / subject
 	int32 noteFileId = 2;						// note file Id
-	int32 ordinal = 3;							// oder in which to use
+	int32 ordinal = 3;							// order in which to use
 	google.protobuf.Timestamp lastTime = 4;		// when did this file last get sequenced
 	google.protobuf.Timestamp startTime = 5;	// when did this file get started sequencing on this run
 	bool active = 6;							// is it currently the active sequencer item for user
@@ -390,7 +390,7 @@ message NoteDisplayIndexModel
 }
 
 // used to requst a NoteDisplayIndexModel or other items related to a specific file/archive
-message NoteIndexRequest {
+message NoteFileRequest {
 	int32 noteFileId = 1;
 	int32 arcId = 2;
 }

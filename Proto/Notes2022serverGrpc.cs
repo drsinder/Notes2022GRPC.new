@@ -34,7 +34,7 @@ using grpc = global::Grpc.Core;
 
 namespace Notes2022.Proto {
   /// <summary>
-  /// Account Services
+  /// service defintion
   /// </summary>
   public static partial class Notes2022Server
   {
@@ -86,21 +86,17 @@ namespace Notes2022.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.ConfirmEmailRequest> __Marshaller_notes2022server_ConfirmEmailRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.ConfirmEmailRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.GAppUser> __Marshaller_notes2022server_GAppUser = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GAppUser.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.GAppUserList> __Marshaller_notes2022server_GAppUserList = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GAppUserList.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.AppUserRequest> __Marshaller_notes2022server_AppUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.AppUserRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.EditUserViewModel> __Marshaller_notes2022server_EditUserViewModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.EditUserViewModel.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.GNotefile> __Marshaller_notes2022server_GNotefile = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GNotefile.Parser));
+    static readonly grpc::Marshaller<global::Notes2022.Proto.NoteId> __Marshaller_notes2022server_NoteId = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.NoteId.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.HomePageModel> __Marshaller_notes2022server_HomePageModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.HomePageModel.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.ImportRequest> __Marshaller_notes2022server_ImportRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.ImportRequest.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.NoteIndexRequest> __Marshaller_notes2022server_NoteIndexRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.NoteIndexRequest.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.NoteDisplayIndexModel> __Marshaller_notes2022server_NoteDisplayIndexModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.NoteDisplayIndexModel.Parser));
+    static readonly grpc::Marshaller<global::Notes2022.Proto.GNoteHeader> __Marshaller_notes2022server_GNoteHeader = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GNoteHeader.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.DisplayModelRequest> __Marshaller_notes2022server_DisplayModelRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.DisplayModelRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -112,9 +108,11 @@ namespace Notes2022.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.GNoteAccessList> __Marshaller_notes2022server_GNoteAccessList = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GNoteAccessList.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.GNoteAccess> __Marshaller_notes2022server_GNoteAccess = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GNoteAccess.Parser));
+    static readonly grpc::Marshaller<global::Notes2022.Proto.GNotefile> __Marshaller_notes2022server_GNotefile = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GNotefile.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.GAppUser> __Marshaller_notes2022server_GAppUser = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GAppUser.Parser));
+    static readonly grpc::Marshaller<global::Notes2022.Proto.ImportRequest> __Marshaller_notes2022server_ImportRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.ImportRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.GNoteAccess> __Marshaller_notes2022server_GNoteAccess = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GNoteAccess.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.GetVersionsRequest> __Marshaller_notes2022server_GetVersionsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GetVersionsRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -126,17 +124,11 @@ namespace Notes2022.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.GSequencer> __Marshaller_notes2022server_GSequencer = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GSequencer.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.NoteIndexRequest> __Marshaller_notes2022server_NoteIndexRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.NoteIndexRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.TextViewModel> __Marshaller_notes2022server_TextViewModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.TextViewModel.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.GNoteHeader> __Marshaller_notes2022server_GNoteHeader = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GNoteHeader.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.NoteId> __Marshaller_notes2022server_NoteId = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.NoteId.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.AboutModel> __Marshaller_notes2022server_AboutModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.AboutModel.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.GEmail> __Marshaller_notes2022server_GEmail = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GEmail.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Notes2022.Proto.ExportRequest> __Marshaller_notes2022server_ExportRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.ExportRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.GNoteContent> __Marshaller_notes2022server_GNoteContent = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.GNoteContent.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -146,9 +138,21 @@ namespace Notes2022.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.CopyModel> __Marshaller_notes2022server_CopyModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.CopyModel.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.ExportRequest> __Marshaller_notes2022server_ExportRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.ExportRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.JsonExport> __Marshaller_notes2022server_JsonExport = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.JsonExport.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.NoteHeadersRequest> __Marshaller_notes2022server_NoteHeadersRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.NoteHeadersRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Notes2022.Proto.AString> __Marshaller_notes2022server_AString = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.AString.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.NoteCount> __Marshaller_notes2022server_NoteCount = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.NoteCount.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.HomePageModel> __Marshaller_notes2022server_HomePageModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.HomePageModel.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.NoteDisplayIndexModel> __Marshaller_notes2022server_NoteDisplayIndexModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.NoteDisplayIndexModel.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Notes2022.Proto.AboutModel> __Marshaller_notes2022server_AboutModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Notes2022.Proto.AboutModel.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Notes2022.Proto.RegisterRequest, global::Notes2022.Proto.AuthReply> __Method_Register = new grpc::Method<global::Notes2022.Proto.RegisterRequest, global::Notes2022.Proto.AuthReply>(
@@ -183,6 +187,14 @@ namespace Notes2022.Proto {
         __Marshaller_notes2022server_AuthReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUser> __Method_GetUserData = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUser>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetUserData",
+        __Marshaller_notes2022server_NoRequest,
+        __Marshaller_notes2022server_GAppUser);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUserList> __Method_GetUserList = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUserList>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -199,68 +211,12 @@ namespace Notes2022.Proto {
         __Marshaller_notes2022server_EditUserViewModel);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.EditUserViewModel, global::Notes2022.Proto.NoRequest> __Method_UpdateUserRoles = new grpc::Method<global::Notes2022.Proto.EditUserViewModel, global::Notes2022.Proto.NoRequest>(
+    static readonly grpc::Method<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteHeader> __Method_GetHeaderForNoteId = new grpc::Method<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteHeader>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "UpdateUserRoles",
-        __Marshaller_notes2022server_EditUserViewModel,
-        __Marshaller_notes2022server_NoRequest);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile> __Method_CreateNoteFile = new grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "CreateNoteFile",
-        __Marshaller_notes2022server_GNotefile,
-        __Marshaller_notes2022server_GNotefile);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel> __Method_GetHomePageModel = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetHomePageModel",
-        __Marshaller_notes2022server_NoRequest,
-        __Marshaller_notes2022server_HomePageModel);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel> __Method_GetAdminPageModel = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetAdminPageModel",
-        __Marshaller_notes2022server_NoRequest,
-        __Marshaller_notes2022server_HomePageModel);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile> __Method_UpdateNoteFile = new grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "UpdateNoteFile",
-        __Marshaller_notes2022server_GNotefile,
-        __Marshaller_notes2022server_GNotefile);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.NoRequest> __Method_DeleteNoteFile = new grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.NoRequest>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "DeleteNoteFile",
-        __Marshaller_notes2022server_GNotefile,
-        __Marshaller_notes2022server_NoRequest);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.ImportRequest, global::Notes2022.Proto.NoRequest> __Method_Import = new grpc::Method<global::Notes2022.Proto.ImportRequest, global::Notes2022.Proto.NoRequest>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "Import",
-        __Marshaller_notes2022server_ImportRequest,
-        __Marshaller_notes2022server_NoRequest);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteDisplayIndexModel> __Method_GetNoteFileIndexData = new grpc::Method<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteDisplayIndexModel>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetNoteFileIndexData",
-        __Marshaller_notes2022server_NoteIndexRequest,
-        __Marshaller_notes2022server_NoteDisplayIndexModel);
+        "GetHeaderForNoteId",
+        __Marshaller_notes2022server_NoteId,
+        __Marshaller_notes2022server_GNoteHeader);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Notes2022.Proto.DisplayModelRequest, global::Notes2022.Proto.DisplayModel> __Method_GetNoteContent = new grpc::Method<global::Notes2022.Proto.DisplayModelRequest, global::Notes2022.Proto.DisplayModel>(
@@ -287,6 +243,46 @@ namespace Notes2022.Proto {
         __Marshaller_notes2022server_GNoteAccessList);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.EditUserViewModel, global::Notes2022.Proto.NoRequest> __Method_UpdateUserRoles = new grpc::Method<global::Notes2022.Proto.EditUserViewModel, global::Notes2022.Proto.NoRequest>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateUserRoles",
+        __Marshaller_notes2022server_EditUserViewModel,
+        __Marshaller_notes2022server_NoRequest);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile> __Method_CreateNoteFile = new grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateNoteFile",
+        __Marshaller_notes2022server_GNotefile,
+        __Marshaller_notes2022server_GNotefile);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile> __Method_UpdateNoteFile = new grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateNoteFile",
+        __Marshaller_notes2022server_GNotefile,
+        __Marshaller_notes2022server_GNotefile);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.NoRequest> __Method_DeleteNoteFile = new grpc::Method<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.NoRequest>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteNoteFile",
+        __Marshaller_notes2022server_GNotefile,
+        __Marshaller_notes2022server_NoRequest);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.ImportRequest, global::Notes2022.Proto.NoRequest> __Method_Import = new grpc::Method<global::Notes2022.Proto.ImportRequest, global::Notes2022.Proto.NoRequest>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Import",
+        __Marshaller_notes2022server_ImportRequest,
+        __Marshaller_notes2022server_NoRequest);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Notes2022.Proto.GNoteAccess, global::Notes2022.Proto.GNoteAccess> __Method_UpdateAccessItem = new grpc::Method<global::Notes2022.Proto.GNoteAccess, global::Notes2022.Proto.GNoteAccess>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -309,14 +305,6 @@ namespace Notes2022.Proto {
         "AddAccessItem",
         __Marshaller_notes2022server_GNoteAccess,
         __Marshaller_notes2022server_GNoteAccess);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUser> __Method_GetUserData = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUser>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetUserData",
-        __Marshaller_notes2022server_NoRequest,
-        __Marshaller_notes2022server_GAppUser);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Notes2022.Proto.GAppUser, global::Notes2022.Proto.GAppUser> __Method_UpdateUserData = new grpc::Method<global::Notes2022.Proto.GAppUser, global::Notes2022.Proto.GAppUser>(
@@ -399,44 +387,12 @@ namespace Notes2022.Proto {
         __Marshaller_notes2022server_GNoteHeader);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteHeader> __Method_GetHeaderForNoteId = new grpc::Method<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteHeader>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetHeaderForNoteId",
-        __Marshaller_notes2022server_NoteId,
-        __Marshaller_notes2022server_GNoteHeader);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AboutModel> __Method_GetAbout = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AboutModel>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetAbout",
-        __Marshaller_notes2022server_NoRequest,
-        __Marshaller_notes2022server_AboutModel);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.GEmail, global::Notes2022.Proto.NoRequest> __Method_SendEmail = new grpc::Method<global::Notes2022.Proto.GEmail, global::Notes2022.Proto.NoRequest>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "SendEmail",
-        __Marshaller_notes2022server_GEmail,
-        __Marshaller_notes2022server_NoRequest);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Notes2022.Proto.GEmail, global::Notes2022.Proto.NoRequest> __Method_SendEmailAuth = new grpc::Method<global::Notes2022.Proto.GEmail, global::Notes2022.Proto.NoRequest>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SendEmailAuth",
         __Marshaller_notes2022server_GEmail,
         __Marshaller_notes2022server_NoRequest);
-
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Notes2022.Proto.ExportRequest, global::Notes2022.Proto.GNoteHeaderList> __Method_GetExport = new grpc::Method<global::Notes2022.Proto.ExportRequest, global::Notes2022.Proto.GNoteHeaderList>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetExport",
-        __Marshaller_notes2022server_ExportRequest,
-        __Marshaller_notes2022server_GNoteHeaderList);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteContent> __Method_GetExport2 = new grpc::Method<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteContent>(
@@ -485,6 +441,62 @@ namespace Notes2022.Proto {
         "GetExportJson",
         __Marshaller_notes2022server_ExportRequest,
         __Marshaller_notes2022server_JsonExport);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.NoteHeadersRequest, global::Notes2022.Proto.GNoteHeaderList> __Method_GetNoteHeaders = new grpc::Method<global::Notes2022.Proto.NoteHeadersRequest, global::Notes2022.Proto.GNoteHeaderList>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetNoteHeaders",
+        __Marshaller_notes2022server_NoteHeadersRequest,
+        __Marshaller_notes2022server_GNoteHeaderList);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AString> __Method_GetHomePageMessage = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AString>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetHomePageMessage",
+        __Marshaller_notes2022server_NoRequest,
+        __Marshaller_notes2022server_AString);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteCount> __Method_GetNoteCount = new grpc::Method<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteCount>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetNoteCount",
+        __Marshaller_notes2022server_NoteIndexRequest,
+        __Marshaller_notes2022server_NoteCount);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel> __Method_GetHomePageModel = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetHomePageModel",
+        __Marshaller_notes2022server_NoRequest,
+        __Marshaller_notes2022server_HomePageModel);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel> __Method_GetAdminPageModel = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAdminPageModel",
+        __Marshaller_notes2022server_NoRequest,
+        __Marshaller_notes2022server_HomePageModel);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteDisplayIndexModel> __Method_GetNoteFileIndexData = new grpc::Method<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteDisplayIndexModel>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetNoteFileIndexData",
+        __Marshaller_notes2022server_NoteIndexRequest,
+        __Marshaller_notes2022server_NoteDisplayIndexModel);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AboutModel> __Method_GetAbout = new grpc::Method<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AboutModel>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAbout",
+        __Marshaller_notes2022server_NoRequest,
+        __Marshaller_notes2022server_AboutModel);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Notes2022.Proto.AString, global::Notes2022.Proto.AString> __Method_GetTextFile = new grpc::Method<global::Notes2022.Proto.AString, global::Notes2022.Proto.AString>(
@@ -553,6 +565,18 @@ namespace Notes2022.Proto {
       }
 
       /// <summary>
+      /// gets data for the current user
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GAppUser> GetUserData(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// get list of alll app users/logins
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -577,97 +601,13 @@ namespace Notes2022.Proto {
       }
 
       /// <summary>
-      /// updates roles for a user
+      /// gets a note header given its id
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoRequest> UpdateUserRoles(global::Notes2022.Proto.EditUserViewModel request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// create a note file
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNotefile> CreateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// get data needed for home page
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.HomePageModel> GetHomePageModel(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// a bit more data than home page
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.HomePageModel> GetAdminPageModel(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// updates note file data
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNotefile> UpdateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// deletes a note file
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoRequest> DeleteNoteFile(global::Notes2022.Proto.GNotefile request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// runs an import
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoRequest> Import(global::Notes2022.Proto.ImportRequest request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// get data for the index of a notefile
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoteDisplayIndexModel> GetNoteFileIndexData(global::Notes2022.Proto.NoteIndexRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNoteHeader> GetHeaderForNoteId(global::Notes2022.Proto.NoteId request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -709,6 +649,66 @@ namespace Notes2022.Proto {
       }
 
       /// <summary>
+      /// updates roles for a user
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoRequest> UpdateUserRoles(global::Notes2022.Proto.EditUserViewModel request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// create a note file
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNotefile> CreateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// updates note file data
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNotefile> UpdateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// deletes a note file
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoRequest> DeleteNoteFile(global::Notes2022.Proto.GNotefile request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// runs an import
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoRequest> Import(global::Notes2022.Proto.ImportRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// get a single access item
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -740,18 +740,6 @@ namespace Notes2022.Proto {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNoteAccess> AddAccessItem(global::Notes2022.Proto.GNoteAccess request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// gets data for the current user
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GAppUser> GetUserData(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -877,42 +865,6 @@ namespace Notes2022.Proto {
       }
 
       /// <summary>
-      /// gets a note header given its id
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNoteHeader> GetHeaderForNoteId(global::Notes2022.Proto.NoteId request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// gets data for the about page
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.AboutModel> GetAbout(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// unauthenticated - slower - use it too much and it really hurts you!
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoRequest> SendEmail(global::Notes2022.Proto.GEmail request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
       /// authenticated
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -920,18 +872,6 @@ namespace Notes2022.Proto {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoRequest> SendEmailAuth(global::Notes2022.Proto.GEmail request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// gets a note header list during an Export
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNoteHeaderList> GetExport(global::Notes2022.Proto.ExportRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -985,7 +925,7 @@ namespace Notes2022.Proto {
       }
 
       /// <summary>
-      /// deletes a not
+      /// deletes a note
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -997,7 +937,7 @@ namespace Notes2022.Proto {
       }
 
       /// <summary>
-      /// returns data for a json export
+      /// returns data for a json export see GetNoteHeaders for a more flexible way to get filtered data
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1009,7 +949,92 @@ namespace Notes2022.Proto {
       }
 
       /// <summary>
-      /// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
+      /// request all or some slice of a note file - headers w or wo content and tags
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.GNoteHeaderList> GetNoteHeaders(global::Notes2022.Proto.NoteHeadersRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Gets the current homepage message if any
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.AString> GetHomePageMessage(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Gets the number of base notes.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoteCount> GetNoteCount(global::Notes2022.Proto.NoteIndexRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// get data needed for home page
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.HomePageModel> GetHomePageModel(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// a bit more data than home page
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.HomePageModel> GetAdminPageModel(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// get data for the index of a notefile
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.NoteDisplayIndexModel> GetNoteFileIndexData(global::Notes2022.Proto.NoteIndexRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// gets data for the about page
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Notes2022.Proto.AboutModel> GetAbout(global::Notes2022.Proto.NoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///	rpc SendEmail(GEmail) returns (NoRequest);							// unauthenticated - slower - use it too much and it really hurts you!
+      ///	rpc GetExport(ExportRequest) returns (GNoteHeaderList);				// gets a note header list during an Export
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1242,6 +1267,54 @@ namespace Notes2022.Proto {
         return CallInvoker.AsyncUnaryCall(__Method_ConfirmEmail, null, options, request);
       }
       /// <summary>
+      /// gets data for the current user
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.GAppUser GetUserData(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetUserData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// gets data for the current user
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.GAppUser GetUserData(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetUserData, null, options, request);
+      }
+      /// <summary>
+      /// gets data for the current user
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GAppUser> GetUserDataAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetUserDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// gets data for the current user
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GAppUser> GetUserDataAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetUserData, null, options, request);
+      }
+      /// <summary>
       /// get list of alll app users/logins
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -1338,7 +1411,7 @@ namespace Notes2022.Proto {
         return CallInvoker.AsyncUnaryCall(__Method_GetUserRoles, null, options, request);
       }
       /// <summary>
-      /// updates roles for a user
+      /// gets a note header given its id
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1346,23 +1419,23 @@ namespace Notes2022.Proto {
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The response received from the server.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoRequest UpdateUserRoles(global::Notes2022.Proto.EditUserViewModel request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::Notes2022.Proto.GNoteHeader GetHeaderForNoteId(global::Notes2022.Proto.NoteId request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return UpdateUserRoles(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetHeaderForNoteId(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// updates roles for a user
+      /// gets a note header given its id
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The response received from the server.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoRequest UpdateUserRoles(global::Notes2022.Proto.EditUserViewModel request, grpc::CallOptions options)
+      public virtual global::Notes2022.Proto.GNoteHeader GetHeaderForNoteId(global::Notes2022.Proto.NoteId request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_UpdateUserRoles, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_GetHeaderForNoteId, null, options, request);
       }
       /// <summary>
-      /// updates roles for a user
+      /// gets a note header given its id
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1370,356 +1443,20 @@ namespace Notes2022.Proto {
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> UpdateUserRolesAsync(global::Notes2022.Proto.EditUserViewModel request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteHeader> GetHeaderForNoteIdAsync(global::Notes2022.Proto.NoteId request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return UpdateUserRolesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetHeaderForNoteIdAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// updates roles for a user
+      /// gets a note header given its id
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> UpdateUserRolesAsync(global::Notes2022.Proto.EditUserViewModel request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteHeader> GetHeaderForNoteIdAsync(global::Notes2022.Proto.NoteId request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_UpdateUserRoles, null, options, request);
-      }
-      /// <summary>
-      /// create a note file
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GNotefile CreateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return CreateNoteFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// create a note file
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GNotefile CreateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_CreateNoteFile, null, options, request);
-      }
-      /// <summary>
-      /// create a note file
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNotefile> CreateNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return CreateNoteFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// create a note file
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNotefile> CreateNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_CreateNoteFile, null, options, request);
-      }
-      /// <summary>
-      /// get data needed for home page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.HomePageModel GetHomePageModel(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetHomePageModel(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// get data needed for home page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.HomePageModel GetHomePageModel(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetHomePageModel, null, options, request);
-      }
-      /// <summary>
-      /// get data needed for home page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.HomePageModel> GetHomePageModelAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetHomePageModelAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// get data needed for home page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.HomePageModel> GetHomePageModelAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetHomePageModel, null, options, request);
-      }
-      /// <summary>
-      /// a bit more data than home page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.HomePageModel GetAdminPageModel(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetAdminPageModel(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// a bit more data than home page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.HomePageModel GetAdminPageModel(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetAdminPageModel, null, options, request);
-      }
-      /// <summary>
-      /// a bit more data than home page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.HomePageModel> GetAdminPageModelAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetAdminPageModelAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// a bit more data than home page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.HomePageModel> GetAdminPageModelAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetAdminPageModel, null, options, request);
-      }
-      /// <summary>
-      /// updates note file data
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GNotefile UpdateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return UpdateNoteFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// updates note file data
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GNotefile UpdateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_UpdateNoteFile, null, options, request);
-      }
-      /// <summary>
-      /// updates note file data
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNotefile> UpdateNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return UpdateNoteFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// updates note file data
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNotefile> UpdateNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_UpdateNoteFile, null, options, request);
-      }
-      /// <summary>
-      /// deletes a note file
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoRequest DeleteNoteFile(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return DeleteNoteFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// deletes a note file
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoRequest DeleteNoteFile(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_DeleteNoteFile, null, options, request);
-      }
-      /// <summary>
-      /// deletes a note file
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> DeleteNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return DeleteNoteFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// deletes a note file
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> DeleteNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_DeleteNoteFile, null, options, request);
-      }
-      /// <summary>
-      /// runs an import
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoRequest Import(global::Notes2022.Proto.ImportRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return Import(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// runs an import
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoRequest Import(global::Notes2022.Proto.ImportRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_Import, null, options, request);
-      }
-      /// <summary>
-      /// runs an import
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> ImportAsync(global::Notes2022.Proto.ImportRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return ImportAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// runs an import
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> ImportAsync(global::Notes2022.Proto.ImportRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_Import, null, options, request);
-      }
-      /// <summary>
-      /// get data for the index of a notefile
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoteDisplayIndexModel GetNoteFileIndexData(global::Notes2022.Proto.NoteIndexRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetNoteFileIndexData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// get data for the index of a notefile
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoteDisplayIndexModel GetNoteFileIndexData(global::Notes2022.Proto.NoteIndexRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetNoteFileIndexData, null, options, request);
-      }
-      /// <summary>
-      /// get data for the index of a notefile
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoteDisplayIndexModel> GetNoteFileIndexDataAsync(global::Notes2022.Proto.NoteIndexRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetNoteFileIndexDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// get data for the index of a notefile
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoteDisplayIndexModel> GetNoteFileIndexDataAsync(global::Notes2022.Proto.NoteIndexRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetNoteFileIndexData, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_GetHeaderForNoteId, null, options, request);
       }
       /// <summary>
       /// gets the content of a note
@@ -1866,6 +1603,246 @@ namespace Notes2022.Proto {
         return CallInvoker.AsyncUnaryCall(__Method_GetAccessList, null, options, request);
       }
       /// <summary>
+      /// updates roles for a user
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoRequest UpdateUserRoles(global::Notes2022.Proto.EditUserViewModel request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateUserRoles(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// updates roles for a user
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoRequest UpdateUserRoles(global::Notes2022.Proto.EditUserViewModel request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateUserRoles, null, options, request);
+      }
+      /// <summary>
+      /// updates roles for a user
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> UpdateUserRolesAsync(global::Notes2022.Proto.EditUserViewModel request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateUserRolesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// updates roles for a user
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> UpdateUserRolesAsync(global::Notes2022.Proto.EditUserViewModel request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateUserRoles, null, options, request);
+      }
+      /// <summary>
+      /// create a note file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.GNotefile CreateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateNoteFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// create a note file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.GNotefile CreateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CreateNoteFile, null, options, request);
+      }
+      /// <summary>
+      /// create a note file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNotefile> CreateNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateNoteFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// create a note file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNotefile> CreateNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CreateNoteFile, null, options, request);
+      }
+      /// <summary>
+      /// updates note file data
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.GNotefile UpdateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateNoteFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// updates note file data
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.GNotefile UpdateNoteFile(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateNoteFile, null, options, request);
+      }
+      /// <summary>
+      /// updates note file data
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNotefile> UpdateNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateNoteFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// updates note file data
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNotefile> UpdateNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateNoteFile, null, options, request);
+      }
+      /// <summary>
+      /// deletes a note file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoRequest DeleteNoteFile(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteNoteFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// deletes a note file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoRequest DeleteNoteFile(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeleteNoteFile, null, options, request);
+      }
+      /// <summary>
+      /// deletes a note file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> DeleteNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteNoteFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// deletes a note file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> DeleteNoteFileAsync(global::Notes2022.Proto.GNotefile request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeleteNoteFile, null, options, request);
+      }
+      /// <summary>
+      /// runs an import
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoRequest Import(global::Notes2022.Proto.ImportRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Import(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// runs an import
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoRequest Import(global::Notes2022.Proto.ImportRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Import, null, options, request);
+      }
+      /// <summary>
+      /// runs an import
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> ImportAsync(global::Notes2022.Proto.ImportRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ImportAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// runs an import
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> ImportAsync(global::Notes2022.Proto.ImportRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Import, null, options, request);
+      }
+      /// <summary>
       /// get a single access item
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -2008,54 +1985,6 @@ namespace Notes2022.Proto {
       public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteAccess> AddAccessItemAsync(global::Notes2022.Proto.GNoteAccess request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_AddAccessItem, null, options, request);
-      }
-      /// <summary>
-      /// gets data for the current user
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GAppUser GetUserData(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetUserData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// gets data for the current user
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GAppUser GetUserData(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetUserData, null, options, request);
-      }
-      /// <summary>
-      /// gets data for the current user
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GAppUser> GetUserDataAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetUserDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// gets data for the current user
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GAppUser> GetUserDataAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetUserData, null, options, request);
       }
       /// <summary>
       /// updates user data
@@ -2538,150 +2467,6 @@ namespace Notes2022.Proto {
         return CallInvoker.AsyncUnaryCall(__Method_UpdateNote, null, options, request);
       }
       /// <summary>
-      /// gets a note header given its id
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GNoteHeader GetHeaderForNoteId(global::Notes2022.Proto.NoteId request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetHeaderForNoteId(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// gets a note header given its id
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GNoteHeader GetHeaderForNoteId(global::Notes2022.Proto.NoteId request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetHeaderForNoteId, null, options, request);
-      }
-      /// <summary>
-      /// gets a note header given its id
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteHeader> GetHeaderForNoteIdAsync(global::Notes2022.Proto.NoteId request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetHeaderForNoteIdAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// gets a note header given its id
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteHeader> GetHeaderForNoteIdAsync(global::Notes2022.Proto.NoteId request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetHeaderForNoteId, null, options, request);
-      }
-      /// <summary>
-      /// gets data for the about page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.AboutModel GetAbout(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetAbout(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// gets data for the about page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.AboutModel GetAbout(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetAbout, null, options, request);
-      }
-      /// <summary>
-      /// gets data for the about page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.AboutModel> GetAboutAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetAboutAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// gets data for the about page
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.AboutModel> GetAboutAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetAbout, null, options, request);
-      }
-      /// <summary>
-      /// unauthenticated - slower - use it too much and it really hurts you!
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoRequest SendEmail(global::Notes2022.Proto.GEmail request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return SendEmail(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// unauthenticated - slower - use it too much and it really hurts you!
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.NoRequest SendEmail(global::Notes2022.Proto.GEmail request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_SendEmail, null, options, request);
-      }
-      /// <summary>
-      /// unauthenticated - slower - use it too much and it really hurts you!
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> SendEmailAsync(global::Notes2022.Proto.GEmail request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return SendEmailAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// unauthenticated - slower - use it too much and it really hurts you!
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> SendEmailAsync(global::Notes2022.Proto.GEmail request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_SendEmail, null, options, request);
-      }
-      /// <summary>
       /// authenticated
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -2728,54 +2513,6 @@ namespace Notes2022.Proto {
       public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoRequest> SendEmailAuthAsync(global::Notes2022.Proto.GEmail request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_SendEmailAuth, null, options, request);
-      }
-      /// <summary>
-      /// gets a note header list during an Export
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GNoteHeaderList GetExport(global::Notes2022.Proto.ExportRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetExport(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// gets a note header list during an Export
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Notes2022.Proto.GNoteHeaderList GetExport(global::Notes2022.Proto.ExportRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetExport, null, options, request);
-      }
-      /// <summary>
-      /// gets a note header list during an Export
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteHeaderList> GetExportAsync(global::Notes2022.Proto.ExportRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetExportAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// gets a note header list during an Export
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteHeaderList> GetExportAsync(global::Notes2022.Proto.ExportRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetExport, null, options, request);
       }
       /// <summary>
       /// gets note content during an export
@@ -2970,7 +2707,7 @@ namespace Notes2022.Proto {
         return CallInvoker.AsyncUnaryCall(__Method_CopyNote, null, options, request);
       }
       /// <summary>
-      /// deletes a not
+      /// deletes a note
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2983,7 +2720,7 @@ namespace Notes2022.Proto {
         return DeleteNote(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// deletes a not
+      /// deletes a note
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -2994,7 +2731,7 @@ namespace Notes2022.Proto {
         return CallInvoker.BlockingUnaryCall(__Method_DeleteNote, null, options, request);
       }
       /// <summary>
-      /// deletes a not
+      /// deletes a note
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -3007,7 +2744,7 @@ namespace Notes2022.Proto {
         return DeleteNoteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// deletes a not
+      /// deletes a note
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -3018,7 +2755,7 @@ namespace Notes2022.Proto {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteNote, null, options, request);
       }
       /// <summary>
-      /// returns data for a json export
+      /// returns data for a json export see GetNoteHeaders for a more flexible way to get filtered data
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -3031,7 +2768,7 @@ namespace Notes2022.Proto {
         return GetExportJson(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// returns data for a json export
+      /// returns data for a json export see GetNoteHeaders for a more flexible way to get filtered data
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -3042,7 +2779,7 @@ namespace Notes2022.Proto {
         return CallInvoker.BlockingUnaryCall(__Method_GetExportJson, null, options, request);
       }
       /// <summary>
-      /// returns data for a json export
+      /// returns data for a json export see GetNoteHeaders for a more flexible way to get filtered data
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -3055,7 +2792,7 @@ namespace Notes2022.Proto {
         return GetExportJsonAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// returns data for a json export
+      /// returns data for a json export see GetNoteHeaders for a more flexible way to get filtered data
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -3066,7 +2803,344 @@ namespace Notes2022.Proto {
         return CallInvoker.AsyncUnaryCall(__Method_GetExportJson, null, options, request);
       }
       /// <summary>
-      /// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
+      /// request all or some slice of a note file - headers w or wo content and tags
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.GNoteHeaderList GetNoteHeaders(global::Notes2022.Proto.NoteHeadersRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetNoteHeaders(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// request all or some slice of a note file - headers w or wo content and tags
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.GNoteHeaderList GetNoteHeaders(global::Notes2022.Proto.NoteHeadersRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetNoteHeaders, null, options, request);
+      }
+      /// <summary>
+      /// request all or some slice of a note file - headers w or wo content and tags
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteHeaderList> GetNoteHeadersAsync(global::Notes2022.Proto.NoteHeadersRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetNoteHeadersAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// request all or some slice of a note file - headers w or wo content and tags
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.GNoteHeaderList> GetNoteHeadersAsync(global::Notes2022.Proto.NoteHeadersRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetNoteHeaders, null, options, request);
+      }
+      /// <summary>
+      /// Gets the current homepage message if any
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.AString GetHomePageMessage(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetHomePageMessage(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets the current homepage message if any
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.AString GetHomePageMessage(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetHomePageMessage, null, options, request);
+      }
+      /// <summary>
+      /// Gets the current homepage message if any
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.AString> GetHomePageMessageAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetHomePageMessageAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets the current homepage message if any
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.AString> GetHomePageMessageAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetHomePageMessage, null, options, request);
+      }
+      /// <summary>
+      /// Gets the number of base notes.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoteCount GetNoteCount(global::Notes2022.Proto.NoteIndexRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetNoteCount(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets the number of base notes.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoteCount GetNoteCount(global::Notes2022.Proto.NoteIndexRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetNoteCount, null, options, request);
+      }
+      /// <summary>
+      /// Gets the number of base notes.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoteCount> GetNoteCountAsync(global::Notes2022.Proto.NoteIndexRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetNoteCountAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets the number of base notes.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoteCount> GetNoteCountAsync(global::Notes2022.Proto.NoteIndexRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetNoteCount, null, options, request);
+      }
+      /// <summary>
+      /// get data needed for home page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.HomePageModel GetHomePageModel(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetHomePageModel(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// get data needed for home page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.HomePageModel GetHomePageModel(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetHomePageModel, null, options, request);
+      }
+      /// <summary>
+      /// get data needed for home page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.HomePageModel> GetHomePageModelAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetHomePageModelAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// get data needed for home page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.HomePageModel> GetHomePageModelAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetHomePageModel, null, options, request);
+      }
+      /// <summary>
+      /// a bit more data than home page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.HomePageModel GetAdminPageModel(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAdminPageModel(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// a bit more data than home page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.HomePageModel GetAdminPageModel(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAdminPageModel, null, options, request);
+      }
+      /// <summary>
+      /// a bit more data than home page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.HomePageModel> GetAdminPageModelAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAdminPageModelAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// a bit more data than home page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.HomePageModel> GetAdminPageModelAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAdminPageModel, null, options, request);
+      }
+      /// <summary>
+      /// get data for the index of a notefile
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoteDisplayIndexModel GetNoteFileIndexData(global::Notes2022.Proto.NoteIndexRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetNoteFileIndexData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// get data for the index of a notefile
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.NoteDisplayIndexModel GetNoteFileIndexData(global::Notes2022.Proto.NoteIndexRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetNoteFileIndexData, null, options, request);
+      }
+      /// <summary>
+      /// get data for the index of a notefile
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoteDisplayIndexModel> GetNoteFileIndexDataAsync(global::Notes2022.Proto.NoteIndexRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetNoteFileIndexDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// get data for the index of a notefile
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.NoteDisplayIndexModel> GetNoteFileIndexDataAsync(global::Notes2022.Proto.NoteIndexRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetNoteFileIndexData, null, options, request);
+      }
+      /// <summary>
+      /// gets data for the about page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.AboutModel GetAbout(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAbout(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// gets data for the about page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Notes2022.Proto.AboutModel GetAbout(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAbout, null, options, request);
+      }
+      /// <summary>
+      /// gets data for the about page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.AboutModel> GetAboutAsync(global::Notes2022.Proto.NoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAboutAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// gets data for the about page
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Notes2022.Proto.AboutModel> GetAboutAsync(global::Notes2022.Proto.NoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAbout, null, options, request);
+      }
+      /// <summary>
+      ///	rpc SendEmail(GEmail) returns (NoRequest);							// unauthenticated - slower - use it too much and it really hurts you!
+      ///	rpc GetExport(ExportRequest) returns (GNoteHeaderList);				// gets a note header list during an Export
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -3079,7 +3153,8 @@ namespace Notes2022.Proto {
         return GetTextFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
+      ///	rpc SendEmail(GEmail) returns (NoRequest);							// unauthenticated - slower - use it too much and it really hurts you!
+      ///	rpc GetExport(ExportRequest) returns (GNoteHeaderList);				// gets a note header list during an Export
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -3090,7 +3165,8 @@ namespace Notes2022.Proto {
         return CallInvoker.BlockingUnaryCall(__Method_GetTextFile, null, options, request);
       }
       /// <summary>
-      /// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
+      ///	rpc SendEmail(GEmail) returns (NoRequest);							// unauthenticated - slower - use it too much and it really hurts you!
+      ///	rpc GetExport(ExportRequest) returns (GNoteHeaderList);				// gets a note header list during an Export
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -3103,7 +3179,8 @@ namespace Notes2022.Proto {
         return GetTextFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
+      ///	rpc SendEmail(GEmail) returns (NoRequest);							// unauthenticated - slower - use it too much and it really hurts you!
+      ///	rpc GetExport(ExportRequest) returns (GNoteHeaderList);				// gets a note header list during an Export
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -3131,23 +3208,21 @@ namespace Notes2022.Proto {
           .AddMethod(__Method_Login, serviceImpl.Login)
           .AddMethod(__Method_Logout, serviceImpl.Logout)
           .AddMethod(__Method_ConfirmEmail, serviceImpl.ConfirmEmail)
+          .AddMethod(__Method_GetUserData, serviceImpl.GetUserData)
           .AddMethod(__Method_GetUserList, serviceImpl.GetUserList)
           .AddMethod(__Method_GetUserRoles, serviceImpl.GetUserRoles)
-          .AddMethod(__Method_UpdateUserRoles, serviceImpl.UpdateUserRoles)
-          .AddMethod(__Method_CreateNoteFile, serviceImpl.CreateNoteFile)
-          .AddMethod(__Method_GetHomePageModel, serviceImpl.GetHomePageModel)
-          .AddMethod(__Method_GetAdminPageModel, serviceImpl.GetAdminPageModel)
-          .AddMethod(__Method_UpdateNoteFile, serviceImpl.UpdateNoteFile)
-          .AddMethod(__Method_DeleteNoteFile, serviceImpl.DeleteNoteFile)
-          .AddMethod(__Method_Import, serviceImpl.Import)
-          .AddMethod(__Method_GetNoteFileIndexData, serviceImpl.GetNoteFileIndexData)
+          .AddMethod(__Method_GetHeaderForNoteId, serviceImpl.GetHeaderForNoteId)
           .AddMethod(__Method_GetNoteContent, serviceImpl.GetNoteContent)
           .AddMethod(__Method_GetAccessAndUserList, serviceImpl.GetAccessAndUserList)
           .AddMethod(__Method_GetAccessList, serviceImpl.GetAccessList)
+          .AddMethod(__Method_UpdateUserRoles, serviceImpl.UpdateUserRoles)
+          .AddMethod(__Method_CreateNoteFile, serviceImpl.CreateNoteFile)
+          .AddMethod(__Method_UpdateNoteFile, serviceImpl.UpdateNoteFile)
+          .AddMethod(__Method_DeleteNoteFile, serviceImpl.DeleteNoteFile)
+          .AddMethod(__Method_Import, serviceImpl.Import)
           .AddMethod(__Method_UpdateAccessItem, serviceImpl.UpdateAccessItem)
           .AddMethod(__Method_DeleteAccessItem, serviceImpl.DeleteAccessItem)
           .AddMethod(__Method_AddAccessItem, serviceImpl.AddAccessItem)
-          .AddMethod(__Method_GetUserData, serviceImpl.GetUserData)
           .AddMethod(__Method_UpdateUserData, serviceImpl.UpdateUserData)
           .AddMethod(__Method_GetVersions, serviceImpl.GetVersions)
           .AddMethod(__Method_GetSequencer, serviceImpl.GetSequencer)
@@ -3158,21 +3233,24 @@ namespace Notes2022.Proto {
           .AddMethod(__Method_GetNoteFile, serviceImpl.GetNoteFile)
           .AddMethod(__Method_CreateNewNote, serviceImpl.CreateNewNote)
           .AddMethod(__Method_UpdateNote, serviceImpl.UpdateNote)
-          .AddMethod(__Method_GetHeaderForNoteId, serviceImpl.GetHeaderForNoteId)
-          .AddMethod(__Method_GetAbout, serviceImpl.GetAbout)
-          .AddMethod(__Method_SendEmail, serviceImpl.SendEmail)
           .AddMethod(__Method_SendEmailAuth, serviceImpl.SendEmailAuth)
-          .AddMethod(__Method_GetExport, serviceImpl.GetExport)
           .AddMethod(__Method_GetExport2, serviceImpl.GetExport2)
           .AddMethod(__Method_DoForward, serviceImpl.DoForward)
           .AddMethod(__Method_GetNoteFilesOrderedByName, serviceImpl.GetNoteFilesOrderedByName)
           .AddMethod(__Method_CopyNote, serviceImpl.CopyNote)
           .AddMethod(__Method_DeleteNote, serviceImpl.DeleteNote)
           .AddMethod(__Method_GetExportJson, serviceImpl.GetExportJson)
+          .AddMethod(__Method_GetNoteHeaders, serviceImpl.GetNoteHeaders)
+          .AddMethod(__Method_GetHomePageMessage, serviceImpl.GetHomePageMessage)
+          .AddMethod(__Method_GetNoteCount, serviceImpl.GetNoteCount)
+          .AddMethod(__Method_GetHomePageModel, serviceImpl.GetHomePageModel)
+          .AddMethod(__Method_GetAdminPageModel, serviceImpl.GetAdminPageModel)
+          .AddMethod(__Method_GetNoteFileIndexData, serviceImpl.GetNoteFileIndexData)
+          .AddMethod(__Method_GetAbout, serviceImpl.GetAbout)
           .AddMethod(__Method_GetTextFile, serviceImpl.GetTextFile).Build();
     }
 
-    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
     /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
     /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -3183,23 +3261,21 @@ namespace Notes2022.Proto {
       serviceBinder.AddMethod(__Method_Login, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.LoginRequest, global::Notes2022.Proto.LoginReply>(serviceImpl.Login));
       serviceBinder.AddMethod(__Method_Logout, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AuthReply>(serviceImpl.Logout));
       serviceBinder.AddMethod(__Method_ConfirmEmail, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.ConfirmEmailRequest, global::Notes2022.Proto.AuthReply>(serviceImpl.ConfirmEmail));
+      serviceBinder.AddMethod(__Method_GetUserData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUser>(serviceImpl.GetUserData));
       serviceBinder.AddMethod(__Method_GetUserList, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUserList>(serviceImpl.GetUserList));
       serviceBinder.AddMethod(__Method_GetUserRoles, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.AppUserRequest, global::Notes2022.Proto.EditUserViewModel>(serviceImpl.GetUserRoles));
-      serviceBinder.AddMethod(__Method_UpdateUserRoles, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.EditUserViewModel, global::Notes2022.Proto.NoRequest>(serviceImpl.UpdateUserRoles));
-      serviceBinder.AddMethod(__Method_CreateNoteFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile>(serviceImpl.CreateNoteFile));
-      serviceBinder.AddMethod(__Method_GetHomePageModel, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel>(serviceImpl.GetHomePageModel));
-      serviceBinder.AddMethod(__Method_GetAdminPageModel, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel>(serviceImpl.GetAdminPageModel));
-      serviceBinder.AddMethod(__Method_UpdateNoteFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile>(serviceImpl.UpdateNoteFile));
-      serviceBinder.AddMethod(__Method_DeleteNoteFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.NoRequest>(serviceImpl.DeleteNoteFile));
-      serviceBinder.AddMethod(__Method_Import, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.ImportRequest, global::Notes2022.Proto.NoRequest>(serviceImpl.Import));
-      serviceBinder.AddMethod(__Method_GetNoteFileIndexData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteDisplayIndexModel>(serviceImpl.GetNoteFileIndexData));
+      serviceBinder.AddMethod(__Method_GetHeaderForNoteId, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteHeader>(serviceImpl.GetHeaderForNoteId));
       serviceBinder.AddMethod(__Method_GetNoteContent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.DisplayModelRequest, global::Notes2022.Proto.DisplayModel>(serviceImpl.GetNoteContent));
       serviceBinder.AddMethod(__Method_GetAccessAndUserList, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.AccessAndUserListRequest, global::Notes2022.Proto.AccessAndUserList>(serviceImpl.GetAccessAndUserList));
       serviceBinder.AddMethod(__Method_GetAccessList, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.AccessAndUserListRequest, global::Notes2022.Proto.GNoteAccessList>(serviceImpl.GetAccessList));
+      serviceBinder.AddMethod(__Method_UpdateUserRoles, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.EditUserViewModel, global::Notes2022.Proto.NoRequest>(serviceImpl.UpdateUserRoles));
+      serviceBinder.AddMethod(__Method_CreateNoteFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile>(serviceImpl.CreateNoteFile));
+      serviceBinder.AddMethod(__Method_UpdateNoteFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.GNotefile>(serviceImpl.UpdateNoteFile));
+      serviceBinder.AddMethod(__Method_DeleteNoteFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNotefile, global::Notes2022.Proto.NoRequest>(serviceImpl.DeleteNoteFile));
+      serviceBinder.AddMethod(__Method_Import, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.ImportRequest, global::Notes2022.Proto.NoRequest>(serviceImpl.Import));
       serviceBinder.AddMethod(__Method_UpdateAccessItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNoteAccess, global::Notes2022.Proto.GNoteAccess>(serviceImpl.UpdateAccessItem));
       serviceBinder.AddMethod(__Method_DeleteAccessItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNoteAccess, global::Notes2022.Proto.NoRequest>(serviceImpl.DeleteAccessItem));
       serviceBinder.AddMethod(__Method_AddAccessItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GNoteAccess, global::Notes2022.Proto.GNoteAccess>(serviceImpl.AddAccessItem));
-      serviceBinder.AddMethod(__Method_GetUserData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GAppUser>(serviceImpl.GetUserData));
       serviceBinder.AddMethod(__Method_UpdateUserData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GAppUser, global::Notes2022.Proto.GAppUser>(serviceImpl.UpdateUserData));
       serviceBinder.AddMethod(__Method_GetVersions, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GetVersionsRequest, global::Notes2022.Proto.GNoteHeaderList>(serviceImpl.GetVersions));
       serviceBinder.AddMethod(__Method_GetSequencer, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GSequencerList>(serviceImpl.GetSequencer));
@@ -3210,17 +3286,20 @@ namespace Notes2022.Proto {
       serviceBinder.AddMethod(__Method_GetNoteFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.GNotefile>(serviceImpl.GetNoteFile));
       serviceBinder.AddMethod(__Method_CreateNewNote, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.TextViewModel, global::Notes2022.Proto.GNoteHeader>(serviceImpl.CreateNewNote));
       serviceBinder.AddMethod(__Method_UpdateNote, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.TextViewModel, global::Notes2022.Proto.GNoteHeader>(serviceImpl.UpdateNote));
-      serviceBinder.AddMethod(__Method_GetHeaderForNoteId, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteHeader>(serviceImpl.GetHeaderForNoteId));
-      serviceBinder.AddMethod(__Method_GetAbout, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AboutModel>(serviceImpl.GetAbout));
-      serviceBinder.AddMethod(__Method_SendEmail, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GEmail, global::Notes2022.Proto.NoRequest>(serviceImpl.SendEmail));
       serviceBinder.AddMethod(__Method_SendEmailAuth, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.GEmail, global::Notes2022.Proto.NoRequest>(serviceImpl.SendEmailAuth));
-      serviceBinder.AddMethod(__Method_GetExport, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.ExportRequest, global::Notes2022.Proto.GNoteHeaderList>(serviceImpl.GetExport));
       serviceBinder.AddMethod(__Method_GetExport2, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.GNoteContent>(serviceImpl.GetExport2));
       serviceBinder.AddMethod(__Method_DoForward, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.ForwardViewModel, global::Notes2022.Proto.NoRequest>(serviceImpl.DoForward));
       serviceBinder.AddMethod(__Method_GetNoteFilesOrderedByName, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.GNotefileList>(serviceImpl.GetNoteFilesOrderedByName));
       serviceBinder.AddMethod(__Method_CopyNote, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.CopyModel, global::Notes2022.Proto.NoRequest>(serviceImpl.CopyNote));
       serviceBinder.AddMethod(__Method_DeleteNote, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteId, global::Notes2022.Proto.NoRequest>(serviceImpl.DeleteNote));
       serviceBinder.AddMethod(__Method_GetExportJson, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.ExportRequest, global::Notes2022.Proto.JsonExport>(serviceImpl.GetExportJson));
+      serviceBinder.AddMethod(__Method_GetNoteHeaders, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteHeadersRequest, global::Notes2022.Proto.GNoteHeaderList>(serviceImpl.GetNoteHeaders));
+      serviceBinder.AddMethod(__Method_GetHomePageMessage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AString>(serviceImpl.GetHomePageMessage));
+      serviceBinder.AddMethod(__Method_GetNoteCount, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteCount>(serviceImpl.GetNoteCount));
+      serviceBinder.AddMethod(__Method_GetHomePageModel, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel>(serviceImpl.GetHomePageModel));
+      serviceBinder.AddMethod(__Method_GetAdminPageModel, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.HomePageModel>(serviceImpl.GetAdminPageModel));
+      serviceBinder.AddMethod(__Method_GetNoteFileIndexData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoteIndexRequest, global::Notes2022.Proto.NoteDisplayIndexModel>(serviceImpl.GetNoteFileIndexData));
+      serviceBinder.AddMethod(__Method_GetAbout, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.NoRequest, global::Notes2022.Proto.AboutModel>(serviceImpl.GetAbout));
       serviceBinder.AddMethod(__Method_GetTextFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Notes2022.Proto.AString, global::Notes2022.Proto.AString>(serviceImpl.GetTextFile));
     }
 

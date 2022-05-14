@@ -160,7 +160,7 @@ namespace Notes2022.Client.Panels
             if (Model.NoteFileID != 0)
             {
                 //noteFile = await DAL.GetNewNote(Http, Model.NoteFileID);
-                noteFile = await Client.GetNoteFileAsync(new NoteIndexRequest() { NoteFileId = Model.NoteFileID}, myState.AuthHeader);
+                noteFile = await Client.GetNoteFileAsync(new NoteFileRequest() { NoteFileId = Model.NoteFileID}, myState.AuthHeader);
             }
         }
 
