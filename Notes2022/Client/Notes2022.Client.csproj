@@ -9,12 +9,18 @@
 
   <ItemGroup>
     <Compile Remove="Comp\CookieStateAgent.razor.cs" />
+    <Compile Remove="Dialogs\Upload1.razor.cs" />
+    <Compile Remove="Dialogs\Upload2.razor.cs" />
+    <Compile Remove="Dialogs\Upload3.razor.cs" />
     <Compile Remove="Shared\MainLayout.razor.cs" />
     <Compile Remove="StateContainer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Comp\CookieStateAgent.razor" />
+    <Content Remove="Dialogs\Upload1.razor" />
+    <Content Remove="Dialogs\Upload2.razor" />
+    <Content Remove="Dialogs\Upload3.razor" />
     <Content Remove="Pages\Counter.razor" />
     <Content Remove="Pages\FetchData.razor" />
     <Content Remove="Shared\NavMenuold.razor" />

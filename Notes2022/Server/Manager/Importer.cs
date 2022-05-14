@@ -77,6 +77,12 @@ namespace Notes2022.Server
                 return false;
             }
 
+            return await Import(_db, file, myNotesFile);
+        }
+
+
+        public async Task<bool> Import(NotesDbContext _db, StreamReader file, string myNotesFile)
+            { 
             // get the target file
             NoteFile noteFile = await NoteDataManager.GetFileByName(_db, myNotesFile);
 
@@ -103,7 +109,6 @@ namespace Notes2022.Server
             int basenotes = 0;
 
             int filetype = 0;  // 0= NovaNET | 1 = Notes 3.1 | 2 = plato iv group notes -- we can process three formats
-
 
             // Read the file and process it line by line.
             // we first determine the file type

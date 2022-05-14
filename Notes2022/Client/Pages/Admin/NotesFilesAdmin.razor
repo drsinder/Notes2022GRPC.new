@@ -83,12 +83,14 @@ else
                                 <button @onclick="@(() => EditNoteFile(file.Id))">Edit</button>
                                 <button @onclick="@(() => NoteFileDetails(file.Id))">Details</button>
                                 <button @onclick="@(() => DeleteNoteFile(file.Id))">Delete</button>
-                                <button @onclick="@(() => ImportNoteFile(file.Id))">Import</button>
+                                <button @onclick="@(() => ImportNoteFile2(file.Id))">Import</button>
                              </td>
                         </tr>
                     }
 
                 </tbody>
+
+                    <FileSelect @ref="fileSelect" FilesSelected="FilesSelectedHandler" Accept=".txt"></FileSelect>
 
             </table>
 

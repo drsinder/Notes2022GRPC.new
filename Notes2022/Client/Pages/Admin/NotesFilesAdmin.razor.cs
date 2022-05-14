@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Components;
 using Notes2022.Shared;
 using System.Net.Http.Json;
 using Notes2022.Proto;
+using W8lessLabs.Blazor.LocalFiles;
 
 namespace Notes2022.Client.Pages.Admin
 {
@@ -284,38 +285,74 @@ namespace Notes2022.Client.Pages.Admin
             }
         }
 
-        /// <summary>
-        /// Imports the note file.
-        /// </summary>
-        /// <param name="Id">The identifier.</param>
-        async Task ImportNoteFile(int Id)
+//        /// <summary>
+//        /// Imports the note file.
+//        /// </summary>
+//        /// <param name="Id">The identifier.</param>
+//        async Task ImportNoteFile(int Id)
+//        {
+//            var parameters = new ModalParameters();
+//            var xModal = Modal.Show<Dialogs.Upload1>("Upload1", parameters);
+//            var result = await xModal.Result;
+//            if (result.Cancelled)
+//            {
+//                return;
+//            }
+//            else
+//            {
+//#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+//                GNotefile file = files.List.ToList().Find(x => x.Id == Id);
+//#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
+//                string filename = (string)result.Data;
+//                parameters = new ModalParameters();
+//                parameters.Add("UploadFile", filename);
+//#pragma warning disable CS8602 // Dereference of a possibly null reference.
+//                parameters.Add("NoteFile", file.NoteFileName);
+//#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
+//                var yModal = Modal.Show<Dialogs.Upload2>("Upload2", parameters);
+//                await yModal.Result;
+
+//                Navigation.NavigateTo("noteindex/" + Id);
+//                return;
+//            }
+//        }
+
+        protected FileSelect fileSelect;
+
+        protected byte[] fileBytes;
+
+        protected string filename;
+
+        protected int fileId;
+
+        async Task FilesSelectedHandler(SelectedFile[] selectedFiles)
         {
+
+            var selectedFile = selectedFiles[0];
+            // alternatively, load all the bytes at once
+            fileBytes = await fileSelect.GetFileBytesAsync(selectedFile.Name);
+
             var parameters = new ModalParameters();
-            var xModal = Modal.Show<Dialogs.Upload1>("Upload1", parameters);
-            var result = await xModal.Result;
-            if (result.Cancelled)
-            {
-                return;
-            }
-            else
-            {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-                GNotefile file = files.List.ToList().Find(x => x.Id == Id);
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
-                string filename = (string)result.Data;
-                parameters = new ModalParameters();
-                parameters.Add("UploadFile", filename);
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-                parameters.Add("NoteFile", file.NoteFileName);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+            parameters.Add("UploadFile", fileBytes);
 
-                var yModal = Modal.Show<Dialogs.Upload2>("Upload2", parameters);
-                await yModal.Result;
+            parameters.Add("NoteFile", filename);
 
-                Navigation.NavigateTo("noteindex/" + Id);
-                return;
-            }
+            var yModal = Modal.Show<Dialogs.Upload4>("Upload2", parameters);
+            await yModal.Result;
+
+            Navigation.NavigateTo("noteindex/" + fileId);
+        }
+
+        async Task ImportNoteFile2(int Id)
+        {
+            GNotefile file = files.List.ToList().Find(x => x.Id == Id);
+            filename = file.NoteFileName;
+            fileId = file.Id;
+
+            fileSelect.SelectFiles();
         }
 
     }
