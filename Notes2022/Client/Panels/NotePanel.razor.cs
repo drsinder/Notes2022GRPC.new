@@ -138,7 +138,13 @@ namespace Notes2022.Client.Panels
         /// Are responses shown
         /// </summary>
         /// <value><c>true</c> if [resp shown]; otherwise, <c>false</c>.</value>
-        public bool RespShown { get; set; }
+        protected bool RespShown { get; set; }
+
+        /// <summary>
+        /// Public value of RespShown
+        /// </summary>
+        /// <value><c>true</c> if [show resp]; otherwise, <c>false</c>.</value>
+        public bool ShowResp { get { return ResetShown; } }
 
         /// <summary>
         /// Gets or sets a value indicating whether [reset shown].
@@ -420,7 +426,7 @@ namespace Notes2022.Client.Panels
             sb.Append(currentHeader.AuthorName + "    ");
             sb.Append(Globals.LocalTimeBlazor(currentHeader.LastEdited.ToDateTime()).ToLongDateString() + " " + Globals.LocalTimeBlazor(currentHeader.LastEdited.ToDateTime()).ToShortTimeString());
 
-            GNoteContent currentContent = await Client.GetExport2Async(new NoteId() {Id = currentHeader.Id}  , myState.AuthHeader);             //DAL.GetExport2(Http, currentHeader.Id);
+            GNoteContent currentContent = await Client.GetExport2Async(new NoteId() { Id = currentHeader.Id }, myState.AuthHeader);
 
             if (!string.IsNullOrEmpty(currentHeader.DirectorMessage))
             {

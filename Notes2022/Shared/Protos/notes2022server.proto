@@ -89,6 +89,7 @@ service Notes2022Server {
 //	rpc SendEmail(GEmail) returns (NoRequest);							// unauthenticated - slower - use it too much and it really hurts you!
 //	rpc GetExport(ExportRequest) returns (GNoteHeaderList);				// gets a note header list during an Export
 	rpc GetTextFile(AString) returns (AString);	// files: about.html | help.html | helpdialog.html | helpdialog2.html | license.html
+	rpc NoOp(NoRequest) returns (NoRequest);
 }
 
 // used generically -  used when no data needed for request or response

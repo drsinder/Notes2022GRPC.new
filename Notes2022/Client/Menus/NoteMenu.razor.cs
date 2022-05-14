@@ -303,7 +303,7 @@ namespace Notes2022.Client.Menus
                 request.ResponseOrdinal = Model.Header.ResponseOrdinal;
                 request.FileName = Model.NoteFile.NoteFileName + ".note-" + Model.Header.NoteOrdinal + "-response-" + Model.Header.ResponseOrdinal + ".json";
             }
-            else if (!MyNoteIndex.MyNotePanel.RespShown)
+            else if (!MyNoteIndex.MyNotePanel.ShowResp)
             {
                 request.ResponseOrdinal = 0;
             }

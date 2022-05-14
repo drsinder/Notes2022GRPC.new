@@ -59,7 +59,9 @@ namespace Notes2022.Server.Services
         /// <summary>
         /// The logger
         /// </summary>
+#pragma warning disable IDE0052 // Remove unread private members
         private readonly ILogger<Notes2022Service> _logger; // not currently used - here if/when needed
+#pragma warning restore IDE0052 // Remove unread private members
 
         /// <summary>
         /// The database
@@ -117,6 +119,13 @@ namespace Notes2022.Server.Services
             _signInManager = signInManager;
             _configuration = configuration;
             _emailSender = emailSender;
+        }
+
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        public override async Task<NoRequest> NoOp(NoRequest request, ServerCallContext context)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+        {
+            return new();
         }
 
         /// <summary>
@@ -1642,7 +1651,9 @@ namespace Notes2022.Server.Services
         /// <param name="request">The request received from the client.</param>
         /// <param name="context">The context of the server-side call handler being invoked.</param>
         /// <returns>The response to send back to the client (wrapped by a task).</returns>
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public override async Task<AString> GetHomePageMessage(NoRequest request, ServerCallContext context)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             var message = new AString();
 

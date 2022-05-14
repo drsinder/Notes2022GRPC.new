@@ -148,8 +148,11 @@ namespace Notes2022.Client.Menus
             }
             if (Model.MyAccess.ReadAccess)
             {
-                MenuItem item2 = new() { Id = "OutPutMenu", Text = "Output" };
-                item2.Items = new List<MenuItem>
+                MenuItem item2 = new()
+                {
+                    Id = "OutPutMenu",
+                    Text = "Output",
+                    Items = new List<MenuItem>
                 {
                     new () { Id = "eXport", Text = "eXport" },
                     new () { Id = "HtmlFromIndex", Text = "Html (expandable)" },
@@ -167,6 +170,7 @@ namespace Notes2022.Client.Menus
                     new (){ Id = "JsonExport2", Text = "Json Export" },
                     new (){ Id = "Excel", Text = "Excel Export" },
                     new (){ Id = "Pdf", Text = "Pdf Export" }
+                }
                 };
 
                 menuItems.Add(item2);
@@ -308,15 +312,17 @@ namespace Notes2022.Client.Menus
 
             GNoteHeader currentHeader = Model.Notes.List[0];
 
-            ExportRequest exportRequest = new ExportRequest();
-            exportRequest.ArcId = Model.ArcId;
-            exportRequest.FileId = Model.NoteFile.Id;
-            exportRequest.NoteOrdinal = 0;
+            ExportRequest exportRequest = new()
+            {
+                ArcId = Model.ArcId,
+                FileId = Model.NoteFile.Id,
+                NoteOrdinal = 0
+            };
 
-            JsonExport json = await Client.GetExportJsonAsync(exportRequest, myState.AuthHeader);
+            JsonExport? json = await Client.GetExportJsonAsync(exportRequest, myState.AuthHeader);
             List<GNoteHeader> allNotes = json.NoteHeaders.List.ToList();
 
-            StringBuilder sb = new();
+            StringBuilder? sb = new();
 
             sb.Append("<h4 class=\"text-center\">" + Model.NoteFile.NoteFileTitle + "</h4>");
 
@@ -376,7 +382,10 @@ namespace Notes2022.Client.Menus
                 //sliderValueText = currentHeader.NoteOrdinal + "/" + baseNotes;  // update progress test
                 currNote = currentHeader.NoteOrdinal;                           // update progress bar
                 myGauge.SetPointerValue(0, 0, currNote);
-
+                if (currNote % 10 == 0)
+                {
+                    await Client.NoOpAsync(new NoRequest()); // needed to let Menu progress update!
+                }
                 goto reloop;    // print another string
             }
 
@@ -400,15 +409,17 @@ namespace Notes2022.Client.Menus
         {
             var parameters = new ModalParameters();
 
-            ExportViewModel vm = new();
-            vm.ArchiveNumber = Model.ArcId;
-            vm.isCollapsible = isCollapsible;
-            vm.isDirectOutput = !isEmail;
-            vm.isHtml = isHtml;
-            vm.NoteFile = Model.NoteFile;
-            vm.NoteOrdinal = 0;
-            vm.Email = emailaddr;
-            vm.myMenu = this;
+            ExportViewModel vm = new()
+            {
+                ArchiveNumber = Model.ArcId,
+                isCollapsible = isCollapsible,
+                isDirectOutput = !isEmail,
+                isHtml = isHtml,
+                NoteFile = Model.NoteFile,
+                NoteOrdinal = 0,
+                Email = emailaddr,
+                myMenu = this
+            };
             currNote = 1;
 
             parameters.Add("Model", vm);
@@ -433,11 +444,13 @@ namespace Notes2022.Client.Menus
         {
             var parameters = new ModalParameters();
 
-            ExportViewModel vm = new();
-            vm.ArchiveNumber = Model.ArcId;
-            vm.NoteFile = Model.NoteFile;
-            vm.NoteOrdinal = 0;
-            vm.isCollapsible = ext;
+            ExportViewModel vm = new()
+            {
+                ArchiveNumber = Model.ArcId,
+                NoteFile = Model.NoteFile,
+                NoteOrdinal = 0,
+                isCollapsible = ext
+            };
 
             parameters.Add("model", vm);
 
@@ -462,15 +475,15 @@ namespace Notes2022.Client.Menus
             DoExport(true, true, true, emailaddr);
         }
 
-        /// <summary>
-        /// Shows the message.
-        /// </summary>
-        /// <param name="message">The message.</param>
-        private void ShowMessage(string message)
-        {
-            var parameters = new ModalParameters();
-            parameters.Add("MessageInput", message);
-            Modal.Show<MessageBox>("", parameters);
-        }
+        ///// <summary>
+        ///// Shows the message.
+        ///// </summary>
+        ///// <param name="message">The message.</param>
+        //private void ShowMessage(string message)
+        //{
+        //    var parameters = new ModalParameters();
+        //    parameters.Add("MessageInput", message);
+        //    Modal.Show<MessageBox>("", parameters);
+        //}
     }
 }

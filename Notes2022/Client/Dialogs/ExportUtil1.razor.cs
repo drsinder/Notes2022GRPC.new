@@ -473,7 +473,13 @@ namespace Notes2022.Client.Dialogs
                 }
 
                 if (model.myMenu is not null)
+                {
                     model.myMenu.myGauge.SetPointerValue(0, 0, bnh.NoteOrdinal);
+                    if (bnh.NoteOrdinal % 10 == 0)
+                    {
+                        await Client.NoOpAsync(new NoRequest()); // needed to let Menu progress update!
+                    }
+                }
             }
 
             if (isHtml)  // end the html
