@@ -1241,15 +1241,15 @@ namespace Notes2022.Server.Services
             };
         }
 
-        /// <summary>
-        /// The throttle
-        /// </summary>
-        private static int throttle = 0;
+        ///// <summary>
+        ///// The throttle
+        ///// </summary>
+        //private static int throttle = 0;
 
-        /// <summary>
-        /// The time of throttle set
-        /// </summary>
-        private static DateTime? TimeOfThrottle = null;
+        ///// <summary>
+        ///// The time of throttle set
+        ///// </summary>
+        //private static DateTime? TimeOfThrottle = null;
 
         ///// <summary>
         ///// Send an email.
@@ -1609,12 +1609,14 @@ namespace Notes2022.Server.Services
 
             stuff.NoteAccess = na.GetGNoteAccess();
 
-            NoteHeadersRequest request2 = new();
-            request2.NoteFileId = request.FileId;
-            request2.ArcId = request.ArcId;
-            request2.NoteOrdinal = -1;
-            request2.ContentAndTags = true;
-            request2.NestResponses = request.NestResponses;
+            NoteHeadersRequest request2 = new()
+            {
+                NoteFileId = request.FileId,
+                ArcId = request.ArcId,
+                NoteOrdinal = -1,
+                ContentAndTags = true,
+                NestResponses = request.NestResponses
+            };
             if (request.NoteOrdinal > 0)
                 request2.NoteOrdinal = request.NoteOrdinal;
 
@@ -1801,9 +1803,11 @@ namespace Notes2022.Server.Services
             if (!na.ReadAccess)
                 return new();
 
-            NoteCount returnval = new NoteCount();
-            returnval.Count = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId && p.ResponseOrdinal == 0
-                   && !p.IsDeleted && p.Version == 0).CountAsync();
+            NoteCount returnval = new()
+            {
+                Count = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId && p.ResponseOrdinal == 0
+                   && !p.IsDeleted && p.Version == 0).CountAsync()
+            };
 
             return returnval;
         }
