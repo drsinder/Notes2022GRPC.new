@@ -122,7 +122,7 @@ namespace Notes2022.Client.Panels
             new ToolbarItemModel() { Command = ToolbarCommand.Indent },
             new ToolbarItemModel() { Command = ToolbarCommand.Separator },
             new ToolbarItemModel() { Command = ToolbarCommand.CreateLink },
-            new ToolbarItemModel() { Command = ToolbarCommand.Image },
+            //new ToolbarItemModel() { Command = ToolbarCommand.Image },
             new ToolbarItemModel() { Command = ToolbarCommand.CreateTable },
             new ToolbarItemModel() { Command = ToolbarCommand.Separator },
             new ToolbarItemModel() { Command = ToolbarCommand.ClearFormat },
