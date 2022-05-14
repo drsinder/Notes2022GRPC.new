@@ -50,6 +50,7 @@ service Notes2022Server {
 	rpc GetNoteContent(DisplayModelRequest) returns (DisplayModel);		// gets the content of a note
 	rpc GetAccessAndUserList(AccessAndUserListRequest) returns (AccessAndUserList);	// gets access data and user list
 	rpc GetAccessList(AccessAndUserListRequest) returns (GNoteAccessList);			// gets the access list for a file
+	rpc GetAccess(NoteFileRequest) returns (GNoteAccess);				// gets the access for user
 	rpc UpdateUserRoles(EditUserViewModel) returns (NoRequest);			// updates roles for a user
 	rpc CreateNoteFile(GNotefile) returns (GNotefile);					// create a note file
 	rpc UpdateNoteFile(GNotefile) returns (GNotefile);					// updates note file data

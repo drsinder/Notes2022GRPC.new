@@ -129,6 +129,20 @@ namespace Notes2022.Server.Services
         }
 
         /// <summary>
+        /// Gets the access token for current user in file/archive
+        /// </summary>
+        /// <param name="request">fileid and arcid</param>
+        /// <param name="context">The context.</param>
+        /// <returns>Access Token</returns>
+        public override async Task<GNoteAccess> GetAccess(NoteFileRequest request, ServerCallContext context)
+        {
+            ApplicationUser appUser = await GetAppUser(context);
+            NoteAccess na = await AccessManager.GetAccess(_db, appUser.Id, request.NoteFileId, request.ArcId);
+            return na.GetGNoteAccess();
+
+        }
+
+        /// <summary>
         /// Registers the specified User.
         /// </summary>
         /// <param name="request">The request.</param>
