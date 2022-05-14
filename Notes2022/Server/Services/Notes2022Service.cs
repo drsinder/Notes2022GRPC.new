@@ -43,6 +43,7 @@ using Notes2022.Server.Data;
 using Notes2022.Server.Entities;
 using Notes2022.Shared;
 using System.IdentityModel.Tokens.Jwt;
+using System.Runtime;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
@@ -663,11 +664,18 @@ namespace Notes2022.Server.Services
         [Authorize(Roles = "Admin")]
         public override async Task<NoRequest> Import(ImportRequest request, ServerCallContext context)
         {
-            MemoryStream input = new MemoryStream(request.Payload.ToArray());
+            MemoryStream? input = new MemoryStream(request.Payload.ToArray());
             StreamReader file = new StreamReader(input);
 
-            Importer imp = new();
+            Importer? imp = new();
             _ = await imp.Import(_db, file, request.NoteFile);
+
+            file.DiscardBufferedData();
+            file.Dispose();
+            input.Dispose();
+            GC.Collect();
+            GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+            GC.Collect();
             return new NoRequest();
         }
 
