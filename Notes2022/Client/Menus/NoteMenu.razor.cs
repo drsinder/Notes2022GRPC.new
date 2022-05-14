@@ -295,7 +295,8 @@ namespace Notes2022.Client.Menus
                 NoteOrdinal = Model.Header.NoteOrdinal,
                 ResponseOrdinal = -1,
                 ContentAndTags = true,
-                FileName = Model.NoteFile.NoteFileName + ".note-" + Model.Header.NoteOrdinal + ".json"
+                FileName = Model.NoteFile.NoteFileName + ".note-" + Model.Header.NoteOrdinal + ".json",
+                NestResponses = true
             };
 
             if (Model.Header.ResponseOrdinal > 0)

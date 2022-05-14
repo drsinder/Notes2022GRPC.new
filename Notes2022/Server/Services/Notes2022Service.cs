@@ -121,12 +121,19 @@ namespace Notes2022.Server.Services
             _emailSender = emailSender;
         }
 
+        /// <summary>
+        /// Does nothing.  Just permits a ping of the server.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public override async Task<NoRequest> NoOp(NoRequest request, ServerCallContext context)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+
         {
             return new();
         }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 
         /// <summary>
         /// Gets the access token for current user in file/archive
@@ -1607,6 +1614,7 @@ namespace Notes2022.Server.Services
             request2.ArcId = request.ArcId;
             request2.NoteOrdinal = -1;
             request2.ContentAndTags = true;
+            request2.NestResponses = request.NestResponses;
             if (request.NoteOrdinal > 0)
                 request2.NoteOrdinal = request.NoteOrdinal;
 
@@ -1730,7 +1738,7 @@ namespace Notes2022.Server.Services
                     && !p.IsDeleted && p.Version == 0)
                     .OrderBy(p => p.NoteOrdinal).ToListAsync();
             }
-            else if (request.ResponseOrdinal == -1) // specifc base note plus all responses
+            else if (request.ResponseOrdinal <= 0) // specifc base note plus all responses
             {
                 work = await _db.NoteHeader.Where(p => p.NoteFileId == request.NoteFileId && p.ArchiveId == request.ArcId && p.NoteOrdinal == request.NoteOrdinal 
                     && !p.IsDeleted && p.Version == 0)
@@ -1762,6 +1770,23 @@ namespace Notes2022.Server.Services
                     item.Content = cont.Single(p => p.NoteHeaderId == item.Id).GetGNoteContent();
                     List<Tags> x = tags.Where(p => p.NoteHeaderId == item.Id).ToList();
                     item.Tags = Tags.GetGTagsList(x);
+                }
+            }
+
+            if (request.NestResponses)
+            {
+                List<GNoteHeader> bases = returnval.List.Where(p => p.ResponseOrdinal == 0).ToList();
+                foreach (GNoteHeader bn in bases)
+                {
+                    List<GNoteHeader> rn = returnval.List.Where(p => p.NoteOrdinal == bn.NoteOrdinal && p.ResponseOrdinal > 0).OrderBy(p => p.ResponseOrdinal).ToList();
+                    if (rn.Count == 0)
+                        continue;
+                    bn.Responses = new();
+                    bn.Responses.List.AddRange(rn);
+                    foreach (GNoteHeader ln in rn)
+                    {
+                        returnval.List.Remove(ln);
+                    }
                 }
             }
 

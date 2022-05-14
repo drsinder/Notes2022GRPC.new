@@ -247,6 +247,7 @@ message GNoteHeader {
 	string directorMessage = 18;					// director message
 	GNoteContent content = 19;						// for GetNoteHeaders and JsonExport only
 	GTagsList tags = 20;							// for GetNoteHeaders and JsonExport only
+	GNoteHeaderList Responses = 21;					// for GetNoteHeaders and JsonExport only
 }
 
 // list of note headers
@@ -484,6 +485,7 @@ message ExportRequest {
 	int32 arcId = 2;			// archive id
 	int32 noteOrdinal = 3;		// note ordinal
 	int32 responseOrdinal = 4;	// response ordinal
+	bool nestResponses = 5;
 }
 
 // used to forward note(s) to an email address
@@ -528,6 +530,7 @@ message NoteHeadersRequest {
 	int32 minNote = 6;			// min base ordinal to include
 	int32 maxNote = 7;			// max base ordinal to include
 	string fileName = 8;		// used only for export of a note string
+	bool nestResponses = 9;		// extra processing to nest responses inside base notes
 }
 
 message NoteCount {

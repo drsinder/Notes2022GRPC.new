@@ -94,7 +94,7 @@ namespace Notes2022.Client.Dialogs
             StringContent stringContent;
 
             JsonExport stuff;
-            stuff = await Client.GetExportJsonAsync(new ExportRequest() { FileId = nfid, ArcId = 0 }, myState.AuthHeader);
+            stuff = await Client.GetExportJsonAsync(new ExportRequest() { FileId = nfid, ArcId = 0, NestResponses = true }, myState.AuthHeader);
             stringContent = new StringContent(JsonConvert.SerializeObject(stuff, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8, "application/json");
 
             Stream ms0 = await stringContent.ReadAsStreamAsync();
