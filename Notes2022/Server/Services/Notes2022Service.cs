@@ -352,7 +352,7 @@ namespace Notes2022.Server.Services
         public override async Task<GAppUserList> GetUserList(NoRequest request, ServerCallContext context)
         {
             List<ApplicationUser> list = await _userManager.Users.ToListAsync();
-            return Notes2022.Server.Entities.ApplicationUser.GetGAppUserList(list);
+            return ApplicationUser.GetGAppUserList(list);
         }
 
         /// <summary>
