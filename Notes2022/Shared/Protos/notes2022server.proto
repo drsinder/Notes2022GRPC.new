@@ -55,8 +55,8 @@ service Notes2022Server {
 	rpc CreateNoteFile(GNotefile) returns (GNotefile);					// create a note file
 	rpc UpdateNoteFile(GNotefile) returns (GNotefile);					// updates note file data
 	rpc DeleteNoteFile(GNotefile) returns (NoRequest);					// deletes a note file
-	rpc Import(ImportRequest) returns (NoRequest);						// runs an import given server side file name
-	rpc Import2(Import2Request) returns (NoRequest);						// runs an import given local file contents
+//	rpc Import(ImportRequest) returns (NoRequest);						// runs an import given server side file name
+	rpc Import(ImportRequest) returns (NoRequest);						// runs an import given client side file contents as btye[]
 	rpc UpdateAccessItem(GNoteAccess) returns (GNoteAccess);			// get a single access item
 	rpc DeleteAccessItem(GNoteAccess) returns (NoRequest);				// deletes an access item
 	rpc AddAccessItem(GNoteAccess) returns (GNoteAccess);				// adds an access item
@@ -370,12 +370,12 @@ message HomePageModel {
 }
 
 // request to import a file
-message ImportRequest {
-	string noteFile = 1;		// file name to import to
-	string uploadFile = 2;		// name of source file to import or its contents
-}
+//message ImportRequest {
+//	string noteFile = 1;		// file name to import to
+//	string uploadFile = 2;		// name of source file to import or its contents
+//}
 
-message Import2Request {
+message ImportRequest {
 	string noteFile = 1;		// file name to import to
 	bytes payload = 2;			// import contents
 }

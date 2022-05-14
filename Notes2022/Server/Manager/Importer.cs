@@ -55,34 +55,40 @@ namespace Notes2022.Server
         /// </summary>
         private const char Ff = (char)(12); //  FF
 
+        ///// <summary>
+        ///// Imports the specified database.
+        ///// </summary>
+        ///// <param name="_db">The database.</param>
+        ///// <param name="myFileInput">My file input.</param>
+        ///// <param name="myNotesFile">My notes file.</param>
+        ///// <returns><c>true</c> if success, <c>false</c> otherwise.</returns>
+        //public async Task<bool> Import(NotesDbContext _db, string myFileInput, string myNotesFile)
+        //{
+        //    Output("");
+
+        //    // Get the input file
+        //    StreamReader file;
+        //    try
+        //    {
+        //        file = new StreamReader(myFileInput);
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+
+        //    return await Import(_db, file, myNotesFile);
+        //}
+
         /// <summary>
-        /// Imports the specified database.
+        /// Import the file stream from a server file or from a file uploaded from client
         /// </summary>
-        /// <param name="_db">The database.</param>
-        /// <param name="myFileInput">My file input.</param>
-        /// <param name="myNotesFile">My notes file.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public async Task<bool> Import(NotesDbContext _db, string myFileInput, string myNotesFile)
-        {
-            Output("");
-
-            // Get the input file
-            StreamReader file;
-            try
-            {
-                file = new StreamReader(myFileInput);
-            }
-            catch
-            {
-                return false;
-            }
-
-            return await Import(_db, file, myNotesFile);
-        }
-
-
+        /// <param name="_db">The database</param>
+        /// <param name="file">StreamReader to read from</param>
+        /// <param name="myNotesFile">Output notefile</param>
+        /// <returns><c>true</c> if success, <c>false</c> otherwise.</returns>
         public async Task<bool> Import(NotesDbContext _db, StreamReader file, string myNotesFile)
-            { 
+        { 
             // get the target file
             NoteFile noteFile = await NoteDataManager.GetFileByName(_db, myNotesFile);
 

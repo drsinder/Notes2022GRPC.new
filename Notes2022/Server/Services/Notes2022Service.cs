@@ -640,19 +640,19 @@ namespace Notes2022.Server.Services
             return new NoRequest();
         }
 
-        /// <summary>
-        /// Imports the specified request.
-        /// </summary>
-        /// <param name="request">The request. Points to a file on server</param>
-        /// <param name="context">The context.</param>
-        /// <returns>NoRequest.</returns>
-        [Authorize(Roles = "Admin")]
-        public override async Task<NoRequest> Import(ImportRequest request, ServerCallContext context)
-        {
-            Importer imp = new();
-            await imp.Import(_db, Globals.ImportRoot + request.UploadFile, request.NoteFile);
-            return new NoRequest();
-        }
+        ///// <summary>
+        ///// Imports the specified request.
+        ///// </summary>
+        ///// <param name="request">The request. Points to a file on server</param>
+        ///// <param name="context">The context.</param>
+        ///// <returns>NoRequest.</returns>
+        //[Authorize(Roles = "Admin")]
+        //public override async Task<NoRequest> Import(ImportRequest request, ServerCallContext context)
+        //{
+        //    Importer imp = new();
+        //    _ = await imp.Import(_db, Globals.ImportRoot + request.UploadFile, request.NoteFile);
+        //    return new NoRequest();
+        //}
 
         /// <summary>
         /// Imports the specified request.
@@ -661,13 +661,13 @@ namespace Notes2022.Server.Services
         /// <param name="context">The context.</param>
         /// <returns>NoRequest.</returns>
         [Authorize(Roles = "Admin")]
-        public override async Task<NoRequest> Import2(Import2Request request, ServerCallContext context)
+        public override async Task<NoRequest> Import(ImportRequest request, ServerCallContext context)
         {
             MemoryStream input = new MemoryStream(request.Payload.ToArray());
             StreamReader file = new StreamReader(input);
 
             Importer imp = new();
-            await imp.Import(_db, file, request.NoteFile);
+            _ = await imp.Import(_db, file, request.NoteFile);
             return new NoRequest();
         }
 

@@ -50,12 +50,11 @@ namespace Notes2022.Client.Dialogs
         public string NoteFile { get; set; }
 
         /// <summary>
-        /// Gets or sets the upload file.
+        /// Gets or sets the upload data.
         /// </summary>
         /// <value>The upload file.</value>
         [Parameter]
         public byte[] UploadFile { get; set; }
-
 
 
         /// <summary>
@@ -67,8 +66,8 @@ namespace Notes2022.Client.Dialogs
         {
             if (firstRender)
             {
-                await Client.Import2Async(new Import2Request()
-                { NoteFile = NoteFile, Payload = Google.Protobuf.ByteString.CopyFrom(UploadFile) }, myState.AuthHeader, deadline: DateTime.UtcNow.AddMinutes(10));
+                _ = await Client.ImportAsync(new ImportRequest()
+                    { NoteFile = NoteFile, Payload = Google.Protobuf.ByteString.CopyFrom(UploadFile) }, myState.AuthHeader, deadline: DateTime.UtcNow.AddMinutes(10));
                 await ModalInstance.CancelAsync();
             }
         }
